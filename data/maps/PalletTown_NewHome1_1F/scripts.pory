@@ -1,0 +1,24 @@
+raw `
+PalletTown_NewHome1_1F_MapScripts::
+	.byte 0
+
+
+PalletTown_NewHome1_1F_EventScript_Lass::
+# 4 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	lock
+# 5 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	faceplayer
+# 6 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	msgbox PalletTown_NewHome1_1F_EventScript_Lass_Text_0
+# 7 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	release
+	end
+
+
+PalletTown_NewHome1_1F_EventScript_Lass_Text_0:
+# 6 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	.string "KANTO has grown quite a bit in recent\n"
+	.string "years. You'll find new developments in\l"
+	.string "many cities around the region just\l"
+	.string "like here in Pallet Town.$"
+`

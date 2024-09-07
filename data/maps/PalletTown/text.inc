@@ -16,9 +16,14 @@ PalletTown_Text_RaisingMonsToo::
     .string "protect me.$"
 
 PalletTown_Text_CanStoreItemsAndMonsInPC::
-    .string "Technology is incredible!\p"
-    .string "You can now store and recall items\n"
-    .string "and POKéMON as data via PC.$"
+    .string "Technology is\nincredible!\p"
+    .string "Now you can actually\n"
+    .string "go into the ROM's data and\l"
+    .string "modify it yourself.\p"
+    .string "This allows you to create\n"
+    .string "a new and unique\l"
+    .string "POKÉMON experience!$"
+
 
 PalletTown_Text_OakPokemonResearchLab::
     .string "OAK POKéMON RESEARCH LAB$"
@@ -64,4 +69,6 @@ PalletTown_Text_OakYouEnjoyingTraveling::
     .string "exotic locales.\p"
     .string "Good for you, good for you.\n"
     .string "Hohoho.$"
+	
+
 
