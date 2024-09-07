@@ -919,5 +919,5 @@ PalletTown_EventScript_HelloSign::
 
 PalletTown_EventScript_HelloSign_Text_0:
 # 461 "data/maps/PalletTown/scripts.pory"
-	.string "Welcome to the world of Super\n"
+	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
 	.string "POKéMON FireRed II Turbo HD Remix!$"

@@ -458,7 +458,7 @@ PalletTown_EventScript_SignLadyStartShowSign::
 script PalletTown_EventScript_HelloSign {
     lock
     faceplayer
-    msgbox(format("Welcome to the world of Super\n POKéMON FireRed II Turbo HD Remix!"))
+    msgbox(format("Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n POKéMON FireRed II Turbo HD Remix!"))
     release
     end
 }
