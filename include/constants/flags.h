@@ -583,6 +583,7 @@
 // Story flags
 #define STORY_FLAGS_START 0x230
 #define FLAG_GOT_POTION_ON_ROUTE_1                       0x230
+#define FLAG_GOT_POTION_ON_ROUTE_1                       0x230
 #define FLAG_GOT_TM34_FROM_SURGE                         0x231
 #define FLAG_GOT_FOSSIL_FROM_MT_MOON                     0x232
 #define FLAG_HELPED_BILL_IN_SEA_COTTAGE                  0x233
@@ -1523,7 +1524,12 @@
 #define FLAG_0x8FE                                                  (SYS_FLAGS + 0xFE)
 #define FLAG_0x8FF                                                  (SYS_FLAGS + 0xFF)
 
-#define FLAGS_COUNT (FLAG_0x8FF + 1)
+// New Flags
+
+#define FLAG_0x900                                                  (SYS_FLAGS + 0x100)
+
+
+#define FLAGS_COUNT (FLAG_0x900 + 1)
 
 // Special Flags (Stored in EWRAM (sSpecialFlags, not in the SaveBlock)
 #define SPECIAL_FLAGS_START           0x4000

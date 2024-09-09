@@ -463,3 +463,42 @@ script PalletTown_EventScript_HelloSign {
     end
 }
 
+script PalletTown_CheriBerryKid {
+
+if(!flag(FLAG_0x900))
+{
+  # lock
+    faceplayer
+    msgbox(format("Have you heard? There are PIKACHU\n all over Route 1 now!\p You better take this just in case."))
+    giveitem(ITEM_CHERI_BERRY)
+	setflag(FLAG_0x900)
+	release
+	end
+}
+else
+{
+  # lock
+    faceplayer
+    msgbox (format("Watch out for PIKACHU's\n Thunder Wave!"))
+	release
+	end
+	}
+}
+
+script PalletTown_BeautyWithPoliwrath {
+    lock
+    faceplayer
+    msgbox("You'll find KANTO looks a bit\ndifferent now.\p My POKeMON seem to enjoy the\n changes.\p POLIWRATH loves playing in the\n puddles!")
+    release
+    end
+}
+
+script PalletTown_Poliwrath {
+    lock
+    faceplayer
+	playmoncry(SPECIES_POLIWRATH, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox("POLI!")
+    release
+    end
+}

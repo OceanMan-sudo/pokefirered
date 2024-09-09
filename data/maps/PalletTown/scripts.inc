@@ -917,7 +917,79 @@ PalletTown_EventScript_HelloSign::
 	end
 
 
+PalletTown_CheriBerryKid::
+# 468 "data/maps/PalletTown/scripts.pory"
+	goto_if_unset FLAG_0x900, PalletTown_CheriBerryKid_1
+# 481 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 482 "data/maps/PalletTown/scripts.pory"
+	msgbox PalletTown_CheriBerryKid_Text_1
+# 483 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+PalletTown_CheriBerryKid_1:
+# 471 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 472 "data/maps/PalletTown/scripts.pory"
+	msgbox PalletTown_CheriBerryKid_Text_0
+# 473 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_CHERI_BERRY
+# 474 "data/maps/PalletTown/scripts.pory"
+	setflag FLAG_0x900
+# 475 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
+PalletTown_BeautyWithPoliwrath::
+# 489 "data/maps/PalletTown/scripts.pory"
+	lock
+# 490 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 491 "data/maps/PalletTown/scripts.pory"
+	msgbox PalletTown_BeautyWithPoliwrath_Text_0
+# 492 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
+PalletTown_Poliwrath::
+# 497 "data/maps/PalletTown/scripts.pory"
+	lock
+# 498 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 499 "data/maps/PalletTown/scripts.pory"
+	playmoncry SPECIES_POLIWRATH, CRY_MODE_NORMAL
+# 500 "data/maps/PalletTown/scripts.pory"
+	delay 40
+# 501 "data/maps/PalletTown/scripts.pory"
+	msgbox PalletTown_Poliwrath_Text_0
+# 502 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
 PalletTown_EventScript_HelloSign_Text_0:
 # 461 "data/maps/PalletTown/scripts.pory"
 	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
 	.string "POKéMON FireRed II Turbo HD Remix!$"
+
+PalletTown_CheriBerryKid_Text_0:
+# 472 "data/maps/PalletTown/scripts.pory"
+	.string "Have you heard? There are PIKACHU\n"
+	.string "all over Route 1 now!\p"
+	.string "You better take this just in case.$"
+
+PalletTown_CheriBerryKid_Text_1:
+# 482 "data/maps/PalletTown/scripts.pory"
+	.string "Watch out for PIKACHU's\n"
+	.string "Thunder Wave!$"
+
+PalletTown_BeautyWithPoliwrath_Text_0:
+# 491 "data/maps/PalletTown/scripts.pory"
+	.string "You'll find KANTO looks a bit\n different now.\p My POKeMON seem to enjoy the\n changes.\p POLIWRATH loves playing in the\n puddles!$"
+
+PalletTown_Poliwrath_Text_0:
+# 501 "data/maps/PalletTown/scripts.pory"
+	.string "POLI!$"
