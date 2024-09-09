@@ -988,7 +988,7 @@ PalletTown_CheriBerryKid_Text_1:
 
 PalletTown_BeautyWithPoliwrath_Text_0:
 # 491 "data/maps/PalletTown/scripts.pory"
-	.string "You'll find KANTO looks a bit\n different now.\p My POKeMON seem to enjoy the\n changes.\p POLIWRATH loves playing in the\n puddles!$"
+	.string "You'll find KANTO looks a bit\ndifferent now.\p My POKeMON seem to enjoy the\n changes.\p POLIWRATH loves playing in the\n puddles!$"
 
 PalletTown_Poliwrath_Text_0:
 # 501 "data/maps/PalletTown/scripts.pory"
