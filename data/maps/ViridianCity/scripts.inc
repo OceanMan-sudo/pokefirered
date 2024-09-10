@@ -486,50 +486,86 @@ ViridianCity_EventScript_DoTutorialBattle::
 ViridianCity_GiveRareCandy::
 # 246 "data/maps/ViridianCity/scripts.pory"
 	goto_if_set FLAG_0x0AF, ViridianCity_GiveRareCandy_2
-# 258 "data/maps/ViridianCity/scripts.pory"
-	lock
-# 259 "data/maps/ViridianCity/scripts.pory"
-	faceplayer
 # 260 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_2
+	lock
 # 261 "data/maps/ViridianCity/scripts.pory"
-	giveitem ITEM_RARE_CANDY, 99
+	faceplayer
 # 262 "data/maps/ViridianCity/scripts.pory"
-	setflag FLAG_0x0AF
+	msgbox ViridianCity_GiveRareCandy_Text_2
 # 263 "data/maps/ViridianCity/scripts.pory"
-	release
+	msgbox ViridianCity_GiveRareCandy_Text_3, MSGBOX_YESNO
+# 264 "data/maps/ViridianCity/scripts.pory"
+	switch VAR_RESULT
+# 265 "data/maps/ViridianCity/scripts.pory"
+	case YES, ViridianCity_GiveRareCandy_5
+# 271 "data/maps/ViridianCity/scripts.pory"
+	case NO, ViridianCity_GiveRareCandy_6
 	return
 
 ViridianCity_GiveRareCandy_2:
 # 247 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_0
+	lock
 # 248 "data/maps/ViridianCity/scripts.pory"
-	checkitem ITEM_RARE_CANDY, 1
+	faceplayer
 # 249 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_GiveRareCandy_Text_0
+# 250 "data/maps/ViridianCity/scripts.pory"
+	checkitem ITEM_RARE_CANDY, 1
+# 251 "data/maps/ViridianCity/scripts.pory"
 	compare VAR_RESULT, TRUE
-	goto_if_eq ViridianCity_GiveRareCandy_4
-# 254 "data/maps/ViridianCity/scripts.pory"
+	goto_if_eq ViridianCity_GiveRareCandy_7
+# 256 "data/maps/ViridianCity/scripts.pory"
 	giveitem ITEM_RARE_CANDY, 99
-# 255 "data/maps/ViridianCity/scripts.pory"
+# 257 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
-ViridianCity_GiveRareCandy_4:
-# 250 "data/maps/ViridianCity/scripts.pory"
+ViridianCity_GiveRareCandy_5:
+# 266 "data/maps/ViridianCity/scripts.pory"
+	giveitem ITEM_RARE_CANDY, 99
+# 267 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_GiveRareCandy_Text_4
+# 268 "data/maps/ViridianCity/scripts.pory"
+	setflag FLAG_0x0AF
+# 269 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+ViridianCity_GiveRareCandy_6:
+# 272 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_GiveRareCandy_Text_5
+# 273 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+ViridianCity_GiveRareCandy_7:
+# 252 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_GiveRareCandy_Text_1, MSGBOX_NPC
-# 251 "data/maps/ViridianCity/scripts.pory"
+# 253 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 
 ViridianCity_GiveRareCandy_Text_0:
-# 247 "data/maps/ViridianCity/scripts.pory"
+# 249 "data/maps/ViridianCity/scripts.pory"
 	.string "Here, have more!$"
 
 ViridianCity_GiveRareCandy_Text_1:
-# 250 "data/maps/ViridianCity/scripts.pory"
+# 252 "data/maps/ViridianCity/scripts.pory"
 	.string "You still have candies left$"
 
 ViridianCity_GiveRareCandy_Text_2:
-# 260 "data/maps/ViridianCity/scripts.pory"
-	.string "Here, take these 99 Rare Candies.$"
+# 262 "data/maps/ViridianCity/scripts.pory"
+	.string "Here, take these Rare Candies.$"
+
+ViridianCity_GiveRareCandy_Text_3:
+# 263 "data/maps/ViridianCity/scripts.pory"
+	.string "Would you like to take them?$"
+
+ViridianCity_GiveRareCandy_Text_4:
+# 267 "data/maps/ViridianCity/scripts.pory"
+	.string "Enjoy!$"
+
+ViridianCity_GiveRareCandy_Text_5:
+# 272 "data/maps/ViridianCity/scripts.pory"
+	.string "Maybe next time.$"

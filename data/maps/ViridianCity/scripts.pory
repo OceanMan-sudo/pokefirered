@@ -244,6 +244,8 @@ ViridianCity_EventScript_DoTutorialBattle::
 
 script ViridianCity_GiveRareCandy {
     if(flag(FLAG_0x0AF)){
+		lock
+		faceplayer
         msgbox("Here, have more!" MSGBOX_NPC)
 		checkitem(ITEM_RARE_CANDY, 1)
 		if(var(VAR_RESULT) == TRUE){
@@ -255,10 +257,20 @@ script ViridianCity_GiveRareCandy {
         release
 		end}
     }
-    lock
+	lock
     faceplayer
-    msgbox("Here, take these 99 Rare Candies.")
-    giveitem(ITEM_RARE_CANDY, 99)
-    setflag(FLAG_0x0AF)
-    release
+    msgbox("Here, take these Rare Candies.")
+    msgbox("Would you like to take them?", MSGBOX_YESNO)
+    switch (var(VAR_RESULT)){
+         case YES:
+              giveitem(ITEM_RARE_CANDY, 99)
+			  msgbox("Enjoy!")
+			  setflag(FLAG_0x0AF)
+			  release
+			  end
+         case NO:
+              msgbox("Maybe next time.")
+			  release
+			  end
+    }
 }
