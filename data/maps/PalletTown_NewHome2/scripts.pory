@@ -1,1 +1,16 @@
 mapscripts PalletTown_NewHome2_MapScripts {}
+script AgathaPallet {
+    lock
+    faceplayer
+    if (flag(SYS_FLAGS + 0x2C)) {
+        msgbox("AGATHA: You've become strong!\pBut, mark my words,\nI don't plan on retiring ever!\pRun along now, child!")
+    } elif (flag(SYS_FLAGS + 0x27)) {
+        msgbox("AGATHA: You've become strong!\pThe time has come to test your\nstrength.\pShow me what the old duff\nsees in you.\pRun along now, child!")
+    } elif (flag(SYS_FLAGS + 0x29)) {
+        msgbox("AGATHA: That old duff OAK entrusted\nyou with the POKéDEX did he?\pHmph!\pYou must focus on becoming strong!\pPOKéMON are made for battling, not\nstudying!\pRun along now, child.")
+    } else {
+        msgbox("AGATHA: Run along now child.")
+    }
+    release
+    end
+}
