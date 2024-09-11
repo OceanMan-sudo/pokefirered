@@ -4392,6 +4392,18 @@
       "secondary_tileset": "gTileset_School",
       "border_filepath": "data/layouts/PalletTown_NewHome1_1F/border.bin",
       "blockdata_filepath": "data/layouts/PalletTown_NewHome1_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PALLET_TOWN_NEW_HOME1_2F",
+      "name": "PalletTown_NewHome1_2F_Layout",
+      "width": 12,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding1",
+      "border_filepath": "data/layouts/PalletTown_NewHome1_2F/border.bin",
+      "blockdata_filepath": "data/layouts/PalletTown_NewHome1_2F/map.bin"
     }
   ]
 }
