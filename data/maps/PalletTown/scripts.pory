@@ -502,3 +502,19 @@ script PalletTown_Poliwrath {
     release
     end
 }
+
+script AgathaHouse {
+    lock
+    faceplayer
+    msgbox(format("AGATHA's House"))
+    release
+    end
+}
+
+script PalletTownScaredGirl {
+    lock
+    faceplayer
+    msgbox("AGATHA moved back to Pallet Town.\pShe's supposedly really strong,\nbut she gives me the creeps!\p...Don't tell her I said that!")
+    release
+    end
+}

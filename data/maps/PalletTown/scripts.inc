@@ -970,6 +970,30 @@ PalletTown_Poliwrath::
 	end
 
 
+AgathaHouse::
+# 507 "data/maps/PalletTown/scripts.pory"
+	lock
+# 508 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 509 "data/maps/PalletTown/scripts.pory"
+	msgbox AgathaHouse_Text_0
+# 510 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
+PalletTownScaredGirl::
+# 515 "data/maps/PalletTown/scripts.pory"
+	lock
+# 516 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 517 "data/maps/PalletTown/scripts.pory"
+	msgbox PalletTownScaredGirl_Text_0
+# 518 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
 PalletTown_EventScript_HelloSign_Text_0:
 # 461 "data/maps/PalletTown/scripts.pory"
 	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
@@ -993,3 +1017,11 @@ PalletTown_BeautyWithPoliwrath_Text_0:
 PalletTown_Poliwrath_Text_0:
 # 501 "data/maps/PalletTown/scripts.pory"
 	.string "POLI!$"
+
+AgathaHouse_Text_0:
+# 509 "data/maps/PalletTown/scripts.pory"
+	.string "AGATHA's House$"
+
+PalletTownScaredGirl_Text_0:
+# 517 "data/maps/PalletTown/scripts.pory"
+	.string "AGATHA moved back to Pallet Town.\pShe's supposedly really strong,\nbut she gives me the creeps!\p...Don't tell her I said that!$"

@@ -46,7 +46,7 @@ AgathaPallet_Text_1:
 
 AgathaPallet_Text_2:
 # 10 "data/maps/PalletTown_NewHome2/scripts.pory"
-	.string "AGATHA: That old duff OAK entrusted\nyou with the POKéDEX did he?\pHmph!\pYou must focus on battling.\pPOKéMON are made for battling, not\nstudying!\pRun along now, child.$"
+	.string "AGATHA: That old duff OAK entrusted\nyou with the POKéDEX did he?\pHmph!\pYou must focus on becoming strong!\pPOKéMON are made for battling, not\nstudying!\pRun along now, child.$"
 
 AgathaPallet_Text_3:
 # 12 "data/maps/PalletTown_NewHome2/scripts.pory"
