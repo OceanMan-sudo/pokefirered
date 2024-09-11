@@ -1,0 +1,16 @@
+mapscripts PalletTown_NewHome1_2F_MapScripts {}
+script RetroGamer {
+	lock
+	faceplayer
+	msgbox("Modern games are loaded with\nbugs and microstransactions.\pThat's why I prefer retro gaming!")
+	release
+	end
+}
+
+script RetroGamerSister {
+	lock
+	faceplayer
+	msgbox("My brother only plays old and boring\nNintendo games.\pEveryone knows that gaming on\nthe PC is the best!")
+	release
+	end
+}
