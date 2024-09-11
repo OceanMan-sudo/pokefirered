@@ -22,3 +22,11 @@ PalletTown_NewHome1_1F_EventScript_Lass_Text_0:
 	.string "many cities around the region just\l"
 	.string "like here in Pallet Town.$"
 `
+
+script PalletTown_NewHome1_1F_Man {
+	lock
+	faceplayer
+	msgbox("POKéMON from the JOHTO region have\nbeen seen all throughout KANTO.\pYou might even find some in the\nRoutes up ahead.")
+	release
+	end
+}

@@ -44,3 +44,19 @@ PalletTown_NewHome1_1F_EventScript_Lass_Text_0:
 	.string "many cities around the region just\l"
 # 23 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
 	.string "like here in Pallet Town.$"
+
+PalletTown_NewHome1_1F_Man::
+# 27 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	lock
+# 28 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	faceplayer
+# 29 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	msgbox PalletTown_NewHome1_1F_Man_Text_0
+# 30 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	release
+	end
+
+
+PalletTown_NewHome1_1F_Man_Text_0:
+# 29 "data/maps/PalletTown_NewHome1_1F/scripts.pory"
+	.string "POKéMON from the JOHTO region have\nbeen seen all throughout KANTO.\pYou might even find some in the\nRoutes up ahead.$"
