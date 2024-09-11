@@ -139,6 +139,13 @@
       "elevation": 0,
       "dest_map": "MAP_PALLET_TOWN_NEW_HOME1_1F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 37,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_PALLET_TOWN_NEW_HOME2",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

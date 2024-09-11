@@ -1366,3 +1366,6 @@ Text_TestMsg::
 
 	.include "data/maps/PalletTown_NewHome1_2F/scripts.inc"
 	.include "data/maps/PalletTown_NewHome1_2F/text.inc"
+
+	.include "data/maps/PalletTown_NewHome2/scripts.inc"
+	.include "data/maps/PalletTown_NewHome2/text.inc"

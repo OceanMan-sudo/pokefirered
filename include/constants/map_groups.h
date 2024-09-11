@@ -274,6 +274,7 @@
 #define MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB (3 | (4 << 8))
 #define MAP_PALLET_TOWN_NEW_HOME1_1F       (4 | (4 << 8))
 #define MAP_PALLET_TOWN_NEW_HOME1_2F       (5 | (4 << 8))
+#define MAP_PALLET_TOWN_NEW_HOME2          (6 | (4 << 8))
 
 // gMapGroup_IndoorViridian
 #define MAP_VIRIDIAN_CITY_HOUSE             (0 | (5 << 8))
