@@ -1369,3 +1369,6 @@ Text_TestMsg::
 
 	.include "data/maps/PalletTown_NewHome2/scripts.inc"
 	.include "data/maps/PalletTown_NewHome2/text.inc"
+
+	.include "data/maps/ViridianCity_HouseOfNuzlocke/scripts.inc"
+	.include "data/maps/ViridianCity_HouseOfNuzlocke/text.inc"

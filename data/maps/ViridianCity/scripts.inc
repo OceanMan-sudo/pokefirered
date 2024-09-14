@@ -483,194 +483,106 @@ ViridianCity_EventScript_DoTutorialBattle::
 # 242 "data/maps/ViridianCity/scripts.pory"
 	return
 
-ViridianCity_GiveRareCandy::
-# 246 "data/maps/ViridianCity/scripts.pory"
-	goto_if_set FLAG_0x0AF, ViridianCity_GiveRareCandy_2
-# 260 "data/maps/ViridianCity/scripts.pory"
-	lock
-# 261 "data/maps/ViridianCity/scripts.pory"
-	faceplayer
-# 262 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_2
-# 263 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_3, MSGBOX_YESNO
-# 264 "data/maps/ViridianCity/scripts.pory"
-	switch VAR_RESULT
-# 265 "data/maps/ViridianCity/scripts.pory"
-	case YES, ViridianCity_GiveRareCandy_5
-# 271 "data/maps/ViridianCity/scripts.pory"
-	case NO, ViridianCity_GiveRareCandy_6
-	return
-
-ViridianCity_GiveRareCandy_2:
-# 247 "data/maps/ViridianCity/scripts.pory"
-	lock
-# 248 "data/maps/ViridianCity/scripts.pory"
-	faceplayer
-# 249 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_0
-# 250 "data/maps/ViridianCity/scripts.pory"
-	checkitem ITEM_RARE_CANDY, 1
-# 251 "data/maps/ViridianCity/scripts.pory"
-	compare VAR_RESULT, TRUE
-	goto_if_eq ViridianCity_GiveRareCandy_7
-# 256 "data/maps/ViridianCity/scripts.pory"
-	giveitem ITEM_RARE_CANDY, 99
-# 257 "data/maps/ViridianCity/scripts.pory"
-	release
-	end
-
-ViridianCity_GiveRareCandy_5:
-# 266 "data/maps/ViridianCity/scripts.pory"
-	giveitem ITEM_RARE_CANDY, 99
-# 267 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_4
-# 268 "data/maps/ViridianCity/scripts.pory"
-	setflag FLAG_0x0AF
-# 269 "data/maps/ViridianCity/scripts.pory"
-	release
-	end
-
-ViridianCity_GiveRareCandy_6:
-# 272 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_5
-# 273 "data/maps/ViridianCity/scripts.pory"
-	release
-	end
-
-ViridianCity_GiveRareCandy_7:
-# 252 "data/maps/ViridianCity/scripts.pory"
-	msgbox ViridianCity_GiveRareCandy_Text_1, MSGBOX_NPC
-# 253 "data/maps/ViridianCity/scripts.pory"
-	release
-	end
-
-
 ViridianCity_NuzlockeGirl::
-# 279 "data/maps/ViridianCity/scripts.pory"
+# 246 "data/maps/ViridianCity/scripts.pory"
 	lock
-# 280 "data/maps/ViridianCity/scripts.pory"
+# 247 "data/maps/ViridianCity/scripts.pory"
 	faceplayer
-# 281 "data/maps/ViridianCity/scripts.pory"
+# 248 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_NuzlockeGirl_Text_0
-# 282 "data/maps/ViridianCity/scripts.pory"
+# 249 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 
 ViridianCity_OldRod::
-# 287 "data/maps/ViridianCity/scripts.pory"
+# 254 "data/maps/ViridianCity/scripts.pory"
 	goto_if_set FLAG_GOT_OLD_ROD, ViridianCity_OldRod_2
-# 293 "data/maps/ViridianCity/scripts.pory"
+# 260 "data/maps/ViridianCity/scripts.pory"
 	lock
-# 294 "data/maps/ViridianCity/scripts.pory"
+# 261 "data/maps/ViridianCity/scripts.pory"
 	faceplayer
-# 295 "data/maps/ViridianCity/scripts.pory"
+# 262 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_OldRod_Text_1, MSGBOX_YESNO
-# 296 "data/maps/ViridianCity/scripts.pory"
+# 263 "data/maps/ViridianCity/scripts.pory"
 	switch VAR_RESULT
-# 297 "data/maps/ViridianCity/scripts.pory"
+# 264 "data/maps/ViridianCity/scripts.pory"
 	case YES, ViridianCity_OldRod_5
-# 304 "data/maps/ViridianCity/scripts.pory"
+# 271 "data/maps/ViridianCity/scripts.pory"
 	case NO, ViridianCity_OldRod_6
 	return
 
 ViridianCity_OldRod_2:
-# 288 "data/maps/ViridianCity/scripts.pory"
+# 255 "data/maps/ViridianCity/scripts.pory"
 	lock
-# 289 "data/maps/ViridianCity/scripts.pory"
+# 256 "data/maps/ViridianCity/scripts.pory"
 	faceplayer
-# 290 "data/maps/ViridianCity/scripts.pory"
+# 257 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_OldRod_Text_0
-# 291 "data/maps/ViridianCity/scripts.pory"
+# 258 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 ViridianCity_OldRod_5:
-# 298 "data/maps/ViridianCity/scripts.pory"
+# 265 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_OldRod_Text_2
-# 299 "data/maps/ViridianCity/scripts.pory"
+# 266 "data/maps/ViridianCity/scripts.pory"
 	giveitem ITEM_OLD_ROD, 1
-# 300 "data/maps/ViridianCity/scripts.pory"
+# 267 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_OldRod_Text_3
-# 301 "data/maps/ViridianCity/scripts.pory"
+# 268 "data/maps/ViridianCity/scripts.pory"
 	setflag FLAG_GOT_OLD_ROD
-# 302 "data/maps/ViridianCity/scripts.pory"
+# 269 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 ViridianCity_OldRod_6:
-# 305 "data/maps/ViridianCity/scripts.pory"
+# 272 "data/maps/ViridianCity/scripts.pory"
 	msgbox ViridianCity_OldRod_Text_4
-# 306 "data/maps/ViridianCity/scripts.pory"
+# 273 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 
 NuzlockeHouse::
-# 312 "data/maps/ViridianCity/scripts.pory"
+# 279 "data/maps/ViridianCity/scripts.pory"
 	lock
-# 313 "data/maps/ViridianCity/scripts.pory"
+# 280 "data/maps/ViridianCity/scripts.pory"
 	faceplayer
-# 314 "data/maps/ViridianCity/scripts.pory"
+# 281 "data/maps/ViridianCity/scripts.pory"
 	msgbox NuzlockeHouse_Text_0
-# 315 "data/maps/ViridianCity/scripts.pory"
+# 282 "data/maps/ViridianCity/scripts.pory"
 	release
 	end
 
 
-ViridianCity_GiveRareCandy_Text_0:
-# 249 "data/maps/ViridianCity/scripts.pory"
-	.string "Here, have more!$"
-
-ViridianCity_GiveRareCandy_Text_1:
-# 252 "data/maps/ViridianCity/scripts.pory"
-	.string "You still have candies left$"
-
-ViridianCity_GiveRareCandy_Text_2:
-# 262 "data/maps/ViridianCity/scripts.pory"
-	.string "Here, take these Rare Candies.$"
-
-ViridianCity_GiveRareCandy_Text_3:
-# 263 "data/maps/ViridianCity/scripts.pory"
-	.string "Would you like to take them?$"
-
-ViridianCity_GiveRareCandy_Text_4:
-# 267 "data/maps/ViridianCity/scripts.pory"
-	.string "Enjoy!$"
-
-ViridianCity_GiveRareCandy_Text_5:
-# 272 "data/maps/ViridianCity/scripts.pory"
-	.string "Maybe next time.$"
-
 ViridianCity_NuzlockeGirl_Text_0:
-# 281 "data/maps/ViridianCity/scripts.pory"
+# 248 "data/maps/ViridianCity/scripts.pory"
 	.string "The people in that house\nplay POKéMON under Nuzlocke rules.\pMe personaly?\pI can't imagine playing\nlike that.$"
 
 ViridianCity_OldRod_Text_0:
-# 290 "data/maps/ViridianCity/scripts.pory"
+# 257 "data/maps/ViridianCity/scripts.pory"
 	.string "The OLD ROD usually nets you\nGOLDEEN or REMORAID.\pBut certain areas will have\ndifferent POKéMON.\pYou never know what you'll\nfind!$"
 
 ViridianCity_OldRod_Text_1:
-# 295 "data/maps/ViridianCity/scripts.pory"
-	.string "Ah, I can't think of anything better\n than fishing on a beautiful day.\pWouldn't you agree, kid?$"
+# 262 "data/maps/ViridianCity/scripts.pory"
+	.string "Ah, I can't think of anything better\nthan fishing on a beautiful day.\pWouldn't you agree, kid?$"
 
 ViridianCity_OldRod_Text_2:
-# 298 "data/maps/ViridianCity/scripts.pory"
-	.string "Ha! I knew it!\pThere's nothing like casting a line and\nwaiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.$"
+# 265 "data/maps/ViridianCity/scripts.pory"
+	.string "Ha! I knew it!\pThere's nothing like casting a line\nand waiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.$"
 
 ViridianCity_OldRod_Text_3:
-# 300 "data/maps/ViridianCity/scripts.pory"
-	.string "Give it a try at any\nbody of water you see.\pYou never know what you're\pgoing to catch!$"
+# 267 "data/maps/ViridianCity/scripts.pory"
+	.string "Give it a try at any\nbody of water you see.\pYou never know what you're\ngoing to catch!$"
 
 ViridianCity_OldRod_Text_4:
-# 305 "data/maps/ViridianCity/scripts.pory"
-	.string "Oh? You don't know what you're missing!\pThere's nothing more relaxing than\nfishing.$"
+# 272 "data/maps/ViridianCity/scripts.pory"
+	.string "Oh? You don't know what you're\nmissing!\pThere's nothing more relaxing than\nfishing for POKéMON.$"
 
 NuzlockeHouse_Text_0:
-# 314 "data/maps/ViridianCity/scripts.pory"
-	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the illustrious House of\n"
-	.string "Nuzlocke,\n"
-	.string "where we believe all of this is\l"
-	.string "happening\l"
-	.string "for a reason!$"
+# 281 "data/maps/ViridianCity/scripts.pory"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\n"
+	.string "illustrious House of Nuzlocke,\p"
+	.string "where we believe all of this is\n"
+	.string "happening for a reason!$"

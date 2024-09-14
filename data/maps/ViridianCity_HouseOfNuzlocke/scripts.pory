@@ -1,0 +1,45 @@
+mapscripts ViridianCity_HouseOfNuzlocke_MapScripts {}
+
+script ViridianCity_GiveRareCandy {
+    if(flag(FLAG_0x0AF)){
+		lock
+		faceplayer
+        msgbox("Come back for more?" MSGBOX_NPC)
+		checkitem(ITEM_RARE_CANDY, 1)
+		if(var(VAR_RESULT) == TRUE){
+		msgbox("You still have candies left...", MSGBOX_NPC)
+		release
+		end}
+		else{
+		giveitem(ITEM_RARE_CANDY, 99)
+        msgbox("Use them responsibly!")
+        release
+		end}
+    }
+	lock
+    faceplayer
+    msgbox("Grinding is such a pain,\nNuzlocke run or not.\pWho has time to catch a new\nPOKéMON, and train it and\lget it up to speed?\pChildren, that's who!\pAnd we aren't kids\nanymore!\pWe have jobs and responsibilites!\pI don't want to spend what\nlittle time I have training\la MEOWTH to use PAY DAY!\pSo how about I get rid of all\nthe grinding in your playthrough?\pWant to take these Rare Candies?\pI guess it sort of is cheating\nbut who cares?\pPlay the game your own\nway.\pWhat do you say?\pWould you like to take the Rare\nCandies?", MSGBOX_YESNO)
+    switch (var(VAR_RESULT)){
+         case YES:
+              giveitem(ITEM_RARE_CANDY, 99)
+			  msgbox("Use them responsibly!\pWhile grinding is a pain,\nso is removing any sort of\lchallenge.\pCome see me again if\nyou end up running out.")
+			  setflag(FLAG_0x0AF)
+			  release
+			  end
+         case NO:
+              msgbox("Suit yourself.")
+			  release
+			  end
+    }
+}
+
+script NuzlockeMeowth {
+lock
+faceplayer
+msgbox("I say you ain't trying if\nyou ain't cheating!\pI-I mean -")
+	playmoncry(SPECIES_MEOWTH, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox("NYAH!\p...Nevermind what I said earlier.")
+    release
+    end
+}

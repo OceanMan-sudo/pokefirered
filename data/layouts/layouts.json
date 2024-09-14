@@ -4416,6 +4416,18 @@
       "secondary_tileset": "gTileset_PalletTown",
       "border_filepath": "data/layouts/PalletTown_NewHome2/border.bin",
       "blockdata_filepath": "data/layouts/PalletTown_NewHome2/map.bin"
+    },
+    {
+      "id": "LAYOUT_VIRIDIAN_CITY_HOUSE_OF_NUZLOCKE",
+      "name": "ViridianCity_HouseOfNuzlocke_Layout",
+      "width": 12,
+      "height": 12,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_FanClubDaycare",
+      "border_filepath": "data/layouts/ViridianCity_HouseOfNuzlocke/border.bin",
+      "blockdata_filepath": "data/layouts/ViridianCity_HouseOfNuzlocke/map.bin"
     }
   ]
 }

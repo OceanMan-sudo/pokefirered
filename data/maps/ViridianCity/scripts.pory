@@ -242,39 +242,6 @@ ViridianCity_EventScript_DoTutorialBattle::
 	return
 `
 
-script ViridianCity_GiveRareCandy {
-    if(flag(FLAG_0x0AF)){
-		lock
-		faceplayer
-        msgbox("Here, have more!" MSGBOX_NPC)
-		checkitem(ITEM_RARE_CANDY, 1)
-		if(var(VAR_RESULT) == TRUE){
-		msgbox("You still have candies left", MSGBOX_NPC)
-		release
-		end}
-		else{
-		giveitem(ITEM_RARE_CANDY, 99)
-        release
-		end}
-    }
-	lock
-    faceplayer
-    msgbox("Here, take these Rare Candies.")
-    msgbox("Would you like to take them?", MSGBOX_YESNO)
-    switch (var(VAR_RESULT)){
-         case YES:
-              giveitem(ITEM_RARE_CANDY, 99)
-			  msgbox("Enjoy!")
-			  setflag(FLAG_0x0AF)
-			  release
-			  end
-         case NO:
-              msgbox("Maybe next time.")
-			  release
-			  end
-    }
-}
-
 script ViridianCity_NuzlockeGirl {
 	lock
 	faceplayer
@@ -295,7 +262,7 @@ script ViridianCity_OldRod {
     msgbox("Ah, I can't think of anything better\nthan fishing on a beautiful day.\pWouldn't you agree, kid?", MSGBOX_YESNO)
     switch (var(VAR_RESULT)){
          case YES:
-		 	msgbox("Ha! I knew it!\pThere's nothing like casting a line\nandwaiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.")
+		 	msgbox("Ha! I knew it!\pThere's nothing like casting a line\nand waiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.")
               giveitem(ITEM_OLD_ROD, 1)
 			  msgbox("Give it a try at any\nbody of water you see.\pYou never know what you're\ngoing to catch!")
 			  setflag(FLAG_GOT_OLD_ROD)
@@ -311,7 +278,7 @@ script ViridianCity_OldRod {
 script NuzlockeHouse {
     lock
     faceplayer
-	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\nillustrious House of Nuzlocke,\pwhere we believe all of this is happening\nfor a reason!"))   
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\nillustrious House of Nuzlocke,\pwhere we believe all of this is\nhappening for a reason!"))   
 	release
     end
 }
