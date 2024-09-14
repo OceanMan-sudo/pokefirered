@@ -518,3 +518,21 @@ script PalletTownScaredGirl {
     release
     end
 }
+
+script ClearGame {
+	lock
+	faceplayer
+	msgbox("Way to go")
+	setflag(SYS_FLAGS + 0x2C)
+	release
+	end
+}
+
+script EightBadges {
+	lock
+	faceplayer
+	msgbox("Lick my butt")
+	setflag(SYS_FLAGS + 0x27)
+	release
+	end
+}

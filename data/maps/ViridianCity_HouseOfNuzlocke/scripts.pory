@@ -43,3 +43,117 @@ msgbox("I say you ain't trying if\nyou ain't cheating!\pI-I mean -")
     release
     end
 }
+
+script MrNuzlocke {
+    lock
+    faceplayer
+    if (flag(SYS_FLAGS + 0x2C)) {
+        msgbox(format("MR. NUZLOCKE: You've become strong! But, mark my words, I don't plan on retiring ever! Run along now, child!"))
+    } elif (flag(FLAG_0x0B1)){
+        msgbox(format("MR. NUZLOCKE: Go forth! And let the spirit of Nuzlocke guide you to the top!"))
+        release
+        end
+    }
+    elif (flag(SYS_FLAGS + 0x27) && !(flag(FLAG_0x0B1))){
+        msgbox(format("MR. NUZLOCKE: Incredible! All the badges of the region are yours. You've proven your strength, resilience, and mastery! As a token of the Illustrious House of Nuzlocke, take this Focus Band. It might just save a run when all hope seems lost."))
+        giveitem(ITEM_FOCUS_BAND, 1)
+        msgbox(format("Go forth, adventurer! And let the spirit of Nuzlocke guide you to the top!"))
+        setflag(FLAG_0x0B1)
+        release
+        end
+    } elif (flag(FLAG_0x0B0)) {
+        msgbox(format("MR. NUZLOCKE: The Illustrious House of Nuzlocke will always stand as a bastion for any brave soul who dares the dare the challenge. Return to me when you've collected all the badges of this region. There may be something even grander waiting for you at the end of your journey!"))
+        release
+        end
+    } else {
+        msgbox(format("MR. NUZLOCKE: Ah, a new face! Welcome to the world of Nuzlocke! There's a certain magic in it you see... Each encounter, each battle, each victory, every fainted POKéMON - it all has weight, consequence! It's not just a challenge, it's a journey of bonding, loss, and triumph. Why, in a Nuzlocke, every POKéMON you catch is a friend you cherish - until fate decides to take them away... But that's the beauty in it! The uncertainty, the bittersweetness. It makes every victory all the more special! So, are you ready to embrace the adventure with no regrets?"), MSGBOX_YESNO)
+        switch (var(VAR_RESULT)){
+        case YES:
+            msgbox(format("Excellent! I knew you'd understand. The thrill of a true Nuzlocke adventurer runs deep in you! To honor your commitment to the journey, take this - a token of the House of Nuzlocke."))
+            giveitem(ITEM_TM10, 1)
+            msgbox(format("Remember, it's not the strength of the move that matters most - it's the bond with the POKéMON who wields it! Now, go forth! Your Nuzlocke adventure awaits!"))
+            setflag(FLAG_0x0B0)
+            release
+            end
+        case NO:
+            msgbox(format("Oh, I see... Perhaps the Nuzlocke journey isn't for everyone. But that's alright! Take this anyways."))
+            giveitem(ITEM_TM10, 1)
+            setflag(FLAG_0x0B0)
+            msgbox(format("TM10 contains Hidden Power. It's a fitting move, don't you\nthink? Just like in life, its true nature is a mystery until you dig a little deeper. Even if you are not on a\nNuzlocke journey, know that the\lillustrious House of Nuzlocke will\lalways welcome any adventurer!"))
+            release
+            end
+    }
+    release
+    end
+}
+}
+
+script testguy {
+    lock
+    faceplayer
+    msgbox(format("I once beat a Gym Leader with nothing but an ELECTRODE, the move Explosion, and a ballpoint pen."))
+    release
+    end
+}
+
+script TheRules {
+    lock
+    msgbox(format("There are two and only two rules for a standard Nuzlocke run. The First Rule: You can only obtain the first POKéMON encountered in each area and nothing else. The Second Rule: If a POKéMON faints, you cannot use it again for the rest of the run. Some trainers release these POKéMON but those trainers are absolute degenerates. Please put them in the box until you beat the game. And, of course, the Third Rule: You must nickname every POKéMON!"))
+    release
+    end
+}
+
+script HardCoreNuzlocke {
+    lock
+    msgbox(format("A variant of the standard Nuzlocke is the Hardcore Nuzlocke playthrough. Under these rules, the battle style must be SET and not SHIFT, you cannot use items in battle aside from held items, and you cannot level your POKéMON past the highest level of the next Gym Leader or Champion. For instance, BROCK's ONIX is Level 14. Your POKéMON cannot exceed that level until you have defeated BROCK. These are the rules of the Hardcore Nuzlocke."))
+    release
+    end
+}
+
+script NewNuzlocker {
+    lock
+    faceplayer
+    msgbox(format("My favorite part about Nuzlocke playthroughs is using POKéMON that don't usually get noticed. I never thought I'd be using a DODUO during my run through KANTO but it has quickly grown into my ace POKéMON!"))
+    release
+    end
+}
+
+script NewNuzlocker2 {
+    lock
+    faceplayer
+    msgbox(format("At first, I was hesitant to try a Nuzlocke run. But now I can't imagine playing POKéMON any other way!"))
+    release
+    end
+}
+
+script NuzlockePikachu {
+lock
+faceplayer
+	playmoncry(SPECIES_PIKACHU, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox("PIKA!")
+    msgbox(format("It's MR. NUZLOCKE's own PIKACHU. It seems to be MR. NUZLOCKE's starter POKéMON."))
+    release
+    end
+}
+
+script NuzlockeDoduo {
+lock
+faceplayer
+	playmoncry(SPECIES_DODUO, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox("DO-DO!")
+    msgbox(format("This DODUO has seen things you people wouldn't believe... Attack ships on fire off the shoulder of CINNABAR. This DODUO has watched Hyper Beams glitter in the dark near Saffron City's gates. All those precious moments will be lost in time like tears in the rain."))
+    playmoncry(SPECIES_DODUO, CRY_MODE_NORMAL)
+	delay(40)
+    release
+    end
+}
+
+script NuzlockeSign {
+    lock
+    faceplayer
+    msgbox(format("Remember, this is all happening for a reason!"))
+    release
+    end
+}

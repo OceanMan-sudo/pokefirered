@@ -583,6 +583,6 @@ ViridianCity_OldRod_Text_4:
 NuzlockeHouse_Text_0:
 # 281 "data/maps/ViridianCity/scripts.pory"
 	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\n"
-	.string "illustrious House of Nuzlocke,\p"
+	.string "Illustrious House of Nuzlocke,\p"
 	.string "where we believe all of this is\n"
 	.string "happening for a reason!$"

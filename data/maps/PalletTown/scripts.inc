@@ -994,42 +994,30 @@ PalletTownScaredGirl::
 	end
 
 
-ViridianCityOak::
+ClearGame::
 # 523 "data/maps/PalletTown/scripts.pory"
 	lock
 # 524 "data/maps/PalletTown/scripts.pory"
 	faceplayer
 # 525 "data/maps/PalletTown/scripts.pory"
-	msgbox ViridianCityOak_Text_0
+	msgbox ClearGame_Text_0
 # 526 "data/maps/PalletTown/scripts.pory"
-	msgbox ViridianCityOak_Text_1
+	setflag SYS_FLAGS + 0x2C
 # 527 "data/maps/PalletTown/scripts.pory"
-	msgbox ViridianCityOak_Text_2
-# 528 "data/maps/PalletTown/scripts.pory"
-	playfanfare MUS_OBTAIN_KEY_ITEM
-# 529 "data/maps/PalletTown/scripts.pory"
-	waitfanfare
-# 530 "data/maps/PalletTown/scripts.pory"
-	msgbox ViridianCityOak_Text_3
-# 531 "data/maps/PalletTown/scripts.pory"
-	special EnableNationalPokedex
-# 532 "data/maps/PalletTown/scripts.pory"
-	setflag ( SYS_FLAGS + 0x40 )
-# 533 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
-SeviiComplete::
-# 538 "data/maps/PalletTown/scripts.pory"
+EightBadges::
+# 532 "data/maps/PalletTown/scripts.pory"
 	lock
-# 539 "data/maps/PalletTown/scripts.pory"
+# 533 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 540 "data/maps/PalletTown/scripts.pory"
-	msgbox SeviiComplete_Text_0
-# 541 "data/maps/PalletTown/scripts.pory"
-	setflag FLAG_TEMP_2
-# 542 "data/maps/PalletTown/scripts.pory"
+# 534 "data/maps/PalletTown/scripts.pory"
+	msgbox EightBadges_Text_0
+# 535 "data/maps/PalletTown/scripts.pory"
+	setflag SYS_FLAGS + 0x27
+# 536 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
@@ -1066,22 +1054,10 @@ PalletTownScaredGirl_Text_0:
 # 517 "data/maps/PalletTown/scripts.pory"
 	.string "AGATHA moved back to Pallet Town.\pShe's supposedly really strong,\nbut she gives me the creeps!\p...Don't tell her I said that!$"
 
-ViridianCityOak_Text_0:
+ClearGame_Text_0:
 # 525 "data/maps/PalletTown/scripts.pory"
-	.string "Ah, {PLAYER}! I was looking for you.$"
+	.string "Way to go$"
 
-ViridianCityOak_Text_1:
-# 526 "data/maps/PalletTown/scripts.pory"
-	.string "You've been a great help to me. As a reward, I want to give you this.$"
-
-ViridianCityOak_Text_2:
-# 527 "data/maps/PalletTown/scripts.pory"
-	.string "You've received the National\nPOKéDEX!$"
-
-ViridianCityOak_Text_3:
-# 530 "data/maps/PalletTown/scripts.pory"
-	.string "With this, your Pokédex can now record Pokémon from all regions!$"
-
-SeviiComplete_Text_0:
-# 540 "data/maps/PalletTown/scripts.pory"
-	.string "Shut up Bojack.$"
+EightBadges_Text_0:
+# 534 "data/maps/PalletTown/scripts.pory"
+	.string "Lick my butt$"

@@ -278,7 +278,7 @@ script ViridianCity_OldRod {
 script NuzlockeHouse {
     lock
     faceplayer
-	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\nillustrious House of Nuzlocke,\pwhere we believe all of this is\nhappening for a reason!"))   
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\nIllustrious House of Nuzlocke,\pwhere we believe all of this is\nhappening for a reason!"))   
 	release
     end
 }
