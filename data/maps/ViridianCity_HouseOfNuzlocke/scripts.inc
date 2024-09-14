@@ -165,9 +165,9 @@ MrNuzlocke_15:
 # 80 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	giveitem ITEM_TM10, 1
 # 81 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
-	setflag FLAG_0x0B0
-# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	msgbox MrNuzlocke_Text_9
+# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
+	setflag FLAG_0x0B0
 # 83 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	release
 	end
@@ -399,13 +399,12 @@ MrNuzlocke_Text_8:
 	.string "that's alright! Take this anyways.$"
 
 MrNuzlocke_Text_9:
-# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
+# 81 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	.string "TM10 contains Hidden Power. It's a\n"
-	.string "fitting move, don't you\n"
-	.string "think? Just like in life, its true\l"
-	.string "nature is a mystery until you dig a\l"
-	.string "little deeper. Even if you are not\l"
-	.string "on a\n"
+	.string "fitting move, don't you think? Just\l"
+	.string "like in life, its true nature is a\l"
+	.string "mystery until you dig a little\l"
+	.string "deeper. Even if you are not on a\l"
 	.string "Nuzlocke journey, know that the\l"
 	.string "illustrious House of Nuzlocke will\l"
 	.string "always welcome any adventurer!$"

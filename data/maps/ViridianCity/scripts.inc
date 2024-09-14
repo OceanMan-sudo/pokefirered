@@ -610,18 +610,18 @@ NuzlockeHouse_Text_0:
 
 ViridianCityPolice_Text_0:
 # 290 "data/maps/ViridianCity/scripts.pory"
-	.string "We have intel saying that Team\n"
-	.string "Rocket is operating somewhere within\l"
-	.string "VIRIDIAN CITY. Well, if they're\l"
-	.string "here, I'll find them! Nothing gets\l"
-	.string "past the police! Now where could\l"
-	.string "they be...$"
-
-ViridianCityPolice_Text_1:
-# 294 "data/maps/ViridianCity/scripts.pory"
 	.string "Wait, GIOVANNI was the Gym Leader of\n"
 	.string "VIRIDIAN CITY? And he was\l"
 	.string "operating in that Gym the entire\l"
 	.string "time? And he was literally right\l"
 	.string "under my nose? Oh boy... Please,\l"
 	.string "don't tell my boss about this!$"
+
+ViridianCityPolice_Text_1:
+# 294 "data/maps/ViridianCity/scripts.pory"
+	.string "We have intel saying that Team\n"
+	.string "Rocket is operating somewhere within\l"
+	.string "VIRIDIAN CITY. Well, if they're\l"
+	.string "here, I'll find them! Nothing gets\l"
+	.string "past the police! Now where could\l"
+	.string "they be...$"

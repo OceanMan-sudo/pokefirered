@@ -188,6 +188,13 @@
       "elevation": 0,
       "dest_map": "MAP_PALLET_TOWN_NEW_HOME2",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 43,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_PEWTER_CITY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
