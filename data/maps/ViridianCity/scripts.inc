@@ -556,6 +556,27 @@ NuzlockeHouse::
 	end
 
 
+ViridianCityPolice::
+# 287 "data/maps/ViridianCity/scripts.pory"
+	lock
+# 288 "data/maps/ViridianCity/scripts.pory"
+	faceplayer
+# 289 "data/maps/ViridianCity/scripts.pory"
+	goto_if_set SYS_FLAGS + 0x27, ViridianCityPolice_1
+# 294 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCityPolice_Text_1
+# 295 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+ViridianCityPolice_1:
+# 290 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCityPolice_Text_0
+# 291 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+
 ViridianCity_NuzlockeGirl_Text_0:
 # 248 "data/maps/ViridianCity/scripts.pory"
 	.string "The people in that house\nplay POKéMON under Nuzlocke rules.\pMe personaly?\pI can't imagine playing\nlike that.$"
@@ -586,3 +607,21 @@ NuzlockeHouse_Text_0:
 	.string "Illustrious House of Nuzlocke,\p"
 	.string "where we believe all of this is\n"
 	.string "happening for a reason!$"
+
+ViridianCityPolice_Text_0:
+# 290 "data/maps/ViridianCity/scripts.pory"
+	.string "We have intel saying that Team\n"
+	.string "Rocket is operating somewhere within\l"
+	.string "VIRIDIAN CITY. Well, if they're\l"
+	.string "here, I'll find them! Nothing gets\l"
+	.string "past the police! Now where could\l"
+	.string "they be...$"
+
+ViridianCityPolice_Text_1:
+# 294 "data/maps/ViridianCity/scripts.pory"
+	.string "Wait, GIOVANNI was the Gym Leader of\n"
+	.string "VIRIDIAN CITY? And he was\l"
+	.string "operating in that Gym the entire\l"
+	.string "time? And he was literally right\l"
+	.string "under my nose? Oh boy... Please,\l"
+	.string "don't tell my boss about this!$"

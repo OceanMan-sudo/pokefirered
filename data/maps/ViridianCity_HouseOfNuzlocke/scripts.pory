@@ -78,8 +78,8 @@ script MrNuzlocke {
         case NO:
             msgbox(format("Oh, I see... Perhaps the Nuzlocke journey isn't for everyone. But that's alright! Take this anyways."))
             giveitem(ITEM_TM10, 1)
+            msgbox(format("TM10 contains Hidden Power. It's a fitting move, don't you think? Just like in life, its true nature is a mystery until you dig a little deeper. Even if you are not on a Nuzlocke journey, know that the illustrious House of Nuzlocke will always welcome any adventurer!"))
             setflag(FLAG_0x0B0)
-            msgbox(format("TM10 contains Hidden Power. It's a fitting move, don't you\nthink? Just like in life, its true nature is a mystery until you dig a little deeper. Even if you are not on a\nNuzlocke journey, know that the\lillustrious House of Nuzlocke will\lalways welcome any adventurer!"))
             release
             end
     }

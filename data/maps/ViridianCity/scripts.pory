@@ -282,3 +282,17 @@ script NuzlockeHouse {
 	release
     end
 }
+
+script ViridianCityPolice {
+	lock
+	faceplayer
+	if (flag(SYS_FLAGS + 0x27)){
+	msgbox(format("Wait, GIOVANNI was the Gym Leader of VIRIDIAN CITY? And he was operating in that Gym the entire time? And he was literally right under my nose? Oh boy... Please, don't tell my boss about this!"))
+	release
+	end}
+	else{
+	msgbox(format("We have intel saying that Team Rocket is operating somewhere within VIRIDIAN CITY. Well, if they're here, I'll find them! Nothing gets past the police! Now where could they be..."))
+	release
+	end
+}
+}

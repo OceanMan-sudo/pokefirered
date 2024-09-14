@@ -165,9 +165,9 @@ MrNuzlocke_15:
 # 80 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	giveitem ITEM_TM10, 1
 # 81 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
-	msgbox MrNuzlocke_Text_9
-# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	setflag FLAG_0x0B0
+# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
+	msgbox MrNuzlocke_Text_9
 # 83 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	release
 	end
@@ -399,7 +399,7 @@ MrNuzlocke_Text_8:
 	.string "that's alright! Take this anyways.$"
 
 MrNuzlocke_Text_9:
-# 81 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
+# 82 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
 	.string "TM10 contains Hidden Power. It's a\n"
 	.string "fitting move, don't you\n"
 	.string "think? Just like in life, its true\l"
