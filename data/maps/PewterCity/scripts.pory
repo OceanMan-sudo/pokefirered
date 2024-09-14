@@ -847,11 +847,3 @@ PewterCity_Movement_WalkInPlaceLeft::
 	walk_in_place_left
 	step_end
 `
-
-script NPC_TEST {
-    lock
-    faceplayer
-    msgbox(format("I wonder if this will work."))
-    release
-    end
-}
