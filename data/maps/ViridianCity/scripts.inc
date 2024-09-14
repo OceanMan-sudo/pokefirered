@@ -546,6 +546,79 @@ ViridianCity_GiveRareCandy_7:
 	end
 
 
+ViridianCity_NuzlockeGirl::
+# 279 "data/maps/ViridianCity/scripts.pory"
+	lock
+# 280 "data/maps/ViridianCity/scripts.pory"
+	faceplayer
+# 281 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_NuzlockeGirl_Text_0
+# 282 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+
+ViridianCity_OldRod::
+# 287 "data/maps/ViridianCity/scripts.pory"
+	goto_if_set FLAG_GOT_OLD_ROD, ViridianCity_OldRod_2
+# 293 "data/maps/ViridianCity/scripts.pory"
+	lock
+# 294 "data/maps/ViridianCity/scripts.pory"
+	faceplayer
+# 295 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_OldRod_Text_1, MSGBOX_YESNO
+# 296 "data/maps/ViridianCity/scripts.pory"
+	switch VAR_RESULT
+# 297 "data/maps/ViridianCity/scripts.pory"
+	case YES, ViridianCity_OldRod_5
+# 304 "data/maps/ViridianCity/scripts.pory"
+	case NO, ViridianCity_OldRod_6
+	return
+
+ViridianCity_OldRod_2:
+# 288 "data/maps/ViridianCity/scripts.pory"
+	lock
+# 289 "data/maps/ViridianCity/scripts.pory"
+	faceplayer
+# 290 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_OldRod_Text_0
+# 291 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+ViridianCity_OldRod_5:
+# 298 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_OldRod_Text_2
+# 299 "data/maps/ViridianCity/scripts.pory"
+	giveitem ITEM_OLD_ROD, 1
+# 300 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_OldRod_Text_3
+# 301 "data/maps/ViridianCity/scripts.pory"
+	setflag FLAG_GOT_OLD_ROD
+# 302 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+ViridianCity_OldRod_6:
+# 305 "data/maps/ViridianCity/scripts.pory"
+	msgbox ViridianCity_OldRod_Text_4
+# 306 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+
+NuzlockeHouse::
+# 312 "data/maps/ViridianCity/scripts.pory"
+	lock
+# 313 "data/maps/ViridianCity/scripts.pory"
+	faceplayer
+# 314 "data/maps/ViridianCity/scripts.pory"
+	msgbox NuzlockeHouse_Text_0
+# 315 "data/maps/ViridianCity/scripts.pory"
+	release
+	end
+
+
 ViridianCity_GiveRareCandy_Text_0:
 # 249 "data/maps/ViridianCity/scripts.pory"
 	.string "Here, have more!$"
@@ -569,3 +642,35 @@ ViridianCity_GiveRareCandy_Text_4:
 ViridianCity_GiveRareCandy_Text_5:
 # 272 "data/maps/ViridianCity/scripts.pory"
 	.string "Maybe next time.$"
+
+ViridianCity_NuzlockeGirl_Text_0:
+# 281 "data/maps/ViridianCity/scripts.pory"
+	.string "The people in that house\nplay POKéMON under Nuzlocke rules.\pMe personaly?\pI can't imagine playing\nlike that.$"
+
+ViridianCity_OldRod_Text_0:
+# 290 "data/maps/ViridianCity/scripts.pory"
+	.string "The OLD ROD usually nets you\nGOLDEEN or REMORAID.\pBut certain areas will have\ndifferent POKéMON.\pYou never know what you'll\nfind!$"
+
+ViridianCity_OldRod_Text_1:
+# 295 "data/maps/ViridianCity/scripts.pory"
+	.string "Ah, I can't think of anything better\n than fishing on a beautiful day.\pWouldn't you agree, kid?$"
+
+ViridianCity_OldRod_Text_2:
+# 298 "data/maps/ViridianCity/scripts.pory"
+	.string "Ha! I knew it!\pThere's nothing like casting a line and\nwaiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.$"
+
+ViridianCity_OldRod_Text_3:
+# 300 "data/maps/ViridianCity/scripts.pory"
+	.string "Give it a try at any\nbody of water you see.\pYou never know what you're\pgoing to catch!$"
+
+ViridianCity_OldRod_Text_4:
+# 305 "data/maps/ViridianCity/scripts.pory"
+	.string "Oh? You don't know what you're missing!\pThere's nothing more relaxing than\nfishing.$"
+
+NuzlockeHouse_Text_0:
+# 314 "data/maps/ViridianCity/scripts.pory"
+	.string "{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the illustrious House of\n"
+	.string "Nuzlocke,\n"
+	.string "where we believe all of this is\l"
+	.string "happening\l"
+	.string "for a reason!$"

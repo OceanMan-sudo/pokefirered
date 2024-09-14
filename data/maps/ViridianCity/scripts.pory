@@ -274,3 +274,44 @@ script ViridianCity_GiveRareCandy {
 			  end
     }
 }
+
+script ViridianCity_NuzlockeGirl {
+	lock
+	faceplayer
+	msgbox("The people in that house\nplay POKéMON under Nuzlocke rules.\pMe personaly?\pI can't imagine playing\nlike that.")
+	release
+	end
+}
+
+script ViridianCity_OldRod {
+    if(flag(FLAG_GOT_OLD_ROD)){
+		lock
+		faceplayer
+        msgbox("The OLD ROD usually nets you\nGOLDEEN or REMORAID.\pBut certain areas will have\ndifferent POKéMON.\pYou never know what you'll\nfind!")
+        release
+		end}
+	lock
+    faceplayer
+    msgbox("Ah, I can't think of anything better\nthan fishing on a beautiful day.\pWouldn't you agree, kid?", MSGBOX_YESNO)
+    switch (var(VAR_RESULT)){
+         case YES:
+		 	msgbox("Ha! I knew it!\pThere's nothing like casting a line\nandwaiting for that first nibble.\pTake this, kid, and enjoy the peace\nof fishing whenever you want.")
+              giveitem(ITEM_OLD_ROD, 1)
+			  msgbox("Give it a try at any\nbody of water you see.\pYou never know what you're\ngoing to catch!")
+			  setflag(FLAG_GOT_OLD_ROD)
+			  release
+			  end
+         case NO:
+              msgbox("Oh? You don't know what you're\nmissing!\pThere's nothing more relaxing than\nfishing for POKéMON.")
+			  release
+			  end
+    }
+}
+
+script NuzlockeHouse {
+    lock
+    faceplayer
+	msgbox(format("{COLOR GREEN}{SHADOW LIGHT_GREEN}Welcome to the\nillustrious House of Nuzlocke,\pwhere we believe all of this is happening\nfor a reason!"))   
+	release
+    end
+}
