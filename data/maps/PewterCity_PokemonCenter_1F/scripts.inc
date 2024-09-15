@@ -105,7 +105,7 @@ SunkirnTip::
 
 SunkirnTip_Text_0:
 # 52 "data/maps/PewterCity_PokemonCenter_1F/scripts.pory"
-	.string "SUNKIRN now evolves into a GRASS and\n"
-	.string "FIRE-TYPE POKéMON. They've been\l"
-	.string "seen hiding in the grass near the\l"
-	.string "Museum.$"
+	.string "Did you know that SUNKIRN now\n"
+	.string "evolves into a GRASS and FIRE-TYPE\l"
+	.string "POKéMON? I think I saw some hiding\l"
+	.string "in the grass near the Museum.$"

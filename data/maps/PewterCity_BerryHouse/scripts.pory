@@ -1,0 +1,43 @@
+mapscripts PewterCity_BerryHouse_MapScripts {}
+script StockingUp {
+    lock
+    faceplayer
+    msgbox(format("I'm stocking up on PECHA and PERSIM BERRIES before my hike through MT. MOON. I don't want to poisoned or confused by the wild ZUBAT!"))
+    release
+    end
+}
+
+script PewterKantoBerries {
+    lock
+    faceplayer
+    msgbox(format("Berries don't grow as well in KANTO as they do in other regions. Luckily the Berry Sisters have opened up shop in a few areas to sell all sorts of berries."))
+    release
+    end
+}
+
+script PewterBerrySister {
+    lock
+    faceplayer
+    msgbox(format("Welcome to the Pewter City Berry House! How can I assist you?"))
+    waitmessage
+    pokemart(PewterBerryHouse_Mart)
+    msgbox(format("Please come again!"))
+    release
+    end
+}
+
+raw `
+.align 2
+PewterBerryHouse_Mart::
+    .2byte ITEM_CHERI_BERRY
+    .2byte ITEM_CHESTO_BERRY
+    .2byte ITEM_PECHA_BERRY
+    .2byte ITEM_RAWST_BERRY
+    .2byte ITEM_ASPEAR_BERRY
+    .2byte ITEM_LEPPA_BERRY
+    .2byte ITEM_ORAN_BERRY
+    .2byte ITEM_PERSIM_BERRY
+    .2byte ITEM_NONE
+    release
+    end
+    `
