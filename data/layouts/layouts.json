@@ -4428,6 +4428,18 @@
       "secondary_tileset": "gTileset_FanClubDaycare",
       "border_filepath": "data/layouts/ViridianCity_HouseOfNuzlocke/border.bin",
       "blockdata_filepath": "data/layouts/ViridianCity_HouseOfNuzlocke/map.bin"
+    },
+    {
+      "id": "LAYOUT_PEWTER_CITY_BERRY_HOUSE",
+      "name": "PewterCity_BerryHouse_Layout",
+      "width": 12,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GameCorner",
+      "border_filepath": "data/layouts/PewterCity_BerryHouse/border.bin",
+      "blockdata_filepath": "data/layouts/PewterCity_BerryHouse/map.bin"
     }
   ]
 }

@@ -847,3 +847,27 @@ PewterCity_Movement_WalkInPlaceLeft::
 	walk_in_place_left
 	step_end
 `
+
+script PewterOldLady {
+    lock
+    faceplayer
+    msgbox(format("The Museum's landscaping has been sloppy as of late. I've seen wild POKeMON in the tall grass there!"))
+    release
+    end
+}
+
+script PewterHiker {
+    lock
+    faceplayer
+    msgbox(format("PEWTER CITY is a great place for us Hikers since we're right at the base of MT. MOON. I heard you can find rare POKeMON like ONIX and CLEFAIRY in there!"))
+    release
+    end
+}
+
+script PewterBerryHouse {
+    lock
+    faceplayer
+    msgbox(format("PEWTER CITY Berry House"))
+    release
+    end
+}

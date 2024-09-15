@@ -1695,20 +1695,56 @@ PewterCity_Movement_WalkInPlaceLeft::
 # 848 "data/maps/PewterCity/scripts.pory"
 	step_end
 
-NPC_TEST::
+PewterOldLady::
 # 852 "data/maps/PewterCity/scripts.pory"
 	lock
 # 853 "data/maps/PewterCity/scripts.pory"
 	faceplayer
 # 854 "data/maps/PewterCity/scripts.pory"
-	msgbox NPC_TEST_Text_0
+	msgbox PewterOldLady_Text_0
 # 855 "data/maps/PewterCity/scripts.pory"
-	end
-# 856 "data/maps/PewterCity/scripts.pory"
 	release
-	return
+	end
 
 
-NPC_TEST_Text_0:
+PewterHiker::
+# 860 "data/maps/PewterCity/scripts.pory"
+	lock
+# 861 "data/maps/PewterCity/scripts.pory"
+	faceplayer
+# 862 "data/maps/PewterCity/scripts.pory"
+	msgbox PewterHiker_Text_0
+# 863 "data/maps/PewterCity/scripts.pory"
+	release
+	end
+
+
+PewterBerryHouse::
+# 868 "data/maps/PewterCity/scripts.pory"
+	lock
+# 869 "data/maps/PewterCity/scripts.pory"
+	faceplayer
+# 870 "data/maps/PewterCity/scripts.pory"
+	msgbox PewterBerryHouse_Text_0
+# 871 "data/maps/PewterCity/scripts.pory"
+	release
+	end
+
+
+PewterOldLady_Text_0:
 # 854 "data/maps/PewterCity/scripts.pory"
-	.string "I wonder if this will work.$"
+	.string "The Museum's landscaping has been\n"
+	.string "sloppy as of late. I've seen wild\l"
+	.string "POKeMON in the tall grass there!$"
+
+PewterHiker_Text_0:
+# 862 "data/maps/PewterCity/scripts.pory"
+	.string "PEWTER CITY is a great place for us\n"
+	.string "Hikers since we're right at the base\l"
+	.string "of MT. MOON. I heard you can find\l"
+	.string "rare POKeMON like ONIX and\l"
+	.string "CLEFAIRY in there!$"
+
+PewterBerryHouse_Text_0:
+# 870 "data/maps/PewterCity/scripts.pory"
+	.string "PEWTER CITY Berry House$"
