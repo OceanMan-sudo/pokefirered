@@ -359,6 +359,7 @@ const u8 gMoveDescription_DragonPulse[] = _("The foe is\nattacked with a\nshock 
 const u8 gMoveDescription_FocusBlast[] = _("The user attacks\nat full power.\nMay lower foe's\nSp. Def stat.");
 const u8 gMoveDescription_ShadowClaw[] = _("The user slashes\nthe foe the instant\nan opportunity\narises.");
 const u8 gMoveDescription_DarkPulse[] = _("The user releases\nan aura of\ndarkness. May make\nthe target flinch.");
+const u8 gMoveDescription_Roost[] = _("The user lands\nand rests it's\nbody, restoring\nHP by half.");
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -720,4 +721,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_FOCUS_BLAST   - 1] = gMoveDescription_FocusBlast,
     [MOVE_SHADOW_CLAW   - 1] = gMoveDescription_ShadowClaw,
     [MOVE_DARK_PULSE    - 1] = gMoveDescription_DarkPulse,
+    [MOVE_ROOST         - 1] = gMoveDescription_Roost,
 };

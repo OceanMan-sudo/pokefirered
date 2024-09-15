@@ -379,6 +379,7 @@ gBattleAnims_Moves::
 	.4byte Move_FOCUS_BLAST
 	.4byte Move_SHADOW_CLAW
 	.4byte Move_DARK_PULSE
+	.4byte Move_ROOST
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -7120,6 +7121,44 @@ Move_DARK_PULSE:
 	restorebg
 	waitbgfadein
 	end
+
+Move_ROOST:
+	loadspritegfx ANIM_TAG_WHITE_FEATHER
+	monbg ANIM_DEF_PARTNER
+	splitbgprio_all
+	playsewithpan SE_M_PETAL_DANCE, SOUND_PAN_TARGET
+	delay 0
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 64, 2, 104, 11304, 32, 1
+	delay 6
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 32, 2, 104, 11304, 32, 1
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 0, 2, 104, 11304, 32, 1
+	delay 6
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 224, 2, 104, 11304, 32, 1
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 128, 2, 104, 11304, 32, 1
+	delay 6
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 192, 2, 104, 11304, 32, 1
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 160, 2, 104, 11304, 32, 1
+	delay 6
+	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 96, 2, 104, 11304, 32, 1
+	waitforvisualfinish
+	loadspritegfx ANIM_TAG_ORBS
+	loadspritegfx ANIM_TAG_BLUE_STAR
+	monbg ANIM_ATK_PARTNER
+	setalpha 12, 8
+	loopsewithpan SE_M_MEGA_KICK, SOUND_PAN_ATTACKER, 13, 3
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 0, 6, 0, 11, RGB(31, 31, 11)
+	call RecoverAbsorbEffect
+	call RecoverAbsorbEffect
+	call RecoverAbsorbEffect
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	delay 1
+	call HealingEffect
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	end
+
 
 Move_NATURE_POWER:
 	@ No actual animation, uses the animation of a move from sNaturePowerMoves instead
