@@ -357,6 +357,8 @@ const u8 gMoveDescription_DoomDesire[] = _("A move that attacks\nthe foe with a\
 const u8 gMoveDescription_PsychoBoost[] = _("An intense attack\nthat also sharply\nreduces the user's\nSP. ATK stat.");
 const u8 gMoveDescription_DragonPulse[] = _("The foe is\nattacked with a\nshock wave made\nby the user.");
 const u8 gMoveDescription_FocusBlast[] = _("The user attacks\nat full power.\nMay lower foe's\nSp. Def stat.");
+const u8 gMoveDescription_ShadowClaw[] = _("The user slashes\nthe foe the instant\nan opportunity\narises.");
+const u8 gMoveDescription_DarkPulse[] = _("The user releases\nan aura of\ndarkness. May make\nthe target flinch.");
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -716,4 +718,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_PSYCHO_BOOST  - 1] = gMoveDescription_PsychoBoost,
     [MOVE_DRAGON_PULSE  - 1] = gMoveDescription_DragonPulse,
     [MOVE_FOCUS_BLAST   - 1] = gMoveDescription_FocusBlast,
+    [MOVE_SHADOW_CLAW   - 1] = gMoveDescription_ShadowClaw,
+    [MOVE_DARK_PULSE    - 1] = gMoveDescription_DarkPulse,
 };

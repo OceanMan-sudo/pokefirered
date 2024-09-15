@@ -358,8 +358,10 @@
 #define MOVE_PSYCHO_BOOST 354
 #define MOVE_DRAGON_PULSE 355
 #define MOVE_FOCUS_BLAST 356
+#define MOVE_SHADOW_CLAW 357
+#define MOVE_DARK_PULSE 358
 
-#define MOVES_COUNT 357
+#define MOVES_COUNT 359
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
