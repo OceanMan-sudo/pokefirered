@@ -361,8 +361,10 @@
 #define MOVE_SHADOW_CLAW 357
 #define MOVE_DARK_PULSE 358
 #define MOVE_ROOST 359
+#define MOVE_BULLET_PUNCH 360
+#define MOVE_FLARE_BLITZ 361
 
-#define MOVES_COUNT 360
+#define MOVES_COUNT 362
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

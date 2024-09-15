@@ -360,6 +360,8 @@ const u8 gMoveDescription_FocusBlast[] = _("The user attacks\nat full power.\nMa
 const u8 gMoveDescription_ShadowClaw[] = _("The user slashes\nthe foe the instant\nan opportunity\narises.");
 const u8 gMoveDescription_DarkPulse[] = _("The user releases\nan aura of\ndarkness. May make\nthe target flinch.");
 const u8 gMoveDescription_Roost[] = _("The user lands\nand rests it's\nbody, restoring\nHP by half.");
+const u8 gMoveDescription_BulletPunch[] = _("The user strikes\nwith as fast as\na bullet. This\nmove strikes first.");
+const u8 gMoveDescription_FlareBlitz[] = _("The user cloaks\nitself in fire\nand charges. The\nuser takes damage.");
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -722,4 +724,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_SHADOW_CLAW   - 1] = gMoveDescription_ShadowClaw,
     [MOVE_DARK_PULSE    - 1] = gMoveDescription_DarkPulse,
     [MOVE_ROOST         - 1] = gMoveDescription_Roost,
+    [MOVE_BULLET_PUNCH   -1] = gMoveDescription_BulletPunch,
+    [MOVE_FLARE_BLITZ    -1] = gMoveDescription_FlareBlitz,
 };
