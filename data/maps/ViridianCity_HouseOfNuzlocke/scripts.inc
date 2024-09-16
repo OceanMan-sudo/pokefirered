@@ -347,12 +347,11 @@ MrNuzlocke_Text_4:
 	.string "MR. NUZLOCKE: The Illustrious House\n"
 	.string "of Nuzlocke will always stand as a\l"
 	.string "bastion for any brave soul who\l"
-	.string "dares the dare the challenge.\l"
-	.string "Return to me when you've collected\l"
-	.string "all the badges of this region.\l"
-	.string "There may be something even\l"
-	.string "grander waiting for you at the end\l"
-	.string "of your journey!$"
+	.string "dares the challenge. Return to me\l"
+	.string "when you've collected all the\l"
+	.string "badges of this region. There may be\l"
+	.string "something even grander waiting for\l"
+	.string "you at the end of your journey!$"
 
 MrNuzlocke_Text_5:
 # 69 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"

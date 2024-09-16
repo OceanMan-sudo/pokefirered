@@ -74,7 +74,7 @@ const u8 gMoveDescription_Strength[] = _("The foe is slugged\nat maximum power.\
 const u8 gMoveDescription_Absorb[] = _("An attack that\nabsorbs half the\ndamage it inflicted\nto restore HP.");
 const u8 gMoveDescription_MegaDrain[] = _("A tough attack that\ndrains half the\ndamage it inflicted\nto restore HP.");
 const u8 gMoveDescription_LeechSeed[] = _("A seed is planted\non the foe to steal\nsome HP for the \nuser on every turn.");
-const u8 gMoveDescription_Growth[] = _("The user's body is\nforced to grow,\nraising the SP.\nATK stat.");
+const u8 gMoveDescription_Growth[] = _("The user's body is\nforced to grow,\nsharply raising \nSP. ATK");
 const u8 gMoveDescription_RazorLeaf[] = _("The foe is hit with\na cutting leaf.\nIt has a high\ncritical-hit ratio.");
 const u8 gMoveDescription_SolarBeam[] = _("A 2-turn move that\nblasts the foe with\nabsorbed energy in\nthe 2nd turn.");
 const u8 gMoveDescription_PoisonPowder[] = _("A cloud of toxic\ndust is scattered.\nIt may poison the\nfoe.");
@@ -101,7 +101,7 @@ const u8 gMoveDescription_Agility[] = _("The user relaxes\nand lightens its\nbod
 const u8 gMoveDescription_QuickAttack[] = _("An almost invisibly\nfast attack that\nis certain to strike\nfirst.");
 const u8 gMoveDescription_Rage[] = _("An attack that\nbecomes stronger\neach time the user\nis hit in battle.");
 const u8 gMoveDescription_Teleport[] = _("Use it to flee from\nany wild POKéMON.\nAlso warps to the\nlast POKé CENTER.");
-const u8 gMoveDescription_NightShade[] = _("An attack with a\nmirage that inflicts\ndamage matching\nthe user's level.");
+const u8 gMoveDescription_NightShade[] = _("An attack with a\nmirage that inflicts\ndamage, haunting\nthe opponent.");
 const u8 gMoveDescription_Mimic[] = _("The user copies the\nmove last used by\nthe foe for the\nrest of the battle.");
 const u8 gMoveDescription_Screech[] = _("An ear-splitting\nscreech is emitted\nto sharply reduce\nthe foe's DEFENSE.");
 const u8 gMoveDescription_DoubleTeam[] = _("The user creates\nillusory copies of\nitself to raise its\nevasiveness.");
@@ -362,6 +362,9 @@ const u8 gMoveDescription_DarkPulse[] = _("The user releases\nan aura of\ndarkne
 const u8 gMoveDescription_Roost[] = _("The user lands\nand rests it's\nbody, restoring\nHP by half.");
 const u8 gMoveDescription_BulletPunch[] = _("The user strikes\nwith as fast as\na bullet. This\nmove strikes first.");
 const u8 gMoveDescription_FlareBlitz[] = _("The user cloaks\nitself in fire\nand charges. The\nuser takes damage.");
+const u8 gMoveDescription_PoisonJab[] = _("A sickening jab\n or strike\nthat may leave\nthe foe poisoned.");
+const u8 gMoveDescription_EarthPower[] = _("The ground under\nthe foe erupts with\npower. It may lower\nfoe's Sp. Def.");
+const u8 gMoveDescription_GigaImpact[] = _("The user attacks\nwith every bit of\nit's power. Must\nrecharge after use.");
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -726,4 +729,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_ROOST         - 1] = gMoveDescription_Roost,
     [MOVE_BULLET_PUNCH   -1] = gMoveDescription_BulletPunch,
     [MOVE_FLARE_BLITZ    -1] = gMoveDescription_FlareBlitz,
+    [MOVE_POISON_JAB     -1] = gMoveDescription_PoisonJab,
+    [MOVE_EARTH_POWER    -1] = gMoveDescription_EarthPower,
+    [MOVE_GIGA_IMPACT    -1] = gMoveDescription_GigaImpact,
 };

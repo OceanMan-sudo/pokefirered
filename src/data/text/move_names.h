@@ -361,4 +361,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_ROOST]         = _("ROOST"),
     [MOVE_BULLET_PUNCH]  = _("BULLET PUNCH"),
     [MOVE_FLARE_BLITZ]   = _("FLARE BLITZ"),
+    [MOVE_POISON_JAB]    = _("POISON JAB"),
+    [MOVE_EARTH_POWER]   = _("EARTH POWER"),
+    [MOVE_GIGA_IMPACT]   = _("GIGA IMPACT"),
 };

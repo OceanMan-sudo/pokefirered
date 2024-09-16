@@ -363,8 +363,11 @@
 #define MOVE_ROOST 359
 #define MOVE_BULLET_PUNCH 360
 #define MOVE_FLARE_BLITZ 361
+#define MOVE_POISON_JAB 362
+#define MOVE_EARTH_POWER 363
+#define MOVE_GIGA_IMPACT 364
 
-#define MOVES_COUNT 362
+#define MOVES_COUNT 365
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

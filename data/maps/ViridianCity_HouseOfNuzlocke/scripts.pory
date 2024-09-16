@@ -62,7 +62,7 @@ script MrNuzlocke {
         release
         end
     } elif (flag(FLAG_0x0B0)) {
-        msgbox(format("MR. NUZLOCKE: The Illustrious House of Nuzlocke will always stand as a bastion for any brave soul who dares the dare the challenge. Return to me when you've collected all the badges of this region. There may be something even grander waiting for you at the end of your journey!"))
+        msgbox(format("MR. NUZLOCKE: The Illustrious House of Nuzlocke will always stand as a bastion for any brave soul who dares the challenge. Return to me when you've collected all the badges of this region. There may be something even grander waiting for you at the end of your journey!"))
         release
         end
     } else {
