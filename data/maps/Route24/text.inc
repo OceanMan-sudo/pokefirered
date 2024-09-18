@@ -1,5 +1,5 @@
 Route24_Text_JustEarnedFabulousPrize::
-    .string "Congratulations! You beat our\n"
+    .string "Congratulations! You got past\n"
     .string "five contest TRAINERS!\p"
     .string "You just earned a fabulous prize!$"
 
@@ -98,3 +98,6 @@ Route24_Text_CaleDefeat::
 
 Route24_Text_CalePostBattle::
     .string "I did my best. I have no regrets!$"
+
+Route24_Text_CaleNotEnoughMons::
+    .string "You need more POKéMON!$"

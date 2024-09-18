@@ -302,7 +302,7 @@
       "x": 40,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_CERULEAN_CITY",
+      "dest_map": "MAP_CERULEAN_CITY_ALWAYS_BEEN_HERE",
       "dest_warp_id": "0"
     }
   ],

@@ -307,6 +307,7 @@
 #define MAP_CERULEAN_CITY_MART              (7 | (7 << 8))
 #define MAP_CERULEAN_CITY_HOUSE4            (8 | (7 << 8))
 #define MAP_CERULEAN_CITY_HOUSE5            (9 | (7 << 8))
+#define MAP_CERULEAN_CITY_ALWAYS_BEEN_HERE  (10 | (7 << 8))
 
 // gMapGroup_IndoorLavender
 #define MAP_LAVENDER_TOWN_POKEMON_CENTER_1F       (0 | (8 << 8))

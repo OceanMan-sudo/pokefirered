@@ -1,0 +1,8 @@
+mapscripts CeruleanCity_AlwaysBeenHere_MapScripts{}
+script AlwaysBeenHere {
+    lock
+    faceplayer
+    msgbox(format("This house here? Why, it's always been here! Who ever heard of a house without a door?"))
+    release
+    end
+}

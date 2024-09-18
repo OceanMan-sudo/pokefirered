@@ -1375,3 +1375,6 @@ Text_TestMsg::
 
 	.include "data/maps/PewterCity_BerryHouse/scripts.inc"
 	.include "data/maps/PewterCity_BerryHouse/text.inc"
+
+	.include "data/maps/CeruleanCity_AlwaysBeenHere/scripts.inc"
+	.include "data/maps/CeruleanCity_AlwaysBeenHere/text.inc"

@@ -4440,6 +4440,18 @@
       "secondary_tileset": "gTileset_GameCorner",
       "border_filepath": "data/layouts/PewterCity_BerryHouse/border.bin",
       "blockdata_filepath": "data/layouts/PewterCity_BerryHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CERULEAN_CITY_ALWAYS_BEEN_HERE",
+      "name": "CeruleanCity_AlwaysBeenHere_Layout",
+      "width": 11,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding2",
+      "border_filepath": "data/layouts/CeruleanCity_AlwaysBeenHere/border.bin",
+      "blockdata_filepath": "data/layouts/CeruleanCity_AlwaysBeenHere/map.bin"
     }
   ]
 }
