@@ -398,22 +398,22 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcherCale[] = {
     {
         .iv = 0,
         .lvl = 10,
-        .species = SPECIES_CATERPIE,
-    },
-    {
-        .iv = 0,
-        .lvl = 10,
-        .species = SPECIES_WEEDLE,
-    },
-    {
-        .iv = 0,
-        .lvl = 10,
         .species = SPECIES_METAPOD,
     },
     {
         .iv = 0,
         .lvl = 10,
         .species = SPECIES_KAKUNA,
+    },
+    {
+        .iv = 0,
+        .lvl = 10,
+        .species = SPECIES_PINECO,
+    },
+    {
+        .iv = 0,
+        .lvl = 10,
+        .species = SPECIES_YANMA,
     },
 };
 

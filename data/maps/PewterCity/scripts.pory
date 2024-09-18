@@ -871,3 +871,11 @@ script PewterBerryHouse {
     release
     end
 }
+
+script PewterSuperNerd {
+	lock
+	faceplayer
+	msgbox(format("There's someone in the museum trying to pawn off his OLD AMBER. He thinks it can be revived into a rare POKéMON. If only I could cut this pesky little bush, I could take the OLD AMBER and revive it in VERMILLION CITY!"))
+	release
+	end
+}

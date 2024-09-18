@@ -1731,6 +1731,18 @@ PewterBerryHouse::
 	end
 
 
+PewterSuperNerd::
+# 876 "data/maps/PewterCity/scripts.pory"
+	lock
+# 877 "data/maps/PewterCity/scripts.pory"
+	faceplayer
+# 878 "data/maps/PewterCity/scripts.pory"
+	msgbox PewterSuperNerd_Text_0
+# 879 "data/maps/PewterCity/scripts.pory"
+	release
+	end
+
+
 PewterOldLady_Text_0:
 # 854 "data/maps/PewterCity/scripts.pory"
 	.string "The Museum's landscaping has been\n"
@@ -1748,3 +1760,13 @@ PewterHiker_Text_0:
 PewterBerryHouse_Text_0:
 # 870 "data/maps/PewterCity/scripts.pory"
 	.string "PEWTER CITY Berry House$"
+
+PewterSuperNerd_Text_0:
+# 878 "data/maps/PewterCity/scripts.pory"
+	.string "There's someone in the museum trying\n"
+	.string "to pawn off his OLD AMBER. He\l"
+	.string "thinks it can be revived into a rare\l"
+	.string "POKéMON. If only I could cut this\l"
+	.string "pesky little bush, I could take the\l"
+	.string "OLD AMBER and revive it in\l"
+	.string "VERMILLION CITY!$"
