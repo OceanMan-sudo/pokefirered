@@ -327,6 +327,7 @@
 #define MAP_VERMILION_CITY_GYM               (6 | (9 << 8))
 #define MAP_VERMILION_CITY_HOUSE3            (7 | (9 << 8))
 #define MAP_VERMILLION_CITY_BERRY_HOUSE      (8 | (9 << 8))
+#define MAP_VERMILION_CITY_FOSSIL_HOUSE      (9 | (9 << 8))
 
 // gMapGroup_IndoorCeladon
 #define MAP_CELADON_CITY_DEPARTMENT_STORE_1F       (0 | (10 << 8))

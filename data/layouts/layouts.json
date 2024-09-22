@@ -4464,6 +4464,18 @@
       "secondary_tileset": "gTileset_GameCorner",
       "border_filepath": "data/layouts/VermillionCity_BerryHouse/border.bin",
       "blockdata_filepath": "data/layouts/VermillionCity_BerryHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERMILION_CITY_FOSSIL_HOUSE",
+      "name": "VermilionCity_FossilHouse_Layout",
+      "width": 15,
+      "height": 11,
+      "border_width": 2,
+      "border_height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Lab",
+      "border_filepath": "data/layouts/VermilionCity_FossilHouse/border.bin",
+      "blockdata_filepath": "data/layouts/VermilionCity_FossilHouse/map.bin"
     }
   ]
 }

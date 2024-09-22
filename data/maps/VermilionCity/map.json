@@ -216,6 +216,13 @@
       "elevation": 0,
       "dest_map": "MAP_VERMILLION_CITY_BERRY_HOUSE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 27,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_VERMILION_CITY_FOSSIL_HOUSE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

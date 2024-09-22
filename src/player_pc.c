@@ -103,6 +103,7 @@ static const struct ItemSlot gNewGamePCItems[] = {
 	{ ITEM_MASTER_BALL, 999 },
 	{ ITEM_TM03, 1 },
 	{ ITEM_MAX_REPEL, 99 },
+    { ITEM_OLD_AMBER, 1 },
     { ITEM_NONE,   0 }
 };
 
