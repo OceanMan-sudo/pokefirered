@@ -193,7 +193,7 @@
       "x": 43,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_PEWTER_CITY",
+      "dest_map": "MAP_VERMILION_CITY",
       "dest_warp_id": "0"
     },
     {
@@ -201,7 +201,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY",
-      "dest_warp_id": "0"
+      "dest_warp_id": "14"
     }
   ],
   "coord_events": [

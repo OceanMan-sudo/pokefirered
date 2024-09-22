@@ -1378,3 +1378,6 @@ Text_TestMsg::
 
 	.include "data/maps/CeruleanCity_AlwaysBeenHere/scripts.inc"
 	.include "data/maps/CeruleanCity_AlwaysBeenHere/text.inc"
+
+	.include "data/maps/VermillionCity_BerryHouse/scripts.inc"
+	.include "data/maps/VermillionCity_BerryHouse/text.inc"

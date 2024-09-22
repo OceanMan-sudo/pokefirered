@@ -4452,6 +4452,18 @@
       "secondary_tileset": "gTileset_GenericBuilding2",
       "border_filepath": "data/layouts/CeruleanCity_AlwaysBeenHere/border.bin",
       "blockdata_filepath": "data/layouts/CeruleanCity_AlwaysBeenHere/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERMILLION_CITY_BERRY_HOUSE",
+      "name": "VermillionCity_BerryHouse_Layout",
+      "width": 12,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 1,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GameCorner",
+      "border_filepath": "data/layouts/VermillionCity_BerryHouse/border.bin",
+      "blockdata_filepath": "data/layouts/VermillionCity_BerryHouse/map.bin"
     }
   ]
 }

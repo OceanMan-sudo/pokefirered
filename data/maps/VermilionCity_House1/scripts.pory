@@ -1,0 +1,60 @@
+raw `
+VermilionCity_House1_MapScripts::
+	.byte 0
+
+VermilionCity_House1_EventScript_FishingGuru::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_OLD_ROD, VermilionCity_House1_EventScript_AlreadyGotOldRod
+	msgbox VermilionCity_House1_Text_ImFishingGuruDoYouLikeToFish, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, VermilionCity_House1_EventScript_GiveOldRod
+	msgbox VermilionCity_House1_Text_OhThatsSoDisappointing
+	release
+	end
+
+VermilionCity_House1_EventScript_AlreadyGotOldRod::
+	msgbox VermilionCity_House1_Text_HowAreTheFishBiting
+	release
+	end
+
+VermilionCity_House1_EventScript_GiveOldRod::
+	checkitemspace ITEM_OLD_ROD
+	goto_if_eq VAR_RESULT, FALSE, VermilionCity_House1_EventScript_NoRoomForOldRod
+	additem ITEM_OLD_ROD
+	msgbox VermilionCity_House1_Text_TakeThisAndFish
+	msgreceiveditem VermilionCity_House1_Text_ReceivedOldRodFromFishingGuru, ITEM_OLD_ROD
+	setflag FLAG_GOT_OLD_ROD
+	msgbox VermilionCity_House1_Text_FishingIsAWayOfLife
+	release
+	end
+
+VermilionCity_House1_EventScript_NoRoomForOldRod::
+	msgbox VermilionCity_House1_Text_NoRoomForNiceGift
+	release
+	end
+`
+
+script VermillionCity_GoodRod {
+    if(flag(FLAG_GOT_GOOD_ROD)){
+		lock
+		faceplayer
+        msgbox(format("The GOOD ROD will net you rarer POKéMON than the OLD ROD would. If you fish here in VERMILLION, you might even find ELECTRIC POKéMON in the waters!"))
+        release
+		end}
+	lock
+    faceplayer
+    msgbox(format("Ah, the thrill of fishing! There's nothing quite like it. The calm of the water, the tug of a bite, and the excitement of reeling in a big catch! It’s not just about the fish; it’s about the peace and joy of being out here. Wouldn't you agree, kid?"), MSGBOX_YESNO)
+    switch (var(VAR_RESULT)){
+         case YES:
+		 	msgbox(format("I knew you’d understand! Here, take this GOOD ROD."))
+              giveitem(ITEM_GOOD_ROD, 1)
+			  msgbox(format("It’ll help you reel in even more POKéMON! With it, you can fish in the waters and discover all sorts of amazing catches. Happy fishing!"))
+			  setflag(FLAG_GOT_GOOD_ROD)
+			  release
+			  end
+         case NO:
+              msgbox("Oh? You don't know what you're\nmissing!\pThere's nothing more relaxing than\nfishing for POKéMON.")
+			  release
+			  end
+    }
+}
