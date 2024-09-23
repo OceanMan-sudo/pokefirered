@@ -271,7 +271,7 @@ VermilionCity_EventScript_HarborSign::
 script VermillionCity_FossilNerd {
     lock
     faceplayer
-    msgbox(format("The guy in that house up there will resurrect any FOSSIL POKéMON you may have. Now you don't have to wait until CINNABAR ISLAND to get your mediocre FOSSIL POKéMON!"))
+    msgbox(format("The researchers in that lab up there will resurrect any FOSSIL POKéMON you may have. Now you don't have to wait until CINNABAR ISLAND to get your mediocre ROCK monster!"))
     release
     end
 }

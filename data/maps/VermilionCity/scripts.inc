@@ -591,11 +591,11 @@ VermillionCity_Machop::
 
 VermillionCity_FossilNerd_Text_0:
 # 274 "data/maps/VermilionCity/scripts.pory"
-	.string "The guy in that house up there will\n"
-	.string "resurrect any FOSSIL POKéMON you\l"
-	.string "may have. Now you don't have to\l"
-	.string "wait until CINNABAR ISLAND to get\l"
-	.string "your mediocre FOSSIL POKéMON!$"
+	.string "The researchers in that lab up there\n"
+	.string "will resurrect any FOSSIL POKéMON\l"
+	.string "you may have. Now you don't have\l"
+	.string "to wait until CINNABAR ISLAND to\l"
+	.string "get your mediocre ROCK monster!$"
 
 VermillionCity_BerryHouseSign_Text_0:
 # 281 "data/maps/VermilionCity/scripts.pory"

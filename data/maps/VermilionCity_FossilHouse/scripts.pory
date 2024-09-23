@@ -4,101 +4,121 @@ script ReviveFossilNPC {
     lock
     faceplayer
     if (checkitem(ITEM_HELIX_FOSSIL)) {
-        msgbox(format("Ah! You have a Helix Fossil!\pLet me revive it for you."))
+        msgbox(format("I used to research POKéMON on CINNABAR ISLAND but I've relocated here to VERMILION CITY. Ah! I see you have a HELIX FOSSIL! Let me revive it for you."))
         givemon(SPECIES_OMANYTE, 20)        
             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved OMANYTE!")
                 call(NicknamePartyMon)
                 removeitem(ITEM_HELIX_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("You made an excellent choice selecting the path of Helix... Come back if you find any more fossils!"))
+                release
+                end}
             elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved OMANYTE!")
                 call(NameReceivedBoxMon)
                 removeitem(ITEM_HELIX_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("You made an excellent choice selecting the path of Helix... Come back if you find any more fossils!"))
+                release
+                end}
             else{
                 msgbox("You don't have room.")
             }
         }
     if (checkitem(ITEM_DOME_FOSSIL)) {
-        msgbox(format("Ah! You have a Dome Fossil!\pLet me revive it for you."))
+        msgbox(format("I used to research POKéMON on CINNABAR ISLAND but I've relocated here to VERMILION CITY. Ah! I see you have a DOME FOSSIL! Let me revive it for you."))
         givemon(SPECIES_KABUTO, 20)
             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved KABUTO!")
                 call(NicknamePartyMon)
                 removeitem(ITEM_DOME_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("The DOME FOSSIL... An interesting choice. Come back if you find any more fossils!"))
+                release
+                end}
             elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved KABUTO!")
                 call(NameReceivedBoxMon)
                 removeitem(ITEM_DOME_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("The DOME FOSSIL... An interesting choice. Come back if you find any more fossils!"))
+                release
+                end}
             else{
                 msgbox("You don't have room.")
             }
     } 
     if (checkitem(ITEM_ROOT_FOSSIL)) {
-        msgbox(format("Ah! You have a Root Fossil!\pLet me revive it for you."))
+        msgbox(format("I used to research POKéMON on CINNABAR ISLAND but I've relocated here to VERMILION CITY. Ah! I see you have a ROOT FOSSIL! Let me revive it for you."))
         givemon(SPECIES_LILEEP, 20)
                     if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved LILEEP!")
                 call(NicknamePartyMon)
                 removeitem(ITEM_ROOT_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("Come back if you find any more fossils!"))
+                release
+                end}
             elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved LILEEP!")
                 call(NameReceivedBoxMon)
                 removeitem(ITEM_ROOT_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("Come back if you find any more fossils!"))
+                release
+                end}
             else{
                 msgbox("You don't have room.")
             }
     } 
     if (checkitem(ITEM_CLAW_FOSSIL)) {
-        msgbox(format("Ah! You have a Claw Fossil!\pLet me revive it for you."))
+        msgbox(format("I used to research POKéMON on CINNABAR ISLAND but I've relocated here to VERMILION CITY. Ah! I see you have a a CLAW FOSSIL! Let me revive it for you."))
         givemon(SPECIES_ANORITH, 20)
                     if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved ANORITH!")
                 call(NicknamePartyMon)
                 removeitem(ITEM_CLAW_FOSSIL)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("Come back if you find any more fossils!"))
+                release
+                end}
             elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved ANORITH!")
                 call(NameReceivedBoxMon)
                 removeitem(ITEM_CLAW_FOSSIL)
-               msgbox(format("Come back if you find any more fossils!"))}
+               msgbox(format("Come back if you find any more fossils!"))
+               release
+               end}
             else{
                 msgbox("You don't have room.")
             }
     } 
     if (checkitem(ITEM_OLD_AMBER)) {
-        msgbox(format("Ah! You have an Old Amber!\pLet me revive it for you."))
+        msgbox(format("I used to research POKéMON on CINNABAR ISLAND but I've relocated here to VERMILION CITY. Ah! I see you have an OLD AMBER! Let me revive it for you."))
         givemon(SPECIES_AERODACTYL, 20)
                             if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved AERODACTYL!")
                 call(NicknamePartyMon)
                 removeitem(ITEM_OLD_AMBER)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("Come back if you find any more fossils!"))
+                release
+                end}
             elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
                 playfanfare(MUS_OBTAIN_ITEM)
                 msgbox("Recieved AERODACTYL!")
                 call(NameReceivedBoxMon)
                 removeitem(ITEM_OLD_AMBER)
-                msgbox(format("Come back if you find any more fossils!"))}
+                msgbox(format("Come back if you find any more fossils!"))
+                release
+                end}
             else{
                 msgbox("You don't have room.")
             }
     } else {
-        msgbox(format("Do you have a fossil? If you do, I can revive it for you!"))
+        msgbox(format("I enjoyed living on CINNABAR ISLAND, but it's just so far! I'm happy I moved my research to VERMILION CITY."))
     }
     release
     end
@@ -119,4 +139,28 @@ script NameReceivedBoxMon {
 call(EventScript_NameReceivedBoxMon)
 }
 msgbox(format("POKéMON was sent to BILL's PC!"))
+}
+
+script FossilNerdVermilion {
+    lock
+    faceplayer
+    msgbox(format("I'm glad we moved our research to VERMILION CITY. Although I must admit, it did take quite a bit of work figuring out how to get it all working in an entirely new city. Do you know how much effort it takes to restore a FOSSIL? A lot, as it turns out. I'd say it took up our whole Sunday!"))
+    release
+    end
+}
+
+script FossilWorker {
+    lock
+    faceplayer
+    msgbox(format("While you can still restore your FOSSIL POKéMON on CINNABAR ISLAND, we here in VERMILION CITY are able to bring the POKéMON back at a much higher level! Now you can enjoy POKéMON like KABUTO or OMANYTE without needing to play catchup! What's more is that we've discovered ways to evolve these POKéMON at earlier levels. We hope you enjoy the results of our research!"))
+    release
+    end
+}
+
+script FossilerWorker2 {
+    lock
+    faceplayer
+    msgbox(format("We believe there are ways to acquire other fossils around the region. Perhaps you can even find the ROOT FOSSIL and CLAW FOSSIL somewhere?"))
+    release
+    end
 }
