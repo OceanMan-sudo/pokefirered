@@ -532,6 +532,9 @@ script EightBadges {
 	lock
 	faceplayer
 	msgbox("Lick my butt")
+	giveitem(ITEM_OLD_AMBER)
+	giveitem(ITEM_HELIX_FOSSIL)
+	giveitem(ITEM_DOME_FOSSIL)
 	setflag(SYS_FLAGS + 0x27)
 	release
 	end

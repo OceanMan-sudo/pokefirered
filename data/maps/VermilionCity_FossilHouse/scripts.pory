@@ -1,2 +1,122 @@
 mapscripts VermilionCity_FossilHouse_MapScripts {}
 
+script ReviveFossilNPC {
+    lock
+    faceplayer
+    if (checkitem(ITEM_HELIX_FOSSIL)) {
+        msgbox(format("Ah! You have a Helix Fossil!\pLet me revive it for you."))
+        givemon(SPECIES_OMANYTE, 20)        
+            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved OMANYTE!")
+                call(NicknamePartyMon)
+                removeitem(ITEM_HELIX_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved OMANYTE!")
+                call(NameReceivedBoxMon)
+                removeitem(ITEM_HELIX_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            else{
+                msgbox("You don't have room.")
+            }
+        }
+    if (checkitem(ITEM_DOME_FOSSIL)) {
+        msgbox(format("Ah! You have a Dome Fossil!\pLet me revive it for you."))
+        givemon(SPECIES_KABUTO, 20)
+            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved KABUTO!")
+                call(NicknamePartyMon)
+                removeitem(ITEM_DOME_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved KABUTO!")
+                call(NameReceivedBoxMon)
+                removeitem(ITEM_DOME_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            else{
+                msgbox("You don't have room.")
+            }
+    } 
+    if (checkitem(ITEM_ROOT_FOSSIL)) {
+        msgbox(format("Ah! You have a Root Fossil!\pLet me revive it for you."))
+        givemon(SPECIES_LILEEP, 20)
+                    if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved LILEEP!")
+                call(NicknamePartyMon)
+                removeitem(ITEM_ROOT_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved LILEEP!")
+                call(NameReceivedBoxMon)
+                removeitem(ITEM_ROOT_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            else{
+                msgbox("You don't have room.")
+            }
+    } 
+    if (checkitem(ITEM_CLAW_FOSSIL)) {
+        msgbox(format("Ah! You have a Claw Fossil!\pLet me revive it for you."))
+        givemon(SPECIES_ANORITH, 20)
+                    if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved ANORITH!")
+                call(NicknamePartyMon)
+                removeitem(ITEM_CLAW_FOSSIL)
+                msgbox(format("Come back if you find any more fossils!"))}
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved ANORITH!")
+                call(NameReceivedBoxMon)
+                removeitem(ITEM_CLAW_FOSSIL)
+               msgbox(format("Come back if you find any more fossils!"))}
+            else{
+                msgbox("You don't have room.")
+            }
+    } 
+    if (checkitem(ITEM_OLD_AMBER)) {
+        msgbox(format("Ah! You have an Old Amber!\pLet me revive it for you."))
+        givemon(SPECIES_AERODACTYL, 20)
+                            if(var(VAR_RESULT) == MON_GIVEN_TO_PARTY){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved AERODACTYL!")
+                call(NicknamePartyMon)
+                removeitem(ITEM_OLD_AMBER)
+                msgbox(format("Come back if you find any more fossils!"))}
+            elif(var(VAR_RESULT) == MON_GIVEN_TO_PC){
+                playfanfare(MUS_OBTAIN_ITEM)
+                msgbox("Recieved AERODACTYL!")
+                call(NameReceivedBoxMon)
+                removeitem(ITEM_OLD_AMBER)
+                msgbox(format("Come back if you find any more fossils!"))}
+            else{
+                msgbox("You don't have room.")
+            }
+    } else {
+        msgbox(format("Do you have a fossil? If you do, I can revive it for you!"))
+    }
+    release
+    end
+}
+
+script NicknamePartyMon {
+
+    msgbox("Give it a nickname?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        call(EventScript_GetGiftMonPartySlot)
+        call(EventScript_ChangePokemonNickname)
+    }
+}
+
+script NameReceivedBoxMon {
+        msgbox("Give it a nickname?", MSGBOX_YESNO)
+            if(var(VAR_RESULT) == YES){
+call(EventScript_NameReceivedBoxMon)
+}
+msgbox(format("POKéMON was sent to BILL's PC!"))
+}

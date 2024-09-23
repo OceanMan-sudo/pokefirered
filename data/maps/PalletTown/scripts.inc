@@ -1016,8 +1016,14 @@ EightBadges::
 # 534 "data/maps/PalletTown/scripts.pory"
 	msgbox EightBadges_Text_0
 # 535 "data/maps/PalletTown/scripts.pory"
-	setflag SYS_FLAGS + 0x27
+	giveitem ITEM_OLD_AMBER
 # 536 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_HELIX_FOSSIL
+# 537 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_DOME_FOSSIL
+# 538 "data/maps/PalletTown/scripts.pory"
+	setflag SYS_FLAGS + 0x27
+# 539 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
