@@ -4481,7 +4481,7 @@
       "id": "LAYOUT_NEW_MAP1",
       "name": "NewMap1_Layout",
       "width": 11,
-      "height": 8,
+      "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",
