@@ -4476,6 +4476,18 @@
       "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/VermilionCity_FossilHouse/border.bin",
       "blockdata_filepath": "data/layouts/VermilionCity_FossilHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "NewMap1_Layout",
+      "width": 11,
+      "height": 8,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_VermilionCity",
+      "border_filepath": "data/layouts/NewMap1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
     }
   ]
 }

@@ -589,6 +589,16 @@ VermillionCity_Machop::
 	end
 
 
+VermilionCity_Lab::
+# 305 "data/maps/VermilionCity/scripts.pory"
+	lock
+# 306 "data/maps/VermilionCity/scripts.pory"
+	msgbox VermilionCity_Lab_Text_0
+# 307 "data/maps/VermilionCity/scripts.pory"
+	release
+	end
+
+
 VermillionCity_FossilNerd_Text_0:
 # 274 "data/maps/VermilionCity/scripts.pory"
 	.string "The researchers in that lab up there\n"
@@ -599,7 +609,7 @@ VermillionCity_FossilNerd_Text_0:
 
 VermillionCity_BerryHouseSign_Text_0:
 # 281 "data/maps/VermilionCity/scripts.pory"
-	.string "VERMILION CITY Berry House$"
+	.string "VERMILION CITY BERRY HOUSE$"
 
 VermillionCity_MachopOwner_Text_0:
 # 289 "data/maps/VermilionCity/scripts.pory"
@@ -616,3 +626,7 @@ VermillionCity_Machop_Text_0:
 VermillionCity_Machop_Text_1:
 # 300 "data/maps/VermilionCity/scripts.pory"
 	.string "This POKéMON is proud of its work!$"
+
+VermilionCity_Lab_Text_0:
+# 306 "data/maps/VermilionCity/scripts.pory"
+	.string "VERMILION CITY RESEARCH LAB$"

@@ -1384,3 +1384,6 @@ Text_TestMsg::
 
 	.include "data/maps/VermilionCity_FossilHouse/scripts.inc"
 	.include "data/maps/VermilionCity_FossilHouse/text.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+	.include "data/maps/NewMap1/text.inc"

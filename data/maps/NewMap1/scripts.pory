@@ -1,0 +1,26 @@
+mapscripts NewMap1_MapScripts {}
+script VermilionCity_SurgeHype {
+    lock
+    faceplayer
+    msgbox(format("You're planning on taking on LT. SURGE? Good luck! His LANTURN is really tough!"))
+    release
+    end
+}
+
+script VermilionCity_HiddenTruck {
+    lock
+    faceplayer
+    msgbox(format("I heard there's a truck hidden near the dock. It's almost impossible to access though..."))
+    release
+    end
+}
+
+script VermilionSpearow {
+    lock
+    faceplayer
+	playmoncry(SPECIES_SPEAROW, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox("SPARR!")
+    release
+    end
+}

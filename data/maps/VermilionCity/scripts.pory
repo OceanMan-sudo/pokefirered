@@ -278,7 +278,7 @@ script VermillionCity_FossilNerd {
 
 script VermillionCity_BerryHouseSign {
 lock
-msgbox(format("VERMILION CITY Berry House"))
+msgbox(format("VERMILION CITY BERRY HOUSE"))
 release
 end
 }
@@ -286,7 +286,7 @@ end
 script VermillionCity_MachopOwner {
 lock
 faceplayer
-msgbox(format("MACHOP helped lay the foundation for the VERMILION CITY Berry House! I'm very proud of it. I'm renting the property out to the Berry Sisters."))
+msgbox(format("MACHOP helped lay the foundation for the BERRY HOUSE! I'm very proud of it."))
 release
 end
 }
@@ -300,4 +300,10 @@ faceplayer
     msgbox(format("This POKéMON is proud of its work!"))
     release
     end
+}
+script VermilionCity_Lab {
+	lock
+	msgbox(format("VERMILION CITY RESEARCH LAB"))
+	release
+	end
 }
