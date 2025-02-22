@@ -1,0 +1,26 @@
+mapscripts VermillionCity_BerryHouse_MapScripts{}
+
+script VermillionBerrySister {
+    lock
+    faceplayer
+    msgbox(format("Welcome to the Vermillion City Berry House! How can I assist you?"))
+    waitmessage
+    pokemart(VermillionBerryHouse_Mart)
+    msgbox(format("Please come again!"))
+    release
+    end
+}
+
+raw `
+.align 2
+VermillionBerryHouse_Mart::
+    .2byte ITEM_FIGY_BERRY
+    .2byte ITEM_WIKI_BERRY
+    .2byte ITEM_MAGO_BERRY
+    .2byte ITEM_AGUAV_BERRY
+    .2byte ITEM_IAPAPA_BERRY
+    .2byte ITEM_ORAN_BERRY
+    .2byte ITEM_NONE
+    release
+    end
+    `

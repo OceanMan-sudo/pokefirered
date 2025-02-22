@@ -614,10 +614,8 @@ VermillionCity_BerryHouseSign_Text_0:
 VermillionCity_MachopOwner_Text_0:
 # 289 "data/maps/VermilionCity/scripts.pory"
 	.string "MACHOP helped lay the foundation for\n"
-	.string "the VERMILION CITY Berry House!\l"
-	.string "I'm very proud of it. I'm renting\l"
-	.string "the property out to the Berry\l"
-	.string "Sisters.$"
+	.string "the BERRY HOUSE! I'm very proud of\l"
+	.string "it.$"
 
 VermillionCity_Machop_Text_0:
 # 299 "data/maps/VermilionCity/scripts.pory"
