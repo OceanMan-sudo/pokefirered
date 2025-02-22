@@ -90,8 +90,8 @@ PewterKantoBerries_Text_0:
 
 PewterBerrySister_Text_0:
 # 21 "data/maps/PewterCity_BerryHouse/scripts.pory"
-	.string "Welcome to the Pewter City Berry\n"
-	.string "House! How can I assist you?$"
+	.string "Welcome to the PEWTER CITY BERRY\n"
+	.string "HOUSE! How can I assist you?$"
 
 PewterBerrySister_Text_1:
 # 24 "data/maps/PewterCity_BerryHouse/scripts.pory"

@@ -1,12 +1,30 @@
 mapscripts VermillionCity_BerryHouse_MapScripts{}
 
+script VermillionBerryHouse_LittleGirl {
+    lock
+    faceplayer
+    msgbox(format("I gave my POKéMON an IAPAPA BERRY to hold but it ended up getting confused after eating the berry!"))
+    release
+    end
+}
+
+script VermillionBerryHouse_Nidoran {
+    lock
+    faceplayer
+    playmoncry(SPECIES_NIDORAN_F, CRY_MODE_NORMAL)
+    msgbox(format("Nido!"))
+	delay(40)
+    release
+    end
+}
+
 script VermillionBerrySister {
     lock
     faceplayer
     msgbox(format("Welcome to the VERMILION CITY BERRY HOUSE! How can I assist you?"))
     waitmessage
     pokemart(VermillionBerryHouse_Mart)
-    msgbox(format("Please come again!"))
+    msgbox(format("Please come again!")) 
     release
     end
 }
