@@ -3,7 +3,7 @@ mapscripts VermillionCity_BerryHouse_MapScripts{}
 script VermillionBerrySister {
     lock
     faceplayer
-    msgbox(format("Welcome to the Vermillion City Berry House! How can I assist you?"))
+    msgbox(format("Welcome to the VERMILION CITY BERRY HOUSE! How can I assist you?"))
     waitmessage
     pokemart(VermillionBerryHouse_Mart)
     msgbox(format("Please come again!"))

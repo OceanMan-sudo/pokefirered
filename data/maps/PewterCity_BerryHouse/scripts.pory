@@ -18,7 +18,7 @@ script PewterKantoBerries {
 script PewterBerrySister {
     lock
     faceplayer
-    msgbox(format("Welcome to the Pewter City Berry House! How can I assist you?"))
+    msgbox(format("Welcome to the PEWTER CITY BERRY HOUSE! How can I assist you?"))
     waitmessage
     pokemart(PewterBerryHouse_Mart)
     msgbox(format("Please come again!"))
