@@ -193,14 +193,14 @@
       "x": 43,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_VERMILION_CITY",
+      "dest_map": "MAP_ROUTE13",
       "dest_warp_id": "0"
     },
     {
       "x": 22,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_CERULEAN_CITY",
+      "dest_map": "MAP_ROUTE15",
       "dest_warp_id": "14"
     }
   ],

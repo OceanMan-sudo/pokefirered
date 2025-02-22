@@ -97,8 +97,8 @@ VermillionBerryHouse_Nidoran_Text_0:
 
 VermillionBerryHouse_Sailor_Text_0:
 # 24 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	.string "Have you been onboard the S.S. ANNE\n"
-	.string "yet? There are lots of tough\l"
+	.string "Have you been onboard the S.S.\n"
+	.string "ANNE? There are lots of tough\l"
 	.string "trainers on the ship, so I make\l"
 	.string "sure to stock up on berries just in\l"
 	.string "case.$"
