@@ -20,9 +20,9 @@ VermillionBerryHouse_Nidoran::
 # 13 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	faceplayer
 # 14 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	msgbox VermillionBerryHouse_Nidoran_Text_0
-# 15 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	playmoncry SPECIES_NIDORAN_F, CRY_MODE_NORMAL
+# 15 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+	msgbox VermillionBerryHouse_Nidoran_Text_0
 # 16 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	delay 40
 # 17 "data/maps/VermillionCity_BerryHouse/scripts.pory"
@@ -30,47 +30,59 @@ VermillionBerryHouse_Nidoran::
 	end
 
 
-VermillionBerrySister::
+VermillionBerryHouse_Sailor::
 # 22 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	lock
 # 23 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	faceplayer
 # 24 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	msgbox VermillionBerrySister_Text_0
+	msgbox VermillionBerryHouse_Sailor_Text_0
 # 25 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	waitmessage
-# 26 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	pokemart VermillionBerryHouse_Mart
-# 27 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-	msgbox VermillionBerrySister_Text_1
-# 28 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	release
 	end
 
 
+VermillionBerrySister::
+# 30 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+	lock
+# 31 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+	faceplayer
 # 32 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-
+	msgbox VermillionBerrySister_Text_0
 # 33 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-.align 2
+	waitmessage
 # 34 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-VermillionBerryHouse_Mart::
+	pokemart VermillionBerryHouse_Mart
 # 35 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_FIGY_BERRY
+	msgbox VermillionBerrySister_Text_1
 # 36 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_WIKI_BERRY
-# 37 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_MAGO_BERRY
-# 38 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_AGUAV_BERRY
-# 39 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_IAPAPA_BERRY
+	release
+	end
+
+
 # 40 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_ORAN_BERRY
+
 # 41 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    .2byte ITEM_NONE
+.align 2
 # 42 "data/maps/VermillionCity_BerryHouse/scripts.pory"
-    release
+VermillionBerryHouse_Mart::
 # 43 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_FIGY_BERRY
+# 44 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_WIKI_BERRY
+# 45 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_MAGO_BERRY
+# 46 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_AGUAV_BERRY
+# 47 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_IAPAPA_BERRY
+# 48 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_ORAN_BERRY
+# 49 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    .2byte ITEM_NONE
+# 50 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+    release
+# 51 "data/maps/VermillionCity_BerryHouse/scripts.pory"
     end
 
 VermillionBerryHouse_LittleGirl_Text_0:
@@ -80,14 +92,22 @@ VermillionBerryHouse_LittleGirl_Text_0:
 	.string "confused after eating the berry!$"
 
 VermillionBerryHouse_Nidoran_Text_0:
-# 14 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+# 15 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	.string "Nido!$"
 
-VermillionBerrySister_Text_0:
+VermillionBerryHouse_Sailor_Text_0:
 # 24 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+	.string "Have you been onboard the S.S. ANNE\n"
+	.string "yet? There are lots of tough\l"
+	.string "trainers on the ship, so I make\l"
+	.string "sure to stock up on berries just in\l"
+	.string "case.$"
+
+VermillionBerrySister_Text_0:
+# 32 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	.string "Welcome to the VERMILION CITY BERRY\n"
 	.string "HOUSE! How can I assist you?$"
 
 VermillionBerrySister_Text_1:
-# 27 "data/maps/VermillionCity_BerryHouse/scripts.pory"
+# 35 "data/maps/VermillionCity_BerryHouse/scripts.pory"
 	.string "Please come again!$"

@@ -18,6 +18,14 @@ script VermillionBerryHouse_Nidoran {
     end
 }
 
+script VermillionBerryHouse_Sailor {
+    lock
+    faceplayer
+    msgbox(format("Have you been onboard the S.S. ANNE? There are lots of tough trainers on the ship, so I make sure to stock up on berries just in case."))
+    release
+    end
+}
+
 script VermillionBerrySister {
     lock
     faceplayer
