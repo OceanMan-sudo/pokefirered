@@ -1387,3 +1387,6 @@ Text_TestMsg::
 
 	.include "data/maps/NewMap1/scripts.inc"
 	.include "data/maps/NewMap1/text.inc"
+
+	.include "data/maps/PokemonTower_B1F/scripts.inc"
+	.include "data/maps/PokemonTower_B1F/text.inc"

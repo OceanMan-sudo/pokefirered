@@ -193,15 +193,15 @@
       "x": 43,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE13",
+      "dest_map": "MAP_LAVENDER_TOWN",
       "dest_warp_id": "0"
     },
     {
       "x": 22,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE15",
-      "dest_warp_id": "14"
+      "dest_map": "MAP_CELADON_CITY",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

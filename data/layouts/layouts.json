@@ -4488,6 +4488,18 @@
       "secondary_tileset": "gTileset_VermilionCity",
       "border_filepath": "data/layouts/NewMap1/border.bin",
       "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+    },
+    {
+      "id": "LAYOUT_POKEMON_TOWER_B1F",
+      "name": "PokemonTower_B1F_Layout",
+      "width": 24,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonTower",
+      "border_filepath": "data/layouts/PokemonTower_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/PokemonTower_B1F/map.bin"
     }
   ]
 }
