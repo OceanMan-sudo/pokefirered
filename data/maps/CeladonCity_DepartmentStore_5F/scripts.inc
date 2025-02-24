@@ -54,10 +54,8 @@ CeladonCity_DepartmentStore_5F_Vitamins::
 	.2byte ITEM_CHARCOAL
 	.2byte ITEM_MIRACLE_SEED
 	.2byte ITEM_MYSTIC_WATER
-	.2byte ITEM_SCOPE_LENS
 	.2byte ITEM_FOCUS_BAND
 	.2byte ITEM_SMOKE_BALL
-	.2byte ITEM_SHELL_BELL
 	.2byte ITEM_NONE
 	release
 	end
