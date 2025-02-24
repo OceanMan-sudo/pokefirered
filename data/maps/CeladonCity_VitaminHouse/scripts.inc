@@ -188,50 +188,44 @@ CeladonVitaminSeller::
 # 121 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
 CeladonBerryStore::
 # 122 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_POMEG_BERRY
+    .2byte ITEM_MOOMOO_MILK
 # 123 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_KELPSY_BERRY
+    .2byte ITEM_LAVA_COOKIE
 # 124 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_QUALOT_BERRY
+    .2byte ITEM_BERRY_JUICE
 # 125 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_HONDEW_BERRY
+    .2byte ITEM_NONE
 # 126 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_GREPA_BERRY
+    release
 # 127 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_TAMATO_BERRY
-# 128 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    .2byte ITEM_NONE
-# 129 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
-    release
-# 130 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     end
-# 131 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 128 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
 
-# 132 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 129 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .align 2
-# 133 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 130 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
 CeladonVitaminStore::
-# 134 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 131 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_HP_UP
-# 135 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 132 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_PROTEIN
-# 136 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 133 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_IRON
-# 137 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 134 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_CARBOS
-# 138 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 135 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_CALCIUM
-# 139 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 136 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_ZINC
-# 140 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 137 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_PP_UP
-# 141 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 138 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_PP_MAX
-# 142 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 139 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     .2byte ITEM_NONE
-# 143 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 140 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     release
-# 144 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
+# 141 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
     end
 
 VitaminHouseMan_Text_0:
@@ -315,11 +309,9 @@ BerryEnjoyer_Text_0:
 # 76 "data/maps/CeladonCity_VitaminHouse/scripts.pory"
 	.string "I don't know much about Effort\n"
 	.string "Values. All I know is that feeding\l"
-	.string "my POKéMON the BERRIES they sell\l"
+	.string "my POKéMON the drinks they sell\l"
 	.string "here makes them happier and that's\l"
-	.string "enough for me! Also - I guess the\l"
-	.string "BERRIES here don't even lower stats\l"
-	.string "in the KANTO region. Who knew?$"
+	.string "enough for me!$"
 
 VitaminSuperNerd_Text_0:
 # 84 "data/maps/CeladonCity_VitaminHouse/scripts.pory"

@@ -11,7 +11,7 @@ script VitaminHouseMan {
 script EffortValuesTrainer {
     lock
     faceplayer
-    msgbox(format("The Effort Values of a POKéMON determine a how high their stats will be. For instance, a POKéMON that has maxed out it's Attack EVs will have a much more powerful physical attack when compared to a POKéMON that focused on another stat. Taking the time to think about how you'd like to invest in your POKéMON's Effort Values will help your team outshine others."))
+    msgbox(format("The Effort Values of a POKéMON determine how high their stats will be. For instance, a POKéMON that has maxed out it's Attack EVs will have a much more powerful physical attack when compared to a POKéMON that focused on another stat. Taking the time to think about how you'd like to invest in your POKéMON's Effort Values will help your team outshine others."))
     release
     end
 }
