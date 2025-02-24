@@ -4500,6 +4500,18 @@
       "secondary_tileset": "gTileset_PokemonTower",
       "border_filepath": "data/layouts/PokemonTower_B1F/border.bin",
       "blockdata_filepath": "data/layouts/PokemonTower_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_CELADON_CITY_VITAMIN_HOUSE",
+      "name": "CeladonCity_VitaminHouse_Layout",
+      "width": 15,
+      "height": 15,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RestaurantHotel",
+      "border_filepath": "data/layouts/CeladonCity_VitaminHouse/border.bin",
+      "blockdata_filepath": "data/layouts/CeladonCity_VitaminHouse/map.bin"
     }
   ]
 }

@@ -1390,3 +1390,6 @@ Text_TestMsg::
 
 	.include "data/maps/PokemonTower_B1F/scripts.inc"
 	.include "data/maps/PokemonTower_B1F/text.inc"
+
+	.include "data/maps/CeladonCity_VitaminHouse/scripts.inc"
+	.include "data/maps/CeladonCity_VitaminHouse/text.inc"

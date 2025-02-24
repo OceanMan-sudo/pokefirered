@@ -322,6 +322,13 @@
       "elevation": 0,
       "dest_map": "MAP_CELADON_CITY_CONDOMINIUMS_1F",
       "dest_warp_id": "5"
+    },
+    {
+      "x": 21,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_CELADON_CITY_VITAMIN_HOUSE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

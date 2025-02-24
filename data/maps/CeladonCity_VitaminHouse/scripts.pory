@@ -1,0 +1,142 @@
+mapscripts CeladonCity_VitaminHouse_MapScripts{}
+
+script VitaminHouseMan {
+    lock
+    faceplayer
+    msgbox(format("This place is your one-stop shop for anything related to POKéMON nutrition and Effort Values. It's very convenient!"))
+    release
+    end
+}
+
+script EffortValuesTrainer {
+    lock
+    faceplayer
+    msgbox(format("The Effort Values of a POKéMON determine a how high their stats will be. For instance, a POKéMON that has maxed out it's Attack EVs will have a much more powerful physical attack when compared to a POKéMON that focused on another stat. Taking the time to think about how you'd like to invest in your POKéMON's Effort Values will help your team outshine others."))
+    release
+    end
+}
+
+script EffortValuesTrainer2 {
+    lock
+    faceplayer
+    msgbox(format("Training isn’t just about leveling up. How you battle shapes your POKéMON's true potential! Defeating certain POKéMON makes your own grow stronger in different ways. A well-trained team isn’t just strong, it’s specialized."))
+    release
+    end
+}
+
+script CasualPlayer {
+    lock
+    faceplayer
+    msgbox(format("I don't pay attention to things like Effort Values and Individual Values. I just like to train my POKéMON in a way that's fun for both of us!"))
+    release
+    end
+}
+
+script SeriousPlayer {
+    lock
+    faceplayer
+    msgbox(format("I make sure all of my POKéMON are raised right by using VITAMINS. My friend on the other hand takes a much more casual approach."))
+    release
+    end
+}
+
+script Pidgeot {
+    lock
+    faceplayer
+    playmoncry(SPECIES_PIDGEOT, CRY_MODE_NORMAL)
+    msgbox(format("PIDG-PIDGO!"))
+	delay(40)
+    release
+}
+
+script MachoBrace {
+
+    if(!flag(FLAG_0x0B2)) {
+    lock
+    faceplayer
+    msgbox(format("Training a POKéMON to reach its full potential takes time. Every battle shapes how it grows, but the process can be slow. A MACHO BRACE will help speed things up, doubling the effort your POKéMON puts into getting stronger. Here, you can have my spare one!"))
+    giveitem(ITEM_MACHO_BRACE)
+    setflag(FLAG_0x0B2)
+    msgbox(format("That should help speed up the process. Keep in mind that it'll slow down your POKéMON when wearing it in battle."))
+    release
+    end
+    }
+    else {
+    lock
+    faceplayer
+    msgbox(format("I've heard they're trying to import this special type of POWER ITEM from other regions so they can sell it here in this shop. It sounds like its taking a lot of effort to import those items at the moment..."))
+   release
+   end
+    }
+}
+
+script BerryEnjoyer {
+    lock
+    faceplayer
+    msgbox(format("I don't know much about Effort Values. All I know is that feeding my POKéMON the drinks they sell here makes them happier and that's enough for me!"))
+    release
+    end
+}
+
+script VitaminSuperNerd {
+    lock
+    faceplayer
+    msgbox(format("Effort Values are really important, but if you're not playing competitively or running a Nuzlocke then I wouldn't worry about it too much."))
+    release
+    end
+}
+
+script VitaminFella {
+    lock
+    faceplayer
+    msgbox(format("There's no limit to the amount of VITAMINS you can give your POKéMON. If you wanted to max out their HP stat using only VITAMINS, you're free to do so, though I feel like that takes the fun out it."))
+    release
+    end
+}
+
+script CeladonBerrySeller {
+    lock
+    faceplayer
+    msgbox(format("Welcome to CELADON NUTRITION. What can I get for you?"))
+    waitmessage
+    pokemart(CeladonBerryStore)
+    msgbox(format("Come back anytime!")) 
+    release
+    end
+}
+
+script CeladonVitaminSeller {
+    lock
+    faceplayer
+    msgbox(format("Welcome to CELADON NUTRITION. What can I get for you?"))
+    waitmessage
+    pokemart(CeladonVitaminStore)
+    msgbox(format("Come back anytime!")) 
+    release
+    end
+}
+
+raw `
+.align 2
+CeladonBerryStore::
+    .2byte ITEM_MOOMOO_MILK
+    .2byte ITEM_LAVA_COOKIE
+    .2byte ITEM_BERRY_JUICE
+    .2byte ITEM_NONE
+    release
+    end
+
+    .align 2
+CeladonVitaminStore::
+    .2byte ITEM_HP_UP
+    .2byte ITEM_PROTEIN
+    .2byte ITEM_IRON
+    .2byte ITEM_CARBOS
+    .2byte ITEM_CALCIUM
+    .2byte ITEM_ZINC
+    .2byte ITEM_PP_UP
+    .2byte ITEM_PP_MAX
+    .2byte ITEM_NONE
+    release
+    end
+    `
