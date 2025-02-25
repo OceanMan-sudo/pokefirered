@@ -383,10 +383,10 @@ static const union AnimCmd *const sAnims_LeaderFlannery[] =
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_LeaderNorman[] =
-{
-    sAnim_GeneralFrame0,
-};
+//static const union AnimCmd *const sAnims_LeaderNorman[] =
+//{
+ //   sAnim_GeneralFrame0,
+//};
 
 //static const union AnimCmd *const sAnims_LeaderWinona[] =
 //{
@@ -817,7 +817,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_MAGMA_ADMIN_F]         = sAnims_MagmaAdminF,
     [TRAINER_PIC_LEADER_WATTSON]        = sAnims_LeaderWattson,
     [TRAINER_PIC_LEADER_FLANNERY]       = sAnims_LeaderFlannery,
-    [TRAINER_PIC_LEADER_NORMAN]         = sAnims_LeaderNorman,
+    //[TRAINER_PIC_LEADER_NORMAN]         = sAnims_LeaderNorman,
    //[TRAINER_PIC_LEADER_WINONA]         = sAnims_LeaderWinona,
     //[TRAINER_PIC_LEADER_WALLACE]        = sAnims_LeaderWallace,
     //[TRAINER_PIC_ELITE_FOUR_GLACIA]     = sAnims_EliteFourGlacia,

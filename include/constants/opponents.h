@@ -86,7 +86,7 @@
 #define TRAINER_MAGMA_ADMIN_COURTNEY              81
 #define TRAINER_LEADER_WATTSON                    82
 #define TRAINER_LEADER_FLANNERY                   83
-#define TRAINER_LEADER_NORMAN                     84
+#define TRAINER_BLACK_BELT_ROGAN                     84
 #define TRAINER_YOUNGSTER_JAMIE                     85
 #define TRAINER_COOLTRAINER_SYLVIA                   86
 #define TRAINER_COOLTRAINER_DUKE                  87

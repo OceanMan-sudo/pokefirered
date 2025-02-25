@@ -58,3 +58,25 @@ text JamieDefeated {
 text JamiePostBattle {
     format("To be honest, I stopped listening to the podcast too...")
 }
+
+script JoeRogan {
+    lock  
+     faceplayer
+    trainerbattle_single(TRAINER_BLACK_BELT_ROGAN, RoganIntro, RoganDefeated)
+    msgbox(RoganPostBattle, MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
+}
+
+text RoganIntro {
+    format("You ever seen a PRIMEAPE out in the wild? They will literally rip your face off!")
+}
+
+text RoganDefeated {
+    format("Jamie pull that up!")
+}
+
+text RoganPostBattle{
+    format("You killed, bro. You killed!")
+}

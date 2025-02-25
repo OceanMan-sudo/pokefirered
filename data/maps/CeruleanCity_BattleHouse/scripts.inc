@@ -98,6 +98,22 @@ YoungsterJamie::
 	end
 
 
+JoeRogan::
+# 63 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	lock
+# 64 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	faceplayer
+# 65 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	trainerbattle_single TRAINER_BLACK_BELT_ROGAN, RoganIntro, RoganDefeated
+# 66 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	msgbox RoganPostBattle, MSGBOX_AUTOCLOSE
+# 67 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	waitmessage
+# 68 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	release
+	end
+
+
 CeruleanCityBattleHouseClerk_Text_0:
 # 7 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "Congratulations on completing the\n"
@@ -154,3 +170,17 @@ JamiePostBattle::
 # 58 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "To be honest, I stopped listening to\n"
 	.string "the podcast too...$"
+
+RoganIntro::
+# 72 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "You ever seen a PRIMEAPE out in the\n"
+	.string "wild? They will literally rip your\l"
+	.string "face off!$"
+
+RoganDefeated::
+# 76 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "Jamie pull that up!$"
+
+RoganPostBattle::
+# 80 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "You killed, bro. You killed!$"

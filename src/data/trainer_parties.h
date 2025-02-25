@@ -104,7 +104,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MagmaAdminTabitha[] = {D
 static const struct TrainerMonNoItemDefaultMoves sParty_MagmaAdminCourtney[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWattson[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderFlannery[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_LeaderNorman[] = {DUMMY_TRAINER_MON};
+//static const struct TrainerMonNoItemDefaultMoves sParty_LeaderNorman[] = {DUMMY_TRAINER_MON};
 //static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWinona[] = {DUMMY_TRAINER_MON};
 //static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWallace[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourGlacia[] = {DUMMY_TRAINER_MON};
@@ -3643,6 +3643,27 @@ static const struct TrainerMonItemDefaultMoves sParty_BlackBeltHideki[] = {
         .iv = 100,
         .lvl = 32,
         .species = SPECIES_MACHOKE,
+        .heldItem = ITEM_BLACK_BELT,
+    },
+};
+
+static const struct TrainerMonItemDefaultMoves sParty_BlackBeltRogan[] = {
+    {
+        .iv = 50,
+        .lvl = 15,
+        .species = SPECIES_AIPOM,
+        .heldItem = ITEM_BLACK_BELT,
+    },
+    {
+        .iv = 50,
+        .lvl = 15,
+        .species = SPECIES_MANKEY,
+        .heldItem = ITEM_BLACK_BELT,
+    },
+    {
+        .iv = 50,
+        .lvl = 15,
+        .species = SPECIES_SLAKOTH,
         .heldItem = ITEM_BLACK_BELT,
     },
 };
