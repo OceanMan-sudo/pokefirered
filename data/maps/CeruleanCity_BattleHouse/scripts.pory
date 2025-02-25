@@ -3,11 +3,11 @@ mapscripts CeruleanCity_BattleHouse_MapScripts{}
 script CeruleanCityBattleHouseClerk {
     lock
     faceplayer
-    if (flag(FLAG_0x0B3)) {
+    if (flag(FLAG_0x0B4)) {
         msgbox(format("Congratulations on completing the CERULEAN CITY BATTLE HOUSE. We hope you enjoy your prize!"))
     release 
     end}
-    elif ((defeated(TRAINER_COOLTRAINER_DUKE)) && (defeated(TRAINER_COOLTRAINER_SYLVIA)) && (defeated(TRAINER_PLAYER_BRENDAN)) && (defeated(TRAINER_PLAYER_MAY))){
+    elif ((defeated(TRAINER_BLACK_BELT_ROGAN)) && (defeated(TRAINER_HIKER_JONES)) && (defeated(TRAINER_YOUNGSTER_JAMIE))){
     msgbox(format("Congratulations on defeating each of the trainers in the CERULEAN CITY BATTLE HOUSE! Please accept this SHELL BELL as a reward for completing our challenge!"))
             giveitem(ITEM_SHELL_BELL, 1)
 msgbox(format("We do hope you enjoy your prize!"))
@@ -15,7 +15,7 @@ msgbox(format("We do hope you enjoy your prize!"))
         release
         end }
 else {
-    msgbox(format("Welcome to the CERULEAN CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
+    msgbox(format("Welcome to the CERULEAN CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; some of the trainers in here are a little off their rocker!"))
     release
     end
 }
@@ -24,7 +24,7 @@ else {
 script NonTrainer {
     lock
     faceplayer
-    msgbox(format("Oh, I'm not a trainer. I just like hanging out at these new BATTLE HOUSE facilities."))
+    msgbox(format("Oh, I'm not a trainer. I just like hanging out at these new BATTLE HOUSE facilities while listening to my favorite Podcasts."))
     release
     end
 }
@@ -79,4 +79,26 @@ text RoganDefeated {
 
 text RoganPostBattle{
     format("You killed, bro. You killed!")
+}
+
+script AlexJones {
+    lock
+         faceplayer
+    trainerbattle_single(TRAINER_HIKER_JONES, JonesIntro, JonesDefeated)
+    msgbox(JonesPostBattle, MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
+}
+
+text JonesIntro {
+    format("It's over for the globalist!")
+}
+
+text JonesDefeated {
+    format("They must have rigged the damage rolls... It’s all a setup!")
+}
+
+text JonesPostBattle {
+    format("You may have won, but the global POKéMON LEAGUE is still controlling everything!")
 }

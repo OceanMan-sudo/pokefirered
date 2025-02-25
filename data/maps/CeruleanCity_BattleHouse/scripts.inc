@@ -8,9 +8,9 @@ CeruleanCityBattleHouseClerk::
 # 5 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	faceplayer
 # 6 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	goto_if_set FLAG_0x0B3, CeruleanCityBattleHouseClerk_1
+	goto_if_set FLAG_0x0B4, CeruleanCityBattleHouseClerk_1
 # 10 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	checktrainerflag TRAINER_COOLTRAINER_DUKE
+	checktrainerflag TRAINER_BLACK_BELT_ROGAN
 	goto_if 1, CeruleanCityBattleHouseClerk_4
 CeruleanCityBattleHouseClerk_3:
 # 18 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
@@ -41,19 +41,13 @@ CeruleanCityBattleHouseClerk_2:
 
 CeruleanCityBattleHouseClerk_4:
 # 10 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	checktrainerflag TRAINER_COOLTRAINER_SYLVIA
+	checktrainerflag TRAINER_HIKER_JONES
 	goto_if 1, CeruleanCityBattleHouseClerk_6
 	goto CeruleanCityBattleHouseClerk_3
 
 CeruleanCityBattleHouseClerk_6:
 # 10 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	checktrainerflag TRAINER_PLAYER_BRENDAN
-	goto_if 1, CeruleanCityBattleHouseClerk_8
-	goto CeruleanCityBattleHouseClerk_3
-
-CeruleanCityBattleHouseClerk_8:
-# 10 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	checktrainerflag TRAINER_PLAYER_MAY
+	checktrainerflag TRAINER_YOUNGSTER_JAMIE
 	goto_if 1, CeruleanCityBattleHouseClerk_2
 	goto CeruleanCityBattleHouseClerk_3
 
@@ -114,6 +108,22 @@ JoeRogan::
 	end
 
 
+AlexJones::
+# 85 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	lock
+# 86 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	faceplayer
+# 87 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	trainerbattle_single TRAINER_HIKER_JONES, JonesIntro, JonesDefeated
+# 88 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	msgbox JonesPostBattle, MSGBOX_AUTOCLOSE
+# 89 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	waitmessage
+# 90 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	release
+	end
+
+
 CeruleanCityBattleHouseClerk_Text_0:
 # 7 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "Congratulations on completing the\n"
@@ -137,14 +147,15 @@ CeruleanCityBattleHouseClerk_Text_3:
 	.string "Welcome to the CERULEAN CITY BATTLE\n"
 	.string "HOUSE! Defeat all three trainers\l"
 	.string "and win a fabulous prize! Fair\l"
-	.string "warning; the trainers in here are\l"
-	.string "tough!$"
+	.string "warning; some of the trainers in\l"
+	.string "here are a little off their rocker!$"
 
 NonTrainer_Text_0:
 # 27 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "Oh, I'm not a trainer. I just like\n"
 	.string "hanging out at these new BATTLE\l"
-	.string "HOUSE facilities.$"
+	.string "HOUSE facilities while listening to\l"
+	.string "my favorite Podcasts.$"
 
 NonTrainer2_Text_0:
 # 35 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
@@ -184,3 +195,18 @@ RoganDefeated::
 RoganPostBattle::
 # 80 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "You killed, bro. You killed!$"
+
+JonesIntro::
+# 94 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "It's over for the globalist!$"
+
+JonesDefeated::
+# 98 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "They must have rigged the damage\n"
+	.string "rolls... It’s all a setup!$"
+
+JonesPostBattle::
+# 102 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "You may have won, but the global\n"
+	.string "POKéMON LEAGUE is still controlling\l"
+	.string "everything!$"
