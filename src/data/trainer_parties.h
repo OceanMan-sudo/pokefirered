@@ -5462,6 +5462,27 @@ static const struct TrainerMonNoItemCustomMoves sParty_CooltrainerJulie[] = {
     },
 };
 
+static const struct TrainerMonNoItemCustomMoves sParty_CooltrainerDuke[] = {
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_CAMERUPT,
+        .moves = {MOVE_AMNESIA, MOVE_MAGNITUDE, MOVE_REST, MOVE_EMBER},
+    },
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_SABLEYE,
+        .moves = {MOVE_FAKE_OUT, MOVE_AERIAL_ACE, MOVE_TORMENT, MOVE_FAINT_ATTACK},
+    },
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_ZANGOOSE,
+        .moves = {MOVE_CRUSH_CLAW, MOVE_PURSUIT, MOVE_MUD_SLAP, MOVE_SWIFT},
+    },
+};
+
 static const struct TrainerMonItemCustomMoves sParty_EliteFourLorelei[] = {
     {
         .iv = 250,
@@ -5780,7 +5801,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_PlayerSaffronMay[] = {
     },
     {
         .iv = 100,
-        .lvl = 36,
+        .lvl = 37,
         .species = SPECIES_BLAZIKEN,
     },
 };
@@ -5798,7 +5819,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_PlayerSaffronBrendan[] =
     },
     {
         .iv = 100,
-        .lvl = 36,
+        .lvl = 37,
         .species = SPECIES_SWAMPERT,
     },
 };

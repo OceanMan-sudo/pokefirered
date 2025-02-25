@@ -398,10 +398,10 @@ static const union AnimCmd *const sAnims_LeaderWallace[] =
     sAnim_GeneralFrame0,
 };
 
-static const union AnimCmd *const sAnims_EliteFourGlacia[] =
-{
-    sAnim_GeneralFrame0,
-};
+//static const union AnimCmd *const sAnims_EliteFourGlacia[] =
+//{
+  //  sAnim_GeneralFrame0,
+//};
 
 static const union AnimCmd *const sAnims_EliteFourDrake[] =
 {
@@ -820,7 +820,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_LEADER_NORMAN]         = sAnims_LeaderNorman,
     [TRAINER_PIC_LEADER_WINONA]         = sAnims_LeaderWinona,
     [TRAINER_PIC_LEADER_WALLACE]        = sAnims_LeaderWallace,
-    [TRAINER_PIC_ELITE_FOUR_GLACIA]     = sAnims_EliteFourGlacia,
+    //[TRAINER_PIC_ELITE_FOUR_GLACIA]     = sAnims_EliteFourGlacia,
     //[TRAINER_PIC_ELITE_FOUR_DRAKE]      = sAnims_EliteFourDrake,
     [TRAINER_PIC_YOUNGSTER]             = sAnims_Youngster,
     [TRAINER_PIC_BUG_CATCHER]           = sAnims_BugCatcher,

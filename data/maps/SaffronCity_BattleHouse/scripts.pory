@@ -26,7 +26,16 @@ script SaffronBrendan{
 	waitmessage
     release
     end
- 
+}
+
+script CoolTrainerDuke {
+    lock
+    faceplayer
+    trainerbattle_single(TRAINER_COOLTRAINER_DUKE, DukeIntro, DukeDefeated)
+    msgbox(DukePostBattle, MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
 }
 
 text MayIntro {
@@ -51,4 +60,16 @@ text BrendanDefeated {
 
 text BrendanPostBattle {
     format("I wish I could stick around KANTO a bit longer, but I'll need to return to LITTLEROOT TOWN soon.")
+}
+
+text DukeIntro {
+    format("This music is just so catchy!")
+}
+
+text DukeDefeated {
+    format("This tune is gonna be stuck in my head all day!")
+}
+
+text DukePostBattle {
+    format("You never really get to see this room in regular playthroughs do you?")
 }

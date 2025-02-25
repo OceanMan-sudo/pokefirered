@@ -46,6 +46,22 @@ SaffronBrendan::
 	end
 
 
+CoolTrainerDuke::
+# 32 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	lock
+# 33 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	faceplayer
+# 34 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	trainerbattle_single TRAINER_COOLTRAINER_DUKE, DukeIntro, DukeDefeated
+# 35 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	msgbox DukePostBattle, MSGBOX_AUTOCLOSE
+# 36 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	waitmessage
+# 37 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	release
+	end
+
+
 SaffronCityBattleHouseClerk_Text_0:
 # 6 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "Welcome to the SAFFRON CITY BATTLE\n"
@@ -55,33 +71,48 @@ SaffronCityBattleHouseClerk_Text_0:
 	.string "tough!$"
 
 MayIntro::
-# 32 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 41 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "You're saying I look familiar? Odd.\n"
 	.string "This is my first time in the KANTO\l"
 	.string "region!$"
 
 MayDefeated::
-# 36 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 45 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "Wow, you're tough!$"
 
 MayPostBattle::
-# 40 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 49 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "You should visit the HOENN region\n"
 	.string "sometime. There are tons of tough\l"
 	.string "trainers and rare POKeMON to catch!$"
 
 BrendanIntro::
-# 44 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 53 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "My neighbor and I are on vacation\n"
 	.string "from the HOENN region. Let's see\l"
 	.string "what you got!$"
 
 BrendanDefeated::
-# 48 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 57 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "Wow, you're no joke!$"
 
 BrendanPostBattle::
-# 52 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+# 61 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "I wish I could stick around KANTO a\n"
 	.string "bit longer, but I'll need to return\l"
 	.string "to LITTLEROOT TOWN soon.$"
+
+DukeIntro::
+# 65 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	.string "Let's see if you've got what it takes!$"
+
+DukeDefeated::
+# 69 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	.string "It turns out you do have what it\n"
+	.string "takes.$"
+
+DukePostBattle::
+# 73 "data/maps/SaffronCity_BattleHouse/scripts.pory"
+	.string "This BATTLE HOUSE gives out the\n"
+	.string "CHOICE BAND as a reward. Talk\l"
+	.string "about a strong item to have!$"
