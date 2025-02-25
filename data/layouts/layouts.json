@@ -4512,6 +4512,30 @@
       "secondary_tileset": "gTileset_RestaurantHotel",
       "border_filepath": "data/layouts/CeladonCity_VitaminHouse/border.bin",
       "blockdata_filepath": "data/layouts/CeladonCity_VitaminHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CELADON_CITY_BERRY_HOUSE",
+      "name": "CeladonCity_BerryHouse_Layout",
+      "width": 12,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GameCorner",
+      "border_filepath": "data/layouts/CeladonCity_BerryHouse/border.bin",
+      "blockdata_filepath": "data/layouts/CeladonCity_BerryHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CELADON_CITY_POKEBALL_SHOP",
+      "name": "CeladonCity_PokeballShop_Layout",
+      "width": 12,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RestaurantHotel",
+      "border_filepath": "data/layouts/CeladonCity_PokeballShop/border.bin",
+      "blockdata_filepath": "data/layouts/CeladonCity_PokeballShop/map.bin"
     }
   ]
 }

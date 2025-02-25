@@ -112,14 +112,10 @@ EvolutionItems::
 # 59 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_DEEP_SEA_SCALE
 # 60 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_SEA_INCENSE
-# 61 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_LAX_INCENSE
-# 62 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_NONE
-# 63 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
+# 61 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	release
-# 64 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
+# 62 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	end
 
 EvolutionSeller_Text_0:

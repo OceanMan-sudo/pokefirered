@@ -57,8 +57,6 @@ EvolutionItems::
 	.2byte ITEM_KINGS_ROCK
 	.2byte ITEM_DEEP_SEA_TOOTH
 	.2byte ITEM_DEEP_SEA_SCALE
-	.2byte ITEM_SEA_INCENSE
-	.2byte ITEM_LAX_INCENSE
 	.2byte ITEM_NONE
 	release
 	end

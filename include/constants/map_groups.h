@@ -353,6 +353,8 @@
 #define MAP_CELADON_CITY_HOUSE1                    (18 | (10 << 8))
 #define MAP_CELADON_CITY_HOTEL                     (19 | (10 << 8))
 #define MAP_CELADON_CITY_VITAMIN_HOUSE             (20 | (10 << 8))
+#define MAP_CELADON_CITY_BERRY_HOUSE               (21 | (10 << 8))
+#define MAP_CELADON_CITY_POKEBALL_SHOP             (22 | (10 << 8))
 
 // gMapGroup_IndoorFuchsia
 #define MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE (0 | (11 << 8))

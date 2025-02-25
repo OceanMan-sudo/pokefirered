@@ -213,56 +213,70 @@ CeladonCity_EventScript_GameCornerSign::
 
 VitaminHouseSign::
 # 110 "data/maps/CeladonCity/scripts.pory"
-	lock
-# 111 "data/maps/CeladonCity/scripts.pory"
 	msgbox VitaminHouseSign_Text_0
-# 112 "data/maps/CeladonCity/scripts.pory"
+# 111 "data/maps/CeladonCity/scripts.pory"
 	release
 	end
 
 
 AxMan::
-# 117 "data/maps/CeladonCity/scripts.pory"
+# 116 "data/maps/CeladonCity/scripts.pory"
 	lock
-# 118 "data/maps/CeladonCity/scripts.pory"
+# 117 "data/maps/CeladonCity/scripts.pory"
 	faceplayer
-# 119 "data/maps/CeladonCity/scripts.pory"
+# 118 "data/maps/CeladonCity/scripts.pory"
 	msgbox AxMan_Text_0
-# 120 "data/maps/CeladonCity/scripts.pory"
+# 119 "data/maps/CeladonCity/scripts.pory"
 	release
 	end
 
 
 VitaminFan::
-# 124 "data/maps/CeladonCity/scripts.pory"
+# 123 "data/maps/CeladonCity/scripts.pory"
 	lock
-# 125 "data/maps/CeladonCity/scripts.pory"
+# 124 "data/maps/CeladonCity/scripts.pory"
 	faceplayer
-# 126 "data/maps/CeladonCity/scripts.pory"
+# 125 "data/maps/CeladonCity/scripts.pory"
 	msgbox VitaminFan_Text_0
-# 127 "data/maps/CeladonCity/scripts.pory"
+# 126 "data/maps/CeladonCity/scripts.pory"
 	release
 	end
 
 
 DragonQuestFan::
-# 132 "data/maps/CeladonCity/scripts.pory"
+# 131 "data/maps/CeladonCity/scripts.pory"
 	lock
-# 133 "data/maps/CeladonCity/scripts.pory"
+# 132 "data/maps/CeladonCity/scripts.pory"
 	faceplayer
-# 134 "data/maps/CeladonCity/scripts.pory"
+# 133 "data/maps/CeladonCity/scripts.pory"
 	msgbox DragonQuestFan_Text_0
-# 135 "data/maps/CeladonCity/scripts.pory"
+# 134 "data/maps/CeladonCity/scripts.pory"
+	release
+	end
+
+
+CeladonBerryHouse::
+# 139 "data/maps/CeladonCity/scripts.pory"
+	msgbox CeladonBerryHouse_Text_0
+# 140 "data/maps/CeladonCity/scripts.pory"
+	release
+	end
+
+
+YeOlde::
+# 145 "data/maps/CeladonCity/scripts.pory"
+	msgbox YeOlde_Text_0
+# 146 "data/maps/CeladonCity/scripts.pory"
 	release
 	end
 
 
 VitaminHouseSign_Text_0:
-# 111 "data/maps/CeladonCity/scripts.pory"
+# 110 "data/maps/CeladonCity/scripts.pory"
 	.string "CELADON CITY NUTRITION CAFE$"
 
 AxMan_Text_0:
-# 119 "data/maps/CeladonCity/scripts.pory"
+# 118 "data/maps/CeladonCity/scripts.pory"
 	.string "There used to be these trees\n"
 	.string "blocking the path here to the gym,\l"
 	.string "but I hacked them down! In the\l"
@@ -271,7 +285,7 @@ AxMan_Text_0:
 	.string "nonsense!$"
 
 VitaminFan_Text_0:
-# 126 "data/maps/CeladonCity/scripts.pory"
+# 125 "data/maps/CeladonCity/scripts.pory"
 	.string "CELADON CITY now has a NUTRITION\n"
 	.string "CAFE that sells VITAMINS. The\l"
 	.string "DEPARTMENT STORE used to sell\l"
@@ -280,7 +294,7 @@ VitaminFan_Text_0:
 	.string "prices.$"
 
 DragonQuestFan_Text_0:
-# 134 "data/maps/CeladonCity/scripts.pory"
+# 133 "data/maps/CeladonCity/scripts.pory"
 	.string "The POKéMON series, especially RED &\n"
 	.string "GREEN, took a lot of inspiration\l"
 	.string "from the DRAGON QUEST games. The\l"
@@ -289,3 +303,11 @@ DragonQuestFan_Text_0:
 	.string "even have a GAME CORNER inspired\l"
 	.string "by DRAGON QUEST! You can thank\l"
 	.string "AKIRA TORIYAMA for that one.$"
+
+CeladonBerryHouse_Text_0:
+# 139 "data/maps/CeladonCity/scripts.pory"
+	.string "CELADON CITY BERRY HOUSE$"
+
+YeOlde_Text_0:
+# 145 "data/maps/CeladonCity/scripts.pory"
+	.string "THE POKéBALL SHOP$"

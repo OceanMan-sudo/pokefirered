@@ -1393,3 +1393,9 @@ Text_TestMsg::
 
 	.include "data/maps/CeladonCity_VitaminHouse/scripts.inc"
 	.include "data/maps/CeladonCity_VitaminHouse/text.inc"
+
+	.include "data/maps/CeladonCity_BerryHouse/scripts.inc"
+	.include "data/maps/CeladonCity_BerryHouse/text.inc"
+
+	.include "data/maps/CeladonCity_PokeballShop/scripts.inc"
+	.include "data/maps/CeladonCity_PokeballShop/text.inc"

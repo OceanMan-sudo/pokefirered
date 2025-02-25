@@ -107,7 +107,6 @@ CeladonCity_EventScript_GameCornerSign::
 `
 
 script VitaminHouseSign {
-    lock
 msgbox(format("CELADON CITY NUTRITION CAFE"))
 release
 end
@@ -137,7 +136,13 @@ script DragonQuestFan {
 }
 
 script CeladonBerryHouse {
-    lock
 msgbox(format("CELADON CITY BERRY HOUSE"))
 release    
+end
+}
+
+script YeOlde {
+    msgbox(format("THE POKéBALL SHOP"))
+    release
+    end
 }

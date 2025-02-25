@@ -1,0 +1,48 @@
+mapscripts CeladonCity_BerryHouse_MapScripts {}
+
+script CeladonBerrySister {
+    lock
+    faceplayer
+    msgbox(format("Welcome to the CELADON CITY BERRY HOUSE! How can I assist you?"))
+    waitmessage
+    pokemart(CeladonBerryHouse_Mart)
+    msgbox(format("Please come again!")) 
+    release
+    end
+}
+
+script BerryCustomer {
+    lock
+    faceplayer
+    msgbox(format("The prices are higher when compared to other regions but that's because KANTO doesn't naturally grow these types of BERRIES. We just didn't have that sort of agricultural know-how back in 1996 I guess."))
+    release
+    end
+}
+
+script EnigmaFan {
+    lock
+    faceplayer
+    msgbox(format("They sell ENIGMA BERRIES here! Do you know how hard it is to get a hold of an ENIGMA BERRY elsewhere? It's very, very hard!"))
+    release
+    end
+}
+
+script ErikaFan {
+    lock
+    faceplayer
+    msgbox(format("The GYM LEADER ERIKA does a lot to promote the new BERRY HOUSES located across KANTO. You can count on her POKéMON holding some of the BERRIES they sell at this store."))
+    release
+    end
+}
+
+raw `
+.align 2
+CeladonBerryHouse_Mart::
+    .2byte ITEM_SITRUS_BERRY
+    .2byte ITEM_LUM_BERRY
+    .2byte ITEM_ENIGMA_BERRY
+    .2byte ITEM_LEPPA_BERRY
+    .2byte ITEM_NONE
+    release
+    end
+    `

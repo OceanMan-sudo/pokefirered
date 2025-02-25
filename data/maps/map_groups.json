@@ -391,7 +391,9 @@
     "CeladonCity_Restaurant",
     "CeladonCity_House1",
     "CeladonCity_Hotel",
-    "CeladonCity_VitaminHouse"
+    "CeladonCity_VitaminHouse",
+    "CeladonCity_BerryHouse",
+    "CeladonCity_PokeballShop"
   ],
   "gMapGroup_IndoorFuchsia": [
     "FuchsiaCity_SafariZone_Entrance",
