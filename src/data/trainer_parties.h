@@ -933,6 +933,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_PicnickerSally[] = {
         .lvl = 5,
         .species = SPECIES_SENTRET,
     },
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_HOOTHOOT,
+    },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_CamperDrew[] = {
@@ -5759,6 +5764,42 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderSabrina[] = {
         .lvl = 43,
         .species = SPECIES_ALAKAZAM,
         .moves = {MOVE_PSYCHIC, MOVE_RECOVER, MOVE_FUTURE_SIGHT, MOVE_CALM_MIND},
+    },
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_PlayerSaffronMay[] = {
+    {
+        .iv = 100,
+        .lvl = 35,
+        .species = SPECIES_BEAUTIFLY,
+    },
+    {
+        .iv = 100,
+        .lvl = 35,
+        .species = SPECIES_SKITTY,
+    },
+    {
+        .iv = 100,
+        .lvl = 36,
+        .species = SPECIES_BLAZIKEN,
+    },
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_PlayerSaffronBrendan[] = {
+    {
+        .iv = 100,
+        .lvl = 35,
+        .species = SPECIES_SWELLOW,
+    },
+    {
+        .iv = 100,
+        .lvl = 35,
+        .species = SPECIES_SPINDA,
+    },
+    {
+        .iv = 100,
+        .lvl = 36,
+        .species = SPECIES_SWAMPERT,
     },
 };
 

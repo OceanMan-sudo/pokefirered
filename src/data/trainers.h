@@ -5119,8 +5119,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("BRENDAN"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_PlayerBrendan),
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_PlayerSaffronBrendan),
     },
     [TRAINER_PLAYER_MAY] = {
         .trainerClass = TRAINER_CLASS_PLAYER,
@@ -5129,8 +5129,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("MAY"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_PlayerMay),
+        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY,
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_PlayerSaffronMay),
     },
     [TRAINER_PLAYER_RED] = {
         .trainerClass = TRAINER_CLASS_PLAYER,

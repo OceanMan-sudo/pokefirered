@@ -1399,3 +1399,6 @@ Text_TestMsg::
 
 	.include "data/maps/CeladonCity_PokeballShop/scripts.inc"
 	.include "data/maps/CeladonCity_PokeballShop/text.inc"
+
+	.include "data/maps/SaffronCity_BattleHouse/scripts.inc"
+	.include "data/maps/SaffronCity_BattleHouse/text.inc"

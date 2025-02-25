@@ -1,0 +1,54 @@
+mapscripts SaffronCity_BattleHouse_MapScripts{}
+
+script SaffronCityBattleHouseClerk {
+    lock
+    faceplayer
+    msgbox(format("Welcome to the SAFFRON CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
+    release
+    end
+}
+script SaffronMay{
+    lock
+    faceplayer
+	trainerbattle_single(TRAINER_PLAYER_MAY, MayIntro, MayDefeated)
+	msgbox(MayPostBattle, MSGBOX_AUTOCLOSE) 
+	waitmessage
+    release
+    end
+ 
+}
+
+script SaffronBrendan{
+    lock
+    faceplayer
+	trainerbattle_single(TRAINER_PLAYER_BRENDAN, BrendanIntro, BrendanDefeated)
+	msgbox(BrendanPostBattle, MSGBOX_AUTOCLOSE) 
+	waitmessage
+    release
+    end
+ 
+}
+
+text MayIntro {
+    format("You're saying I look familiar? Odd. This is my first time in the KANTO region!")
+}
+
+text MayDefeated {
+    "Wow, you're tough!"
+}
+
+text MayPostBattle {
+    format("You should visit the HOENN region sometime. There are tons of tough trainers and rare POKeMON to catch!")
+}
+
+text BrendanIntro {
+    format("My neighbor and I are on vacation from the HOENN region. Let's see what you got!")
+}
+
+text BrendanDefeated {
+    format("Wow, you're no joke!")
+}
+
+text BrendanPostBattle {
+    format("I wish I could stick around KANTO a bit longer, but I'll need to return to LITTLEROOT TOWN soon.")
+}

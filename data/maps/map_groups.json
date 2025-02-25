@@ -431,7 +431,8 @@
     "SaffronCity_PokemonCenter_1F",
     "SaffronCity_PokemonCenter_2F",
     "SaffronCity_MrPsychicsHouse",
-    "SaffronCity_PokemonTrainerFanClub"
+    "SaffronCity_PokemonTrainerFanClub",
+    "SaffronCity_BattleHouse"
   ],
   "gMapGroup_IndoorRoute2": [
     "Route2_ViridianForest_SouthEntrance",

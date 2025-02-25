@@ -393,6 +393,7 @@
 #define MAP_SAFFRON_CITY_POKEMON_CENTER_2F        (7 | (14 << 8))
 #define MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE        (8 | (14 << 8))
 #define MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB (9 | (14 << 8))
+#define MAP_SAFFRON_CITY_BATTLE_HOUSE             (10 | (14 << 8))
 
 // gMapGroup_IndoorRoute2
 #define MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE (0 | (15 << 8))

@@ -29,14 +29,48 @@ PicnickerSally::
 	end
 
 
+Tester::
+# 33 "data/maps/Route2/scripts.pory"
+	checktrainerflag TRAINER_PICNICKER_SALLY
+	goto_if 1, Tester_1
+# 43 "data/maps/Route2/scripts.pory"
+	lock
+# 44 "data/maps/Route2/scripts.pory"
+	faceplayer
+# 45 "data/maps/Route2/scripts.pory"
+	msgbox Tester_Text_1
+# 46 "data/maps/Route2/scripts.pory"
+	release
+	end
+
+Tester_1:
+# 35 "data/maps/Route2/scripts.pory"
+	lock
+# 36 "data/maps/Route2/scripts.pory"
+	faceplayer
+# 37 "data/maps/Route2/scripts.pory"
+	msgbox Tester_Text_0
+# 38 "data/maps/Route2/scripts.pory"
+	release
+	end
+
+
+Tester_Text_0:
+# 37 "data/maps/Route2/scripts.pory"
+	.string "Got em$"
+
+Tester_Text_1:
+# 45 "data/maps/Route2/scripts.pory"
+	.string "Kick her butt$"
+
 PicnickerSallyIntro::
 # 20 "data/maps/Route2/scripts.pory"
-	.string "Good luck$"
+	.string "I'll be your first opponent!$"
 
 PicnickerSallyDefeated::
 # 24 "data/maps/Route2/scripts.pory"
-	.string "Nice job$"
+	.string "One trainer down, many more to go!$"
 
 PicnickerSallyPostBattle::
 # 28 "data/maps/Route2/scripts.pory"
-	.string "Got me!$"
+	.string "I'd stock up on ANTIDOTEs \nbefore heading into VIRIDIAN\lFOREST if I were you.$"

@@ -26,5 +26,24 @@ text PicnickerSallyDefeated {
 }
 
 text PicnickerSallyPostBattle {
-    "I'd stock up on ANTIDOTEs before heading into VIRIDIAN FOREST if I were you."
+    "I'd stock up on ANTIDOTEs \nbefore heading into VIRIDIAN\lFOREST if I were you."
+}
+
+script Tester {
+if (defeated(TRAINER_PICNICKER_SALLY))
+{
+  lock
+    faceplayer
+    msgbox(format("Got em"))
+	release
+	end
+}
+else
+{
+  lock
+    faceplayer
+    msgbox (format("Kick her butt"))
+	release
+	end
+	}
 }
