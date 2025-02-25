@@ -3,9 +3,22 @@ mapscripts SaffronCity_BattleHouse_MapScripts{}
 script SaffronCityBattleHouseClerk {
     lock
     faceplayer
+    if (flag(FLAG_0x0B3)) {
+        msgbox(format("Congratulations on completing the SAFFRON CITY BATTLE HOUSE. We hope you enjoy your prize!"))
+    release 
+    end}
+    elif ((defeated(TRAINER_COOLTRAINER_DUKE)) && (defeated(TRAINER_COOLTRAINER_SYLVIA)) && (defeated(TRAINER_PLAYER_BRENDAN)) && (defeated(TRAINER_PLAYER_MAY))){
+    msgbox(format("Congratulations on defeating each of the trainers in the SAFFRON CITY BATTLE HOUSE! Please accept the CHOICE BAND as a reward for completing this challenge!"))
+            giveitem(ITEM_CHOICE_BAND, 1)
+msgbox(format("We do hope you enjoy your prize!"))
+        setflag(FLAG_0x0B3)
+        release
+        end }
+else {
     msgbox(format("Welcome to the SAFFRON CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
     release
     end
+}
 }
 script SaffronMay{
     lock
@@ -33,6 +46,16 @@ script CoolTrainerDuke {
     faceplayer
     trainerbattle_single(TRAINER_COOLTRAINER_DUKE, DukeIntro, DukeDefeated)
     msgbox(DukePostBattle, MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
+}
+
+script CoolTrainerSylvia {
+    lock  
+     faceplayer
+    trainerbattle_single(TRAINER_COOLTRAINER_SYLVIA, SylviaIntro, SylviaDefeated)
+    msgbox(SylviaPostBattle, MSGBOX_AUTOCLOSE)
     waitmessage
     release
     end
@@ -72,4 +95,16 @@ text DukeDefeated {
 
 text DukePostBattle {
     format("You never really get to see this room in regular playthroughs do you?")
+}
+
+text SylviaIntro {
+    format("Am I crazy or are those two HOENN trainers super familiar?")
+}
+
+text SylviaDefeated {
+    format("Seriously, that's BRENDAN and MAY from HOENN!")
+}
+
+text SylviaPostBattle {
+    format("I wonder what those two are doing here in SAFFRON CITY?")
 }

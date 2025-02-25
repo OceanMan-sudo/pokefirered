@@ -88,7 +88,7 @@
 #define TRAINER_LEADER_FLANNERY                   83
 #define TRAINER_LEADER_NORMAN                     84
 #define TRAINER_LEADER_WINONA                     85
-#define TRAINER_LEADER_WALLACE                    86
+#define TRAINER_COOLTRAINER_SYLVIA                   86
 #define TRAINER_COOLTRAINER_DUKE                  87
 #define TRAINER_PICNICKER_SALLY                   88
 // Actual FRLG trainers start here

@@ -106,7 +106,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWattson[] = {DUMMY
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderFlannery[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderNorman[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWinona[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWallace[] = {DUMMY_TRAINER_MON};
+//static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWallace[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourGlacia[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourDrake[] = {DUMMY_TRAINER_MON};
 
@@ -5480,6 +5480,27 @@ static const struct TrainerMonNoItemCustomMoves sParty_CooltrainerDuke[] = {
         .lvl = 34,
         .species = SPECIES_ZANGOOSE,
         .moves = {MOVE_CRUSH_CLAW, MOVE_PURSUIT, MOVE_MUD_SLAP, MOVE_SWIFT},
+    },
+};
+
+static const struct TrainerMonNoItemCustomMoves sParty_CooltrainerSylvia[] = {
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_GLALIE,
+        .moves = {MOVE_ICE_BEAM, MOVE_PROTECT, MOVE_BODY_SLAM, MOVE_ROLLOUT},
+    },
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_MAWILE,
+        .moves = {MOVE_TORMENT, MOVE_SECRET_POWER, MOVE_FAINT_ATTACK, MOVE_BRICK_BREAK},
+    },
+    {
+        .iv = 100,
+        .lvl = 34,
+        .species = SPECIES_SEVIPER,
+        .moves = {MOVE_SWAGGER, MOVE_GIGA_DRAIN, MOVE_IRON_TAIL, MOVE_GLARE},
     },
 };
 
