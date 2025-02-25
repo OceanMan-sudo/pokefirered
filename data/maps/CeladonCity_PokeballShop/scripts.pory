@@ -1,0 +1,55 @@
+mapscripts CeladonCity_PokeballShop_MapScripts{}
+
+script PokeballGuy {
+    lock
+    faceplayer
+    msgbox(format("Welcome to the POKéBALL SHOP. What can I get for you?"))
+    waitmessage
+    pokemart(PokeballShop)
+    msgbox(format("Happy catching!")) 
+    release
+    end
+}
+
+script DiveBallGuy {
+    lock
+    faceplayer
+    msgbox(format("They sell all sorts of POKéBALLs here. They even sell the DIVE BALL, even though there are no diving spots in KANTO. I guess some people just like the aesthetic?"))
+release
+end
+}
+
+script NetBallGuy {
+    lock
+    faceplayer
+    msgbox(format("The NET BALL is great for catching BUG TYPE POKéMON!"))
+    release
+    end
+}
+
+script ClefairyPokeball {
+    lock
+    faceplayer
+    	playmoncry(SPECIES_CLEFAIRY, CRY_MODE_NORMAL)
+	delay(40)
+    msgbox(format("CLEFF!"))
+    release
+    end
+}
+
+raw `
+    .align 2
+PokeballShop::
+    .2byte ITEM_POKE_BALL
+    .2byte ITEM_GREAT_BALL
+    .2byte ITEM_ULTRA_BALL
+    .2byte ITEM_LUXURY_BALL
+    .2byte ITEM_NEST_BALL
+    .2byte ITEM_NET_BALL
+    .2byte ITEM_DIVE_BALL
+    .2byte ITEM_TIMER_BALL
+    .2byte ITEM_REPEAT_BALL
+    .2byte ITEM_NONE
+    release
+    end
+    `
