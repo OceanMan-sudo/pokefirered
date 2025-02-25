@@ -4548,6 +4548,18 @@
       "secondary_tileset": "gTileset_HallOfFame",
       "border_filepath": "data/layouts/SaffronCity_BattleHouse/border.bin",
       "blockdata_filepath": "data/layouts/SaffronCity_BattleHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CERULEAN_CITY_BATTLE_HOUSE",
+      "name": "CeruleanCity_BattleHouse_Layout",
+      "width": 15,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_HallOfFame",
+      "border_filepath": "data/layouts/CeruleanCity_BattleHouse/border.bin",
+      "blockdata_filepath": "data/layouts/CeruleanCity_BattleHouse/map.bin"
     }
   ]
 }

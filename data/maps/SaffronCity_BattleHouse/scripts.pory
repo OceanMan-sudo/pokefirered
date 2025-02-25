@@ -8,14 +8,14 @@ script SaffronCityBattleHouseClerk {
     release 
     end}
     elif ((defeated(TRAINER_COOLTRAINER_DUKE)) && (defeated(TRAINER_COOLTRAINER_SYLVIA)) && (defeated(TRAINER_PLAYER_BRENDAN)) && (defeated(TRAINER_PLAYER_MAY))){
-    msgbox(format("Congratulations on defeating each of the trainers in the SAFFRON CITY BATTLE HOUSE! Please accept the CHOICE BAND as a reward for completing this challenge!"))
-            giveitem(ITEM_CHOICE_BAND, 1)
+    msgbox(format("Congratulations on defeating each of the trainers in the SAFFRON CITY BATTLE HOUSE! Please accept this BRIGHT POWDER as a reward for completing our challenge!"))
+            giveitem(ITEM_BRIGHT_POWDER, 1)
 msgbox(format("We do hope you enjoy your prize!"))
         setflag(FLAG_0x0B3)
         release
         end }
 else {
-    msgbox(format("Welcome to the SAFFRON CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
+    msgbox(format("Welcome to the SAFFRON CITY BATTLE HOUSE! Defeat all four trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
     release
     end
 }
@@ -70,7 +70,7 @@ text MayDefeated {
 }
 
 text MayPostBattle {
-    format("You should visit the HOENN region sometime. There are tons of tough trainers and rare POKeMON to catch!")
+    format("You should visit the HOENN region sometime. There are tons of tough trainers and rare POKéMON to catch!")
 }
 
 text BrendanIntro {

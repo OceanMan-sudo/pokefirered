@@ -30,7 +30,7 @@ SaffronCityBattleHouseClerk_2:
 # 11 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	msgbox SaffronCityBattleHouseClerk_Text_1
 # 12 "data/maps/SaffronCity_BattleHouse/scripts.pory"
-	giveitem ITEM_CHOICE_BAND, 1
+	giveitem ITEM_BRIGHT_POWDER, 1
 # 13 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	msgbox SaffronCityBattleHouseClerk_Text_2
 # 14 "data/maps/SaffronCity_BattleHouse/scripts.pory"
@@ -132,9 +132,9 @@ SaffronCityBattleHouseClerk_Text_1:
 # 11 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "Congratulations on defeating each of\n"
 	.string "the trainers in the SAFFRON CITY\l"
-	.string "BATTLE HOUSE! Please accept the\l"
-	.string "CHOICE BAND as a reward for\l"
-	.string "completing this challenge!$"
+	.string "BATTLE HOUSE! Please accept this\l"
+	.string "BRIGHT POWDER as a reward for\l"
+	.string "completing our challenge!$"
 
 SaffronCityBattleHouseClerk_Text_2:
 # 13 "data/maps/SaffronCity_BattleHouse/scripts.pory"
@@ -143,10 +143,9 @@ SaffronCityBattleHouseClerk_Text_2:
 SaffronCityBattleHouseClerk_Text_3:
 # 18 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "Welcome to the SAFFRON CITY BATTLE\n"
-	.string "HOUSE! Defeat all three trainers\l"
-	.string "and win a fabulous prize! Fair\l"
-	.string "warning; the trainers in here are\l"
-	.string "tough!$"
+	.string "HOUSE! Defeat all four trainers and\l"
+	.string "win a fabulous prize! Fair warning;\l"
+	.string "the trainers in here are tough!$"
 
 MayIntro::
 # 64 "data/maps/SaffronCity_BattleHouse/scripts.pory"
@@ -162,7 +161,7 @@ MayPostBattle::
 # 72 "data/maps/SaffronCity_BattleHouse/scripts.pory"
 	.string "You should visit the HOENN region\n"
 	.string "sometime. There are tons of tough\l"
-	.string "trainers and rare POKeMON to catch!$"
+	.string "trainers and rare POKéMON to catch!$"
 
 BrendanIntro::
 # 76 "data/maps/SaffronCity_BattleHouse/scripts.pory"

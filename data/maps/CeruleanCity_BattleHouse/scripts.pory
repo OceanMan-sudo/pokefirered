@@ -1,0 +1,39 @@
+mapscripts CeruleanCity_BattleHouse_MapScripts{}
+
+script CeruleanCityBattleHouseClerk {
+    lock
+    faceplayer
+    if (flag(FLAG_0x0B3)) {
+        msgbox(format("Congratulations on completing the CERULEAN CITY BATTLE HOUSE. We hope you enjoy your prize!"))
+    release 
+    end}
+    elif ((defeated(TRAINER_COOLTRAINER_DUKE)) && (defeated(TRAINER_COOLTRAINER_SYLVIA)) && (defeated(TRAINER_PLAYER_BRENDAN)) && (defeated(TRAINER_PLAYER_MAY))){
+    msgbox(format("Congratulations on defeating each of the trainers in the CERULEAN CITY BATTLE HOUSE! Please accept this SHELL BELL as a reward for completing our challenge!"))
+            giveitem(ITEM_SHELL_BELL, 1)
+msgbox(format("We do hope you enjoy your prize!"))
+        setflag(FLAG_0x0B4)
+        release
+        end }
+else {
+    msgbox(format("Welcome to the CERULEAN CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough!"))
+    release
+    end
+}
+}
+
+script NonTrainer {
+    lock
+    faceplayer
+    msgbox(format("Oh, I'm not a trainer. I just like hanging out at these new BATTLE HOUSE facilities."))
+    release
+    end
+}
+
+script NonTrainer2 {
+    lock
+    faceplayer
+    msgbox(format("There are new BATTLE HOUSE facilities spread across KANTO that offer really powerful items as prizes. The prize at this facility is the SHELL BELL which heals a POKéMON by a little bit any time it inflicts damage on an opponent. Pretty convenient!"))
+release
+end
+}
+
