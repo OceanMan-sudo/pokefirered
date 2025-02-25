@@ -927,6 +927,14 @@ static const struct TrainerMonNoItemDefaultMoves sParty_CamperChris[] = {
     },
 };
 
+static const struct TrainerMonNoItemDefaultMoves sParty_PicnickerSally[] = {
+    {
+        .iv = 0,
+        .lvl = 5,
+        .species = SPECIES_SENTRET,
+    },
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_CamperDrew[] = {
     {
         .iv = 0,

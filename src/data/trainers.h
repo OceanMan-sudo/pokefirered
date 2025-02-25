@@ -872,15 +872,15 @@ const struct Trainer gTrainers[] = {
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_EliteFourGlacia),
     },
-    [TRAINER_ELITE_FOUR_DRAKE] = {
-        .trainerClass = TRAINER_CLASS_RS_ELITE_FOUR,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_ELITE_FOUR_DRAKE,
-        .trainerName = _("DRAKE"),
+    [TRAINER_PICNICKER_SALLY] = {
+        .trainerClass = TRAINER_CLASS_PICNICKER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_GIRL | F_TRAINER_FEMALE,
+        .trainerPic = TRAINER_PIC_PICNICKER,
+        .trainerName = _("SALLY"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_EliteFourDrake),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_PicnickerSally),
     },
     [TRAINER_YOUNGSTER_BEN] = {
         .trainerClass = TRAINER_CLASS_YOUNGSTER,

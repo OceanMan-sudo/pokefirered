@@ -1,0 +1,30 @@
+raw ` Route2_MapScripts::
+	.byte 0
+
+Route2_EventScript_RouteSign::
+	msgbox Route2_Text_RouteSign, MSGBOX_SIGN
+	end
+
+Route2_EventScript_DiglettsCaveSign::
+	msgbox Route2_Text_DiglettsCave, MSGBOX_SIGN
+	end
+`
+
+script PicnickerSally{
+	trainerbattle_single(TRAINER_PICNICKER_SALLY, PicnickerSallyIntro, PicnickerSallyDefeated)
+	msgbox(PicnickerSallyPostBattle, MSGBOX_AUTOCLOSE) 
+	waitmessage
+    end
+ 
+}
+text PicnickerSallyIntro {
+    "I'll be your first opponent!"
+}
+
+text PicnickerSallyDefeated {
+    "One trainer down, many more to go!"
+}
+
+text PicnickerSallyPostBattle {
+    "I'd stock up on ANTIDOTEs before heading into VIRIDIAN FOREST if I were you."
+}

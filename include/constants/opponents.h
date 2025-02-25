@@ -90,7 +90,7 @@
 #define TRAINER_LEADER_WINONA                     85
 #define TRAINER_LEADER_WALLACE                    86
 #define TRAINER_ELITE_FOUR_GLACIA                 87
-#define TRAINER_ELITE_FOUR_DRAKE                  88
+#define TRAINER_PICNICKER_SALLY                   88
 // Actual FRLG trainers start here
 #define TRAINER_YOUNGSTER_BEN                     89
 #define TRAINER_YOUNGSTER_CALVIN                  90
