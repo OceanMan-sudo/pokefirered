@@ -37,3 +37,24 @@ release
 end
 }
 
+script YoungsterJamie {
+    lock  
+     faceplayer
+    trainerbattle_single(TRAINER_YOUNGSTER_JAMIE, JamieIntro, JamieDefeated)
+    msgbox(JamiePostBattle, MSGBOX_AUTOCLOSE)
+    waitmessage
+    release
+    end
+}
+
+text JamieIntro {
+    format("Want a battle? Sure, let me pull that up for you!")
+}
+
+text JamieDefeated {
+    format("Wait, let me pull that up!")
+}
+
+text JamiePostBattle {
+    format("To be honest, I stopped listening to the podcast too...")
+}

@@ -105,7 +105,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MagmaAdminCourtney[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWattson[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderFlannery[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_LeaderNorman[] = {DUMMY_TRAINER_MON};
-static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWinona[] = {DUMMY_TRAINER_MON};
+//static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWinona[] = {DUMMY_TRAINER_MON};
 //static const struct TrainerMonNoItemDefaultMoves sParty_LeaderWallace[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourGlacia[] = {DUMMY_TRAINER_MON};
 static const struct TrainerMonNoItemDefaultMoves sParty_EliteFourDrake[] = {DUMMY_TRAINER_MON};
@@ -121,6 +121,19 @@ static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterBen[] = {
         .iv = 0,
         .lvl = 11,
         .species = SPECIES_EKANS,
+    },
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_YoungsterJamie[] = {
+    {
+        .iv = 0,
+        .lvl = 15,
+        .species = SPECIES_WHISMUR,
+    },
+    {
+        .iv = 0,
+        .lvl = 16,
+        .species = SPECIES_WHISMUR,
     },
 };
 

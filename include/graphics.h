@@ -2521,7 +2521,7 @@ extern const u32 gTrainerFrontPic_MagmaAdminF[];
 extern const u32 gTrainerFrontPic_LeaderWattson[];
 extern const u32 gTrainerFrontPic_LeaderFlannery[];
 extern const u32 gTrainerFrontPic_LeaderNorman[];
-extern const u32 gTrainerFrontPic_LeaderWinona[];
+//extern const u32 gTrainerFrontPic_LeaderWinona[];
 //extern const u32 gTrainerFrontPic_LeaderWallace[];
 //extern const u32 gTrainerFrontPic_EliteFourGlacia[];
 extern const u32 gTrainerFrontPic_EliteFourDrake[];

@@ -82,6 +82,22 @@ NonTrainer2::
 	end
 
 
+YoungsterJamie::
+# 41 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	lock
+# 42 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	faceplayer
+# 43 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	trainerbattle_single TRAINER_YOUNGSTER_JAMIE, JamieIntro, JamieDefeated
+# 44 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	msgbox JamiePostBattle, MSGBOX_AUTOCLOSE
+# 45 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	waitmessage
+# 46 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	release
+	end
+
+
 CeruleanCityBattleHouseClerk_Text_0:
 # 7 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "Congratulations on completing the\n"
@@ -124,3 +140,17 @@ NonTrainer2_Text_0:
 	.string "POKéMON by a little bit any time it\l"
 	.string "inflicts damage on an opponent.\l"
 	.string "Pretty convenient!$"
+
+JamieIntro::
+# 50 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "Want a battle? Sure, let me pull\n"
+	.string "that up for you!$"
+
+JamieDefeated::
+# 54 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "Wait, let me pull that up!$"
+
+JamiePostBattle::
+# 58 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
+	.string "To be honest, I stopped listening to\n"
+	.string "the podcast too...$"
