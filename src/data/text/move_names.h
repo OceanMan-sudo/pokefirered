@@ -365,4 +365,5 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_EARTH_POWER]   = _("EARTH POWER"),
     [MOVE_GIGA_IMPACT]   = _("GIGA IMPACT"),
     [MOVE_ICE_SHARD]     = _("ICE SHARD"),
+    [MOVE_SHADOW_SNEAK]     = _("SHADOW SNEAK"),
 };

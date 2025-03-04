@@ -386,6 +386,8 @@ gBattleAnims_Moves::
 	.4byte Move_EARTH_POWER
 	.4byte Move_GIGA_IMPACT
 	.4byte Move_ICE_SHARD
+	.4byte Move_SHADOW_SNEAK
+
 
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
@@ -7306,6 +7308,24 @@ Move_GIGA_IMPACT:
 	clearmonbg ANIM_DEF_PARTNER
 	delay 20
 	restorebg
+	end
+
+	Move_SHADOW_SNEAK:
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_HANDS_AND_FEET
+	fadetobg BG_GHOST
+	waitbgfadein
+	monbg ANIM_ATK_PARTNER
+	setalpha 9, 8
+	createvisualtask AnimTask_AttackerPunchWithTrace, 2, RGB_BLACK, 13
+	delay 6
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	restorebg
+	waitbgfadein
 	end
 
 Move_NATURE_POWER:
