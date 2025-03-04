@@ -368,6 +368,8 @@ const u8 gMoveDescription_GigaImpact[] = _("The user attacks\nwith every bit of\
 const u8 gMoveDescription_IceShard[] = _("Foe is attacked\nwith chunks of ice.\nThis move\nalways goes first.");
 const u8 gMoveDescription_ShadowSneak[] = _("User extends\nits shadow to attack\nfrom behind.\nAlways strikes first.");
 const u8 gMoveDescription_PsychoPower[] = _("User unleashes\nPsycho Power\nto crush the foe.\nMay lower defense.");
+const u8 gMoveDescription_FlashCannon[] = _("The user attacks\nwith light energy.\nMay lower Sp.\nDef stat.");
+
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -738,6 +740,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_ICE_SHARD      -1] = gMoveDescription_IceShard,
     [MOVE_SHADOW_SNEAK      -1] = gMoveDescription_ShadowSneak,
     [MOVE_PSYCHO_POWER      -1] = gMoveDescription_PsychoPower,
+    [MOVE_FLASH_CANNON      -1] = gMoveDescription_FlashCannon,
 
 
 };

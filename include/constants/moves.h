@@ -369,9 +369,10 @@
 #define MOVE_ICE_SHARD 365
 #define MOVE_SHADOW_SNEAK 366
 #define MOVE_PSYCHO_POWER 367
+#define MOVE_FLASH_CANNON 368
 
 
-#define MOVES_COUNT 368
+#define MOVES_COUNT 369
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
