@@ -362,9 +362,10 @@ const u8 gMoveDescription_DarkPulse[] = _("The user releases\nan aura of\ndarkne
 const u8 gMoveDescription_Roost[] = _("The user lands\nand rests it's\nbody, restoring\nHP by half.");
 const u8 gMoveDescription_BulletPunch[] = _("The user strikes\nwith as fast as\na bullet. This\nmove strikes first.");
 const u8 gMoveDescription_FlareBlitz[] = _("The user cloaks\nitself in fire\nand charges. The\nuser takes damage.");
-const u8 gMoveDescription_PoisonJab[] = _("A sickening jab\n or strike\nthat may leave\nthe foe poisoned.");
+const u8 gMoveDescription_PoisonJab[] = _("A sickening jab\nor strike\nthat may leave\nthe foe poisoned.");
 const u8 gMoveDescription_EarthPower[] = _("The ground under\nthe foe erupts with\npower. It may lower\nfoe's Sp. Def.");
 const u8 gMoveDescription_GigaImpact[] = _("The user attacks\nwith every bit of\nit's power. Must\nrecharge after use.");
+const u8 gMoveDescription_IceShard[] = _("Foe is attacked\nwith chunks of ice.\nThis move\nalways goes first.");
 
 
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
@@ -732,4 +733,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_POISON_JAB     -1] = gMoveDescription_PoisonJab,
     [MOVE_EARTH_POWER    -1] = gMoveDescription_EarthPower,
     [MOVE_GIGA_IMPACT    -1] = gMoveDescription_GigaImpact,
+    [MOVE_ICE_SHARD      -1] = gMoveDescription_IceShard,
+
 };

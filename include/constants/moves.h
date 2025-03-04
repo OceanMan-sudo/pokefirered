@@ -366,8 +366,9 @@
 #define MOVE_POISON_JAB 362
 #define MOVE_EARTH_POWER 363
 #define MOVE_GIGA_IMPACT 364
+#define MOVE_ICE_SHARD 365
 
-#define MOVES_COUNT 365
+#define MOVES_COUNT 366
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
