@@ -377,9 +377,10 @@
 #define MOVE_NASTY_PLOT 373
 #define MOVE_X_SCISSOR 374
 #define MOVE_SEED_BOMB 375
+#define MOVE_DRAIN_PUNCH 376
 
 
-#define MOVES_COUNT 376
+#define MOVES_COUNT 377
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
