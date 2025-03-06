@@ -373,6 +373,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_OMINOUS_WIND]     = _("OMINOUS WIND"),
     [MOVE_SCORCH_SAND]     = _("SCORCH SAND"),
     [MOVE_NASTY_PLOT]     = _("NASTY PLOT"),
-
+    [MOVE_X_SCISSOR]     = _("X SCISSOR"),
+    [MOVE_SEED_BOMB]     = _("SEED BOMB"),
 
 };

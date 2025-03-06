@@ -375,9 +375,11 @@
 #define MOVE_OMINOUS_WIND 371
 #define MOVE_SCORCH_SAND 372
 #define MOVE_NASTY_PLOT 373
+#define MOVE_X_SCISSOR 374
+#define MOVE_SEED_BOMB 375
 
 
-#define MOVES_COUNT 374
+#define MOVES_COUNT 376
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

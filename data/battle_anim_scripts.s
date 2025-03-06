@@ -394,7 +394,8 @@ gBattleAnims_Moves::
 	.4byte Move_OMINOUS_WIND
 	.4byte Move_SCORCHED_SAND
 	.4byte Move_NASTY_PLOT
-
+	.4byte Move_X_SCISSOR
+	.4byte Move_SEED_BOMB
 
 
 
@@ -955,6 +956,35 @@ Move_LEECH_SEED:
 	createsprite gLeechSeedSpriteTemplate, ANIM_TARGET, 2, 15, 0, 16, 24, 35, -37
 	delay 12
 	loopsewithpan SE_M_TAIL_WHIP, SOUND_PAN_TARGET, 10, 8
+	waitforvisualfinish
+	end
+
+	Move_SEED_BOMB:
+	loadspritegfx ANIM_TAG_SEED
+	loadspritegfx ANIM_TAG_EXPLOSION
+	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	createsprite gLeechSeedSpriteTemplate, ANIM_TARGET, 2, 15, 0, 0, 24, 35, -32
+	delay 8
+	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	createsprite gLeechSeedSpriteTemplate, ANIM_TARGET, 2, 15, 0, -16, 24, 35, -40
+	delay 8
+	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	createsprite gLeechSeedSpriteTemplate, ANIM_TARGET, 2, 15, 0, 16, 24, 35, -37
+	delay 12
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, -16, -15, 1, 0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, 16, -5, 1, 0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, -12, 18, 1, 0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, 0, 5, 1, 0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
 	waitforvisualfinish
 	end
 
@@ -7552,6 +7582,23 @@ Move_NASTY_PLOT:
 	waitforvisualfinish
 	delay 12
 	call UnsetPsychicBackground
+	end
+
+Move_X_SCISSOR:
+	loadspritegfx ANIM_TAG_CUT
+	monbg ANIM_TARGET
+	setalpha 12, 8
+	playsewithpan SE_M_CUT, SOUND_PAN_TARGET
+	createsprite gCuttingSliceSpriteTemplate, ANIM_ATTACKER, 2, 40, -32, 0
+	delay 5
+	playsewithpan SE_M_CUT, SOUND_PAN_TARGET
+	createsprite gCuttingSliceSpriteTemplate, ANIM_ATTACKER, 2, 40, -32, 0
+	delay 5
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 10, 1
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	waitforvisualfinish
 	end
 
 Move_NATURE_POWER:

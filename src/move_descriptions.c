@@ -374,7 +374,8 @@ const u8 gMoveDescription_LeafStorm[] = _("Opponent is hit\nby a storm of\nleave
 const u8 gMoveDescription_OminousWind[] = _("Foe is struck\nwith repulsive\nwind. May raise\nall user's stats.");
 const u8 gMoveDescription_ScorchSand[] = _("Scorching sand\nis thrown at\nthe target. May\nalso cause burn.");
 const u8 gMoveDescription_NastyPlot[] = _("User thinks\nof bad thoughts.\nIt sharply raises\nSP. ATK stat.");
-
+const u8 gMoveDescription_XScissor[] = _("The user slashes\nat the foe by\ncrossing its\nscythes or claws.");
+const u8 gMoveDescription_SeedBomb[] = _("The user slams\na barrage of\nhard-shelled seeds\ndown on the target.");
 
 
 
@@ -752,5 +753,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_OMINOUS_WIND      -1] = gMoveDescription_OminousWind,
     [MOVE_SCORCH_SAND      -1] = gMoveDescription_ScorchSand,
     [MOVE_NASTY_PLOT      -1] = gMoveDescription_NastyPlot,
+    [MOVE_X_SCISSOR      -1] = gMoveDescription_XScissor,
+    [MOVE_SEED_BOMB      -1] = gMoveDescription_SeedBomb,
 
 };

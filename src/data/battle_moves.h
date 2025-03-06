@@ -1697,7 +1697,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_EGG_BOMB] =
     {
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 100,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 15,
@@ -5226,5 +5226,31 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
         .priority = 0,
         .flags = FLAG_SNATCH_AFFECTED,
         .category= MOVE_CATEGORY_STATUS,
+    },
+    [MOVE_X_SCISSOR] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .category= MOVE_CATEGORY_PHYSICAL,
+    },
+    [MOVE_SEED_BOMB] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .category= MOVE_CATEGORY_PHYSICAL,
     },
 };
