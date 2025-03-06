@@ -370,9 +370,11 @@
 #define MOVE_SHADOW_SNEAK 366
 #define MOVE_PSYCHO_POWER 367
 #define MOVE_FLASH_CANNON 368
+#define MOVE_DRACO_METEOR 369
+#define MOVE_LEAF_STORM 370
 
 
-#define MOVES_COUNT 369
+#define MOVES_COUNT 371
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
