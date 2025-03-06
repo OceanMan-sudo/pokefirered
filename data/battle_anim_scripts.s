@@ -392,6 +392,8 @@ gBattleAnims_Moves::
 	.4byte Move_DRACO_METEOR
 	.4byte Move_LEAF_STORM
 	.4byte Move_OMINOUS_WIND
+	.4byte Move_SCORCHED_SAND
+	.4byte Move_NASTY_PLOT
 
 
 
@@ -7502,6 +7504,54 @@ Move_GIGA_IMPACT:
 	blendoff
 	restorebg
 	waitbgfadein
+	end
+
+Move_SCORCHED_SAND:
+	loadspritegfx ANIM_TAG_MUD_SAND
+	loadspritegfx ANIM_TAG_SMALL_EMBER
+	monbg ANIM_ATK_PARTNER
+	splitbgprio ANIM_ATTACKER
+	setalpha 12, 8
+	playsewithpan SE_M_SAND_ATTACK, SOUND_PAN_ATTACKER
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, -10, 0, 0, 3
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 2
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	waitforvisualfinish
+	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_TARGET
+	call BurnFlame
+	call BurnFlame
+	call BurnFlame
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	end	
+
+Move_NASTY_PLOT:
+	loadspritegfx ANIM_TAG_AMNESIA
+	loadspritegfx ANIM_TAG_FINGER_2
+	loadspritegfx ANIM_TAG_THOUGHT_BUBBLE
+	call SetPsychicBackground
+	delay 8
+	createsprite gQuestionMarkSpriteTemplate, ANIM_ATTACKER, 20
+	playsewithpan SE_M_METRONOME, SOUND_PAN_ATTACKER
+	delay 54
+	loopsewithpan SE_M_METRONOME, SOUND_PAN_ATTACKER, 16, 3
+	waitforvisualfinish
+	createsprite gThoughtBubbleSpriteTemplate, ANIM_ATTACKER, 11, 0, 45
+	playsewithpan SE_M_METRONOME, SOUND_PAN_ATTACKER
+	delay 6
+	createsprite gTauntFingerSpriteTemplate, ANIM_ATTACKER, 12, 0
+	delay 4
+	loopsewithpan SE_M_TAIL_WHIP, SOUND_PAN_ATTACKER, 16, 2
+	waitforvisualfinish
+	delay 12
+	call UnsetPsychicBackground
 	end
 
 Move_NATURE_POWER:

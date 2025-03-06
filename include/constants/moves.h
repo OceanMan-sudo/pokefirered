@@ -373,9 +373,11 @@
 #define MOVE_DRACO_METEOR 369
 #define MOVE_LEAF_STORM 370
 #define MOVE_OMINOUS_WIND 371
+#define MOVE_SCORCH_SAND 372
+#define MOVE_NASTY_PLOT 373
 
 
-#define MOVES_COUNT 372
+#define MOVES_COUNT 374
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF
