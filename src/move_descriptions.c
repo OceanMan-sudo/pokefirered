@@ -371,6 +371,7 @@ const u8 gMoveDescription_PsychoPower[] = _("User unleashes\nPsycho Power\nto cr
 const u8 gMoveDescription_FlashCannon[] = _("The user attacks\nwith light energy.\nMay lower SP.\nDEF stat.");
 const u8 gMoveDescription_DracoMeteor[] = _("Comets are summoned\nto strike the\ntarget. Sharply\nlowers own SP. ATK.");
 const u8 gMoveDescription_LeafStorm[] = _("Opponent is hit\nby a storm of\nleaves. Sharply\nlowers own SP. ATK.");
+const u8 gMoveDescription_OminousWind[] = _("Foe is struck\nwith repulsive\nwind. May raise\nall user's stats.");
 
 
 
@@ -746,5 +747,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_FLASH_CANNON      -1] = gMoveDescription_FlashCannon,
     [MOVE_DRACO_METEOR      -1] = gMoveDescription_DracoMeteor,
     [MOVE_LEAF_STORM      -1] = gMoveDescription_LeafStorm,
+    [MOVE_OMINOUS_WIND      -1] = gMoveDescription_OminousWind,
 
 };

@@ -370,5 +370,6 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_FLASH_CANNON]     = _("FLASH CANNON"),
     [MOVE_DRACO_METEOR]     = _("DRACO METEOR"),
     [MOVE_LEAF_STORM]     = _("LEAF STORM"),
+    [MOVE_OMINOUS_WIND]     = _("OMINOUS WIND"),
 
 };
