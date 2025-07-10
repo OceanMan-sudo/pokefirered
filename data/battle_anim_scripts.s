@@ -7578,9 +7578,9 @@ Move_SCORCHED_SAND:
 	call SandAttackDirt
 	waitforvisualfinish
 	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_TARGET
-	call BurnFlame
-	call BurnFlame
-	call BurnFlame
+	call EmberFireHit
+	call EmberFireHit
+	call EmberFireHit
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
