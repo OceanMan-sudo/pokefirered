@@ -2598,6 +2598,9 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
                 damage /= 2;
         }
 
+        if (attacker->ability == ABILITY_SOLAR_POWER && gBattleWeather & B_WEATHER_SUN)
+        damage = (15 * damage) / 10;
+
         // Moves hitting both targets do half damage in double battles
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gBattleMoves[move].target == MOVE_TARGET_BOTH && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
             damage /= 2;
@@ -2647,6 +2650,7 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         if ((gBattleResources->flags->flags[battlerIdAtk] & RESOURCE_FLAG_FLASH_FIRE) && type == TYPE_FIRE)
             damage = (15 * damage) / 10;
     return damage + 2;
+
 }
 
 u8 CountAliveMonsInBattle(u8 caseId)
