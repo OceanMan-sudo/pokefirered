@@ -803,6 +803,8 @@ gStdScriptsEnd::
 	.include "data/maps/SixIsland_WaterPath_House1/text.inc"
 	.include "data/maps/SixIsland_WaterPath_House2/text.inc"
 	.include "data/maps/SevenIsland_SevaultCanyon_House/text.inc"
+	.include "data/scripts/move_relearner_pc.inc"
+	.include "data/text/move_relearner_pc.inc"
 
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
