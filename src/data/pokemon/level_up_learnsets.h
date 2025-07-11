@@ -322,7 +322,7 @@ static const u16 sRaticateLevelUpLearnset[] = {
 static const u16 sSpearowLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_PECK),
     LEVEL_UP_MOVE(1, MOVE_GROWL),
-    LEVEL_UP_MOVE(7, MOVE_LEER),
+    LEVEL_UP_MOVE(7, MOVE_SLASH),
     LEVEL_UP_MOVE(13, MOVE_FURY_ATTACK),
     LEVEL_UP_MOVE(19, MOVE_PURSUIT),
     LEVEL_UP_MOVE(25, MOVE_AERIAL_ACE),
