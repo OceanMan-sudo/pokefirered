@@ -315,9 +315,7 @@ NuzlockeMeowth_Text_1:
 
 MrNuzlocke_Text_0:
 # 51 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"
-	.string "MR. NUZLOCKE: You've become strong!\n"
-	.string "But, mark my words, I don't plan on\l"
-	.string "retiring ever! Run along now, child!$"
+	.string "MR. NUZLOCKE: Good work dude.$"
 
 MrNuzlocke_Text_1:
 # 53 "data/maps/ViridianCity_HouseOfNuzlocke/scripts.pory"

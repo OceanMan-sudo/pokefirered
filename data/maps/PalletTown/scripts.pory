@@ -511,10 +511,10 @@ script AgathaHouse {
     end
 }
 
-script PalletTownScaredGirl {
+script PalletTownGirl {
     lock
     faceplayer
-    msgbox("AGATHA moved back to Pallet Town.\pShe's supposedly really strong,\nbut she gives me the creeps!\p...Don't tell her I said that!")
+ 	 msgbox(format("This expansion didn't just happen overnight. You should've seen the construction! It felt like PALLET TOWN was a sort of testing grounds for the rest of the region's expansion."))
     release
     end
 }

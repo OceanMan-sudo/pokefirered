@@ -982,13 +982,13 @@ AgathaHouse::
 	end
 
 
-PalletTownScaredGirl::
+PalletTownGirl::
 # 515 "data/maps/PalletTown/scripts.pory"
 	lock
 # 516 "data/maps/PalletTown/scripts.pory"
 	faceplayer
 # 517 "data/maps/PalletTown/scripts.pory"
-	msgbox PalletTownScaredGirl_Text_0
+	msgbox PalletTownGirl_Text_0
 # 518 "data/maps/PalletTown/scripts.pory"
 	release
 	end
@@ -1056,9 +1056,14 @@ AgathaHouse_Text_0:
 # 509 "data/maps/PalletTown/scripts.pory"
 	.string "AGATHA's House$"
 
-PalletTownScaredGirl_Text_0:
+PalletTownGirl_Text_0:
 # 517 "data/maps/PalletTown/scripts.pory"
-	.string "AGATHA moved back to Pallet Town.\pShe's supposedly really strong,\nbut she gives me the creeps!\p...Don't tell her I said that!$"
+	.string "This expansion didn't just happen\n"
+	.string "overnight. You should've seen the\l"
+	.string "construction! It felt like PALLET\l"
+	.string "TOWN was a sort of testing grounds\l"
+	.string "for the rest of the region's\l"
+	.string "expansion.$"
 
 ClearGame_Text_0:
 # 525 "data/maps/PalletTown/scripts.pory"

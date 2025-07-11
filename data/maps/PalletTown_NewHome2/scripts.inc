@@ -2,52 +2,39 @@ PalletTown_NewHome2_MapScripts::
 	.byte 0
 
 
-AgathaPallet::
+OldMan::
 # 3 "data/maps/PalletTown_NewHome2/scripts.pory"
 	lock
 # 4 "data/maps/PalletTown_NewHome2/scripts.pory"
 	faceplayer
 # 5 "data/maps/PalletTown_NewHome2/scripts.pory"
-	goto_if_set SYS_FLAGS + 0x2C, AgathaPallet_2
-# 7 "data/maps/PalletTown_NewHome2/scripts.pory"
-	goto_if_set SYS_FLAGS + 0x27, AgathaPallet_3
-# 9 "data/maps/PalletTown_NewHome2/scripts.pory"
-	goto_if_set SYS_FLAGS + 0x29, AgathaPallet_4
+	msgbox OldMan_Text_0
+# 6 "data/maps/PalletTown_NewHome2/scripts.pory"
+	release
+	end
+
+
+LittleGirl::
+# 11 "data/maps/PalletTown_NewHome2/scripts.pory"
+	lock
 # 12 "data/maps/PalletTown_NewHome2/scripts.pory"
-	msgbox AgathaPallet_Text_3
-AgathaPallet_1:
+	faceplayer
+# 13 "data/maps/PalletTown_NewHome2/scripts.pory"
+	msgbox LittleGirl_Text_0
 # 14 "data/maps/PalletTown_NewHome2/scripts.pory"
 	release
 	end
 
-AgathaPallet_2:
-# 6 "data/maps/PalletTown_NewHome2/scripts.pory"
-	msgbox AgathaPallet_Text_0
-	goto AgathaPallet_1
 
-AgathaPallet_3:
-# 8 "data/maps/PalletTown_NewHome2/scripts.pory"
-	msgbox AgathaPallet_Text_1
-	goto AgathaPallet_1
+OldMan_Text_0:
+# 5 "data/maps/PalletTown_NewHome2/scripts.pory"
+	.string "Many POKéMON in the region have\n"
+	.string "differt types, stats, and moves to\l"
+	.string "utilize. Enjoy discovering\l"
+	.string "everything new in KANTO!$"
 
-AgathaPallet_4:
-# 10 "data/maps/PalletTown_NewHome2/scripts.pory"
-	msgbox AgathaPallet_Text_2
-	goto AgathaPallet_1
-
-
-AgathaPallet_Text_0:
-# 6 "data/maps/PalletTown_NewHome2/scripts.pory"
-	.string "AGATHA: You've become strong!\pBut, mark my words,\nI don't plan on retiring ever!\pRun along now, child!$"
-
-AgathaPallet_Text_1:
-# 8 "data/maps/PalletTown_NewHome2/scripts.pory"
-	.string "AGATHA: You've become strong!\pThe time has come to test your\nstrength.\pShow me what the old duff\nsees in you.\pRun along now, child!$"
-
-AgathaPallet_Text_2:
-# 10 "data/maps/PalletTown_NewHome2/scripts.pory"
-	.string "AGATHA: That old duff OAK entrusted\nyou with the POKéDEX did he?\pHmph!\pYou must focus on becoming strong!\pPOKéMON are made for battling, not\nstudying!\pRun along now, child.$"
-
-AgathaPallet_Text_3:
-# 12 "data/maps/PalletTown_NewHome2/scripts.pory"
-	.string "AGATHA: Run along now child.$"
+LittleGirl_Text_0:
+# 13 "data/maps/PalletTown_NewHome2/scripts.pory"
+	.string "My grandpa took me to the store to\n"
+	.string "buy POKéMON Trading Cards, but\l"
+	.string "they were all sold out...$"

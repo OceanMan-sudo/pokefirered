@@ -48,7 +48,7 @@ script MrNuzlocke {
     lock
     faceplayer
     if (flag(SYS_FLAGS + 0x2C)) {
-        msgbox(format("MR. NUZLOCKE: You've become strong! But, mark my words, I don't plan on retiring ever! Run along now, child!"))
+        msgbox(format("MR. NUZLOCKE: Good work dude."))
     } elif (flag(FLAG_0x0B1)){
         msgbox(format("MR. NUZLOCKE: Go forth! And let the spirit of Nuzlocke guide you to the top!"))
         release
