@@ -4560,6 +4560,18 @@
       "secondary_tileset": "gTileset_HallOfFame",
       "border_filepath": "data/layouts/CeruleanCity_BattleHouse/border.bin",
       "blockdata_filepath": "data/layouts/CeruleanCity_BattleHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CINNABAR_ISLAND_BATTLE_HOUSE",
+      "name": "CinnabarIsland_BattleHouse_Layout",
+      "width": 15,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_HallOfFame",
+      "border_filepath": "data/layouts/CinnabarIsland_BattleHouse/border.bin",
+      "blockdata_filepath": "data/layouts/CinnabarIsland_BattleHouse/map.bin"
     }
   ]
 }

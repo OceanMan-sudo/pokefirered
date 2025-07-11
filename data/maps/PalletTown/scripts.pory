@@ -503,14 +503,6 @@ script PalletTown_Poliwrath {
     end
 }
 
-script AgathaHouse {
-    lock
-    faceplayer
-    msgbox(format("AGATHA's House"))
-    release
-    end
-}
-
 script PalletTownGirl {
     lock
     faceplayer

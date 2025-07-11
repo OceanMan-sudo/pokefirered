@@ -970,60 +970,48 @@ PalletTown_Poliwrath::
 	end
 
 
-AgathaHouse::
+PalletTownGirl::
 # 507 "data/maps/PalletTown/scripts.pory"
 	lock
 # 508 "data/maps/PalletTown/scripts.pory"
 	faceplayer
 # 509 "data/maps/PalletTown/scripts.pory"
-	msgbox AgathaHouse_Text_0
+	msgbox PalletTownGirl_Text_0
 # 510 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
-PalletTownGirl::
+ClearGame::
 # 515 "data/maps/PalletTown/scripts.pory"
 	lock
 # 516 "data/maps/PalletTown/scripts.pory"
 	faceplayer
 # 517 "data/maps/PalletTown/scripts.pory"
-	msgbox PalletTownGirl_Text_0
-# 518 "data/maps/PalletTown/scripts.pory"
-	release
-	end
-
-
-ClearGame::
-# 523 "data/maps/PalletTown/scripts.pory"
-	lock
-# 524 "data/maps/PalletTown/scripts.pory"
-	faceplayer
-# 525 "data/maps/PalletTown/scripts.pory"
 	msgbox ClearGame_Text_0
-# 526 "data/maps/PalletTown/scripts.pory"
+# 518 "data/maps/PalletTown/scripts.pory"
 	setflag SYS_FLAGS + 0x2C
-# 527 "data/maps/PalletTown/scripts.pory"
+# 519 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 EightBadges::
-# 532 "data/maps/PalletTown/scripts.pory"
+# 524 "data/maps/PalletTown/scripts.pory"
 	lock
-# 533 "data/maps/PalletTown/scripts.pory"
+# 525 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 534 "data/maps/PalletTown/scripts.pory"
+# 526 "data/maps/PalletTown/scripts.pory"
 	msgbox EightBadges_Text_0
-# 535 "data/maps/PalletTown/scripts.pory"
+# 527 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_OLD_AMBER
-# 536 "data/maps/PalletTown/scripts.pory"
+# 528 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_HELIX_FOSSIL
-# 537 "data/maps/PalletTown/scripts.pory"
+# 529 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_DOME_FOSSIL
-# 538 "data/maps/PalletTown/scripts.pory"
+# 530 "data/maps/PalletTown/scripts.pory"
 	setflag SYS_FLAGS + 0x27
-# 539 "data/maps/PalletTown/scripts.pory"
+# 531 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
@@ -1052,12 +1040,8 @@ PalletTown_Poliwrath_Text_0:
 # 501 "data/maps/PalletTown/scripts.pory"
 	.string "POLI!$"
 
-AgathaHouse_Text_0:
-# 509 "data/maps/PalletTown/scripts.pory"
-	.string "AGATHA's House$"
-
 PalletTownGirl_Text_0:
-# 517 "data/maps/PalletTown/scripts.pory"
+# 509 "data/maps/PalletTown/scripts.pory"
 	.string "This expansion didn't just happen\n"
 	.string "overnight. You should've seen the\l"
 	.string "construction! It felt like PALLET\l"
@@ -1066,9 +1050,9 @@ PalletTownGirl_Text_0:
 	.string "expansion.$"
 
 ClearGame_Text_0:
-# 525 "data/maps/PalletTown/scripts.pory"
+# 517 "data/maps/PalletTown/scripts.pory"
 	.string "Way to go$"
 
 EightBadges_Text_0:
-# 534 "data/maps/PalletTown/scripts.pory"
+# 526 "data/maps/PalletTown/scripts.pory"
 	.string "Lick my butt$"

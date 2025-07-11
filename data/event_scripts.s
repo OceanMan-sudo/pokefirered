@@ -1407,3 +1407,6 @@ Text_TestMsg::
 
 	.include "data/maps/CeruleanCity_BattleHouse/scripts.inc"
 	.include "data/maps/CeruleanCity_BattleHouse/text.inc"
+
+	.include "data/maps/CinnabarIsland_BattleHouse/scripts.inc"
+	.include "data/maps/CinnabarIsland_BattleHouse/text.inc"

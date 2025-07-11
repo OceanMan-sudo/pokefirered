@@ -378,6 +378,7 @@
 #define MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F           (5 | (12 << 8))
 #define MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F           (6 | (12 << 8))
 #define MAP_CINNABAR_ISLAND_MART                        (7 | (12 << 8))
+#define MAP_CINNABAR_ISLAND_BATTLE_HOUSE                (8 | (12 << 8))
 
 // gMapGroup_IndoorIndigoPlateau
 #define MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F (0 | (13 << 8))
