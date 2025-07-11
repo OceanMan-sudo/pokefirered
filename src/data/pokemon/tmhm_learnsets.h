@@ -399,6 +399,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM45_ATTRACT)
                                         | TMHM(TM46_THIEF)
                                         | TMHM(TM47_STEEL_WING)
+                                        | TMHM(HM01_CUT)
                                         | TMHM(HM02_FLY)),
 
     [SPECIES_FEAROW]      = TMHM_LEARNSET(TMHM(TM06_TOXIC)
@@ -417,6 +418,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM45_ATTRACT)
                                         | TMHM(TM46_THIEF)
                                         | TMHM(TM47_STEEL_WING)
+                                        | TMHM(HM01_CUT)
                                         | TMHM(HM02_FLY)),
 
     [SPECIES_EKANS]       = TMHM_LEARNSET(TMHM(TM06_TOXIC)
@@ -483,6 +485,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM43_SECRET_POWER)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM45_ATTRACT)
+                                        | TMHM(HM02_FLY)
+                                        | TMHM(HM03_SURF)
                                         | TMHM(HM04_STRENGTH)
                                         | TMHM(HM05_FLASH)
                                         | TMHM(HM06_ROCK_SMASH)),
@@ -508,6 +512,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM44_REST)
                                         | TMHM(TM45_ATTRACT)
                                         | TMHM(TM46_THIEF)
+                                        | TMHM(HM03_SURF)
                                         | TMHM(HM04_STRENGTH)
                                         | TMHM(HM05_FLASH)
                                         | TMHM(HM06_ROCK_SMASH)),
