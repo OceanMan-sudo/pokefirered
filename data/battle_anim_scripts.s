@@ -397,6 +397,8 @@ gBattleAnims_Moves::
 	.4byte Move_X_SCISSOR
 	.4byte Move_SEED_BOMB
 	.4byte Move_DRAIN_PUNCH
+	.4byte Move_AQUA_JET
+
 
 
 
@@ -2854,6 +2856,25 @@ Move_QUICK_ATTACK:
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
 	waitforvisualfinish
+	end
+
+Move_AQUA_JET:
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_WATER_IMPACT
+	loadspritegfx ANIM_TAG_SMALL_BUBBLES
+	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+	monbg ANIM_ATK_PARTNER
+	setalpha 12, 8
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 24, 6, 1, 5
+	createvisualtask AnimTask_TraceMonBlended, 2, 0, 4, 7, 3
+	playsewithpan SE_M_JUMP_KICK, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 6, 1
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 0, 0, ANIM_TARGET, 1
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	call RisingWaterHitEffect
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
 	end
 
 Move_RAGE:

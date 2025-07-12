@@ -377,6 +377,7 @@ const u8 gMoveDescription_NastyPlot[] = _("User thinks\nof bad thoughts.\nIt sha
 const u8 gMoveDescription_XScissor[] = _("The user slashes\nat the foe by\ncrossing its\nscythes or claws.");
 const u8 gMoveDescription_SeedBomb[] = _("The user slams\na barrage of\nhard-shelled seeds\ndown on the target.");
 const u8 gMoveDescription_DrainPunch[] = _("An energy-draining\npunch that\nrestores the\nuser's health.");
+const u8 gMoveDescription_AquaJet[] = _("Attacks at speed\nthat makes it\nalmost invisible.\nAlways goes first.");
 
 
 
@@ -757,5 +758,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_X_SCISSOR      -1] = gMoveDescription_XScissor,
     [MOVE_SEED_BOMB      -1] = gMoveDescription_SeedBomb,
     [MOVE_DRAIN_PUNCH      -1] = gMoveDescription_DrainPunch,
+    [MOVE_AQUA_JET      -1] = gMoveDescription_AquaJet,
 
 };
