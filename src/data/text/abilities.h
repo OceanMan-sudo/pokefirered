@@ -78,6 +78,7 @@ static const u8 sCacophonyDescription[] = _("Avoids sound-based moves.");
 static const u8 sAirLockDescription[] = _("Negates weather effects.");
 static const u8 sSolarPowerDescription[] = _("Boosts SP.ATK in Sun.");
 static const u8 sSuperLuckDescription[] = _("Boosts chance of crit.");
+static const u8 sTechnicianDescription[] = _("Powers up weaker moves.");
 
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -162,6 +163,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_AIR_LOCK] = sAirLockDescription,
     [ABILITY_SOLAR_POWER] = sSolarPowerDescription,
     [ABILITY_SUPER_LUCK] = sSuperLuckDescription,
+    [ABILITY_TECHNICIAN] = sTechnicianDescription,
 
 };
 
@@ -247,5 +249,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_AIR_LOCK] = _("AIR LOCK"),
     [ABILITY_SOLAR_POWER] = _("SOLAR POWER"),
     [ABILITY_SUPER_LUCK] = _("SUPER LUCK"),
+    [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
 
 };

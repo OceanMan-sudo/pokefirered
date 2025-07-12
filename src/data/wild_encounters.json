@@ -22143,6 +22143,71 @@
         {
           "map": "MAP_PALLET_TOWN",
           "base_label": "sPalletTown_FireRed",
+          "land_mons": {
+            "encounter_rate": 7,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SPEAROW"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_VENUSAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BULBASAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_IVYSAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_VENUSAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BULBASAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_IVYSAUR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_VENUSAUR"
+              }
+            ]
+          },
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -22225,71 +22290,6 @@
                 "min_level": 25,
                 "max_level": 35,
                 "species": "SPECIES_PSYDUCK"
-              }
-            ]
-          },
-          "land_mons": {
-            "encounter_rate": 7,
-            "mons": [
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_SPEAROW"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_SPEAROW"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_CATERPIE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_WEEDLE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_IVYSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_VENUSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_BULBASAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_IVYSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_VENUSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_BULBASAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_IVYSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_VENUSAUR"
               }
             ]
           }
