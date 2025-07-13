@@ -79,6 +79,7 @@ static const u8 sAirLockDescription[] = _("Negates weather effects.");
 static const u8 sSolarPowerDescription[] = _("Boosts SP.ATK in Sun.");
 static const u8 sSuperLuckDescription[] = _("Boosts chance of crit.");
 static const u8 sTechnicianDescription[] = _("Powers up weaker moves.");
+static const u8 sIceBodyDescription[] = _("Slight HP recovery in hail.");
 
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -164,6 +165,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SOLAR_POWER] = sSolarPowerDescription,
     [ABILITY_SUPER_LUCK] = sSuperLuckDescription,
     [ABILITY_TECHNICIAN] = sTechnicianDescription,
+    [ABILITY_ICE_BODY] = sIceBodyDescription,
 
 };
 
@@ -250,5 +252,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SOLAR_POWER] = _("SOLAR POWER"),
     [ABILITY_SUPER_LUCK] = _("SUPER LUCK"),
     [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
+    [ABILITY_ICE_BODY] = _("ICE BODY"),
 
 };
