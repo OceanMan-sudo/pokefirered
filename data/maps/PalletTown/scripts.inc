@@ -1016,67 +1016,6 @@ EightBadges::
 	end
 
 
-IcePunchMan::
-# 535 "data/maps/PalletTown/scripts.pory"
-	lock
-# 536 "data/maps/PalletTown/scripts.pory"
-	faceplayer
-# 538 "data/maps/PalletTown/scripts.pory"
-	msgbox IcePunchMan_Text_0, MSGBOX_YESNO
-# 539 "data/maps/PalletTown/scripts.pory"
-	compare VAR_RESULT, NO
-	goto_if_eq IcePunchMan_2
-IcePunchMan_1:
-# 543 "data/maps/PalletTown/scripts.pory"
-	compare VAR_RESULT, NO
-	goto_if_eq IcePunchMan_5
-IcePunchMan_4:
-# 547 "data/maps/PalletTown/scripts.pory"
-	msgbox IcePunchMan_Text_1
-# 548 "data/maps/PalletTown/scripts.pory"
-	setvar VAR_0x8005, MOVETUTOR_ICE_PUNCH
-# 549 "data/maps/PalletTown/scripts.pory"
-	call EventScript_ChooseMoveTutorMon
-# 550 "data/maps/PalletTown/scripts.pory"
-	compare VAR_RESULT, FALSE
-	goto_if_eq IcePunchMan_8
-IcePunchMan_7:
-# 554 "data/maps/PalletTown/scripts.pory"
-	goto EventScript_IcePunchTaught
-	end
-
-IcePunchMan_2:
-# 540 "data/maps/PalletTown/scripts.pory"
-	goto EventScript_IcePunchDeclined
-	goto IcePunchMan_1
-
-IcePunchMan_5:
-# 544 "data/maps/PalletTown/scripts.pory"
-	goto EventScript_IcePunchDeclined
-	goto IcePunchMan_4
-
-IcePunchMan_8:
-# 551 "data/maps/PalletTown/scripts.pory"
-	goto EventScript_IcePunchDeclined
-	goto IcePunchMan_7
-
-
-EventScript_IcePunchDeclined::
-# 559 "data/maps/PalletTown/scripts.pory"
-	msgbox EventScript_IcePunchDeclined_Text_0
-# 560 "data/maps/PalletTown/scripts.pory"
-	release
-	end
-
-
-EventScript_IcePunchTaught::
-# 565 "data/maps/PalletTown/scripts.pory"
-	msgbox EventScript_IcePunchTaught_Text_0
-# 566 "data/maps/PalletTown/scripts.pory"
-	release
-	end
-
-
 PalletTown_EventScript_HelloSign_Text_0:
 # 460 "data/maps/PalletTown/scripts.pory"
 	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
@@ -1117,26 +1056,3 @@ ClearGame_Text_0:
 EightBadges_Text_0:
 # 525 "data/maps/PalletTown/scripts.pory"
 	.string "Lick my butt$"
-
-IcePunchMan_Text_0:
-# 538 "data/maps/PalletTown/scripts.pory"
-	.string "The elements speak to me! They tell\n"
-	.string "me ice is the most formidable!\l"
-	.string "Nevermind what my training partners\l"
-	.string "say. To prove the superiority of\l"
-	.string "ice, allow me to teach one of your\l"
-	.string "POKéMON ICE PUNCH!$"
-
-IcePunchMan_Text_1:
-# 547 "data/maps/PalletTown/scripts.pory"
-	.string "Excellent choice! Which POKéMON\n"
-	.string "shall I teach?$"
-
-EventScript_IcePunchDeclined_Text_0:
-# 559 "data/maps/PalletTown/scripts.pory"
-	.string "Very well! Return here when you wish\n"
-	.string "to embrace the elements!$"
-
-EventScript_IcePunchTaught_Text_0:
-# 565 "data/maps/PalletTown/scripts.pory"
-	.string "Aha! A modern Sub-Zero!$"

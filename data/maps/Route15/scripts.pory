@@ -12,3 +12,11 @@ script ElementHouse{
     release
     end
 }
+
+script BattleGirlElements {
+    lock
+    faceplayer
+  msgbox(format("The blackbelts in this house are practitioners of the elemental punches. They taught my MANKEY the move THUNDERPUNCH!"))
+release
+end
+}

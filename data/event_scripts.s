@@ -1410,3 +1410,6 @@ Text_TestMsg::
 
 	.include "data/maps/CinnabarIsland_BattleHouse/scripts.inc"
 	.include "data/maps/CinnabarIsland_BattleHouse/text.inc"
+
+	.include "data/maps/Route15_HouseofElements/scripts.inc"
+	.include "data/maps/Route15_HouseofElements/text.inc"

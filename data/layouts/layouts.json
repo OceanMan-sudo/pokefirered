@@ -4572,6 +4572,18 @@
       "secondary_tileset": "gTileset_HallOfFame",
       "border_filepath": "data/layouts/CinnabarIsland_BattleHouse/border.bin",
       "blockdata_filepath": "data/layouts/CinnabarIsland_BattleHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE15_HOUSEOF_ELEMENTS",
+      "name": "Route15_HouseofElements_Layout",
+      "width": 11,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PewterGym",
+      "border_filepath": "data/layouts/Route15_HouseofElements/border.bin",
+      "blockdata_filepath": "data/layouts/Route15_HouseofElements/map.bin"
     }
   ]
 }

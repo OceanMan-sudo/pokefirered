@@ -437,6 +437,7 @@
 // gMapGroup_IndoorRoute15
 #define MAP_ROUTE15_WEST_ENTRANCE_1F (0 | (24 << 8))
 #define MAP_ROUTE15_WEST_ENTRANCE_2F (1 | (24 << 8))
+#define MAP_ROUTE15_HOUSEOF_ELEMENTS (2 | (24 << 8))
 
 // gMapGroup_IndoorRoute16
 #define MAP_ROUTE16_HOUSE             (0 | (25 << 8))

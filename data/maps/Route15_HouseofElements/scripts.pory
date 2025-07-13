@@ -1,0 +1,36 @@
+mapscripts Route15_HouseofElements_MapScripts {}
+script IcePunchMan {
+    lock
+    faceplayer
+
+    msgbox(format("The elements speak to me! They tell me ice is the most formidable. To prove the superiority of ice, allow me to teach one of your POKéMON ICE PUNCH!"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    msgbox(format("Excellent choice! Which POKéMON shall I teach?"))
+    setvar(VAR_0x8005, MOVETUTOR_ICE_PUNCH)
+    call(EventScript_ChooseMoveTutorMon)
+    if (var(VAR_RESULT) == FALSE) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    goto(EventScript_IcePunchTaught)
+    end
+}
+
+script EventScript_IcePunchDeclined {
+    msgbox(format("Very well! Return here when you wish to embrace the elements!"))
+    release
+    end
+}
+
+script EventScript_IcePunchTaught {
+	msgbox(format("Use this move well. It was passed down to me from the masters of the {COLOR BLUE}{SHADOW LIGHT_BLUE}LIN KUEI TEMPLE."))
+	release
+	end
+}

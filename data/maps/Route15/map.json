@@ -209,14 +209,6 @@
       "flag": "0"
     },
     {
-      "type": "clone",
-      "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
-      "x": 73,
-      "y": 7,
-      "target_local_id": 13,
-      "target_map": "MAP_ROUTE14"
-    },
-    {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SIGN",
       "x": 69,
@@ -228,6 +220,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
+      "x": 64,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BattleGirlElements",
       "flag": "0"
     }
   ],
@@ -250,7 +256,7 @@
       "x": 66,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE15",
+      "dest_map": "MAP_ROUTE15_HOUSEOF_ELEMENTS",
       "dest_warp_id": "0"
     }
   ],

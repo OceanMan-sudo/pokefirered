@@ -23,6 +23,25 @@ ElementHouse::
 	end
 
 
+BattleGirlElements::
+# 17 "data/maps/Route15/scripts.pory"
+	lock
+# 18 "data/maps/Route15/scripts.pory"
+	faceplayer
+# 19 "data/maps/Route15/scripts.pory"
+	msgbox BattleGirlElements_Text_0
+# 20 "data/maps/Route15/scripts.pory"
+	release
+	end
+
+
 ElementHouse_Text_0:
 # 11 "data/maps/Route15/scripts.pory"
 	.string "The House of Elements$"
+
+BattleGirlElements_Text_0:
+# 19 "data/maps/Route15/scripts.pory"
+	.string "The blackbelts in this house are\n"
+	.string "practitioners of the elemental\l"
+	.string "punches. They taught my MANKEY the\l"
+	.string "move THUNDERPUNCH!$"
