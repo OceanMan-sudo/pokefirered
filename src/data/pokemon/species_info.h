@@ -2213,7 +2213,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_GOLEM] =
     {
         .baseHP = 80,
-        .baseAttack = 110,
+        .baseAttack = 120,
         .baseDefense = 130,
         .baseSpeed = 45,
         .baseSpAttack = 55,
@@ -2292,7 +2292,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = {EGG_GROUP_FIELD, EGG_GROUP_FIELD},
-        .abilities = {ABILITY_RUN_AWAY, ABILITY_FLASH_FIRE},
+        .abilities = {ABILITY_SOLAR_POWER, ABILITY_FLASH_FIRE},
         .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
