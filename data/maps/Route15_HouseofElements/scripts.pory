@@ -12,7 +12,7 @@ script IcePunchMan {
         goto(EventScript_IcePunchDeclined)
     }
 
-    msgbox(format("Excellent choice! Which POKéMON shall I teach?"))
+    msgbox(format("Excellent! Which POKéMON shall I teach?"))
     setvar(VAR_0x8005, MOVETUTOR_ICE_PUNCH)
     call(EventScript_ChooseMoveTutorMon)
     if (var(VAR_RESULT) == FALSE) {
@@ -33,4 +33,80 @@ script EventScript_IcePunchTaught {
 	msgbox(format("Use this move well. It was passed down to me from the masters of the {COLOR BLUE}{SHADOW LIGHT_BLUE}LIN KUEI TEMPLE."))
 	release
 	end
+}
+
+script FirePunchMan {
+    lock
+    faceplayer
+
+    msgbox(format("The elements speak to me! They tell me fire is the most formidable. To prove the superiority of fire, allow me to teach one of your POKéMON FIRE PUNCH!"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    msgbox(format("Excellent! Which POKéMON shall I teach?"))
+    setvar(VAR_0x8005, MOVETUTOR_FIRE_PUNCH)
+    call(EventScript_ChooseMoveTutorMon)
+    if (var(VAR_RESULT) == FALSE) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    goto(EventScript_FirePunchTaught)
+    end
+}
+
+script EventScript_FirePunchTaught {
+	msgbox(format("Use this move well. It was passed down to me from the masters of the {COLOR RED}{SHADOW LIGHT_RED}SHIRAI RYU FIRE GARDEN."))
+	release
+	end
+}
+
+script ThunderPunchMan {
+    lock
+    faceplayer
+
+    msgbox(format("The elements speak to me! They tell me electricity is the most formidable. To prove the superiority of electricity, allow me to teach one of your POKéMON THUNDERPUNCH!"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    msgbox(format("Excellent! Which POKéMON shall I teach?"))
+    setvar(VAR_0x8005, MOVETUTOR_THUNDER_PUNCH)
+    call(EventScript_ChooseMoveTutorMon)
+    if (var(VAR_RESULT) == FALSE) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    goto(EventScript_ThunderPunchTaught)
+    end
+}
+
+script EventScript_ThunderPunchTaught {
+	msgbox(format("Use this move well. It was passed down to me from the masters of the {COLOR BLUE}{SHADOW LIGHT_BLUE}SKY TEMPLE."))
+	release
+	end
+}
+
+script ElementalLady {
+    lock
+    faceplayer
+    msgbox(format("They meditate for hours, then scream ‘FIRE PUNCH! or ICE PUNCH!’ and sock the wall. I don’t get it either..."))
+    release
+    end
+}
+
+script ElementalKid {
+    lock
+    faceplayer
+    msgbox(format("The blackbelts here say they learned from locations like the LIN KUEI TEMPLE or the SHIRAI RYU FIRE GARDENS. Those aren't any places I've heard of."))
+    release
+    end
 }

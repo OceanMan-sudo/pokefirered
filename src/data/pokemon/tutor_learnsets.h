@@ -1,4 +1,4 @@
-static const u16 sTutorMoves[TUTOR_MOVE_COUNT] =
+static const u32 sTutorMoves[TUTOR_MOVE_COUNT] =
 {
     [TUTOR_MOVE_MEGA_PUNCH] = MOVE_MEGA_PUNCH,
     [TUTOR_MOVE_SWORDS_DANCE] = MOVE_SWORDS_DANCE,
@@ -15,12 +15,14 @@ static const u16 sTutorMoves[TUTOR_MOVE_COUNT] =
     [TUTOR_MOVE_EXPLOSION] = MOVE_EXPLOSION,
     [TUTOR_MOVE_ROCK_SLIDE] = MOVE_ROCK_SLIDE,
     [TUTOR_MOVE_ICE_PUNCH] = MOVE_ICE_PUNCH,
+    [TUTOR_MOVE_FIRE_PUNCH] = MOVE_FIRE_PUNCH,
+    [TUTOR_MOVE_THUNDER_PUNCH] = MOVE_THUNDER_PUNCH,
     [TUTOR_MOVE_SUBSTITUTE] = MOVE_SUBSTITUTE,
 };
 
 #define TUTOR(move) (1 << (TUTOR_##move))
 
-static const u16 sTutorLearnsets[] =
+static const u32 sTutorLearnsets[] =
 {
     [SPECIES_NONE] = 0,
 
@@ -1080,6 +1082,8 @@ static const u16 sTutorLearnsets[] =
                      | TUTOR(MOVE_DREAM_EATER)
                      | TUTOR(MOVE_THUNDER_WAVE)
                      | TUTOR(MOVE_SUBSTITUTE)
+                     | TUTOR(MOVE_FIRE_PUNCH)
+                     | TUTOR(MOVE_THUNDER_PUNCH)
                      | TUTOR(MOVE_ICE_PUNCH),
 
 
