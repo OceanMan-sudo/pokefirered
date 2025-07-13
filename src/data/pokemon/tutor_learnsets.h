@@ -14,6 +14,7 @@ static const u16 sTutorMoves[TUTOR_MOVE_COUNT] =
     [TUTOR_MOVE_THUNDER_WAVE] = MOVE_THUNDER_WAVE,
     [TUTOR_MOVE_EXPLOSION] = MOVE_EXPLOSION,
     [TUTOR_MOVE_ROCK_SLIDE] = MOVE_ROCK_SLIDE,
+    [TUTOR_MOVE_ICE_PUNCH] = MOVE_ICE_PUNCH,
     [TUTOR_MOVE_SUBSTITUTE] = MOVE_SUBSTITUTE,
 };
 
@@ -1078,7 +1079,9 @@ static const u16 sTutorLearnsets[] =
                      | TUTOR(MOVE_METRONOME)
                      | TUTOR(MOVE_DREAM_EATER)
                      | TUTOR(MOVE_THUNDER_WAVE)
-                     | TUTOR(MOVE_SUBSTITUTE),
+                     | TUTOR(MOVE_SUBSTITUTE)
+                     | TUTOR(MOVE_ICE_PUNCH),
+
 
     [SPECIES_MEW] = TUTOR(MOVE_MEGA_PUNCH)
                   | TUTOR(MOVE_SWORDS_DANCE)

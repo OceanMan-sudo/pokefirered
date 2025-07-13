@@ -906,142 +906,203 @@ PalletTown_EventScript_SignLadyStartShowSign::
 	end
 
 PalletTown_EventScript_HelloSign::
-# 459 "data/maps/PalletTown/scripts.pory"
+# 458 "data/maps/PalletTown/scripts.pory"
 	lock
-# 460 "data/maps/PalletTown/scripts.pory"
+# 459 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 461 "data/maps/PalletTown/scripts.pory"
+# 460 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTown_EventScript_HelloSign_Text_0
-# 462 "data/maps/PalletTown/scripts.pory"
+# 461 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 PalletTown_CheriBerryKid::
-# 468 "data/maps/PalletTown/scripts.pory"
+# 467 "data/maps/PalletTown/scripts.pory"
 	goto_if_unset FLAG_0x900, PalletTown_CheriBerryKid_1
-# 481 "data/maps/PalletTown/scripts.pory"
+# 480 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 482 "data/maps/PalletTown/scripts.pory"
+# 481 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTown_CheriBerryKid_Text_1
-# 483 "data/maps/PalletTown/scripts.pory"
+# 482 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 PalletTown_CheriBerryKid_1:
-# 471 "data/maps/PalletTown/scripts.pory"
+# 470 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 472 "data/maps/PalletTown/scripts.pory"
+# 471 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTown_CheriBerryKid_Text_0
-# 473 "data/maps/PalletTown/scripts.pory"
+# 472 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_CHERI_BERRY
-# 474 "data/maps/PalletTown/scripts.pory"
+# 473 "data/maps/PalletTown/scripts.pory"
 	setflag FLAG_0x900
-# 475 "data/maps/PalletTown/scripts.pory"
+# 474 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 PalletTown_BeautyWithPoliwrath::
-# 489 "data/maps/PalletTown/scripts.pory"
+# 488 "data/maps/PalletTown/scripts.pory"
 	lock
-# 490 "data/maps/PalletTown/scripts.pory"
+# 489 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 491 "data/maps/PalletTown/scripts.pory"
+# 490 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTown_BeautyWithPoliwrath_Text_0
-# 492 "data/maps/PalletTown/scripts.pory"
+# 491 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 PalletTown_Poliwrath::
-# 497 "data/maps/PalletTown/scripts.pory"
+# 496 "data/maps/PalletTown/scripts.pory"
 	lock
-# 498 "data/maps/PalletTown/scripts.pory"
+# 497 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 499 "data/maps/PalletTown/scripts.pory"
+# 498 "data/maps/PalletTown/scripts.pory"
 	playmoncry SPECIES_POLIWRATH, CRY_MODE_NORMAL
-# 500 "data/maps/PalletTown/scripts.pory"
+# 499 "data/maps/PalletTown/scripts.pory"
 	delay 40
-# 501 "data/maps/PalletTown/scripts.pory"
+# 500 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTown_Poliwrath_Text_0
-# 502 "data/maps/PalletTown/scripts.pory"
+# 501 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 PalletTownGirl::
-# 507 "data/maps/PalletTown/scripts.pory"
+# 506 "data/maps/PalletTown/scripts.pory"
 	lock
-# 508 "data/maps/PalletTown/scripts.pory"
+# 507 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 509 "data/maps/PalletTown/scripts.pory"
+# 508 "data/maps/PalletTown/scripts.pory"
 	msgbox PalletTownGirl_Text_0
-# 510 "data/maps/PalletTown/scripts.pory"
+# 509 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 ClearGame::
-# 515 "data/maps/PalletTown/scripts.pory"
+# 514 "data/maps/PalletTown/scripts.pory"
 	lock
-# 516 "data/maps/PalletTown/scripts.pory"
+# 515 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 517 "data/maps/PalletTown/scripts.pory"
+# 516 "data/maps/PalletTown/scripts.pory"
 	msgbox ClearGame_Text_0
-# 518 "data/maps/PalletTown/scripts.pory"
+# 517 "data/maps/PalletTown/scripts.pory"
 	setflag SYS_FLAGS + 0x2C
-# 519 "data/maps/PalletTown/scripts.pory"
+# 518 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 EightBadges::
-# 524 "data/maps/PalletTown/scripts.pory"
+# 523 "data/maps/PalletTown/scripts.pory"
 	lock
-# 525 "data/maps/PalletTown/scripts.pory"
+# 524 "data/maps/PalletTown/scripts.pory"
 	faceplayer
-# 526 "data/maps/PalletTown/scripts.pory"
+# 525 "data/maps/PalletTown/scripts.pory"
 	msgbox EightBadges_Text_0
-# 527 "data/maps/PalletTown/scripts.pory"
+# 526 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_OLD_AMBER
-# 528 "data/maps/PalletTown/scripts.pory"
+# 527 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_HELIX_FOSSIL
-# 529 "data/maps/PalletTown/scripts.pory"
+# 528 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_DOME_FOSSIL
-# 530 "data/maps/PalletTown/scripts.pory"
+# 529 "data/maps/PalletTown/scripts.pory"
 	setflag SYS_FLAGS + 0x27
-# 531 "data/maps/PalletTown/scripts.pory"
+# 530 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
+IcePunchMan::
+# 535 "data/maps/PalletTown/scripts.pory"
+	lock
+# 536 "data/maps/PalletTown/scripts.pory"
+	faceplayer
+# 538 "data/maps/PalletTown/scripts.pory"
+	msgbox IcePunchMan_Text_0, MSGBOX_YESNO
+# 539 "data/maps/PalletTown/scripts.pory"
+	compare VAR_RESULT, NO
+	goto_if_eq IcePunchMan_2
+IcePunchMan_1:
+# 543 "data/maps/PalletTown/scripts.pory"
+	compare VAR_RESULT, NO
+	goto_if_eq IcePunchMan_5
+IcePunchMan_4:
+# 547 "data/maps/PalletTown/scripts.pory"
+	msgbox IcePunchMan_Text_1
+# 548 "data/maps/PalletTown/scripts.pory"
+	setvar VAR_0x8005, MOVETUTOR_ICE_PUNCH
+# 549 "data/maps/PalletTown/scripts.pory"
+	call EventScript_ChooseMoveTutorMon
+# 550 "data/maps/PalletTown/scripts.pory"
+	compare VAR_RESULT, FALSE
+	goto_if_eq IcePunchMan_8
+IcePunchMan_7:
+# 554 "data/maps/PalletTown/scripts.pory"
+	goto EventScript_IcePunchTaught
+	end
+
+IcePunchMan_2:
+# 540 "data/maps/PalletTown/scripts.pory"
+	goto EventScript_IcePunchDeclined
+	goto IcePunchMan_1
+
+IcePunchMan_5:
+# 544 "data/maps/PalletTown/scripts.pory"
+	goto EventScript_IcePunchDeclined
+	goto IcePunchMan_4
+
+IcePunchMan_8:
+# 551 "data/maps/PalletTown/scripts.pory"
+	goto EventScript_IcePunchDeclined
+	goto IcePunchMan_7
+
+
+EventScript_IcePunchDeclined::
+# 559 "data/maps/PalletTown/scripts.pory"
+	msgbox EventScript_IcePunchDeclined_Text_0
+# 560 "data/maps/PalletTown/scripts.pory"
+	release
+	end
+
+
+EventScript_IcePunchTaught::
+# 565 "data/maps/PalletTown/scripts.pory"
+	msgbox EventScript_IcePunchTaught_Text_0
+# 566 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 PalletTown_EventScript_HelloSign_Text_0:
-# 461 "data/maps/PalletTown/scripts.pory"
+# 460 "data/maps/PalletTown/scripts.pory"
 	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
 	.string "POKéMON FireRed II Turbo HD Remix!$"
 
 PalletTown_CheriBerryKid_Text_0:
-# 472 "data/maps/PalletTown/scripts.pory"
+# 471 "data/maps/PalletTown/scripts.pory"
 	.string "Have you heard? There are PIKACHU\n"
 	.string "all over Route 1 now!\p"
 	.string "You better take this just in case.$"
 
 PalletTown_CheriBerryKid_Text_1:
-# 482 "data/maps/PalletTown/scripts.pory"
+# 481 "data/maps/PalletTown/scripts.pory"
 	.string "Watch out for PIKACHU's\n"
 	.string "Thunder Wave!$"
 
 PalletTown_BeautyWithPoliwrath_Text_0:
-# 491 "data/maps/PalletTown/scripts.pory"
+# 490 "data/maps/PalletTown/scripts.pory"
 	.string "You'll find KANTO looks a bit\ndifferent now.\p My POKeMON seem to enjoy the\n changes.\p POLIWRATH loves playing in the\n puddles!$"
 
 PalletTown_Poliwrath_Text_0:
-# 501 "data/maps/PalletTown/scripts.pory"
+# 500 "data/maps/PalletTown/scripts.pory"
 	.string "POLI!$"
 
 PalletTownGirl_Text_0:
-# 509 "data/maps/PalletTown/scripts.pory"
+# 508 "data/maps/PalletTown/scripts.pory"
 	.string "This expansion didn't just happen\n"
 	.string "overnight. You should've seen the\l"
 	.string "construction! It felt like PALLET\l"
@@ -1050,9 +1111,32 @@ PalletTownGirl_Text_0:
 	.string "expansion.$"
 
 ClearGame_Text_0:
-# 517 "data/maps/PalletTown/scripts.pory"
+# 516 "data/maps/PalletTown/scripts.pory"
 	.string "Way to go$"
 
 EightBadges_Text_0:
-# 526 "data/maps/PalletTown/scripts.pory"
+# 525 "data/maps/PalletTown/scripts.pory"
 	.string "Lick my butt$"
+
+IcePunchMan_Text_0:
+# 538 "data/maps/PalletTown/scripts.pory"
+	.string "The elements speak to me! They tell\n"
+	.string "me ice is the most formidable!\l"
+	.string "Nevermind what my training partners\l"
+	.string "say. To prove the superiority of\l"
+	.string "ice, allow me to teach one of your\l"
+	.string "POKéMON ICE PUNCH!$"
+
+IcePunchMan_Text_1:
+# 547 "data/maps/PalletTown/scripts.pory"
+	.string "Excellent choice! Which POKéMON\n"
+	.string "shall I teach?$"
+
+EventScript_IcePunchDeclined_Text_0:
+# 559 "data/maps/PalletTown/scripts.pory"
+	.string "Very well! Return here when you wish\n"
+	.string "to embrace the elements!$"
+
+EventScript_IcePunchTaught_Text_0:
+# 565 "data/maps/PalletTown/scripts.pory"
+	.string "Aha! A modern Sub-Zero!$"

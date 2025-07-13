@@ -451,8 +451,7 @@ PalletTown_EventScript_SignLadyStartShowSign::
 	call PalletTown_EventScript_SignLadyShowSign
 	release
 	end
-	
-	
+
 `
 
 script PalletTown_EventScript_HelloSign {
@@ -528,6 +527,42 @@ script EightBadges {
 	giveitem(ITEM_HELIX_FOSSIL)
 	giveitem(ITEM_DOME_FOSSIL)
 	setflag(SYS_FLAGS + 0x27)
+	release
+	end
+}
+
+script IcePunchMan {
+    lock
+    faceplayer
+
+    msgbox(format("The elements speak to me! They tell me ice is the most formidable! Nevermind what my training partners say. To prove the superiority of ice, allow me to teach one of your POKéMON ICE PUNCH!"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    if (var(VAR_RESULT) == NO) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    msgbox(format("Excellent choice! Which POKéMON shall I teach?"))
+    setvar(VAR_0x8005, MOVETUTOR_ICE_PUNCH)
+    call(EventScript_ChooseMoveTutorMon)
+    if (var(VAR_RESULT) == FALSE) {
+        goto(EventScript_IcePunchDeclined)
+    }
+
+    goto(EventScript_IcePunchTaught)
+    end
+}
+
+script EventScript_IcePunchDeclined {
+    msgbox(format("Very well! Return here when you wish to embrace the elements!"))
+    release
+    end
+}
+
+script EventScript_IcePunchTaught {
+	msgbox(format("Aha! A modern Sub-Zero!"))
 	release
 	end
 }
