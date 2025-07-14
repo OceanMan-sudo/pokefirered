@@ -263,6 +263,27 @@ BattleHouseSign::
 	end
 
 
+IronFist::
+# 138 "data/maps/SaffronCity/scripts.pory"
+	lock
+# 139 "data/maps/SaffronCity/scripts.pory"
+	faceplayer
+# 140 "data/maps/SaffronCity/scripts.pory"
+	msgbox IronFist_Text_0
+# 141 "data/maps/SaffronCity/scripts.pory"
+	release
+	end
+
+
 BattleHouseSign_Text_0:
 # 132 "data/maps/SaffronCity/scripts.pory"
 	.string "SAFFRON CITY BATTLE HOUSE$"
+
+IronFist_Text_0:
+# 140 "data/maps/SaffronCity/scripts.pory"
+	.string "POKéMON with the ability IRON FIST\n"
+	.string "have entered the TEKKEN! The IRON\l"
+	.string "FIST ability boosts punching moves\l"
+	.string "like BULLET PUNCH and FIRE PUNCH,\l"
+	.string "along with some less obvious ones\l"
+	.string "like POISON JAB and SKY UPPERCUT.$"

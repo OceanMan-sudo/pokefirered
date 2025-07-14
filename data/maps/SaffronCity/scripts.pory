@@ -133,3 +133,11 @@ script BattleHouseSign {
     release
     end
 }
+
+script IronFist {
+    lock
+	faceplayer
+    msgbox(format("POKéMON with the ability IRON FIST have entered the TEKKEN! The IRON FIST ability boosts punching moves like BULLET PUNCH and FIRE PUNCH, along with some less obvious ones like POISON JAB and SKY UPPERCUT."))
+    release
+    end
+}
