@@ -22147,14 +22147,24 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 55,
-                "max_level": 55,
-                "species": "SPECIES_SEEL"
+                "min_level": 26,
+                "max_level": 26,
+                "species": "SPECIES_HITMONCHAN"
               },
               {
-                "min_level": 52,
-                "max_level": 52,
-                "species": "SPECIES_DEWGONG"
+                "min_level": 26,
+                "max_level": 26,
+                "species": "SPECIES_HITMONCHAN"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_WAILORD"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_WAILORD"
               },
               {
                 "min_level": 5,
@@ -22164,22 +22174,12 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_MEOWTH"
+                "species": "SPECIES_KRABBY"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_MEOWTH"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_VENUSAUR"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_BULBASAUR"
+                "species": "SPECIES_KRABBY"
               },
               {
                 "min_level": 5,

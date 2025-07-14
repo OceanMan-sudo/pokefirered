@@ -80,6 +80,7 @@ static const u8 sSolarPowerDescription[] = _("Boosts SP.ATK in Sun.");
 static const u8 sSuperLuckDescription[] = _("Boosts chance of crit.");
 static const u8 sTechnicianDescription[] = _("Powers up weaker moves.");
 static const u8 sIceBodyDescription[] = _("Slight HP recovery in hail.");
+static const u8 sIronFistDescription[] = _("Enter the TEKKEN!");
 
 
 const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
@@ -166,6 +167,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_SUPER_LUCK] = sSuperLuckDescription,
     [ABILITY_TECHNICIAN] = sTechnicianDescription,
     [ABILITY_ICE_BODY] = sIceBodyDescription,
+    [ABILITY_IRON_FIST] = sIronFistDescription,
 
 };
 
@@ -253,5 +255,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SUPER_LUCK] = _("SUPER LUCK"),
     [ABILITY_TECHNICIAN] = _("TECHNICIAN"),
     [ABILITY_ICE_BODY] = _("ICE BODY"),
+    [ABILITY_IRON_FIST] = _("IRON FIST"),
 
 };

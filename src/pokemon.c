@@ -2440,6 +2440,23 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (attacker->ability == ABILITY_TECHNICIAN && gBattleMovePower <= 60)
     gBattleMovePower = (150 * gBattleMovePower) / 100;
 
+    if (attacker->ability == ABILITY_IRON_FIST &&
+        (gCurrentMove == MOVE_FIRE_PUNCH ||
+         gCurrentMove == MOVE_ICE_PUNCH ||
+         gCurrentMove == MOVE_THUNDER_PUNCH ||
+         gCurrentMove == MOVE_DRAIN_PUNCH ||
+         gCurrentMove == MOVE_MACH_PUNCH ||
+         gCurrentMove == MOVE_BULLET_PUNCH ||
+         gCurrentMove == MOVE_SHADOW_PUNCH ||
+         gCurrentMove == MOVE_FOCUS_PUNCH ||
+         gCurrentMove == MOVE_SKY_UPPERCUT ||
+         gCurrentMove == MOVE_POISON_JAB ||
+         gCurrentMove == MOVE_DYNAMIC_PUNCH ||
+         gCurrentMove == MOVE_COMET_PUNCH ||
+         gCurrentMove == MOVE_MEGA_PUNCH))
+     gBattleMovePower = (120 * gBattleMovePower) / 100;
+
+
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerIdAtk))
         attack = (110 * attack) / 100;
     if (ShouldGetStatBadgeBoost(FLAG_BADGE05_GET, battlerIdDef))
