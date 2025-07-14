@@ -2452,6 +2452,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
          gCurrentMove == MOVE_SKY_UPPERCUT ||
          gCurrentMove == MOVE_POISON_JAB ||
          gCurrentMove == MOVE_DYNAMIC_PUNCH ||
+         gCurrentMove == MOVE_METEOR_MASH ||
+         gCurrentMove == MOVE_DIZZY_PUNCH ||
          gCurrentMove == MOVE_COMET_PUNCH ||
          gCurrentMove == MOVE_MEGA_PUNCH))
      gBattleMovePower = (120 * gBattleMovePower) / 100;
