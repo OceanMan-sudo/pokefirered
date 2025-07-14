@@ -2456,6 +2456,17 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
          gCurrentMove == MOVE_MEGA_PUNCH))
      gBattleMovePower = (120 * gBattleMovePower) / 100;
 
+     if (attacker->ability == ABILITY_RECKLESS &&
+        (gCurrentMove == MOVE_TAKE_DOWN ||
+         gCurrentMove == MOVE_DOUBLE_EDGE ||
+         gCurrentMove == MOVE_SUBMISSION ||
+         gCurrentMove == MOVE_JUMP_KICK ||
+         gCurrentMove == MOVE_HI_JUMP_KICK ||
+         gCurrentMove == MOVE_VOLT_TACKLE ||
+         gCurrentMove == MOVE_FLARE_BLITZ ||
+         gCurrentMove == MOVE_SKY_ATTACK))
+        gBattleMovePower = (120 * gBattleMovePower) / 100;
+
 
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerIdAtk))
         attack = (110 * attack) / 100;
