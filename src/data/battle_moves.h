@@ -1936,8 +1936,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     {
         .effect = EFFECT_DREAM_EATER,
         .power = 100,
-        .type = TYPE_PSYCHIC,
-        .accuracy = 100,
+        .type = TYPE_DARK,
+        .accuracy = 120,
         .pp = 15,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
