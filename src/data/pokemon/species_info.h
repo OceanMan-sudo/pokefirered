@@ -2764,7 +2764,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_ONIX] =
     {
         .baseHP = 35,
-        .baseAttack = 45,
+        .baseAttack = 70,
         .baseDefense = 160,
         .baseSpeed = 70,
         .baseSpAttack = 30,
