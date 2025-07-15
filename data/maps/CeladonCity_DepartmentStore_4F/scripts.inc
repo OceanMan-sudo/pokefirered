@@ -108,14 +108,18 @@ EvolutionItems::
 # 57 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_KINGS_ROCK
 # 58 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_DEEP_SEA_TOOTH
+	.2byte ITEM_DRAGON_SCALE
 # 59 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_DEEP_SEA_SCALE
+	.2byte ITEM_UP_GRADE
 # 60 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_DEEP_SEA_TOOTH
 # 61 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
-	release
+	.2byte ITEM_DEEP_SEA_SCALE
 # 62 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
+	.2byte ITEM_NONE
+# 63 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
+	release
+# 64 "data/maps/CeladonCity_DepartmentStore_4F/scripts.pory"
 	end
 
 EvolutionSeller_Text_0:
