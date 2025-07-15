@@ -268,6 +268,30 @@ static const u8 sItemEffect_XSpecial[8] = {
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
 
+static const u8 sItemEffect_MetalCoat[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
+static const u8 sItemEffect_DragonScale[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
+static const u8 sItemEffect_KingsRock[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
+static const u8 sItemEffect_Upgrade[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
+static const u8 sItemEffect_Deepseascale[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
+static const u8 sItemEffect_Deepseatooth[6] = {
+    [4] = ITEM4_EVO_STONE,
+};
+
 static const u8 sItemEffect_SunStone[6] = {
     [4] = ITEM4_EVO_STONE,
 };
@@ -384,6 +408,12 @@ const u8 *const gItemEffectTable[] =
     [ITEM_X_SPEED - ITEM_POTION]       = sItemEffect_XSpeed,
     [ITEM_X_ACCURACY - ITEM_POTION]    = sItemEffect_XAccuracy,
     [ITEM_X_SPECIAL - ITEM_POTION]     = sItemEffect_XSpecial,
+    [ITEM_METAL_COAT - ITEM_POTION]    = sItemEffect_MetalCoat,
+    [ITEM_DRAGON_SCALE - ITEM_POTION]  = sItemEffect_DragonScale,
+    [ITEM_KINGS_ROCK - ITEM_POTION]    = sItemEffect_KingsRock,
+    [ITEM_UP_GRADE - ITEM_POTION]      = sItemEffect_Upgrade,
+    [ITEM_DEEP_SEA_SCALE - ITEM_POTION]      = sItemEffect_Deepseatooth,
+    [ITEM_DEEP_SEA_TOOTH - ITEM_POTION]      = sItemEffect_Deepseascale,
     [ITEM_SUN_STONE - ITEM_POTION]     = sItemEffect_SunStone,
     [ITEM_MOON_STONE - ITEM_POTION]    = sItemEffect_MoonStone,
     [ITEM_FIRE_STONE - ITEM_POTION]    = sItemEffect_FireStone,

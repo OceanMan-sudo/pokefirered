@@ -990,28 +990,36 @@ ClearGame::
 # 516 "data/maps/PalletTown/scripts.pory"
 	msgbox ClearGame_Text_0
 # 517 "data/maps/PalletTown/scripts.pory"
-	setflag SYS_FLAGS + 0x2C
+	giveitem ITEM_LEFTOVERS
 # 518 "data/maps/PalletTown/scripts.pory"
+	setflag SYS_FLAGS + 0x2C
+# 519 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
 
 EightBadges::
-# 523 "data/maps/PalletTown/scripts.pory"
-	lock
 # 524 "data/maps/PalletTown/scripts.pory"
-	faceplayer
+	lock
 # 525 "data/maps/PalletTown/scripts.pory"
-	msgbox EightBadges_Text_0
+	faceplayer
 # 526 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_OLD_AMBER
+	msgbox EightBadges_Text_0
 # 527 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_HELIX_FOSSIL
+	giveitem ITEM_WATER_STONE
 # 528 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_DOME_FOSSIL
+	giveitem ITEM_KINGS_ROCK
 # 529 "data/maps/PalletTown/scripts.pory"
-	setflag SYS_FLAGS + 0x27
+	giveitem ITEM_METAL_COAT
 # 530 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_UP_GRADE
+# 531 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_DEEP_SEA_SCALE
+# 532 "data/maps/PalletTown/scripts.pory"
+	giveitem ITEM_DEEP_SEA_TOOTH
+# 533 "data/maps/PalletTown/scripts.pory"
+	setflag SYS_FLAGS + 0x27
+# 534 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
@@ -1054,5 +1062,5 @@ ClearGame_Text_0:
 	.string "Way to go$"
 
 EightBadges_Text_0:
-# 525 "data/maps/PalletTown/scripts.pory"
+# 526 "data/maps/PalletTown/scripts.pory"
 	.string "Lick my butt$"
