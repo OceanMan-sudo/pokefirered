@@ -22149,32 +22149,32 @@
               {
                 "min_level": 26,
                 "max_level": 26,
-                "species": "SPECIES_PORYGON"
+                "species": "SPECIES_JYNX"
               },
               {
                 "min_level": 26,
                 "max_level": 26,
-                "species": "SPECIES_SLOWPOKE"
+                "species": "SPECIES_GROUDON"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_CLAMPERL"
+                "species": "SPECIES_TYRANITAR"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_POLIWHIRL"
+                "species": "SPECIES_TYRANITAR"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_MEOWTH"
+                "species": "SPECIES_KYOGRE"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_KRABBY"
+                "species": "SPECIES_KYOGRE"
               },
               {
                 "min_level": 5,
@@ -22204,7 +22204,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_VENUSAUR"
+                "species": "SPECIES_HERACROSS"
               }
             ]
           },
