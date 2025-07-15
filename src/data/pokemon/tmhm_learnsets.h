@@ -3089,6 +3089,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(HM08_DIVE)),
 
     [SPECIES_LAPRAS]      = TMHM_LEARNSET(TMHM(TM03_WATER_PULSE)
+                                        | TMHM(TM04_CALM_MIND)
                                         | TMHM(TM05_ROAR)
                                         | TMHM(TM06_TOXIC)
                                         | TMHM(TM07_HAIL)

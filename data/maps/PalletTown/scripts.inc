@@ -1008,18 +1008,16 @@ EightBadges::
 # 527 "data/maps/PalletTown/scripts.pory"
 	giveitem ITEM_WATER_STONE
 # 528 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_KINGS_ROCK
+	giveitem ITEM_FIRE_STONE
 # 529 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_METAL_COAT
+	giveitem ITEM_THUNDER_STONE
 # 530 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_UP_GRADE
+	giveitem ITEM_SUN_STONE
 # 531 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_DEEP_SEA_SCALE
+	giveitem ITEM_MOON_STONE
 # 532 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_DEEP_SEA_TOOTH
-# 533 "data/maps/PalletTown/scripts.pory"
 	setflag SYS_FLAGS + 0x27
-# 534 "data/maps/PalletTown/scripts.pory"
+# 533 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
