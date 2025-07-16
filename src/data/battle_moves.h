@@ -4665,7 +4665,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_ICICLE_SPEAR] =
     {
         .effect = EFFECT_MULTI_HIT,
-        .power = 15,
+        .power = 30,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 30,
