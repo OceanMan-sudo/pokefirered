@@ -1,0 +1,22 @@
+mapscripts CinnabarIsland_BattleHouse_MapScripts{}
+
+script CinnabarIslandBattleHouseClerk {
+    lock
+    faceplayer
+    if (flag(FLAG_0x0B8)) {
+        msgbox(format("Congratulations on completing the CERULEAN CITY BATTLE HOUSE. We hope you enjoy your prize!"))
+    release 
+    end}
+    elif ((defeated(TRAINER_BLACK_BELT_ROGAN)) && (defeated(TRAINER_HIKER_JONES)) && (defeated(TRAINER_YOUNGSTER_JAMIE))){
+    msgbox(format("Congratulations on defeating each of the trainers in the CERULEAN CITY BATTLE HOUSE! Please accept this SHELL BELL as a reward for completing our challenge!"))
+            giveitem(ITEM_CHOICE_BAND, 1)
+msgbox(format("We do hope you enjoy your prize!"))
+        setflag(FLAG_0x0B8)
+        release
+        end }
+else {
+    msgbox(format("Welcome to the CINNABAR ISLAND BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; the trainers in here are tough cookies!"))
+    release
+    end
+}}
+

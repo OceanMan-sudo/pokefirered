@@ -523,13 +523,9 @@ script ClearGame {
 script EightBadges {
 	lock
 	faceplayer
-	msgbox("Lick my butt")
-	giveitem(ITEM_WATER_STONE)
-	giveitem(ITEM_FIRE_STONE)
-	giveitem(ITEM_THUNDER_STONE)
-		giveitem(ITEM_SUN_STONE)
-			giveitem(ITEM_MOON_STONE)
-	setflag(SYS_FLAGS + 0x27)
+	msgbox("Enjoy surf")
+	setflag FLAG_DEFEATED_KOGA
+	setflag FLAG_BADGE05_GET
 	release
 	end
 }
