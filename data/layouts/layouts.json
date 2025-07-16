@@ -4584,6 +4584,18 @@
       "secondary_tileset": "gTileset_PewterGym",
       "border_filepath": "data/layouts/Route15_HouseofElements/border.bin",
       "blockdata_filepath": "data/layouts/Route15_HouseofElements/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEAFOAM_RESORT",
+      "name": "SeafoamResort_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_CinnabarIsland",
+      "border_filepath": "data/layouts/SeafoamResort/border.bin",
+      "blockdata_filepath": "data/layouts/SeafoamResort/map.bin"
     }
   ]
 }

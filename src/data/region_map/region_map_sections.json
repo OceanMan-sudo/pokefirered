@@ -869,6 +869,14 @@
       "height": 1
     },
     {
+      "map_section": "MAPSEC_SEAFOAM_RESORT",
+      "name": "SEAFOAM RESORT",
+      "x": 4,
+      "y": 14,
+      "width": 1,
+      "height": 1
+    },
+    {
       "map_section": "MAPSEC_SPECIAL_AREA",
       "name": "CELADON DEPT.",
       "x": 0,

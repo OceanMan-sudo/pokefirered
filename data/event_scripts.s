@@ -1413,3 +1413,6 @@ Text_TestMsg::
 
 	.include "data/maps/Route15_HouseofElements/scripts.inc"
 	.include "data/maps/Route15_HouseofElements/text.inc"
+
+	.include "data/maps/SeafoamResort/scripts.inc"
+	.include "data/maps/SeafoamResort/text.inc"

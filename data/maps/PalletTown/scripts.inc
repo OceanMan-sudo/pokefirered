@@ -1006,18 +1006,10 @@ EightBadges::
 # 526 "data/maps/PalletTown/scripts.pory"
 	msgbox EightBadges_Text_0
 # 527 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_WATER_STONE
+	setflag FLAG_DEFEATED_KOGA
 # 528 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_FIRE_STONE
+	setflag FLAG_BADGE05_GET
 # 529 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_THUNDER_STONE
-# 530 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_SUN_STONE
-# 531 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_MOON_STONE
-# 532 "data/maps/PalletTown/scripts.pory"
-	setflag SYS_FLAGS + 0x27
-# 533 "data/maps/PalletTown/scripts.pory"
 	release
 	end
 
@@ -1061,4 +1053,4 @@ ClearGame_Text_0:
 
 EightBadges_Text_0:
 # 526 "data/maps/PalletTown/scripts.pory"
-	.string "Lick my butt$"
+	.string "Enjoy surf$"
