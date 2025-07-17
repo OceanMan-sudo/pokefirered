@@ -4588,12 +4588,12 @@
     {
       "id": "LAYOUT_SEAFOAM_RESORT",
       "name": "SeafoamResort_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 30,
+      "height": 40,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_CinnabarIsland",
+      "secondary_tileset": "gTileset_SeviiIslands67",
       "border_filepath": "data/layouts/SeafoamResort/border.bin",
       "blockdata_filepath": "data/layouts/SeafoamResort/map.bin"
     }
