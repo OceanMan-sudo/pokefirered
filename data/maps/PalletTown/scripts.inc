@@ -1021,14 +1021,14 @@ PalletTown_EventScript_HelloSign_Text_0:
 
 PalletTown_CheriBerryKid_Text_0:
 # 471 "data/maps/PalletTown/scripts.pory"
-	.string "Have you heard? There are PIKACHU\n"
+	.string "Have you heard? There are PICHU\n"
 	.string "all over Route 1 now!\p"
 	.string "You better take this just in case.$"
 
 PalletTown_CheriBerryKid_Text_1:
 # 481 "data/maps/PalletTown/scripts.pory"
-	.string "Watch out for PIKACHU's\n"
-	.string "Thunder Wave!$"
+	.string "Watch out for PICHU's\n"
+	.string "electricity!$"
 
 PalletTown_BeautyWithPoliwrath_Text_0:
 # 490 "data/maps/PalletTown/scripts.pory"

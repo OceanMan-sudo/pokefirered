@@ -468,7 +468,7 @@ if(!flag(FLAG_0x900))
 {
   # lock
     faceplayer
-    msgbox(format("Have you heard? There are PIKACHU\n all over Route 1 now!\p You better take this just in case."))
+    msgbox(format("Have you heard? There are PICHU\n all over Route 1 now!\p You better take this just in case."))
     giveitem(ITEM_CHERI_BERRY)
 	setflag(FLAG_0x900)
 	release
@@ -478,7 +478,7 @@ else
 {
   # lock
     faceplayer
-    msgbox (format("Watch out for PIKACHU's\n Thunder Wave!"))
+    msgbox (format("Watch out for PICHU's\n electricity!"))
 	release
 	end
 	}
