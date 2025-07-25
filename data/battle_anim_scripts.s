@@ -398,6 +398,7 @@ gBattleAnims_Moves::
 	.4byte Move_SEED_BOMB
 	.4byte Move_DRAIN_PUNCH
 	.4byte Move_AQUA_JET
+	.4byte Move_BOOMBURST
 
 
 
@@ -3285,6 +3286,24 @@ Move_DESTINY_BOND:
 	waitbgfadein
 	blendoff
 	clearmonbg 5
+	end
+
+Move_BOOMBURST:
+	loadspritegfx ANIM_TAG_FOCUS_ENERGY
+	loadspritegfx ANIM_TAG_THIN_RING
+	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
+	call EndureEffect
+	delay 8
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 11, RGB_RED
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 32, 1
+	call EndureEffect
+	delay 8
+	call EndureEffect
+	call HyperVoiceEffect
+	waitforvisualfinish
+	delay 8
+	call HyperVoiceEffect
+	waitforvisualfinish
 	end
 
 Move_ENDURE:

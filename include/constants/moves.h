@@ -379,9 +379,10 @@
 #define MOVE_SEED_BOMB 375
 #define MOVE_DRAIN_PUNCH 376
 #define MOVE_AQUA_JET 377
+#define MOVE_BOOMBURST 378
 
 
-#define MOVES_COUNT 378
+#define MOVES_COUNT 379
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

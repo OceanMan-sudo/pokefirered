@@ -213,10 +213,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_CUT] =
     {
         .effect = EFFECT_HIT,
-        .power = 50,
+        .power = 60,
         .type = TYPE_BUG,
-        .accuracy = 95,
-        .pp = 30,
+        .accuracy = 100,
+        .pp = 25,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -5278,5 +5278,18 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .priority = 1,
             .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
             .category= MOVE_CATEGORY_PHYSICAL,
+      },
+      [MOVE_BOOMBURST] =
+      {
+          .effect = EFFECT_HIT,
+          .power = 140,
+          .type = TYPE_NORMAL,
+          .accuracy = 100,
+          .pp = 15,
+          .secondaryEffectChance = 0,
+          .target = MOVE_TARGET_SELECTED,
+          .priority = 0,
+          .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+          .category= MOVE_CATEGORY_SPECIAL,
       },
 };

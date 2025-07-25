@@ -22147,34 +22147,34 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 26,
-                "max_level": 26,
-                "species": "SPECIES_JYNX"
+                "min_level": 56,
+                "max_level": 56,
+                "species": "SPECIES_PIDGEOT"
               },
               {
-                "min_level": 26,
-                "max_level": 26,
-                "species": "SPECIES_GROUDON"
+                "min_level": 56,
+                "max_level": 56,
+                "species": "SPECIES_PIDGEOT"
+              },
+              {
+                "min_level": 56,
+                "max_level": 56,
+                "species": "SPECIES_PIDGEOT"
               },
               {
                 "min_level": 20,
                 "max_level": 20,
-                "species": "SPECIES_TYRANITAR"
-              },
-              {
-                "min_level": 20,
-                "max_level": 20,
-                "species": "SPECIES_TYRANITAR"
+                "species": "SPECIES_PICHU"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_KYOGRE"
+                "species": "SPECIES_KABUTO"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_KYOGRE"
+                "species": "SPECIES_UNOWN"
               },
               {
                 "min_level": 5,

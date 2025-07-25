@@ -143,7 +143,7 @@ const u8 gMoveDescription_PoisonGas[] = _("The foe is sprayed\nwith a cloud of\n
 const u8 gMoveDescription_Barrage[] = _("Round objects are\nhurled at the foe\nto strike two to\nfive times.");
 const u8 gMoveDescription_LeechLife[] = _("An attack that\nabsorbs half the\ndamage it inflicted\nto restore HP.");
 const u8 gMoveDescription_LovelyKiss[] = _("The user forces a\nkiss on the foe\nwith a scary face\nthat induces sleep.");
-const u8 gMoveDescription_SkyAttack[] = _("A 2nd-turn attack\nmove with a high\ncritical-hit ratio.\nThe foe may flinch.");
+const u8 gMoveDescription_SkyAttack[] = _("User tucks its\nwings and attacks\nfrom low altitude.\nInflicts recoil.");
 const u8 gMoveDescription_Transform[] = _("The user transforms\ninto a copy of the\nfoe with even the\nsame move set.");
 const u8 gMoveDescription_Bubble[] = _("A spray of bubbles\nhits the foe.\nIt may lower the\nfoe's SPEED stat.");
 const u8 gMoveDescription_DizzyPunch[] = _("The foe is hit with\na rhythmic punch\nthat may leave it\nconfused.");
@@ -378,6 +378,7 @@ const u8 gMoveDescription_XScissor[] = _("The user slashes\nat the foe by\ncross
 const u8 gMoveDescription_SeedBomb[] = _("The user slams\na barrage of\nhard-shelled seeds\ndown on the target.");
 const u8 gMoveDescription_DrainPunch[] = _("An energy-draining\npunch that\nrestores the\nuser's health.");
 const u8 gMoveDescription_AquaJet[] = _("Attacks at speed\nthat makes it\nalmost invisible.\nAlways goes first.");
+const u8 gMoveDescription_Boomburst[] = _("Attacks with\nthe destructive\npower of an\nexplosive sound.");
 
 
 
@@ -759,5 +760,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_SEED_BOMB      -1] = gMoveDescription_SeedBomb,
     [MOVE_DRAIN_PUNCH      -1] = gMoveDescription_DrainPunch,
     [MOVE_AQUA_JET      -1] = gMoveDescription_AquaJet,
+    [MOVE_BOOMBURST      -1] = gMoveDescription_Boomburst,
 
 };
