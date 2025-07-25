@@ -3866,8 +3866,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_SUPERPOWER] =
     {
-        .effect = EFFECT_DEFENSE_DOWN_2,
-        .power = 120,
+        .effect = EFFECT_HIT,
+        .power = 100,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 10,
