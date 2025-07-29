@@ -82,7 +82,8 @@ static const u8 sTechnicianDescription[] = _("Powers up weaker moves.");
 static const u8 sIceBodyDescription[] = _("Slight HP recovery in hail.");
 static const u8 sIronFistDescription[] = _("Enter the TEKKEN!");
 static const u8 sRecklessDescription[] = _("Ups damage of recoil moves.");
-static const u8 sSnowWarningDescription[] = _("Whips up a HAIL storm.");
+static const u8 sSnowWarningDescription[] = _("Whips up a snow storm.");
+static const u8 sSnowCloakDescription[] = _("Evasion raised in snow.");
 
 
 
@@ -173,6 +174,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_IRON_FIST] = sIronFistDescription,
     [ABILITY_RECKLESS] = sRecklessDescription,
     [ABILITY_SNOW_WARNING] = sSnowWarningDescription,
+    [ABILITY_SNOW_CLOAK] = sSnowCloakDescription,
 
 
 };
@@ -264,5 +266,6 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_IRON_FIST] = _("IRON FIST"),
     [ABILITY_RECKLESS] = _("RECKLESS"),
     [ABILITY_SNOW_WARNING] = _("SNOW WARNING"),
+    [ABILITY_SNOW_CLOAK] = _("SNOW CLOAK"),
 
 };
