@@ -9110,7 +9110,7 @@
               {
                 "min_level": 32,
                 "max_level": 32,
-                "species": "SPECIES_NINCADA"
+                "species": "SPECIES_WURMPLE"
               },
               {
                 "min_level": 36,
@@ -9153,13 +9153,13 @@
                 "species": "SPECIES_VOLBEAT"
               },
               {
-                "min_level": 40,
-                "max_level": 40,
+                "min_level": 37,
+                "max_level": 37,
                 "species": "SPECIES_ILLUMISE"
               },
               {
-                "min_level": 40,
-                "max_level": 40,
+                "min_level": 44,
+                "max_level": 44,
                 "species": "SPECIES_HYPNO"
               }
             ]
