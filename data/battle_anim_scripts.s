@@ -399,7 +399,7 @@ gBattleAnims_Moves::
 	.4byte Move_DRAIN_PUNCH
 	.4byte Move_AQUA_JET
 	.4byte Move_BOOMBURST
-
+	.4byte Move_NIGHT_SLASH
 
 
 
@@ -7149,6 +7149,23 @@ Move_FOCUS_BLAST:
 
 Move_SHADOW_CLAW:
 	fadetobg BG_GHOST
+	waitbgfadein
+	delay 15
+	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_MIST, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 5, 5, 0, 5
+	loadspritegfx ANIM_TAG_SLASH
+	createsprite gSlashSliceSpriteTemplate, ANIM_TARGET, 2, 1, -8, 0
+	playsewithpan SE_M_RAZOR_WIND, SOUND_PAN_TARGET
+	delay 4
+	createsprite gSlashSliceSpriteTemplate, ANIM_TARGET, 2, 1, 8, 0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 18, 1
+	playsewithpan SE_M_RAZOR_WIND, SOUND_PAN_TARGET
+	restorebg
+	waitbgfadein
+	waitforvisualfinish
+	end
+
+Move_NIGHT_SLASH:
+	fadetobg BG_DARK
 	waitbgfadein
 	delay 15
 	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_MIST, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 5, 5, 0, 5

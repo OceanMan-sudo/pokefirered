@@ -22147,24 +22147,24 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 65,
-                "max_level": 65,
-                "species": "SPECIES_ARTICUNO"
+                "min_level": 31,
+                "max_level": 31,
+                "species": "SPECIES_MURKROW"
               },
               {
-                "min_level": 65,
-                "max_level": 65,
-                "species": "SPECIES_ARTICUNO"
+                "min_level": 31,
+                "max_level": 31,
+                "species": "SPECIES_MURKROW"
               },
               {
-                "min_level": 65,
-                "max_level": 65,
-                "species": "SPECIES_ARTICUNO"
+                "min_level": 31,
+                "max_level": 31,
+                "species": "SPECIES_MURKROW"
               },
               {
-                "min_level": 65,
-                "max_level": 65,
-                "species": "SPECIES_ARTICUNO"
+                "min_level": 31,
+                "max_level": 31,
+                "species": "SPECIES_MURKROW"
               },
               {
                 "min_level": 5,
