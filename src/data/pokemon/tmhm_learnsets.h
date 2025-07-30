@@ -5407,6 +5407,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM44_REST)
                                         | TMHM(TM45_ATTRACT)
                                         | TMHM(TM46_THIEF)
+                                        | TMHM(TM50_OVERHEAT)
                                         | TMHM(HM03_SURF)
                                         | TMHM(HM07_WATERFALL)
                                         | TMHM(HM08_DIVE)),
