@@ -5711,15 +5711,21 @@ static const struct TrainerMonItemCustomMoves sParty_EliteFourLance[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_LeaderBrock[] = {
     {
         .iv = 0,
-        .lvl = 12,
+        .lvl = 13,
         .species = SPECIES_GEODUDE,
-        .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_NONE, MOVE_NONE},
+        .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_TOMB, MOVE_NONE},
+    },
+    {
+        .iv = 0,
+        .lvl = 12,
+        .species = SPECIES_ZUBAT,
+        .moves = {MOVE_SUPERSONIC, MOVE_ASTONISH, MOVE_LEECH_LIFE, MOVE_NONE},
     },
     {
         .iv = 0,
         .lvl = 14,
         .species = SPECIES_ONIX,
-        .moves = {MOVE_TACKLE, MOVE_BIND, MOVE_ROCK_TOMB, MOVE_NONE},
+        .moves = {MOVE_DRAGON_BREATH, MOVE_BIND, MOVE_ROCK_TOMB, MOVE_TORMENT},
     },
 };
 
