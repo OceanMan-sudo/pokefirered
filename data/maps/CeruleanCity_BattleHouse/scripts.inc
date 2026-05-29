@@ -146,16 +146,13 @@ CeruleanCityBattleHouseClerk_Text_3:
 # 18 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "Welcome to the CERULEAN CITY BATTLE\n"
 	.string "HOUSE! Defeat all three trainers\l"
-	.string "and win a fabulous prize! Fair\l"
-	.string "warning; some of the trainers in\l"
-	.string "here are a little off their rocker!$"
+	.string "and win a fabulous prize! Do you\l"
+	.string "have what it takes?$"
 
 NonTrainer_Text_0:
 # 27 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	.string "Oh, I'm not a trainer. I just like\n"
-	.string "hanging out at these new BATTLE\l"
-	.string "HOUSE facilities while listening to\l"
-	.string "my favorite Podcasts.$"
+	.string "I like to hang out in the BATTLE\n"
+	.string "HOUSE and watch trainers duke it out!$"
 
 NonTrainer2_Text_0:
 # 35 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
@@ -179,8 +176,7 @@ JamieDefeated::
 
 JamiePostBattle::
 # 58 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	.string "To be honest, I stopped listening to\n"
-	.string "the podcast too...$"
+	.string "I can pull up just about anything.$"
 
 RoganIntro::
 # 72 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
@@ -190,11 +186,11 @@ RoganIntro::
 
 RoganDefeated::
 # 76 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	.string "Jamie pull that up!$"
+	.string "If only I had a PRIMEAPE!$"
 
 RoganPostBattle::
 # 80 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
-	.string "You killed, bro. You killed!$"
+	.string "Tough as nails!$"
 
 JonesIntro::
 # 94 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
@@ -208,5 +204,5 @@ JonesDefeated::
 JonesPostBattle::
 # 102 "data/maps/CeruleanCity_BattleHouse/scripts.pory"
 	.string "You may have won, but the global\n"
-	.string "POKéMON LEAGUE is still controlling\l"
+	.string "POKéMON LEAGUE still controls\l"
 	.string "everything!$"

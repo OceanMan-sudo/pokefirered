@@ -190,18 +190,67 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 43,
+      "x": 39,
       "y": 4,
       "elevation": 0,
-      "dest_map": "MAP_SEAFOAM_RESORT",
+      "dest_map": "MAP_CERULEAN_CITY",
       "dest_warp_id": "0"
     },
     {
-      "x": 22,
-      "y": 6,
+      "x": 38,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_PEWTER_CITY",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 40,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_VERMILION_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 42,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_CELADON_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 41,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_LAVENDER_TOWN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 43,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_SAFFRON_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 44,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_FUCHSIA_CITY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 45,
+      "y": 4,
       "elevation": 0,
       "dest_map": "MAP_CINNABAR_ISLAND",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 37,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_VIRIDIAN_CITY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

@@ -15,7 +15,7 @@ msgbox(format("We do hope you enjoy your prize!"))
         release
         end }
 else {
-    msgbox(format("Welcome to the CERULEAN CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Fair warning; some of the trainers in here are a little off their rocker!"))
+    msgbox(format("Welcome to the CERULEAN CITY BATTLE HOUSE! Defeat all three trainers and win a fabulous prize! Do you have what it takes?"))
     release
     end
 }
@@ -24,7 +24,7 @@ else {
 script NonTrainer {
     lock
     faceplayer
-    msgbox(format("Oh, I'm not a trainer. I just like hanging out at these new BATTLE HOUSE facilities while listening to my favorite Podcasts."))
+    msgbox(format("I like to hang out in the BATTLE HOUSE and watch trainers duke it out!"))
     release
     end
 }
@@ -56,7 +56,7 @@ text JamieDefeated {
 }
 
 text JamiePostBattle {
-    format("To be honest, I stopped listening to the podcast too...")
+    format("I can pull up just about anything.")
 }
 
 script JoeRogan {
@@ -74,11 +74,11 @@ text RoganIntro {
 }
 
 text RoganDefeated {
-    format("Jamie pull that up!")
+    format("If only I had a PRIMEAPE!")
 }
 
 text RoganPostBattle{
-    format("You killed, bro. You killed!")
+    format("Tough as nails!")
 }
 
 script AlexJones {
@@ -100,5 +100,5 @@ text JonesDefeated {
 }
 
 text JonesPostBattle {
-    format("You may have won, but the global POKéMON LEAGUE is still controlling everything!")
+    format("You may have won, but the global POKéMON LEAGUE still controls everything!")
 }
