@@ -4,7 +4,7 @@ Last updated: 27 November 2026, after the scope discussion. Items are not starte
 
 ## Version 1 goal
 
-A quality-of-life upgrade and a new difficulty curve with fresh teams, across a freshened-up Kanto, with rules that suit Nuzlocke play (**my reading** of "ideal for unlocking"). Bigger new adventures are a stretch goal.
+A quality-of-life upgrade and a new difficulty curve with fresh teams, across a freshened-up Kanto, with rules that suit Nuzlocke play. Bigger new adventures are a stretch goal.
 
 ## Decisions
 
@@ -24,16 +24,14 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
 | Running | Run from the start (no shoes needed), allowed everywhere, auto-run switchable |
 | Pewter City aide | Gives a starter type booster as a gift from Mom, in place of the Running Shoes |
-| Wild battles | Be able to run before the battle menu appears |
+| Wild battles | Holding B as the wild Pokémon slides in prompts you to escape. The usual escape checks apply |
+| All 386 obtainable | Not required for version 1; some can wait |
+| Unfinished areas | Seafoam Resort, Pokémon Tower B1F, `NewMap1` and Cinnabar Battle House are part of version 1, tackled later |
 | New areas | Both after the story and woven into it. Ideas later |
 
 ## Open questions
 
-- [ ] Running from wild battles: should holding a button during the intro do it, and should escape always work?
 - [ ] Level caps: confirm the numbers (see the level curve), and decide how the cap works during the League
-- [ ] Is "Nuzlocke" the right reading of the version 1 goal?
-- [ ] Must all 386 be obtainable in version 1, or can some wait?
-- [ ] Unfinished areas (Seafoam Resort, Pokémon Tower B1F, `NewMap1`, Cinnabar Battle House): finish in version 1 or later?
 
 ## Order of work
 
@@ -72,7 +70,7 @@ Build the rules and their menu switches together.
 | ☐ | No items in trainer battles by default (your side; enemy trainers already never use items) | Easy |
 | ☐ | Menu switches for Set, items and level cap | Medium |
 | ☐ | Auto-run switch | Easy to medium |
-| ☐ | Run from wild battles before the menu appears | Medium |
+| ☐ | Hold B as a wild Pokémon slides in to get an escape prompt (usual escape checks) | Medium |
 | ☐ | AI update: better existing logic for more trainers, plus small tweaks | Easy to medium |
 
 ### Phase 4: Fairy type (medium)
@@ -231,6 +229,7 @@ For each area:
 There are 455 placed trainers in these tables (22 changed), not counting rival and Champion fights. Rematch versions are extra. This replaces my earlier estimate of "about 740", which counted unused trainer slots.
 
 ### Phase 7: finish version 1
+- [ ] Finish the unfinished areas: Seafoam Resort (BUG-08), Pokémon Tower B1F, `NewMap1`, Cinnabar Battle House (BUG-03)
 - [ ] Full playthrough to the Hall of Fame and the Sevii Islands quest
 - [ ] **Remove the debug menu** (you asked to be reminded; steps under "Removing the debug menu")
 - [ ] Remove test content (table below)
