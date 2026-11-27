@@ -38,6 +38,7 @@
 #include "constants/help_system.h"
 #include "constants/trainer_fan_club.h"
 #include "constants/mystery_gift.h"
+#include "constants/debug_menu.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.set FALSE, 0
@@ -1348,6 +1349,7 @@ Text_TestMsg::
 	.include "data/text/day_care.inc"
 	.include "data/scripts/flash.inc"
 	.include "data/scripts/repel.inc"
+	.include "data/scripts/debug_menu.inc"
 	.include "data/scripts/safari_zone.inc"
 	.include "data/text/safari_zone.inc"
 	.include "data/text/competitive_brothers.inc"

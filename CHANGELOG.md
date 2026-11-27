@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 22 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 28 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -84,6 +84,7 @@ Tables were generated from the game files, so they show the **net difference** f
 | Enemy trainers never use items | Not yet tested |
 | Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Not yet tested |
 | Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Not yet tested |
+| Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Not yet tested |
 
 These changes did not touch species data, TM compatibility, trainers or wild encounters. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 

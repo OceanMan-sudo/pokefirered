@@ -454,4 +454,9 @@ gSpecials::
 	def_special CreateEnemyEventMon
 	def_special GetRepelToReuse
 	def_special UseRepelAgain
+	def_special DebugMenu_PickNumber
+	def_special DebugMenu_GiveMon
+	def_special DebugMenu_IsSingleItem
+	def_special DebugMenu_GiveItem
+	def_special DebugMenu_GiveItemRange
 gSpecialsEnd::

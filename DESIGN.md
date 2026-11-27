@@ -4,6 +4,20 @@ This describes the game as it stands on `claude-edits` (audit of 27 November 202
 
 **How to read this:** Everything here was read from the code and data (**confirmed in code**) unless marked **Assumption**. **Tested** means you reported that it worked in game. Anything not marked Tested has no recorded in-game confirmation.
 
+## Test tools (temporary)
+
+A **debug menu** is in the normal game for testing and will be removed before version 1. In the overworld, **hold B and press SELECT**. B goes back or closes it.
+
+| Menu | What it does |
+|---|---|
+| Warp | Towns, gym entrances, the Pokémon League and a few test spots. Needs a Pokémon in the party; not available in the Safari Zone |
+| Pokémon | Pick any of the 386 by National Dex number and a level from 1 to 100 |
+| Items | Repels, Poké Balls, evolution items, all TMs and HMs, Bicycle, money, or any item by number |
+| Progress | All badges; badges plus HM01–HM07; Fly map; Pokédex with National Dex; mark the Champion as beaten |
+| Heal | Heals the party |
+
+In the number picker, up and down change by 1, left and right by 10, A confirms. Story events still happen after warping.
+
 ## Battle mechanics
 
 ### Physical/Special split

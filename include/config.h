@@ -68,4 +68,8 @@
 #endif // UBFIX
 #endif // MODERN
 
+// TEMPORARY test tool: hold B and press SELECT in the field. Set to FALSE to
+// switch it off. Remove it completely before version 1 (see TODO.md).
+#define DEBUG_MENU TRUE
+
 #endif // GUARD_CONFIG_H

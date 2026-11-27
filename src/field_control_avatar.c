@@ -281,6 +281,16 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         }
     }
 
+#if DEBUG_MENU
+    // TEMPORARY test tool: hold B and press SELECT
+    if (input->pressedSelectButton && JOY_HELD(B_BUTTON))
+    {
+        PlaySE(SE_WIN_OPEN);
+        ScriptContext_SetupScript(EventScript_DebugMenu);
+        return TRUE;
+    }
+#endif
+
     if (input->pressedStartButton)
     {
         gFieldInputRecord.pressedStartButton = TRUE;

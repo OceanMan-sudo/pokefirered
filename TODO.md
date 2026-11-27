@@ -232,6 +232,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 
 ### Phase 7: finish version 1
 - [ ] Full playthrough to the Hall of Fame and the Sevii Islands quest
+- [ ] **Remove the debug menu** (you asked to be reminded; steps under "Removing the debug menu")
 - [ ] Remove test content (table below)
 - [ ] Remaining bugs and typos in [BUGS.md](BUGS.md) (BUG-10, 11, 13, 14, 15, 16, 17, 18)
 - [ ] Rename the `SeaFoamResort` folders to `SeafoamResort` and mark `poryscript` as runnable
@@ -273,6 +274,7 @@ No in-game confirmation is recorded for these:
 - [ ] A gym leader battle with no enemy items
 - [ ] Repel prompt (yes, no, and with no Repels left) and shop prices
 - [ ] Mom's gift in Pewter City, for each starter if possible
+- [ ] Debug menu: every option (hold B, press SELECT)
 
 ## Test content to remove
 **Nothing has been removed.** "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
@@ -287,6 +289,18 @@ No in-game confirmation is recorded for these:
 | Unplaced `Tester` script | `data/maps/Route2/scripts.pory` | You |
 | Unused original Fishing Guru script | `data/maps/VermilionCity_House1/scripts.pory` | You |
 | Screenshots and save states | Repository root | You |
+| **Debug menu** (hold B, press SELECT) | See below | Claude, at your request |
+
+### Removing the debug menu
+
+Before version 1 is finished. To only switch it off, set `DEBUG_MENU` to `FALSE` in `include/config.h` (the button combination stops working). To remove it completely:
+
+1. Delete `src/debug_menu.c`, `data/scripts/debug_menu.inc` and `include/constants/debug_menu.h`.
+2. Remove the `#if DEBUG_MENU` block in `src/field_control_avatar.c` and the `DEBUG_MENU` lines in `include/config.h`.
+3. Remove the two `.include` / `#include` lines in `data/event_scripts.s`.
+4. Remove the five `DebugMenu_` lines in `data/specials.inc`.
+5. Remove `EventScript_DebugMenu` from `include/event_scripts.h`.
+6. Remove the two `debug_menu.o` lines in `ld_script.ld`.
 
 ## Pokémon without a source
 

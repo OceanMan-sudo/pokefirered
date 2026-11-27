@@ -12,6 +12,7 @@ These are the owner's standing instructions.
 2. **Do not edit learnsets** until the owner starts that work.
 3. Work on the `claude-edits` branch. Leave `master` untouched.
 4. The owner is new to the terminal. Give copy-and-paste commands and plain explanations.
+5. **Remind the owner to remove the debug menu** before version 1 is finished. Steps are in [TODO.md](TODO.md) under "Removing the debug menu".
 
 ## Repository and history
 
@@ -106,6 +107,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Enemy trainers use no items | `BattleAI_HandleItemUseBeforeAISetup` in `src/battle_ai_script_commands.c` (the `items` fields in `trainers.h` are ignored) |
 | Running everywhere | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
 | Dynamic multichoice menus | `src/script_menu.c`, `src/scrcmd.c` (script commands `0xd5`, `0xd6`) |
+| Debug menu (temporary) | `data/scripts/debug_menu.inc`, `src/debug_menu.c`, `include/constants/debug_menu.h`; opened from `src/field_control_avatar.c`; switch `DEBUG_MENU` in `include/config.h` |
 
 ## Rules that prevent common breakage
 
