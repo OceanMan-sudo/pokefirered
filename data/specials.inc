@@ -459,4 +459,7 @@ gSpecials::
 	def_special DebugMenu_IsSingleItem
 	def_special DebugMenu_GiveItem
 	def_special DebugMenu_GiveItemRange
+	def_special DebugMenu_TeachMove
+	def_special DebugMenu_SelectMoveToReplace
+	def_special DebugMenu_ReplaceMove
 gSpecialsEnd::

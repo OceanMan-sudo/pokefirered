@@ -5,12 +5,13 @@ EventScript_DebugMenu::
 	lockall
 EventScript_DebugMain::
 	closemessage
-	dynmultichoice 0, 0, FALSE, 7, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Warp, DebugMenu_Text_Pokemon, DebugMenu_Text_Items, DebugMenu_Text_Progress, DebugMenu_Text_Heal, DebugMenu_Text_Exit
+	dynmultichoice 0, 0, FALSE, 7, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Warp, DebugMenu_Text_Pokemon, DebugMenu_Text_TeachMove, DebugMenu_Text_Items, DebugMenu_Text_Progress, DebugMenu_Text_Heal, DebugMenu_Text_Exit
 	goto_if_eq VAR_RESULT, 0, EventScript_DebugWarp
 	goto_if_eq VAR_RESULT, 1, EventScript_DebugMon
-	goto_if_eq VAR_RESULT, 2, EventScript_DebugItems
-	goto_if_eq VAR_RESULT, 3, EventScript_DebugProgress
-	goto_if_eq VAR_RESULT, 4, EventScript_DebugHeal
+	goto_if_eq VAR_RESULT, 2, EventScript_DebugTeach
+	goto_if_eq VAR_RESULT, 3, EventScript_DebugItems
+	goto_if_eq VAR_RESULT, 4, EventScript_DebugProgress
+	goto_if_eq VAR_RESULT, 5, EventScript_DebugHeal
 	goto EventScript_DebugExit
 
 EventScript_DebugExit::
@@ -303,6 +304,47 @@ EventScript_DebugMonNoRoom::
 	msgbox DebugMenu_Text_MonNoRoom
 	goto EventScript_DebugMain
 
+@ Choose a party Pokemon (kept in VAR_0x8007), then a move (VAR_0x8006).
+EventScript_DebugTeach::
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, EventScript_DebugTeachNoParty
+	closemessage
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, EventScript_DebugMain
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, EventScript_DebugTeachEgg
+	copyvar VAR_0x8007, VAR_0x8004
+	setvar VAR_0x8004, DEBUG_PICK_MOVE
+	special DebugMenu_PickNumber
+	waitstate
+	goto_if_eq VAR_RESULT, 0, EventScript_DebugTeach
+	copyvar VAR_0x8006, VAR_RESULT
+	specialvar VAR_RESULT, DebugMenu_TeachMove
+	goto_if_eq VAR_RESULT, DEBUG_TEACH_DONE, EventScript_DebugTeachDone
+	goto_if_eq VAR_RESULT, DEBUG_TEACH_KNOWN, EventScript_DebugTeachKnown
+	msgbox DebugMenu_Text_TeachChooseSlot
+	fadescreen FADE_TO_BLACK
+	special DebugMenu_SelectMoveToReplace
+	fadescreen FADE_FROM_BLACK
+	goto_if_ge VAR_0x8005, MAX_MON_MOVES, EventScript_DebugMain
+	special DebugMenu_ReplaceMove
+EventScript_DebugTeachDone::
+	msgbox DebugMenu_Text_TeachDone
+	goto EventScript_DebugMain
+
+EventScript_DebugTeachKnown::
+	msgbox DebugMenu_Text_TeachKnown
+	goto EventScript_DebugMain
+
+EventScript_DebugTeachEgg::
+	msgbox DebugMenu_Text_TeachEgg
+	goto EventScript_DebugMain
+
+EventScript_DebugTeachNoParty::
+	msgbox DebugMenu_Text_NoWarpParty
+	goto EventScript_DebugMain
+
 EventScript_DebugItems::
 	closemessage
 	dynmultichoice 0, 0, FALSE, 8, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Repels, DebugMenu_Text_PokeBalls, DebugMenu_Text_EvolutionItems, DebugMenu_Text_AllTmsAndHms, DebugMenu_Text_Bicycle, DebugMenu_Text_Money, DebugMenu_Text_ChooseAnyItem, DebugMenu_Text_Back
@@ -461,6 +503,21 @@ DebugMenu_Text_Warp::
 
 DebugMenu_Text_Pokemon::
     .string "POKéMON$"
+
+DebugMenu_Text_TeachMove::
+    .string "TEACH MOVE$"
+
+DebugMenu_Text_TeachChooseSlot::
+    .string "Choose a move to replace\nwith {STR_VAR_2}.$"
+
+DebugMenu_Text_TeachDone::
+    .string "{STR_VAR_1} learned\n{STR_VAR_2}.$"
+
+DebugMenu_Text_TeachKnown::
+    .string "{STR_VAR_1} already knows\n{STR_VAR_2}.$"
+
+DebugMenu_Text_TeachEgg::
+    .string "An EGG can't learn moves.$"
 
 DebugMenu_Text_Items::
     .string "ITEMS$"

@@ -4,14 +4,19 @@
 #include "gflib.h"
 #include "data.h"
 #include "event_data.h"
+#include "field_fadetransition.h"
 #include "item.h"
 #include "menu.h"
 #include "new_menu_helpers.h"
+#include "overworld.h"
+#include "party_menu.h"
+#include "pokemon_summary_screen.h"
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "task.h"
 #include "constants/debug_menu.h"
 #include "constants/items.h"
+#include "constants/moves.h"
 #include "constants/songs.h"
 
 #define tMode     data[0]
@@ -22,6 +27,7 @@ static const u8 sText_Species[] = _("POKéDEX No.");
 static const u8 sText_Level[] = _("LEVEL");
 static const u8 sText_Item[] = _("ITEM No.");
 static const u8 sText_Quantity[] = _("HOW MANY?");
+static const u8 sText_Move[] = _("MOVE No.");
 static const u8 sText_Help[] = _("UP/DOWN 1  LEFT/RIGHT 10");
 
 static const struct WindowTemplate sPickerWindowTemplate =
@@ -47,6 +53,8 @@ static s32 GetPickerMax(u8 mode)
         return MAX_LEVEL;
     case DEBUG_PICK_ITEM:
         return ITEMS_COUNT - 1;
+    case DEBUG_PICK_MOVE:
+        return MOVES_COUNT - 1;
     default:
         return 99;
     }
@@ -98,6 +106,9 @@ static void PrintPicker(u8 taskId)
     case DEBUG_PICK_ITEM:
         title = sText_Item;
         break;
+    case DEBUG_PICK_MOVE:
+        title = sText_Move;
+        break;
     default:
         title = sText_Quantity;
         break;
@@ -110,6 +121,8 @@ static void PrintPicker(u8 taskId)
         StringCopy(end, gSpeciesNames[NationalPokedexNumToSpecies(value)]);
     else if (mode == DEBUG_PICK_ITEM)
         CopyItemName(value, end);
+    else if (mode == DEBUG_PICK_MOVE)
+        StringCopy(end, gMoveNames[value]);
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     AddTextPrinterParameterized(windowId, FONT_NORMAL, title, 2, 1, TEXT_SKIP_DRAW, NULL);
@@ -217,4 +230,53 @@ void DebugMenu_GiveItemRange(void)
         if (!CheckBagHasItem(item, 1))
             AddBagItem(item, 1);
     }
+}
+
+// VAR_0x8007: party slot, VAR_0x8006: move number.
+// Teaches the move straight away if there is an empty slot.
+u16 DebugMenu_TeachMove(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8007];
+    u16 move = gSpecialVar_0x8006;
+    u8 i;
+
+    GetMonNickname(mon, gStringVar1);
+    StringCopy(gStringVar2, gMoveNames[move]);
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (GetMonData(mon, MON_DATA_MOVE1 + i) == move)
+            return DEBUG_TEACH_KNOWN;
+    }
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (GetMonData(mon, MON_DATA_MOVE1 + i) == MOVE_NONE)
+        {
+            RemoveMonPPBonus(mon, i);
+            SetMonMoveSlot(mon, move, i);
+            return DEBUG_TEACH_DONE;
+        }
+    }
+    return DEBUG_TEACH_FULL;
+}
+
+// VAR_0x8007: party slot, VAR_0x8006: new move.
+// Opens the summary screen. VAR_0x8005 gets the slot chosen, or MAX_MON_MOVES if cancelled.
+// Like the move deleter: "fadescreen FADE_TO_BLACK" before it, "fadescreen FADE_FROM_BLACK" after.
+void DebugMenu_SelectMoveToReplace(void)
+{
+    ShowSelectMovePokemonSummaryScreen(gPlayerParty, gSpecialVar_0x8007, gPlayerPartyCount - 1, CB2_ReturnToField, gSpecialVar_0x8006);
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
+}
+
+// VAR_0x8007: party slot, VAR_0x8006: new move, VAR_0x8005: move slot to overwrite.
+void DebugMenu_ReplaceMove(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8007];
+
+    RemoveMonPPBonus(mon, gSpecialVar_0x8005);
+    SetMonMoveSlot(mon, gSpecialVar_0x8006, gSpecialVar_0x8005);
+    // The summary screen reuses the text buffers, so fill them again for the message
+    GetMonNickname(mon, gStringVar1);
+    StringCopy(gStringVar2, gMoveNames[gSpecialVar_0x8006]);
 }
