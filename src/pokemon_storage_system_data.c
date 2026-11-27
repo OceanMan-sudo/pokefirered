@@ -1,6 +1,7 @@
 #include "global.h"
 #include "gflib.h"
 #include "data.h"
+#include "event_data.h"
 #include "item.h"
 #include "mail_data.h"
 #include "menu.h"
@@ -797,6 +798,10 @@ bool8 FindFieldMovesLostByRelease(void)
     }
 
     gStorage->numLostFieldMoves = 0;
+    // Releases are unrestricted until the player has both the Soul Badge and HM03
+    if (!FlagGet(FLAG_BADGE05_GET) || !CheckBagHasItem(ITEM_HM03, 1))
+        return FALSE;
+
     for (i = 0; i < NUM_RELEASE_PROTECTED_MOVES; i++)
     {
         u16 move = sReleaseProtectedMoves[i];
