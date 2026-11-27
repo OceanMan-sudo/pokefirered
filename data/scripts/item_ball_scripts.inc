@@ -670,10 +670,6 @@ SilphCo_4F_EventScript_ItemTM41::
 	finditem ITEM_TM41
 	end
 
-PalletTown_EventScript_ItemHM03::
-	finditem ITEM_HM03
-	end
-
 @ TEMPORARY: test helper for Aura Sphere. Remove after testing.
 PalletTown_EventScript_AuraSphereTester::
 	lock
@@ -716,3 +712,169 @@ PalletTown_Text_AuraSphereDeclined::
 PalletTown_Text_AuraSphereNoMon::
 	.string "Put a POKéMON that has hatched\n"
 	.string "first in your party.$"
+
+@ TEMPORARY: move tutors for testing battle animations. Remove after testing.
+PalletTown_EventScript_FixesTutor::
+	lock
+	faceplayer
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, PalletTown_EventScript_AuraSphereNoMon
+	setvar VAR_0x8004, 0
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_EventScript_AuraSphereNoMon
+	message PalletTown_Text_FixesTutorAsk
+	waitmessage
+	dynmultichoice 0, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE, PalletTown_Text_TutorEarthPower, PalletTown_Text_TutorXScissor, PalletTown_Text_TutorPoisonJab, PalletTown_Text_TutorSeedBomb, PalletTown_Text_TutorAquaJet, PalletTown_Text_TutorRoost, PalletTown_Text_TutorCancel
+	goto_if_eq VAR_RESULT, 0, PalletTown_EventScript_TutorEarthPower
+	goto_if_eq VAR_RESULT, 1, PalletTown_EventScript_TutorXScissor
+	goto_if_eq VAR_RESULT, 2, PalletTown_EventScript_TutorPoisonJab
+	goto_if_eq VAR_RESULT, 3, PalletTown_EventScript_TutorSeedBomb
+	goto_if_eq VAR_RESULT, 4, PalletTown_EventScript_TutorAquaJet
+	goto_if_eq VAR_RESULT, 5, PalletTown_EventScript_TutorRoost
+	@ CANCEL or the B Button
+	goto PalletTown_EventScript_AuraSphereDeclined
+
+PalletTown_Text_FixesTutorAsk::
+	.string "I teach the FIXED moves.\n"
+	.string "Pick one to replace move one.$"
+
+PalletTown_EventScript_NewLooksTutor::
+	lock
+	faceplayer
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, PalletTown_EventScript_AuraSphereNoMon
+	setvar VAR_0x8004, 0
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_EventScript_AuraSphereNoMon
+	message PalletTown_Text_NewLooksTutorAsk
+	waitmessage
+	dynmultichoice 0, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE, PalletTown_Text_TutorPsychoPower, PalletTown_Text_TutorDragonPulse, PalletTown_Text_TutorDarkPulse, PalletTown_Text_TutorFlashCannon, PalletTown_Text_TutorFocusBlast, PalletTown_Text_TutorShadowClaw, PalletTown_Text_TutorShadowSneak, PalletTown_Text_TutorCancel
+	goto_if_eq VAR_RESULT, 0, PalletTown_EventScript_TutorPsychoPower
+	goto_if_eq VAR_RESULT, 1, PalletTown_EventScript_TutorDragonPulse
+	goto_if_eq VAR_RESULT, 2, PalletTown_EventScript_TutorDarkPulse
+	goto_if_eq VAR_RESULT, 3, PalletTown_EventScript_TutorFlashCannon
+	goto_if_eq VAR_RESULT, 4, PalletTown_EventScript_TutorFocusBlast
+	goto_if_eq VAR_RESULT, 5, PalletTown_EventScript_TutorShadowClaw
+	goto_if_eq VAR_RESULT, 6, PalletTown_EventScript_TutorShadowSneak
+	@ CANCEL or the B Button
+	goto PalletTown_EventScript_AuraSphereDeclined
+
+PalletTown_Text_NewLooksTutorAsk::
+	.string "I teach the NEW LOOK moves.\n"
+	.string "Pick one to replace move one.$"
+
+PalletTown_EventScript_TutorEarthPower::
+	setmonmove 0, 0, MOVE_EARTH_POWER
+	buffermovename STR_VAR_1, MOVE_EARTH_POWER
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorXScissor::
+	setmonmove 0, 0, MOVE_X_SCISSOR
+	buffermovename STR_VAR_1, MOVE_X_SCISSOR
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorPoisonJab::
+	setmonmove 0, 0, MOVE_POISON_JAB
+	buffermovename STR_VAR_1, MOVE_POISON_JAB
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorSeedBomb::
+	setmonmove 0, 0, MOVE_SEED_BOMB
+	buffermovename STR_VAR_1, MOVE_SEED_BOMB
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorAquaJet::
+	setmonmove 0, 0, MOVE_AQUA_JET
+	buffermovename STR_VAR_1, MOVE_AQUA_JET
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorRoost::
+	setmonmove 0, 0, MOVE_ROOST
+	buffermovename STR_VAR_1, MOVE_ROOST
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorPsychoPower::
+	setmonmove 0, 0, MOVE_PSYCHO_POWER
+	buffermovename STR_VAR_1, MOVE_PSYCHO_POWER
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorDragonPulse::
+	setmonmove 0, 0, MOVE_DRAGON_PULSE
+	buffermovename STR_VAR_1, MOVE_DRAGON_PULSE
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorDarkPulse::
+	setmonmove 0, 0, MOVE_DARK_PULSE
+	buffermovename STR_VAR_1, MOVE_DARK_PULSE
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorFlashCannon::
+	setmonmove 0, 0, MOVE_FLASH_CANNON
+	buffermovename STR_VAR_1, MOVE_FLASH_CANNON
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorFocusBlast::
+	setmonmove 0, 0, MOVE_FOCUS_BLAST
+	buffermovename STR_VAR_1, MOVE_FOCUS_BLAST
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorShadowClaw::
+	setmonmove 0, 0, MOVE_SHADOW_CLAW
+	buffermovename STR_VAR_1, MOVE_SHADOW_CLAW
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorShadowSneak::
+	setmonmove 0, 0, MOVE_SHADOW_SNEAK
+	buffermovename STR_VAR_1, MOVE_SHADOW_SNEAK
+	goto PalletTown_EventScript_TutorDone
+
+PalletTown_EventScript_TutorDone::
+	msgbox PalletTown_Text_TutorDone
+	release
+	end
+
+PalletTown_Text_TutorDone::
+	.string "Done! Your first POKéMON now\n"
+	.string "knows {STR_VAR_1}.$"
+
+PalletTown_Text_TutorEarthPower::
+	.string "EARTH POWER$"
+
+PalletTown_Text_TutorXScissor::
+	.string "X SCISSOR$"
+
+PalletTown_Text_TutorPoisonJab::
+	.string "POISON JAB$"
+
+PalletTown_Text_TutorSeedBomb::
+	.string "SEED BOMB$"
+
+PalletTown_Text_TutorAquaJet::
+	.string "AQUA JET$"
+
+PalletTown_Text_TutorRoost::
+	.string "ROOST$"
+
+PalletTown_Text_TutorPsychoPower::
+	.string "PSYCHO POWER$"
+
+PalletTown_Text_TutorDragonPulse::
+	.string "DRAGON PULSE$"
+
+PalletTown_Text_TutorDarkPulse::
+	.string "DARK PULSE$"
+
+PalletTown_Text_TutorFlashCannon::
+	.string "FLASH CANNON$"
+
+PalletTown_Text_TutorFocusBlast::
+	.string "FOCUS BLAST$"
+
+PalletTown_Text_TutorShadowClaw::
+	.string "SHADOW CLAW$"
+
+PalletTown_Text_TutorShadowSneak::
+	.string "SHADOW SNEAK$"
+
+PalletTown_Text_TutorCancel::
+	.string "CANCEL$"
