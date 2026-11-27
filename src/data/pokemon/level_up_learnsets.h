@@ -1371,7 +1371,6 @@ static const u16 sMagnemiteLevelUpLearnset[] = {
 
 static const u16 sMagnetonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_METAL_SOUND),
-    LEVEL_UP_MOVE(57, MOVE_FLASH_CANNON),
     LEVEL_UP_MOVE(1, MOVE_TACKLE),
     LEVEL_UP_MOVE(1, MOVE_THUNDER_SHOCK),
     LEVEL_UP_MOVE(1, MOVE_SUPERSONIC),
@@ -1383,6 +1382,7 @@ static const u16 sMagnetonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(35, MOVE_LOCK_ON),
     LEVEL_UP_MOVE(44, MOVE_TRI_ATTACK),
     LEVEL_UP_MOVE(51, MOVE_SCREECH),
+    LEVEL_UP_MOVE(57, MOVE_FLASH_CANNON),
     LEVEL_UP_MOVE(57, MOVE_ZAP_CANNON),
     LEVEL_UP_END
 };

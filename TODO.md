@@ -33,7 +33,6 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 - [ ] Level caps: confirm the numbers (see the level curve), and decide how the cap works during the League
 - [ ] Is "Nuzlocke" the right reading of the version 1 goal?
 - [ ] Must all 386 be obtainable in version 1, or can some wait?
-- [ ] Should Pallet Town's grass and test shortcuts stay (BUG-01)?
 - [ ] Unfinished areas (Seafoam Resort, Pokémon Tower B1F, `NewMap1`, Cinnabar Battle House): finish in version 1 or later?
 
 ## Order of work
@@ -42,13 +41,15 @@ Serious bugs, then easy features, then Fairy type and teams. Day/night and new P
 
 ### Phase 1: fix serious bugs
 Details are in [BUGS.md](BUGS.md).
-- [ ] BUG-01 Wild battles in Pallet Town before you have a Pokémon
-- [ ] BUG-02 Magneton's level-up order (needs your go-ahead, since learnsets are on hold)
-- [ ] BUG-03 Cinnabar Battle House free Choice Band
-- [ ] BUG-04 Only Mewtwo can learn the Route 15 punches (needs your choice of who can learn them)
-- [ ] BUG-05 Confusion and disobedience self-hit damage
-- [ ] BUG-06 Victory music
-- [ ] BUG-12 TM use reads past the item effect table
+- [ ] BUG-01 Wild battles in Pallet Town before you have a Pokémon (**deferred:** fix with the Pallet Town clean-up)
+- [x] BUG-02 Magneton's level-up order
+- [ ] BUG-03 Cinnabar Battle House free Choice Band (**deferred:** to be changed later)
+- [x] BUG-04 Route 15 punch compatibility (newer games' lists)
+- [x] BUG-05 Confusion and disobedience self-hit damage
+- [x] BUG-06 Victory music
+- [x] BUG-12 TM use reads past the item effect table
+
+Checked items are fixed in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
 
 ### Phase 2: easy features
 - [ ] Running Shoes from the start
@@ -171,7 +172,7 @@ For each area:
 | Route 12 | Teams changed 0/8, Lv 21–29; wild tables changed 1/1, Lv 22–33 | ☐ | ☐ | ☐ |
 | Route 13 | Teams changed 0/10, Lv 24–30; wild tables changed 1/1, Lv 22–30 | ☐ | ☐ | ☐ |
 | Route 14 | Teams changed 0/11, Lv 26–33; wild tables changed 1/1, Lv 22–29 | ☐ | ☐ | ☐ |
-| Route 15 | Teams changed 0/11, Lv 25–33; wild tables changed 1/1, Lv 22–30; 1 new map; Punch tutors (BUG-04) | ☐ | ☐ | ☐ |
+| Route 15 | Teams changed 0/11, Lv 25–33; wild tables changed 1/1, Lv 22–30; 1 new map | ☐ | ☐ | ☐ |
 | Route 16 | Teams changed 0/7, Lv 28–33; wild tables changed 1/1, Lv 18–25 | ☐ | ☐ | ☐ |
 | Route 17 | Teams changed 0/10, Lv 25–33; wild tables changed 1/1, Lv 20–30 | ☐ | ☐ | ☐ |
 | Route 18 | Teams changed 0/3, Lv 26–34; wild tables changed 1/1, Lv 20–29 | ☐ | ☐ | ☐ |
@@ -250,7 +251,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 
 - Reusable, unique TMs
 - HM field moves without teaching them
-- Physical/Special split (one bug left: BUG-05)
+- Physical/Special split
 - 26 new moves and 8 new abilities
 - Evolution changes with no trade evolutions (7 friendship evolutions remain)
 - House that gives Rare Candies
@@ -263,6 +264,7 @@ No in-game confirmation is recorded for these:
 - [ ] Pickup giving Leftovers
 - [ ] Boomburst, Draco Meteor, Leaf Storm and Psycho Power fixes
 - [ ] The eight new abilities
+- [ ] Phase 1 fixes: Magneton's moves, punch tutors, confusion damage, victory music, TMs and evolution items
 
 ## Test content to remove
 **Nothing has been removed.** "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

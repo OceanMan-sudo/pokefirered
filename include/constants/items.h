@@ -459,6 +459,7 @@
 #define SUPER_ROD 2
 
 // Check if the item is one that can be used on a Pokemon.
-#define IS_POKEMON_ITEM(item) ((item) >= ITEM_POTION)
+// ITEM_UP_GRADE is the last entry in gItemEffectTable. If you give a later item an effect, raise this limit.
+#define IS_POKEMON_ITEM(item) ((item) >= ITEM_POTION && (item) <= ITEM_UP_GRADE)
 
 #endif  // GUARD_CONSTANTS_ITEMS_H

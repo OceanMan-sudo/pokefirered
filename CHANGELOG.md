@@ -32,7 +32,7 @@ Tables were generated from the game files, so they show the **net difference** f
 - Removed Sky Attack's high critical-hit rate.
 - EXP when catching; display fix for the Pokédex page after a catch.
 - B moves the cursor to RUN in wild battles.
-- Victory music condition changed (faulty, BUG-06).
+- Victory music condition changed (was faulty; fixed on `claude-edits`, BUG-06).
 - EV limit per stat 255 → 252; vitamin limit 100 → 252.
 - TMs made reusable.
 
@@ -74,8 +74,13 @@ Tables were generated from the game files, so they show the **net difference** f
 | New move: Aura Sphere with animation | Tested |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 | **Temporary:** three Pallet Town test characters (Aura Sphere giver, two move tutors) | To be removed |
+| Magneton level-up list put in order (BUG-02) | Not yet tested |
+| Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Not yet tested |
+| Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Not yet tested |
+| Victory music plays after knocking out a wild Pokémon (BUG-06) | Not yet tested |
+| Upper limit restored on items usable on Pokémon (BUG-12) | Not yet tested |
 
-These changes did not touch species data, learnsets, TM compatibility, trainers or wild encounters.
+These changes did not touch species data, TM compatibility, trainers or wild encounters. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 

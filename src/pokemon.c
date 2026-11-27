@@ -2437,36 +2437,37 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     if (attacker->ability == ABILITY_HUGE_POWER || attacker->ability == ABILITY_PURE_POWER)
         attack *= 2;
 
-    if (attacker->ability == ABILITY_TECHNICIAN && gBattleMovePower <= 60)
-    gBattleMovePower = (150 * gBattleMovePower) / 100;
+    // Not for confusion or disobedience self-hits, where the attacker is also the target
+    if (attacker->ability == ABILITY_TECHNICIAN && attacker != defender && gBattleMovePower <= 60)
+        gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     if (attacker->ability == ABILITY_IRON_FIST &&
-        (gCurrentMove == MOVE_FIRE_PUNCH ||
-         gCurrentMove == MOVE_ICE_PUNCH ||
-         gCurrentMove == MOVE_THUNDER_PUNCH ||
-         gCurrentMove == MOVE_DRAIN_PUNCH ||
-         gCurrentMove == MOVE_MACH_PUNCH ||
-         gCurrentMove == MOVE_BULLET_PUNCH ||
-         gCurrentMove == MOVE_SHADOW_PUNCH ||
-         gCurrentMove == MOVE_FOCUS_PUNCH ||
-         gCurrentMove == MOVE_SKY_UPPERCUT ||
-         gCurrentMove == MOVE_POISON_JAB ||
-         gCurrentMove == MOVE_DYNAMIC_PUNCH ||
-         gCurrentMove == MOVE_METEOR_MASH ||
-         gCurrentMove == MOVE_DIZZY_PUNCH ||
-         gCurrentMove == MOVE_COMET_PUNCH ||
-         gCurrentMove == MOVE_MEGA_PUNCH))
+        (move == MOVE_FIRE_PUNCH ||
+         move == MOVE_ICE_PUNCH ||
+         move == MOVE_THUNDER_PUNCH ||
+         move == MOVE_DRAIN_PUNCH ||
+         move == MOVE_MACH_PUNCH ||
+         move == MOVE_BULLET_PUNCH ||
+         move == MOVE_SHADOW_PUNCH ||
+         move == MOVE_FOCUS_PUNCH ||
+         move == MOVE_SKY_UPPERCUT ||
+         move == MOVE_POISON_JAB ||
+         move == MOVE_DYNAMIC_PUNCH ||
+         move == MOVE_METEOR_MASH ||
+         move == MOVE_DIZZY_PUNCH ||
+         move == MOVE_COMET_PUNCH ||
+         move == MOVE_MEGA_PUNCH))
      gBattleMovePower = (120 * gBattleMovePower) / 100;
 
      if (attacker->ability == ABILITY_RECKLESS &&
-        (gCurrentMove == MOVE_TAKE_DOWN ||
-         gCurrentMove == MOVE_DOUBLE_EDGE ||
-         gCurrentMove == MOVE_SUBMISSION ||
-         gCurrentMove == MOVE_JUMP_KICK ||
-         gCurrentMove == MOVE_HI_JUMP_KICK ||
-         gCurrentMove == MOVE_VOLT_TACKLE ||
-         gCurrentMove == MOVE_FLARE_BLITZ ||
-         gCurrentMove == MOVE_SKY_ATTACK))
+        (move == MOVE_TAKE_DOWN ||
+         move == MOVE_DOUBLE_EDGE ||
+         move == MOVE_SUBMISSION ||
+         move == MOVE_JUMP_KICK ||
+         move == MOVE_HI_JUMP_KICK ||
+         move == MOVE_VOLT_TACKLE ||
+         move == MOVE_FLARE_BLITZ ||
+         move == MOVE_SKY_ATTACK))
         gBattleMovePower = (120 * gBattleMovePower) / 100;
 
 
@@ -2544,10 +2545,10 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         gBattleMovePower = (150 * gBattleMovePower) / 100;
 
     // Self-destruct / Explosion cut defense in half
-    if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
+    if (gBattleMoves[move].effect == EFFECT_EXPLOSION)
         defense /= 2;
 
-    if (IS_MOVE_PHYSICAL(gCurrentMove))
+    if (IS_MOVE_PHYSICAL(move))
     {
         if (gCritMultiplier == 2)
         {
@@ -2602,7 +2603,7 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
     if (type == TYPE_MYSTERY)
         damage = 0; // is ??? type. does 0 damage.
 
-    if (IS_MOVE_SPECIAL(gCurrentMove))
+    if (IS_MOVE_SPECIAL(move))
     {
         if (gCritMultiplier == 2)
         {
@@ -2671,7 +2672,7 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
             }
 
             // Any weather except sun weakens solar beam
-            if ((gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL_TEMPORARY)) && gCurrentMove == MOVE_SOLAR_BEAM)
+            if ((gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL_TEMPORARY)) && move == MOVE_SOLAR_BEAM)
                 damage /= 2;
 
             // Sun boosts Fire, weakens Water

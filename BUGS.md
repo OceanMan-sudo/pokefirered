@@ -2,7 +2,7 @@
 
 Audit date: 2026-11-27. Code checked: branch `claude-edits` at commit `26b12e1`.
 
-**Nothing in this file has been fixed.** This audit changed no game code or assets.
+The audit itself changed no game code or assets. Fixes made since then are marked in the Status column and under each bug. The descriptions show the problem as it was found.
 
 ## How to read this
 
@@ -16,32 +16,34 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 
 ## Summary
 
-| ID | Severity | Confidence | Short description |
-|---|---|---|---|
-| BUG-01 | High | Likely | Wild battles can start in Pallet Town before you own a Pokémon |
-| BUG-02 | High | Confirmed | Magneton's level-up list is out of order |
-| BUG-03 | High | Confirmed | Cinnabar Battle House is a copy of the Cerulean one and has no trainers |
-| BUG-04 | High | Confirmed | Only Mewtwo can learn the Route 15 elemental punches |
-| BUG-05 | Medium | Confirmed | Confusion and disobedience self-hits use the wrong damage rules |
-| BUG-06 | Medium | Confirmed | Victory music never plays after knocking out a wild Pokémon |
-| BUG-07 | Medium | Confirmed | NPC hints mention things that are not in the game yet |
-| BUG-08 | Medium | Confirmed | Seafoam Resort cannot be reached and its exits are wrong |
-| BUG-09 | Medium | Likely | Two doors lead to the wrong place (Route 5, Cinnabar Island) |
-| BUG-10 | Medium | Confirmed | Build fails on case-sensitive computers (Seafoam folder name) |
-| BUG-11 | Low | Confirmed | `poryscript` is not marked as runnable |
-| BUG-12 | Low | Confirmed | Using a TM can read past the end of the item effect table |
-| BUG-13 | Low | Confirmed | Ariados and Donphan have one more move than the relearner can hold |
-| BUG-14 | Low | Confirmed | Mr. Nuzlocke rewards can be missed after beating the game |
-| BUG-15 | Low | Confirmed | Early National Dex means two vanilla events behave differently |
-| BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults |
-| BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself |
-| BUG-18 | Low | Confirmed | Typos and small code tidiness issues |
+| ID | Severity | Confidence | Short description | Status |
+|---|---|---|---|---|
+| BUG-01 | High | Likely | Wild battles can start in Pallet Town before you own a Pokémon | Deferred by you |
+| BUG-02 | High | Confirmed | Magneton's level-up list is out of order | Fixed, awaiting test |
+| BUG-03 | High | Confirmed | Cinnabar Battle House is a copy of the Cerulean one and has no trainers | Deferred by you |
+| BUG-04 | High | Confirmed | Only Mewtwo can learn the Route 15 elemental punches | Fixed, awaiting test |
+| BUG-05 | Medium | Confirmed | Confusion and disobedience self-hits use the wrong damage rules | Fixed, awaiting test |
+| BUG-06 | Medium | Confirmed | Victory music never plays after knocking out a wild Pokémon | Fixed, awaiting test |
+| BUG-07 | Medium | Confirmed | NPC hints mention things that are not in the game yet | Open |
+| BUG-08 | Medium | Confirmed | Seafoam Resort cannot be reached and its exits are wrong | Open |
+| BUG-09 | Medium | Likely | Two doors lead to the wrong place (Route 5, Cinnabar Island) | Open |
+| BUG-10 | Medium | Confirmed | Build fails on case-sensitive computers (Seafoam folder name) | Open |
+| BUG-11 | Low | Confirmed | `poryscript` is not marked as runnable | Open |
+| BUG-12 | Low | Confirmed | Using a TM can read past the end of the item effect table | Fixed, awaiting test |
+| BUG-13 | Low | Confirmed | Ariados and Donphan have one more move than the relearner can hold | Open |
+| BUG-14 | Low | Confirmed | Mr. Nuzlocke rewards can be missed after beating the game | Open |
+| BUG-15 | Low | Confirmed | Early National Dex means two vanilla events behave differently | Open |
+| BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults | Open |
+| BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself | Open |
+| BUG-18 | Low | Confirmed | Typos and small code tidiness issues | Open |
 
 ---
 
 ## High
 
 ### BUG-01: Wild battles can start in Pallet Town before you own a Pokémon
+**Status (2026-11-27):** Deferred. You are using Pallet Town for testing and will fix it later.
+
 - **Where:** Pallet Town tall grass (6 tiles, map position x 22–24, y 3–4); table `sPalletTown_FireRed` in `src/data/wild_encounters.json`.
 - **Confirmed:** The grass is walkable and in the open next to the houses, it has an encounter table, and the encounter code (`src/wild_encounter.c`) does not check whether you have a Pokémon.
 - **Likely:** Walking in it before choosing a starter starts a battle with an empty party, which the game is not designed for.
@@ -49,18 +51,24 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Possible fix:** Decide whether the grass belongs there. If it does, block it until you have a starter and set the levels you want.
 
 ### BUG-02: Magneton's level-up list is out of order
+**Status (2026-11-27):** Fixed, awaiting your test. The Flash Cannon line now sits next to the other level 57 move. No move or level changed.
+
 - **Where:** `sMagnetonLevelUpLearnset` in `src/data/pokemon/level_up_learnsets.h`.
 - **Cause:** The list starts `1 Metal Sound`, `57 Flash Cannon`, then `1 Tackle`… The game stops reading at the first move above the Pokémon's level.
 - **Effect:** Any Magneton created below level 57 knows only **Metal Sound**. This includes the wild ones in the Power Plant (levels 31–34).
 - **Possible fix:** Move the level 57 line to its correct place. (Learnset edits are on hold until you say so.)
 
 ### BUG-03: Cinnabar Battle House is a copy of the Cerulean one
+**Status (2026-11-27):** Deferred. You plan to change this room later.
+
 - **Where:** `data/maps/CinnabarIsland_BattleHouse/scripts.pory`.
 - **Confirmed:** The house has a clerk but no trainers. The clerk checks the three **Cerulean** trainers (Jamie, Rogan, Jones). The prize message says "CERULEAN CITY" and "SHELL BELL" but gives a **Choice Band**.
 - **Effect:** A player who cleared the Cerulean house can collect a free Choice Band.
 - **Note:** This looks like an unfinished room (**Assumption**).
 
 ### BUG-04: Only Mewtwo can learn the Route 15 elemental punches
+**Status (2026-11-27):** Fixed, awaiting your test. Compatibility now follows newer official games: 89 Pokémon can learn Fire Punch, 104 Ice Punch and 109 Thunder Punch (taken from the pokeemerald-expansion reference data, including Deoxys's Normal Forme list).
+
 - **Where:** `src/data/pokemon/tutor_learnsets.h`; tutors in `data/maps/Route15_HouseofElements/`.
 - **Confirmed:** Ice Punch, Fire Punch and Thunder Punch tutor flags are set for Mewtwo only.
 - **Effect:** The three tutors refuse almost every Pokémon.
@@ -69,6 +77,8 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 ## Medium
 
 ### BUG-05: Confusion and disobedience self-hits use the wrong rules
+**Status (2026-11-27):** Fixed, awaiting your test. `CalculateBaseDamage` now uses the move passed to it, and Technician is skipped for self-hits.
+
 - **Where:** `CalculateBaseDamage` in `src/pokemon.c`.
 - **Cause:** It decides physical or special from the move you **chose** (`gCurrentMove`), not from the move passed in. Self-hits pass in a stand-in physical move.
 - **Effects:**
@@ -78,6 +88,8 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Possible fix:** Use the passed-in move for the category check, and skip these abilities for self-hits.
 
 ### BUG-06: Victory music never plays after knocking out a wild Pokémon
+**Status (2026-11-27):** Fixed, awaiting your test. The music now plays only when the wild Pokémon has fainted, so catching does not trigger it.
+
 - **Where:** `Cmd_getexp` in `src/battle_script_commands.c`.
 - **Cause:** The music only starts if the enemy has no Poké Ball recorded. Every newly created Pokémon is recorded with a Poké Ball, so the condition is never true.
 - **Assumption:** The check was meant to tell catching apart from knocking out.
@@ -109,6 +121,8 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 `tools/poryscript/poryscript` is stored without "executable" permission. On a native Linux copy, rebuilding scripts fails with `Permission denied`. Your Windows drive under WSL is not affected.
 
 ### BUG-12: Using a TM can read past the item effect table
+**Status (2026-11-27):** Fixed, awaiting your test. The limit is now `ITEM_UP_GRADE`, the last item in the effect table, and `GetItemEffectType` ignores items with no effect.
+
 `IS_POKEMON_ITEM` in `include/constants/items.h` lost its upper limit (so the new evolution items would work). TM item numbers are far beyond the end of `gItemEffectTable`, and `GetItemEffectType` does not check. It works in practice today, but what it reads is undefined and could change as the game changes. A fix is to restore a limit that includes the highest evolution item.
 
 ### BUG-13: Ariados and Donphan have 21 level-up moves

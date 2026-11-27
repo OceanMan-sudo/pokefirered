@@ -158,7 +158,7 @@ Animations for thirteen of the new moves were fixed or redrawn with Claude (**Te
 
 ### Move tutors and relearner
 - **Move relearner**, free: Fuchsia City House 3 and the new Cerulean City house.
-- **Route 15 House of Elements:** Ice Punch, Fire Punch and Thunder Punch tutors (only Mewtwo is compatible at present, see BUG-04).
+- **Route 15 House of Elements:** Ice Punch, Fire Punch and Thunder Punch tutors Compatibility follows newer official games (89 Pokémon for Fire Punch, 104 for Ice Punch, 109 for Thunder Punch).
 
 ## Items and shops
 
@@ -225,7 +225,7 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 | Celadon Poké Ball shop | Ball shop | In use |
 | Saffron Battle House | 4 trainers, Bright Powder | In use |
 | Cinnabar Battle House | Clerk only | Unfinished |
-| Route 15 House of Elements | Punch tutors | Mostly unusable (BUG-04) |
+| Route 15 House of Elements | Punch tutors | In use |
 | Seafoam Resort | 7 characters with no dialogue, surfing encounters | Unreachable, unfinished |
 
 ## Trainers
