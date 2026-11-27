@@ -2467,8 +2467,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
          move == MOVE_JUMP_KICK ||
          move == MOVE_HI_JUMP_KICK ||
          move == MOVE_VOLT_TACKLE ||
-         move == MOVE_FLARE_BLITZ ||
-         move == MOVE_SKY_ATTACK))
+         move == MOVE_FLARE_BLITZ))
         gBattleMovePower = (120 * gBattleMovePower) / 100;
 
 

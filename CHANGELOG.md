@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 47 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 48 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -15,7 +15,8 @@ Claude-assisted changes you have not yet reported as working.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
 - **Walled bosses switching** (testing in progress).
 - **Dragon Rage against Fairy types:** checked in a simulator only.
-- **Four Fairy moves:** Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice.
+- **Fairy move special cases:** Drain Kiss against Liquid Ooze, Fae Voice against Soundproof, and opponents using the spread moves.
+- **Latest move changes:** the punches, Superpower, Sky Attack, Double Slap and multi-hit moves.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -108,7 +109,11 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Tested |
 | New move: Aura Sphere with animation | Tested |
 | New moves: Moonblast and Play Rough with animations | Tested |
-| New moves: Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice with animations; new drain effect that heals three quarters; Fae Voice blocked by Soundproof | Not yet tested |
+| New moves: Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice with animations; new drain effect that heals three quarters; Fae Voice blocked by Soundproof | Tested |
+| Fire, Ice and Thunder Punch back to 75 power; Superpower back to its original form | Not yet tested |
+| Sky Attack: special, 140 power, 90 accuracy, 5 PP, lowers the user's Sp. Atk by two stages; no longer boosted by Reckless | Not yet tested |
+| Rock Slide flinch chance 30%→20%; Double Slap is Fairy | Not yet tested |
+| Multi-hit moves use modern odds for 2, 3, 4 and 5 hits (35/35/15/15%); Pin Missile accuracy 95, Bone Rush and Rock Blast 90; Bullet Seed 25 power | Not yet tested (odds checked outside the game) |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 
 ### Items, TMs and field moves
@@ -399,14 +404,12 @@ The Claude-assisted changes did not touch TM compatibility or trainer teams. The
 Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Metapod, Butterfree, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magneton, Farfetch'd, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo, Chikorita, Bayleef, Meganium, Cyndaquil, Quilava, Typhlosion, Totodile, Croconaw, Feraligatr, Sentret, Furret, Hoothoot, Noctowl, Ledyba, Ledian, Spinarak, Ariados, Crobat, Chinchou, Lanturn, Pichu, Togetic, Natu, Xatu, Mareep, Flaaffy, Ampharos, Bellossom, Marill, Azumarill, Sudowoodo, Politoed, Hoppip, Skiploom, Jumpluff, Aipom, Sunkern, Sunflora, Yanma, Wooper, Quagsire, Espeon, Umbreon, Murkrow, Slowking, Misdreavus, Girafarig, Pineco, Forretress, Dunsparce, Gligar, Steelix, Snubbull, Granbull, Qwilfish, Scizor, Shuckle, Heracross, Sneasel, Teddiursa, Ursaring, Slugma, Magcargo, Swinub, Piloswine, Corsola, Remoraid, Octillery, Mantine, Skarmory, Houndour, Houndoom, Kingdra, Phanpy, Donphan, Porygon2, Stantler, Tyrogue, Hitmontop, Smoochum, Elekid, Magby, Miltank, Blissey, Raikou, Entei, Suicune, Tyranitar
 
 ### Changes to original moves
-65 moves (category additions not counted).
+64 moves (category additions not counted).
 
 | Move | Change (original → now) |
 |---|---|
+| Double Slap | type Normal→Fairy |
 | Comet Punch | power 18→15; type Normal→Fighting |
-| Fire Punch | power 75→80 |
-| Ice Punch | power 75→80 |
-| Thunder Punch | power 75→80 |
 | Razor Wind | type Normal→Flying; accuracy 100→95; PP 10→15; effect Razor Wind→High Critical; effect chance 0→20; target both→selected |
 | Cut | power 50→60; type Normal→Bug; accuracy 95→100; PP 30→25 |
 | Fly | power 70→100; accuracy 95→100 |
@@ -415,7 +418,7 @@ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Warto
 | Thrash | power 90→120 |
 | Poison Sting | power 15→25 |
 | Twineedle | power 25→40 |
-| Pin Missile | power 14→25 |
+| Pin Missile | power 14→25; accuracy 85→95 |
 | Hydro Pump | PP 5→10 |
 | Ice Beam | PP 10→15 |
 | Blizzard | accuracy 70→75 |
@@ -439,16 +442,17 @@ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Warto
 | Dream Eater | type Psychic→Dark; accuracy 100→120 |
 | Poison Gas | accuracy 55→90 |
 | Leech Life | power 20→40 |
-| Sky Attack | power 140→120; accuracy 90→100; PP 5→10; effect Sky Attack→Recoil |
+| Sky Attack | effect Sky Attack→Overheat; effect chance 30→100; now special (originally physical) |
 | Transform | priority 0→1 |
 | Bubble | power 20→30 |
 | Crabhammer | power 90→100; accuracy 85→95 |
 | Rest | PP 10→5 |
-| Rock Slide | power 75→90; PP 10→15 |
+| Rock Slide | power 75→90; PP 10→15; effect chance 30→20 |
 | Triple Kick | PP 10→20 |
 | Curse | type Mystery→Ghost |
 | Sweet Kiss | type Normal→Fairy |
 | Octazooka | accuracy 85→100 |
+| Bone Rush | accuracy 80→90 |
 | Outrage | power 90→120 |
 | Giga Drain | power 60→75; PP 5→15 |
 | Charm | type Normal→Fairy |
@@ -460,14 +464,14 @@ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Warto
 | Extreme Speed | priority 1→2 |
 | Future Sight | power 80→120; accuracy 90→100 |
 | Nature Power | accuracy 0→95 |
-| Superpower | power 120→100; PP 5→10; effect Superpower→Hit |
 | Snatch | now copyable by Mirror Move |
 | Blaze Kick | power 85→95; accuracy 90→100 |
 | Meteor Mash | accuracy 85→90 |
 | Sky Uppercut | accuracy 90→95 |
-| Bullet Seed | power 10→15 |
+| Bullet Seed | power 10→25 |
 | Icicle Spear | power 10→30 |
 | Leaf Blade | power 70→90 |
+| Rock Blast | accuracy 80→90 |
 
 ### New moves
 See [DESIGN.md](DESIGN.md#32-new-moves).

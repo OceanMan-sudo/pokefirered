@@ -83,7 +83,6 @@ Steel no longer resists Ghost or Dark.
 - Thick Fat halves the move's power.
 - Weather and Flash Fire apply to physical moves as well as special ones.
 - Light Ball doubles Pikachu's Sp. Atk only.
-- Sky Attack no longer has a high critical-hit rate.
 
 ### Weather
 | Weather | Effects added or changed |
@@ -100,7 +99,7 @@ Steel no longer resists Ghost or Dark.
 | Technician | 1.5× for moves with 60 power or less | Meowth, Persian, Mr. Mime, Scyther, Furret, Aipom, Scizor, Smeargle, Hitmontop |
 | Ice Body | Heals 1/16 HP each turn in hail | Seel, Dewgong |
 | Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Hitmonchan, Kangaskhan, Ledian |
-| Reckless | 1.2× for recoil and jump-kick moves, including Sky Attack | Hitmonlee, Rhyhorn, Rhydon |
+| Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
 | Snow Warning | Starts permanent hail on entering | Jynx, Delibird |
 | Snow Cloak | Attacks against it are 20% less accurate in hail | Articuno, Sneasel, Swinub, Piloswine |
 
@@ -255,9 +254,21 @@ Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Glea
 - **Fae Voice** is a sound move, so Soundproof blocks it.
 - **Dazzle Gleam and Fae Voice** hit both opponents. When both are out, each takes half damage, as with Surf (Generation 6 uses three quarters).
 
-Moonblast and Play Rough, with their animations, are **Tested**. Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice are **not yet tested**.
+The six Fairy moves, with their animations, are **Tested**.
 
-62 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
+64 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
+
+### Multi-hit moves
+Multi-hit moves follow modern games:
+
+- Moves that hit 2 to 5 times check accuracy **once**. If that succeeds, every hit lands unless the target faints first.
+- Odds: 2 hits 35%, 3 hits 35%, 4 hits 15%, 5 hits 15%.
+- Triple Kick checks accuracy before each kick and stops at the first miss.
+- A multi-hit move that breaks a Substitute carries on into the Pokémon behind it.
+
+### Sky Attack and Double Slap
+- **Sky Attack** is a special Flying move that hits in one turn: 140 power, 90 accuracy, 5 PP. It lowers the user's Sp. Atk by two stages, like Overheat.
+- **Double Slap** is a Fairy move. It is still physical and looks the same.
 
 Animations for thirteen of the new moves were fixed or redrawn with Claude (**Tested**).
 

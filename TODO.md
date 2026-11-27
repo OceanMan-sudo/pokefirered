@@ -323,13 +323,18 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Trainer AI: Lance's Gyarados and Dragonair do not use Dragon Rage on a Fairy Pokémon
 - [x] Moonblast (381): move and animation
 - [x] Play Rough (382): move and animation
-- [ ] Fairy Wind (383): move and animation
-- [ ] Drain Kiss (384): animation, and the user gets back three quarters of the damage dealt
+- [x] Fairy Wind (383): move and animation
+- [x] Drain Kiss (384): animation, and the user gets back three quarters of the damage dealt
 - [ ] Drain Kiss against a Pokémon with Liquid Ooze (some Tentacool have it): the user loses HP instead
-- [ ] Dazzle Gleam (385): animation in a single battle and a double battle; both opponents are hit
-- [ ] Fae Voice (386): animation in a single battle and a double battle; both opponents are hit and it never misses
+- [x] Dazzle Gleam (385): animation in a single battle and a double battle; both opponents are hit
+- [x] Fae Voice (386): animation in a single battle and a double battle; both opponents are hit and it never misses
 - [ ] Fae Voice against a Pokémon with Soundproof (some Voltorb and Mr. Mime have it): no effect
 - [ ] Dazzle Gleam and Fae Voice used by an opponent look right too
+- [ ] Fire, Ice and Thunder Punch (7, 8, 9) show 75 power
+- [ ] Superpower (276): lowers the user's Attack and Defense after hitting
+- [ ] Sky Attack (143): hits in one turn, sharply lowers the user's Sp. Atk, and shows its new description
+- [ ] Double Slap (3): shows as Fairy and is super effective against Fighting, Dragon and Dark types
+- [ ] Multi-hit moves, such as Fury Swipes (154) or Pin Missile (42): mostly 2 or 3 hits, sometimes 4 or 5
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
