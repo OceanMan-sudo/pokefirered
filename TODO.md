@@ -312,13 +312,14 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Trainer AI: Misty's Starmie uses Recover when hurt
 - [ ] Walled boss: with a level 39 Chansey against Sabrina, Mr. Mime switches to Girafarig on the first turn
 - [ ] Walled boss: it does not switch this way two turns in a row
-- [ ] Debug menu, Teach Move: fills an empty slot, replaces a chosen move when there are four, B cancels, and a known move is refused
-- [ ] Fairy label: correct on the summary screen (both pages with types), when replacing a move, and in the Pokédex
-- [ ] Fairy matchups against Clefairy: Dragon Claw (337) has no effect; Sludge Bomb (188) and Steel Wing (211) are super effective; Brick Break (280) and Crunch (242) are not very effective
-- [ ] Steel change: Shadow Ball (247) and Crunch (242) do normal damage to Magnemite
-- [ ] Charm (204), Sweet Kiss (186) and Moonlight (236) show as Fairy and still work
-- [ ] Clefable has the new Defense and Sp. Def
-- [ ] TM Case: opens normally and the disc colors look as before
+- [x] Debug menu, Teach Move: fills an empty slot, replaces a chosen move when there are four, B cancels, and a known move is refused
+- [x] Fairy label: correct on the summary screen (both pages with types), when replacing a move, and in the Pokédex
+- [x] Fairy matchups against Clefairy: Dragon Claw (337) has no effect; Sludge Bomb (188) and Steel Wing (211) are super effective; Brick Break (280) and Crunch (242) are not very effective
+- [x] Steel change: Shadow Ball (247) and Crunch (242) do normal damage to Magnemite
+- [x] Charm (204), Sweet Kiss (186) and Moonlight (236) show as Fairy and still work
+- [x] Clefable has the new Defense and Sp. Def
+- [x] TM Case: opens normally and the disc colors look as before
+- [ ] Trainer AI: Lance's Gyarados and Dragonair do not use Dragon Rage on a Fairy Pokémon
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

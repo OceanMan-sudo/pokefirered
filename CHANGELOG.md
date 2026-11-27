@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 43 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 44 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -13,9 +13,8 @@ Claude-assisted changes you have not yet reported as working.
 - **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
 - **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
-- **Fairy type:** the label, the TM Case screen, the new matchups, the retyped Pokémon and moves, and Clefable's stats.
-- **Debug menu Teach Move option.**
 - **Walled bosses switching** (testing in progress).
+- **Dragon Rage against Fairy types:** checked in a simulator only.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -85,6 +84,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Trainer AI accounts for Soundproof against Boomburst and Hyper Voice, immunities against Overheat-type moves, and new weather abilities | Not yet tested |
 | Level 3 trainers switch out when nothing they have can affect your Pokémon and a teammate can | Not yet tested |
 | Double battle enemy switching slip fixed (BUG-19) | Not yet tested |
+| Trainer AI no longer uses Dragon Rage on Pokémon immune to it | Not yet tested |
 
 ### Battle
 | Change | In-game status |
@@ -96,10 +96,10 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 ### Fairy type
 | Change | In-game status |
 |---|---|
-| Fairy type with the Generation 6 matchups; Steel no longer resists Ghost or Dark | Not yet tested |
-| 18 Pokémon become Fairy; Charm, Sweet Kiss and Moonlight are Fairy moves | Not yet tested |
-| Fairy label and TM disc color; Fairy added to the Pokédex type order and the trade board; Hidden Power cannot be Fairy | Not yet tested |
-| Clefable: Defense and Sp. Def set to Generation 6 (90→73, 95→90) | Not yet tested |
+| Fairy type with the Generation 6 matchups; Steel no longer resists Ghost or Dark | Tested |
+| 18 Pokémon become Fairy; Charm, Sweet Kiss and Moonlight are Fairy moves | Tested |
+| Fairy label and TM disc color; Fairy added to the Pokédex type order and the trade board; Hidden Power cannot be Fairy | Partly tested (trade board and Hidden Power not checked) |
+| Clefable: Defense and Sp. Def set to Generation 6 (90→73, 95→90) | Tested |
 
 ### Moves and animations
 | Change | In-game status |
@@ -147,7 +147,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 |---|---|
 | Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
 | Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
-| Debug menu: Teach Move option | Not yet tested |
+| Debug menu: Teach Move option | Tested |
 | Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
