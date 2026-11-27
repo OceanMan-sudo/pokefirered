@@ -673,3 +673,46 @@ SilphCo_4F_EventScript_ItemTM41::
 PalletTown_EventScript_ItemHM03::
 	finditem ITEM_HM03
 	end
+
+@ TEMPORARY: test helper for Aura Sphere. Remove after testing.
+PalletTown_EventScript_AuraSphereTester::
+	lock
+	faceplayer
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, PalletTown_EventScript_AuraSphereNoMon
+	setvar VAR_0x8004, 0
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, PalletTown_EventScript_AuraSphereNoMon
+	msgbox PalletTown_Text_AuraSphereAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PalletTown_EventScript_AuraSphereDeclined
+	setmonmove 0, 0, MOVE_AURA_SPHERE
+	msgbox PalletTown_Text_AuraSphereDone
+	release
+	end
+
+PalletTown_EventScript_AuraSphereDeclined::
+	msgbox PalletTown_Text_AuraSphereDeclined
+	release
+	end
+
+PalletTown_EventScript_AuraSphereNoMon::
+	msgbox PalletTown_Text_AuraSphereNoMon
+	release
+	end
+
+PalletTown_Text_AuraSphereAsk::
+	.string "I can teach AURA SPHERE to your\n"
+	.string "first POKéMON for testing.\p"
+	.string "It will replace its first move.\n"
+	.string "Is that okay?$"
+
+PalletTown_Text_AuraSphereDone::
+	.string "Done! Your first POKéMON now\n"
+	.string "knows AURA SPHERE.$"
+
+PalletTown_Text_AuraSphereDeclined::
+	.string "Okay. Come back anytime.$"
+
+PalletTown_Text_AuraSphereNoMon::
+	.string "Put a POKéMON that has hatched\n"
+	.string "first in your party.$"
