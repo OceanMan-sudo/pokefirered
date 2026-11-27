@@ -295,7 +295,7 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 ## Trainers
 
 ### Battle AI
-Not yet tested in game. How clever a trainer is depends on the trainer class. The list is in `src/data/trainer_ai_levels.h`; change a level there and rebuild.
+**Tested.** How clever a trainer is depends on the trainer class. The list is in `src/data/trainer_ai_levels.h`; change a level there and rebuild.
 
 | Level | Who | Choosing moves | Sending out the next Pokémon |
 |---|---|---|---|

@@ -36,7 +36,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 | BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults | Open |
 | BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself | Open |
 | BUG-18 | Low | Confirmed | Typos and small code tidiness issues | Open |
-| BUG-19 | Low | Confirmed | In double battles the enemy can try to switch in a Pokémon already out (from the original game) | Open |
+| BUG-19 | Low | Confirmed | In double battles the enemy can try to switch in a Pokémon already out (from the original game) | Fixed, awaiting test |
 
 ---
 
@@ -159,9 +159,10 @@ In the main games these abilities protect from hail damage on their own. Here on
 - Repository root contains screenshots and save states (`pokefirered-0.png` to `-3.png`, `pokefirered.ss1`, `.ss2`).
 
 ### BUG-19: Enemy switching slip in double battles
+**Status (2026-11-27):** Fixed. The search now keeps the attacking Pokémon in its own variable. The same random test situations no longer produce a bad pick. It is too rare to check reliably in game.
+
 - **Where:** `FindMonWithFlagsAndSuperEffective` in `src/battle_ai_switch_items.c`.
 - **Confirmed:** Part way through its search it reuses the variable that remembers which Pokémon is already out, so in a double battle it can pick that one as the "replacement". This comes from the original game. Found while testing the AI changes; it showed up 2 times in 200,000 random test situations.
-- **Fix:** Small (use a separate variable). Not changed yet.
 
 ## Things to keep an eye on (not bugs)
 
