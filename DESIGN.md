@@ -266,7 +266,7 @@ Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Glea
 
 The six Fairy moves, with their animations, are **Tested**.
 
-The ten moves from Close Combat to Snarl are not yet tested.
+The ten moves from Close Combat to Snarl are **Tested**, apart from the reworked Bulldoze and Wild Charge animations.
 
 - **Close Combat** lowers the user's Defense and Sp. Def by one stage after hitting.
 - **Brave Bird and Wild Charge** damage the user (a third and a quarter of the damage dealt). Rock Head prevents this, and Reckless boosts both moves.

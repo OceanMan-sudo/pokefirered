@@ -127,6 +127,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 - **File names are case-sensitive** on some computers even though Windows ignores it (see BUG-10).
 - **Flags and variables** are part of the save file. Adding flags beyond the current end changes the save layout.
 - **Windows and WSL line endings:** many files can show as "modified" without real changes. Check with `git diff --ignore-cr-at-eol --stat` before committing.
+- **Battle animations** must never move the player's Pokémon upward: its sprite is cut off at the bottom and the edge shows. Also finish any shake on a Pokémon before another task moves it, or the two fight over its position.
 - **Debug content** is still in the game. See the cleanup list in [TODO.md](TODO.md).
 
 ## Other documentation in the repository

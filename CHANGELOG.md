@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 49 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 50 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -16,8 +16,8 @@ Claude-assisted changes you have not yet reported as working.
 - **Walled bosses switching** (testing in progress).
 - **Dragon Rage against Fairy types:** checked in a simulator only.
 - **Fairy move special cases:** Drain Kiss against Liquid Ooze, Fae Voice against Soundproof, and opponents using the spread moves.
-- **Latest move changes:** the punches, Superpower, Sky Attack, Double Slap and multi-hit moves.
-- **Ten newest moves:** Close Combat to Snarl (387 to 396), with their animations.
+- **Multi-hit moves:** the new odds and accuracy.
+- **Reworked animations:** Bulldoze and Wild Charge.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -111,11 +111,11 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | New move: Aura Sphere with animation | Tested |
 | New moves: Moonblast and Play Rough with animations | Tested |
 | New moves: Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice with animations; new drain effect that heals three quarters; Fae Voice blocked by Soundproof | Tested |
-| Fire, Ice and Thunder Punch back to 75 power; Superpower back to its original form | Not yet tested |
-| Sky Attack: special, 140 power, 90 accuracy, 5 PP, lowers the user's Sp. Atk by two stages; no longer boosted by Reckless | Not yet tested |
-| Rock Slide flinch chance 30%→20%; Double Slap is Fairy | Not yet tested |
+| Fire, Ice and Thunder Punch back to 75 power; Superpower back to its original form | Tested |
+| Sky Attack: special, 140 power, 90 accuracy, 5 PP, lowers the user's Sp. Atk by two stages; no longer boosted by Reckless | Tested |
+| Rock Slide flinch chance 30%→20%; Double Slap is Fairy | Tested |
 | Multi-hit moves use modern odds for 2, 3, 4 and 5 hits (35/35/15/15%); Pin Missile accuracy 95, Bone Rush and Rock Blast 90; Bullet Seed 25 power | Not yet tested (odds checked outside the game) |
-| New moves: Close Combat, Brave Bird, Wild Charge, Icicle Crash, Iron Head, Bug Buzz, Power Gem, Energy Ball, Bulldoze and Snarl with animations; new effects for Close Combat and Bulldoze; Bug Buzz and Snarl blocked by Soundproof | Not yet tested |
+| New moves: Close Combat, Brave Bird, Wild Charge, Icicle Crash, Iron Head, Bug Buzz, Power Gem, Energy Ball, Bulldoze and Snarl with animations; new effects for Close Combat and Bulldoze; Bug Buzz and Snarl blocked by Soundproof | Tested, except the reworked Bulldoze and Wild Charge animations |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 
 ### Items, TMs and field moves

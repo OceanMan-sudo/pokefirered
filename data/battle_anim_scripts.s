@@ -11302,15 +11302,15 @@ Move_WILD_CHARGE:
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 0, 10, RGB_BLACK
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 1, 4, 0, 12, RGB(31, 31, 8)
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 2, 0, 30, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 2, 0, 12, 1
 	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
 	call WildChargeSparks
 	delay 14
 	playsewithpan SE_M_THUNDERBOLT2, SOUND_PAN_ATTACKER
 	call WildChargeSparks
 	delay 14
-	createvisualtask AnimTask_WindUpLunge, 5, ANIM_ATTACKER, -24, 8, 20, 6, 40, 8
-	delay 32
+	createvisualtask AnimTask_WindUpLunge, 5, ANIM_ATTACKER, -24, 0, 20, 2, 48, 8
+	delay 28
 	playsewithpan SE_M_THUNDERBOLT, SOUND_PAN_TARGET
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, ANIM_TARGET, 0
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 0, 10, 10, RGB(31, 31, 16)
@@ -11525,20 +11525,20 @@ EnergyBallGather:
 Move_BULLDOZE:
 	loadspritegfx ANIM_TAG_MUD_SAND
 	loadspritegfx ANIM_TAG_DIRT_MOUND
-	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, -20, 0, 6
-	playsewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER
-	waitforvisualfinish
-	delay 4
-	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 3
-	waitforvisualfinish
-	playsewithpan SE_M_EARTHQUAKE, 0
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 8, RGB(14, 8, 2)
+	createvisualtask AnimTask_WindUpLunge, 5, ANIM_ATTACKER, -16, 0, 16, 4, 44, 6
+	playsewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER
+	delay 24
+	playsewithpan SE_M_EARTHQUAKE, 0
 	createvisualtask AnimTask_HorizontalShake, 5, (MAX_BATTLERS_COUNT + 1), 6, 40
-	createvisualtask AnimTask_HorizontalShake, 5, MAX_BATTLERS_COUNT, 6, 40
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 6, 40
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_DEF_PARTNER, 6, 40
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_ATK_PARTNER, 6, 40
 	createsprite gDirtMoundSpriteTemplate, ANIM_ATTACKER, 1, 0, 0, 24
 	createsprite gDirtMoundSpriteTemplate, ANIM_ATTACKER, 1, 0, 1, 24
 	call BulldozeDirtUser
 	delay 8
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 10
 	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
 	createsprite gDirtMoundSpriteTemplate, ANIM_ATTACKER, 1, 1, 0, 30
 	createsprite gDirtMoundSpriteTemplate, ANIM_ATTACKER, 1, 1, 1, 30

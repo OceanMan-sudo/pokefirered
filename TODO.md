@@ -330,21 +330,22 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Fae Voice (386): animation in a single battle and a double battle; both opponents are hit and it never misses
 - [ ] Fae Voice against a Pokémon with Soundproof (some Voltorb and Mr. Mime have it): no effect
 - [ ] Dazzle Gleam and Fae Voice used by an opponent look right too
-- [ ] Fire, Ice and Thunder Punch (7, 8, 9) show 75 power
-- [ ] Superpower (276): lowers the user's Attack and Defense after hitting
-- [ ] Sky Attack (143): hits in one turn, sharply lowers the user's Sp. Atk, and shows its new description
-- [ ] Double Slap (3): shows as Fairy and is super effective against Fighting, Dragon and Dark types
+- [x] Fire, Ice and Thunder Punch (7, 8, 9) show 75 power
+- [x] Superpower (276): lowers the user's Attack and Defense after hitting
+- [x] Sky Attack (143): hits in one turn, sharply lowers the user's Sp. Atk, and shows its new description
+- [x] Double Slap (3): shows as Fairy and is super effective against Fighting, Dragon and Dark types
 - [ ] Multi-hit moves, such as Fury Swipes (154) or Pin Missile (42): mostly 2 or 3 hits, sometimes 4 or 5
-- [ ] Close Combat (387): animation; the user's Defense and Sp. Def fall
-- [ ] Brave Bird (388): animation, the user comes back into view, and it takes recoil damage
-- [ ] Wild Charge (389): animation and recoil damage
-- [ ] Icicle Crash (390): animation; sometimes causes a flinch
-- [ ] Iron Head (391): animation, the user's colors return to normal; sometimes causes a flinch
-- [ ] Bug Buzz (392): animation; no effect on Soundproof
-- [ ] Power Gem (393): animation
-- [ ] Energy Ball (394): animation
-- [ ] Bulldoze (395): animation and Speed drop; in a double battle it hits both opponents and your partner
-- [ ] Snarl (396): animation; in a double battle both opponents lose Sp. Atk
+- [x] Close Combat (387): animation; the user's Defense and Sp. Def fall
+- [x] Brave Bird (388): animation, the user comes back into view, and it takes recoil damage
+- [ ] Wild Charge (389): reworked animation; the charge is smooth
+- [x] Icicle Crash (390): animation; sometimes causes a flinch
+- [x] Iron Head (391): animation, the user's colors return to normal; sometimes causes a flinch
+- [x] Bug Buzz (392): animation; no effect on Soundproof
+- [x] Power Gem (393): animation
+- [x] Energy Ball (394): animation
+- [ ] Bulldoze (395): reworked animation; your Pokémon charges forward without rising or showing its cut-off edge
+- [x] Bulldoze (395): damage and Speed drop
+- [x] Snarl (396): animation; in a double battle both opponents lose Sp. Atk
 - [ ] Moves 387 to 396 used by an opponent look right too
 
 ## Test content to remove
