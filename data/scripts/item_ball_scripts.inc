@@ -669,3 +669,7 @@ SevenIsland_SevaultCanyon_House_EventScript_ItemLuckyPunch::
 SilphCo_4F_EventScript_ItemTM41::
 	finditem ITEM_TM41
 	end
+
+PalletTown_EventScript_ItemTM28::
+	finditem ITEM_TM28
+	end
