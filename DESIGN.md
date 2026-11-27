@@ -20,6 +20,8 @@ In the number picker, up and down change by 1, left and right by 10, A confirms.
 
 ## Rules and settings
 
+The settings and level cap below are **Tested**.
+
 The Options menu has a second page. Press **Down** past FRAME to reach it, and **Up** to go back. **A** or **B** saves and closes from either page.
 
 | Setting | Where | New game | What it does |
@@ -81,6 +83,20 @@ Each move is Physical, Special or Status on its own, whatever its type. An icon 
 - In wild battles, pressing **B** on the action menu jumps the cursor to **RUN**.
 - Enemy trainers never use items, including gym leaders and the League.
 - By default you cannot use your Bag in trainer battles either (see [Rules and settings](#rules-and-settings)).
+- **Quick escape** (below).
+
+### Quick escape
+Hold **B** as a wild Pokémon slides in. "Wild ___ appeared!" shows with **Try to escape?** and a Yes/No box that starts on **Yes**. Pressing B again, or choosing No, starts the battle normally.
+
+Choosing Yes makes the usual escape check with your first Pokémon, before it comes out:
+
+| Result | What happens |
+|---|---|
+| Escape works | The battle ends. A Smoke Ball or Run Away always works |
+| Too slow | "Can't escape!", your Pokémon comes out and you lose your first turn |
+| Trapped by an ability (such as Arena Trap) | The ability is named, your Pokémon comes out and you take your turn normally |
+
+It works in wild battles, including legendary and ghost battles. It does not appear in trainer battles, the Safari Zone or the catching tutorials. In ghost battles the question follows the ghost's own message.
 
 ## Training and progression
 

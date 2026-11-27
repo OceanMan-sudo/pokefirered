@@ -7,6 +7,7 @@
 #include "battle_interface.h"
 #include "battle_main.h"
 #include "battle_message.h"
+#include "battle_script_commands.h"
 #include "battle_scripts.h"
 #include "battle_setup.h"
 #include "berry.h"
@@ -30,6 +31,7 @@
 #include "roamer.h"
 #include "safari_zone.h"
 #include "scanline_effect.h"
+#include "strings.h"
 #include "task.h"
 #include "trig.h"
 #include "vs_seeker.h"
@@ -93,6 +95,10 @@ static void BattleIntroDrawTrainersOrMonsSprites(void);
 static void BattleIntroDrawPartySummaryScreens(void);
 static void BattleIntroPrintTrainerWantsToBattle(void);
 static void BattleIntroPrintWildMonAttacked(void);
+static bool8 CanOfferQuickEscape(void);
+static void BattleIntroPrintQuickEscapeQuestion(void);
+static void BattleIntroHandleQuickEscapeChoice(void);
+static void BattleIntroTryQuickEscape(void);
 static void BattleIntroPrintOpponentSendsOut(void);
 static void BattleIntroPrintPlayerSendsOut(void);
 static void BattleIntroRecordMonsToDex(void);
@@ -2727,13 +2733,136 @@ static void BattleIntroPrintWildMonAttacked(void)
 {
     if (gBattleControllerExecFlags == 0)
     {
-        gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
-        PrepareStringBattle(STRINGID_INTROMSG, 0);
-        if (IS_BATTLE_TYPE_GHOST_WITH_SCOPE(gBattleTypeFlags))
+        // Holding B as the wild Pokémon finishes sliding in asks whether to escape.
+        bool8 offerEscape = CanOfferQuickEscape() && JOY_HELD(B_BUTTON);
+
+        if (offerEscape)
+            gBattleMainFunc = BattleIntroPrintQuickEscapeQuestion;
+        else
+            gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
+
+        // The escape question includes the "appeared" line itself, so that it
+        // does not wait for a button press first. Ghosts keep their own text.
+        if (!offerEscape || (gBattleTypeFlags & BATTLE_TYPE_GHOST))
         {
-            gBattleScripting.battler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-            BattleScriptExecute(BattleScript_SilphScopeUnveiled);
+            PrepareStringBattle(STRINGID_INTROMSG, 0);
+            if (IS_BATTLE_TYPE_GHOST_WITH_SCOPE(gBattleTypeFlags))
+            {
+                gBattleScripting.battler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+                BattleScriptExecute(BattleScript_SilphScopeUnveiled);
+            }
         }
+    }
+}
+
+static bool8 CanOfferQuickEscape(void)
+{
+    return !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER
+                               | BATTLE_TYPE_LINK
+                               | BATTLE_TYPE_DOUBLE
+                               | BATTLE_TYPE_SAFARI
+                               | BATTLE_TYPE_FIRST_BATTLE
+                               | BATTLE_TYPE_OLD_MAN_TUTORIAL
+                               | BATTLE_TYPE_POKEDUDE));
+}
+
+static void BattleIntroPrintQuickEscapeQuestion(void)
+{
+    if (gBattleControllerExecFlags == 0)
+    {
+        if (gBattleTypeFlags & BATTLE_TYPE_GHOST)
+            BattleStringExpandPlaceholdersToDisplayedString(gText_QuickEscapeGhost);
+        else
+            BattleStringExpandPlaceholdersToDisplayedString(gText_QuickEscapeWild);
+        BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MSG);
+        gBattleCommunication[MULTIUSE_STATE] = 0;
+        gBattleMainFunc = BattleIntroHandleQuickEscapeChoice;
+    }
+}
+
+static void BattleIntroHandleQuickEscapeChoice(void)
+{
+    switch (gBattleCommunication[MULTIUSE_STATE])
+    {
+    case 0: // Show the Yes/No box once the question has been printed
+        if (!IsTextPrinterActive(B_WIN_MSG))
+        {
+            HandleBattleWindow(23, 8, 29, 13, 0);
+            BattlePutTextOnWindow(gText_BattleYesNoChoice, B_WIN_YESNO);
+            gBattleCommunication[CURSOR_POSITION] = 0; // starts on Yes
+            BattleCreateYesNoCursorAt();
+            gBattleCommunication[MULTIUSE_STATE]++;
+        }
+        break;
+    case 1:
+        if (JOY_NEW(DPAD_UP) && gBattleCommunication[CURSOR_POSITION] != 0)
+        {
+            PlaySE(SE_SELECT);
+            BattleDestroyYesNoCursorAt();
+            gBattleCommunication[CURSOR_POSITION] = 0;
+            BattleCreateYesNoCursorAt();
+        }
+        if (JOY_NEW(DPAD_DOWN) && gBattleCommunication[CURSOR_POSITION] == 0)
+        {
+            PlaySE(SE_SELECT);
+            BattleDestroyYesNoCursorAt();
+            gBattleCommunication[CURSOR_POSITION] = 1;
+            BattleCreateYesNoCursorAt();
+        }
+        // JOY_NEW: a B button still held from the slide-in does not answer "No"
+        if (JOY_NEW(A_BUTTON | B_BUTTON))
+        {
+            bool8 escape = !JOY_NEW(B_BUTTON) && gBattleCommunication[CURSOR_POSITION] == 0;
+
+            PlaySE(SE_SELECT);
+            HandleBattleWindow(23, 8, 29, 13, WINDOW_CLEAR);
+            CopyBgTilemapBufferToVram(0);
+            gBattleCommunication[MULTIUSE_STATE] = 0;
+            gBattleCommunication[CURSOR_POSITION] = 0;
+            if (escape)
+                BattleIntroTryQuickEscape();
+            else
+                gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
+        }
+        break;
+    }
+}
+
+// The same checks as choosing RUN, made with your first Pokémon before it comes out
+static void BattleIntroTryQuickEscape(void)
+{
+    gActiveBattler = gBattlerAttacker = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+
+    if (IsRunningFromBattleImpossible() != BATTLE_RUN_SUCCESS)
+    {
+        // Held here, for example by Arena Trap. As with RUN, no turn is lost.
+        gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
+        BattleScriptExecute(BattleScript_PrintFailedToRunString);
+    }
+    else if (TryRunFromBattle(gBattlerAttacker))
+    {
+        switch (gProtectStructs[gBattlerAttacker].fleeType)
+        {
+        case FLEE_ITEM: // no animation: your Pokémon is not on screen yet
+            gBattlescriptCurrInstr = BattleScript_QuickEscapeUsingItem;
+            break;
+        case FLEE_ABILITY:
+            gBattlescriptCurrInstr = BattleScript_RanAwayUsingMonAbility;
+            break;
+        default:
+            gBattlescriptCurrInstr = BattleScript_GotAwaySafely;
+            break;
+        }
+        gCurrentActionFuncId = 0;
+        gBattleMainFunc = HandleEndTurn_FinishBattle;
+    }
+    else
+    {
+        // Too slow: your Pokémon comes out, and its first turn is used up
+        gBattleStruct->quickEscapeFailed = TRUE;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CANT_ESCAPE_2;
+        gBattleMainFunc = BattleIntroPrintPlayerSendsOut;
+        BattleScriptExecute(BattleScript_PrintFailedToRunString);
     }
 }
 
@@ -3116,6 +3245,13 @@ static void HandleTurnActionSelectionState(void)
                         gBattleCommunication[gActiveBattler] = STATE_WAIT_ACTION_CONFIRMED;
                     else
                         gBattleCommunication[gActiveBattler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
+                }
+                else if (gBattleStruct->quickEscapeFailed && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
+                {
+                    // A failed escape during the intro costs this turn
+                    gBattleStruct->quickEscapeFailed = FALSE;
+                    gChosenActionByBattler[gActiveBattler] = B_ACTION_NOTHING_FAINTED; // does nothing
+                    gBattleCommunication[gActiveBattler] = STATE_WAIT_ACTION_CONFIRMED;
                 }
                 else
                 {

@@ -236,6 +236,8 @@ extern const u16 gMissStringIds[];
 extern const u16 gTrappingMoves[];
 
 extern const u8 gText_Sleep[];
+extern const u8 gText_QuickEscapeWild[];
+extern const u8 gText_QuickEscapeGhost[];
 extern const u8 gText_Poison[];
 extern const u8 gText_Burn[];
 extern const u8 gText_Paralysis[];

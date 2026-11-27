@@ -3006,6 +3006,12 @@ BattleScript_SmokeBallEscape::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+@ Escaping with an item before your Pokémon is out, so there is nothing to animate
+BattleScript_QuickEscapeUsingItem::
+	printstring STRINGID_PKMNFLEDUSINGITS
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_RanAwayUsingMonAbility::
 	printstring STRINGID_PKMNFLEDUSING
 	waitmessage B_WAIT_TIME_LONG

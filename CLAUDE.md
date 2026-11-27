@@ -109,6 +109,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Running everywhere and auto run | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
 | Level cap | Numbers in `src/data/level_caps.h`; logic in `src/level_cap.c`; enforced in `Cmd_getexp` (`src/battle_script_commands.c`), `src/pokemon.c` and `src/party_menu.c` (Rare Candy), and `src/daycare.c` |
 | No Bag in trainer battles | `B_ACTION_USE_ITEM` case in `src/battle_main.c` |
+| Quick escape (hold B in a wild battle intro) | `BattleIntro...QuickEscape...` functions in `src/battle_main.c`; `quickEscapeFailed` in `include/battle.h`; text in `src/battle_message.c`; `BattleScript_QuickEscapeUsingItem` in `data/battle_scripts_1.s` |
 | Rule switches | `optionsLevelCapOff`, `optionsTrainerItemsOn`, `optionsAutoRun` in `SaveBlock2` (0 is the default for each); defaults in `SetDefaultRules` (`src/new_game.c`); second page in `src/option_menu.c` |
 | Dynamic multichoice menus | `src/script_menu.c`, `src/scrcmd.c` (script commands `0xd5`, `0xd6`) |
 | Debug menu (temporary) | `data/scripts/debug_menu.inc`, `src/debug_menu.c`, `include/constants/debug_menu.h`; opened from `src/field_control_avatar.c`; switch `DEBUG_MENU` in `include/config.h` |

@@ -24,14 +24,19 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
 | Running | Run from the start (no shoes needed), allowed everywhere. Auto-run switchable, off at first |
 | Pewter City aide | Gives a starter type booster as a gift from Mom, in place of the Running Shoes |
-| Wild battles | Holding B as the wild Pokémon slides in shows a Yes/No box asking whether to escape, right after "Wild ___ appeared!" and before your Pokémon comes out. The usual escape checks apply, and a failed escape costs the turn like a failed Run |
+| Wild battles | Holding B as the wild Pokémon slides in shows a Yes/No box asking whether to escape, right after "Wild ___ appeared!" and before your Pokémon comes out. The usual escape checks apply, and a failed escape costs the turn like a failed Run. The box starts on Yes. If an ability traps you, no turn is lost |
 | All 386 obtainable | Not required for version 1; some can wait |
 | Unfinished areas | Seafoam Resort, Pokémon Tower B1F, `NewMap1` and Cinnabar Battle House are part of version 1, tackled later |
 | New areas | Both after the story and woven into it. Ideas later |
 
 ## Open questions
 
-None right now.
+None blocking right now.
+
+### To discuss later
+- **Level caps and gym order (Erika, Koga, Sabrina).** The cap counts badges. Taking on Koga before Erika means a cap of 34 against a team of up to level 43 (until this is settled, the cap can be switched off in Options).
+- **Variable gym teams by the order played.** Possible: a gym can check your badges and start a different trainer entry. Each variant needs a trainer slot.
+- **Trainer slots.** 25 numbers are unused (743–767), and about 130 existing entries (mostly Ruby/Sapphire leftovers) are not referred to by name anywhere, so could be reused after checking each. Going past 768 is possible but needs new space in the save file for the extra "defeated" flags; simply raising `MAX_TRAINERS_COUNT` would shift the badge and other system flags and break saves.
 
 ## Order of work
 
@@ -70,7 +75,7 @@ Build the rules and their menu switches together.
 | ✅ | No items in trainer battles by default (your side; enemy trainers already never use items) | Easy |
 | ✅ | Menu switches for Set, items and level cap | Medium |
 | ✅ | Auto-run switch | Easy to medium |
-| ☐ | Hold B as a wild Pokémon slides in to get an escape prompt (usual escape checks) | Medium |
+| ✅ | Hold B as a wild Pokémon slides in to get an escape prompt (usual escape checks) | Medium |
 | ☐ | AI update: better existing logic for more trainers, plus small tweaks | Easy to medium |
 
 ✅ means the feature is in the code. Test it using the list under [Waiting to be tested](#waiting-to-be-tested). The caps themselves are in `src/data/level_caps.h`.
@@ -278,15 +283,21 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Debug menu: every option (hold B, press SELECT)
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
-- [ ] Level cap in battle: a Pokémon stops exactly at the cap, gains no EXP after that, and one below the cap still gains normally
-- [ ] Level cap with Rare Candies: no effect at the cap, works again after the next badge
-- [ ] A Pokémon at the cap still gains EVs, and its stats rise after the battle
-- [ ] Day Care: a Pokémon left there comes back no higher than the cap
-- [ ] Champion marked as beaten: no cap
-- [ ] Trainer battles: the Bag says "Items can't be used now." Wild battles still allow it
-- [ ] Auto run on: you run without holding B, and holding B walks
-- [ ] Options menu: both pages display correctly, each switch changes what it says, and settings stay after saving and reloading
-- [ ] A new game starts with Set style, level cap on, trainer battle items off and auto run off
+- [x] Level cap in battle: a Pokémon stops exactly at the cap, gains no EXP after that, and one below the cap still gains normally
+- [x] Level cap with Rare Candies: no effect at the cap, works again after the next badge
+- [x] A Pokémon at the cap still gains EVs, and its stats rise after the battle
+- [x] Day Care: a Pokémon left there comes back no higher than the cap
+- [x] Champion marked as beaten: no cap
+- [x] Trainer battles: the Bag says "Items can't be used now." Wild battles still allow it
+- [x] Auto run on: you run without holding B, and holding B walks
+- [x] Options menu: both pages display correctly, each switch changes what it says, and settings stay after saving and reloading
+- [x] A new game starts with Set style, level cap on, trainer battle items off and auto run off
+- [ ] Quick escape: holding B as a wild Pokémon slides in shows "Try to escape?" with the cursor on Yes
+- [ ] Quick escape: Yes gets you away; No (or pressing B again) starts the battle normally
+- [ ] Quick escape with a much slower lead Pokémon: "Can't escape!", your Pokémon comes out and the wild one moves first with no choice for you
+- [ ] Quick escape: no box when B is not held, or in trainer battles and the Safari Zone
+- [ ] Quick escape with a Smoke Ball or Run Away: always escapes, with the item or ability message
+- [ ] Quick escape in Pokémon Tower (ghost battle)
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
