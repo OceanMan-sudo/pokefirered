@@ -20,6 +20,7 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Pokémon at the cap still earn EVs, and the Day Care stops at the cap. Must be easy to change later |
 | Default rules | No difficulty mode. Set battle style, no Bag items in trainer battles and level cap on by default, each switchable in the Options menu at any time |
 | Enemy trainers | Never use items |
+| Trainer AI | Three levels by trainer class. Bosses (Level 3) save the last Pokémon in their team for last. No class-specific moves |
 | Rare Candies | Keep the house that gives them |
 | Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
 | Running | Run from the start (no shoes needed), allowed everywhere. Auto-run switchable, off at first |
@@ -76,7 +77,7 @@ Build the rules and their menu switches together.
 | ✅ | Menu switches for Set, items and level cap | Medium |
 | ✅ | Auto-run switch | Easy to medium |
 | ✅ | Hold B as a wild Pokémon slides in to get an escape prompt (usual escape checks) | Medium |
-| ☐ | AI update: better existing logic for more trainers, plus small tweaks | Easy to medium |
+| ✅ | AI update: three levels by trainer class, better replacement choice, small fixes | Easy to medium |
 
 ✅ means the feature is in the code. Test it using the list under [Waiting to be tested](#waiting-to-be-tested). The caps themselves are in `src/data/level_caps.h`.
 
@@ -292,12 +293,19 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Auto run on: you run without holding B, and holding B walks
 - [x] Options menu: both pages display correctly, each switch changes what it says, and settings stay after saving and reloading
 - [x] A new game starts with Set style, level cap on, trainer battle items off and auto run off
-- [ ] Quick escape: holding B as a wild Pokémon slides in shows "Try to escape?" with the cursor on Yes
-- [ ] Quick escape: Yes gets you away; No (or pressing B again) starts the battle normally
+- [x] Quick escape: holding B as a wild Pokémon slides in shows "Try to escape?" with the cursor on Yes
+- [x] Quick escape: Yes gets you away
+- [ ] Quick escape: No (or pressing B again) starts the battle normally
 - [ ] Quick escape with a much slower lead Pokémon: "Can't escape!", your Pokémon comes out and the wild one moves first with no choice for you
 - [ ] Quick escape: no box when B is not held, or in trainer battles and the Safari Zone
-- [ ] Quick escape with a Smoke Ball or Run Away: always escapes, with the item or ability message
+- [x] Quick escape with Run Away: always escapes, with the ability message
+- [x] Quick escape against Arena Trap
+- [ ] Quick escape with a Smoke Ball: always escapes, with the item message
 - [ ] Quick escape in Pokémon Tower (ghost battle)
+- [ ] Trainer AI, beginner (Bug Catcher, Youngster, Lass): sends Pokémon out in team order
+- [ ] Trainer AI, mid-level (Hiker, Channeler, Team Rocket): takes a knockout when your Pokémon is low
+- [ ] Trainer AI, gym leader: after a knockout, sends out a sensible matchup and keeps the last team member for last
+- [ ] Trainer AI: a double battle plays through without problems
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

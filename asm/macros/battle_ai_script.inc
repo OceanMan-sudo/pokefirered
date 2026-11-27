@@ -553,6 +553,16 @@
 	.4byte \ptr
 	.endm
 
+	@ Physical, Special or Status, for the move number in the result
+	.macro get_move_category_from_result
+	.byte 0x5e
+	.endm
+
+	@ Physical or Special, going by the target species' higher attacking stat
+	.macro get_target_attack_category
+	.byte 0x5f
+	.endm
+
 @ useful script macros
 	.macro get_curr_move_type
 	get_type AI_TYPE_MOVE

@@ -28,6 +28,11 @@
 #define AI_WEATHER_SANDSTORM 2
 #define AI_WEATHER_HAIL      3
 
+// How clever a trainer is. Set per trainer class in src/data/trainer_ai_levels.h
+#define AI_LEVEL_SIMPLE   1
+#define AI_LEVEL_KNOCKOUT 2
+#define AI_LEVEL_BOSS     3
+
 // get_how_powerful_move_is
 #define MOVE_POWER_DISCOURAGED  0
 #define MOVE_NOT_MOST_POWERFUL  1

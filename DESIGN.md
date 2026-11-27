@@ -294,6 +294,23 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 
 ## Trainers
 
+### Battle AI
+Not yet tested in game. How clever a trainer is depends on the trainer class. The list is in `src/data/trainer_ai_levels.h`; change a level there and rebuild.
+
+| Level | Who | Choosing moves | Sending out the next Pokémon |
+|---|---|---|---|
+| 1 Simple | Bug Catcher, Youngster, Lass, Camper, Picnicker, Twins, Tuber, Young Couple, Sis and Bro, Fisherman, Aroma Lady, Lady, Beauty, Painter, Pokémon Breeder, and any class not listed | Avoids moves that would do nothing, otherwise random | Team order |
+| 2 Knockout | Hiker, Super Nerd, Sailor, Biker, Cue Ball, Black Belt, Crush Girl, Crush Kin, Bird Keeper, Burglar, Channeler, Engineer, Gamer, Gentleman, Juggler, PokéManiac, Psychic, Rocker, Ruin Maniac, Scientist, Tamer, Team Rocket, Swimmers | Takes a knockout when it can and otherwise leans on its strongest attack. May still use status moves | Best matchup |
+| 3 Boss | Gym leaders, Elite Four, Champion, rival, Giovanni, Cooltrainer, Pokémon Ranger, Cool Couple | The above, plus weighing each move for the situation | Best matchup, with the last Pokémon in the team saved for last |
+
+- A trainer whose own settings in `trainers.h` are higher than the class keeps the higher level (two Team Rocket trainers are Level 3).
+- **Best matchup** weighs the most damage the Pokémon can do to yours against how strongly your Pokémon's types hit it. Moves without a set power (such as Seismic Toss) are not counted.
+- A saved Pokémon comes out only when it is the last one able to fight. Your Roar or Whirlwind can still drag it out.
+- When bosses decide about stat moves, screens, Counter and Mirror Coat, they go by each move's Physical or Special category and the target species' higher attacking stat.
+- Bosses now judge Facade, and stalling with Fly or Dig in sandstorm or hail, correctly (both were mistakes in the original).
+- Switching out mid-battle works as before. Enemy trainers never use items. The AI does not look at the move you are about to choose.
+- Special battles whose teams are not in `trainers.h` (such as Trainer Tower) use the full logic and do not save a Pokémon.
+
 ### Gym leaders and Elite Four
 | Boss | Team (species, level) | Status |
 |---|---|---|

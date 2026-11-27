@@ -9,6 +9,7 @@
 #include "constants/battle_ai.h"
 #include "constants/battle_move_effects.h"
 #include "constants/moves.h"
+#include "data/trainer_ai_levels.h"
 
 #define AI_ACTION_DONE          0x0001
 #define AI_ACTION_FLEE          0x0002
@@ -136,6 +137,8 @@ static void Cmd_end(void);
 static void Cmd_if_level_compare(void);
 static void Cmd_if_target_taunted(void);
 static void Cmd_if_target_not_taunted(void);
+static void Cmd_get_move_category_from_result(void);
+static void Cmd_get_target_attack_category(void);
 
 static void RecordLastUsedMoveByTarget(void);
 static void BattleAI_DoAIProcessing(void);
@@ -240,6 +243,8 @@ static const BattleAICmdFunc sBattleAICmdTable[] =
     Cmd_if_level_compare,                 // 0x5B
     Cmd_if_target_taunted,                // 0x5C
     Cmd_if_target_not_taunted,            // 0x5D
+    Cmd_get_move_category_from_result,    // 0x5E
+    Cmd_get_target_attack_category,       // 0x5F
 };
 
 static const u16 sDiscouragedPowerfulMoveEffects[] =
@@ -258,6 +263,55 @@ static const u16 sDiscouragedPowerfulMoveEffects[] =
     EFFECT_OVERHEAT,
     0xFFFF
 };
+
+// TRUE when the opposing trainer is not an entry in trainers.h.
+static bool8 IsSpecialTrainerBattle(void)
+{
+    if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_BATTLE_TOWER))
+        return TRUE;
+    return (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE);
+}
+
+// The trainer's own AI flags, raised to at least what their class calls for.
+static u32 GetTrainerAiFlags(void)
+{
+    u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
+    u8 level = AI_LEVEL_SIMPLE;
+    u32 flags = gTrainers[gTrainerBattleOpponent_A].aiFlags;
+
+    if (trainerClass < ARRAY_COUNT(sTrainerClassAiLevels) && sTrainerClassAiLevels[trainerClass] != 0)
+        level = sTrainerClassAiLevels[trainerClass];
+
+    flags |= AI_SCRIPT_CHECK_BAD_MOVE;
+    if (level >= AI_LEVEL_KNOCKOUT)
+        flags |= AI_SCRIPT_TRY_TO_FAINT;
+    if (level >= AI_LEVEL_BOSS)
+        flags |= AI_SCRIPT_CHECK_VIABILITY;
+    return flags;
+}
+
+u8 GetOpponentAiLevel(void)
+{
+    u32 flags;
+
+    if (IsSpecialTrainerBattle())
+        return AI_LEVEL_BOSS;
+
+    flags = GetTrainerAiFlags();
+    if (flags & AI_SCRIPT_CHECK_VIABILITY)
+        return AI_LEVEL_BOSS;
+    if (flags & AI_SCRIPT_TRY_TO_FAINT)
+        return AI_LEVEL_KNOCKOUT;
+    return AI_LEVEL_SIMPLE;
+}
+
+// Whether this opponent keeps the last Pokemon in its team for last.
+bool8 OpponentAiSavesAce(void)
+{
+    if (IsSpecialTrainerBattle())
+        return FALSE;
+    return (GetOpponentAiLevel() == AI_LEVEL_BOSS);
+}
 
 void BattleAI_HandleItemUseBeforeAISetup(void)
 {
@@ -344,7 +398,7 @@ void BattleAI_SetupAIData(void)
         AI_THINKING_STRUCT->aiFlags = (AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY);
         return;
     }
-    AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags;
+    AI_THINKING_STRUCT->aiFlags = GetTrainerAiFlags();
 }
 
 u8 BattleAI_ChooseMoveOrAction(void)
@@ -1931,6 +1985,26 @@ static void Cmd_if_target_not_taunted(void)
         sAIScriptPtr = T1_READ_PTR(sAIScriptPtr + 1);
     else
         sAIScriptPtr += 5;
+}
+
+static void Cmd_get_move_category_from_result(void)
+{
+    AI_THINKING_STRUCT->funcResult = gBattleMoves[AI_THINKING_STRUCT->funcResult].category;
+
+    sAIScriptPtr += 1;
+}
+
+// Whether the target's species is built more for physical or special attacks.
+static void Cmd_get_target_attack_category(void)
+{
+    u16 species = gBattleMons[gBattlerTarget].species;
+
+    if (gSpeciesInfo[species].baseAttack >= gSpeciesInfo[species].baseSpAttack)
+        AI_THINKING_STRUCT->funcResult = MOVE_CATEGORY_PHYSICAL;
+    else
+        AI_THINKING_STRUCT->funcResult = MOVE_CATEGORY_SPECIAL;
+
+    sAIScriptPtr += 1;
 }
 
 static void AIStackPushVar(const u8 *var)

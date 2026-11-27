@@ -36,6 +36,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 | BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults | Open |
 | BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself | Open |
 | BUG-18 | Low | Confirmed | Typos and small code tidiness issues | Open |
+| BUG-19 | Low | Confirmed | In double battles the enemy can try to switch in a Pokémon already out (from the original game) | Open |
 
 ---
 
@@ -157,9 +158,14 @@ In the main games these abilities protect from hail damage on their own. Here on
 - Indentation in `CalculateBaseDamage` is uneven, which makes it easy to misread.
 - Repository root contains screenshots and save states (`pokefirered-0.png` to `-3.png`, `pokefirered.ss1`, `.ss2`).
 
+### BUG-19: Enemy switching slip in double battles
+- **Where:** `FindMonWithFlagsAndSuperEffective` in `src/battle_ai_switch_items.c`.
+- **Confirmed:** Part way through its search it reuses the variable that remembers which Pokémon is already out, so in a double battle it can pick that one as the "replacement". This comes from the original game. Found while testing the AI changes; it showed up 2 times in 200,000 random test situations.
+- **Fix:** Small (use a separate variable). Not changed yet.
+
 ## Things to keep an eye on (not bugs)
 
 - **Old save files:** A new flag (`FLAG_0x900`) made the saved flag list longer. Saves made before that change are probably not compatible (**Assumption**).
-- **Battle AI:** The AI scripts were not changed, so opponents do not make special decisions around the new abilities or moves.
+- **Battle AI:** Opponents still do not make special decisions around the new abilities or moves.
 - **Removed Emerald trainer pictures:** Several Hoenn leader and Elite Four graphics were commented out to make room. Nothing found that still uses them (**Assumption** that this is safe).
 - **Automatic checks on GitHub:** `.github/workflows` came from the original project and checks for an exact copy of the original ROM, so it is expected to fail on a ROM hack (**Assumption**; I did not look at the results).
