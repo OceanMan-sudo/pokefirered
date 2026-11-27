@@ -99,7 +99,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Fairy type | `TYPE_FAIRY` in `include/constants/pokemon.h`; chart and names in `src/battle_main.c` (the chart size is also in `include/battle_main.h`); label position in `src/list_menu.c`, artwork in `graphics/interface/menu_info.png`; TM disc color in `src/tm_case.c` and `graphics/tm_case/disc_types_2.pal`; Hidden Power in `src/battle_script_commands.c`; trade board in `src/data/union_room.h`; Pokédex order in `src/data/pokemon/pokedex_orders.h` |
 | New abilities (78–85) | `src/pokemon.c`, `src/battle_util.c`, `src/battle_script_commands.c` |
 | Aurora Veil and Tailwind | Side flags in `include/constants/battle.h` and timers in `SideTimer` (`include/battle.h`); set by `VARIOUS_SET_AURORA_VEIL` / `VARIOUS_SET_TAILWIND` in `src/battle_script_commands.c`; damage in `CalculateBaseDamage`; Speed in `GetWhoStrikesFirst`; expiry in `DoFieldEndTurnEffects` |
-| Permanent hail (Snow Warning) | `B_WEATHER_HAIL_PERMANENT` in `include/constants/battle.h` |
+| Five-turn weather abilities | `ABILITYEFFECT_ON_SWITCHIN` in `src/battle_util.c`; turn count in `gWishFutureKnock.weatherDuration`. `B_WEATHER_HAIL_PERMANENT` is still defined and checked, but nothing sets it |
 | EXP when catching, then evolving | `data/battle_scripts_2.s`, `src/battle_main.c` |
 | Reusable, unique TMs | `src/party_menu.c`, `src/item.c`, `src/shop.c`, `src/tm_case.c`, `src/script_menu.c` |
 | HM field moves without teaching | `GetPartyMonForFieldMove` in `src/party_menu.c`; used by `src/scrcmd.c` and `src/field_player_avatar.c` |

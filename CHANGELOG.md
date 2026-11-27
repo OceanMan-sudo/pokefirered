@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 51 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 52 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -19,6 +19,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Multi-hit moves:** the new odds and accuracy.
 - **Reworked animations:** Bulldoze and Wild Charge.
 - **Four support moves:** Quiver Dance, Shell Smash, Aurora Veil and Tailwind.
+- **Five-turn weather abilities:** Drizzle, Drought, Sand Stream and Snow Warning.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -89,13 +90,15 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Level 3 trainers switch out when nothing they have can affect your Pokémon and a teammate can | Not yet tested |
 | Double battle enemy switching slip fixed (BUG-19) | Not yet tested |
 | Trainer AI no longer uses Dragon Rage on Pokémon immune to it | Not yet tested |
-| Trainer AI recognises Snow Warning's permanent hail | Not yet tested |
+| Trainer AI recognises Snow Warning's hail | Not yet tested |
+| Level 3 trainers also favor Sunny Day with Chlorophyll when slower, and Hail when it opens up Aurora Veil | Not yet tested |
 
 ### Battle
 | Change | In-game status |
 |---|---|
 | Evolution after catching | Tested |
 | Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Tested |
+| Drizzle, Drought, Sand Stream and Snow Warning set five turns of weather instead of lasting the whole battle | Not yet tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
 ### Fairy type

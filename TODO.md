@@ -355,6 +355,9 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Brick Break removes an opponent's Aurora Veil
 - [ ] Tailwind (400): animation and message; a slower Pokémon moves first from the next turn; "wore off" at the end of the fourth turn, counting the one it was used
 - [ ] Moves 397 to 400 used by an opponent look right too
+- [ ] Snow Warning, Drought, Drizzle or Sand Stream: the weather wears off at the end of the fifth turn, with its message
+- [ ] Switching that Pokémon out and back in after the weather is gone starts it again
+- [ ] Switching it back in while its weather is still up shows no message and does not add turns
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

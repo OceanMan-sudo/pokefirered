@@ -91,6 +91,10 @@ Steel no longer resists Ghost or Dark.
 | Hail | Ice types get 1.5× Defense. Blizzard never misses |
 | Rain | Routes 12 and 13 are now rainy |
 
+- Weather from an ability (Drizzle, Drought, Sand Stream, Snow Warning) lasts **five turns**, like weather from a move. In the original it lasted the whole battle.
+- The ability works again each time its Pokémon is sent in. It does nothing if that weather is already up, and it replaces any other weather.
+- Weather on a route still lasts the whole battle unless something replaces it, and it does not come back afterwards.
+
 ### New abilities
 | Ability | What it does here | Pokémon with it |
 |---|---|---|
@@ -100,7 +104,7 @@ Steel no longer resists Ghost or Dark.
 | Ice Body | Heals 1/16 HP each turn in hail | Seel, Dewgong |
 | Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Hitmonchan, Kangaskhan, Ledian |
 | Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
-| Snow Warning | Starts permanent hail on entering | Jynx, Delibird |
+| Snow Warning | Starts five turns of hail on entering | Jynx, Delibird |
 | Snow Cloak | Attacks against it are 20% less accurate in hail | Articuno, Sneasel, Swinub, Piloswine |
 
 95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
@@ -392,8 +396,9 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 - Bosses now judge Facade, and stalling with Fly or Dig in sandstorm or hail, correctly (both were mistakes in the original).
 - Bosses faster than you now use healing moves such as Recover when hurt (in the original they practically never did).
 - No trainer uses Boomburst or Hyper Voice into Soundproof once your ability has shown itself; until then the AI guesses between the species' abilities, as it always has. Draco Meteor, Leaf Storm and Overheat are checked against immunities like other attacks.
-- Bosses are keener on Sunny Day with Solar Power, and on Hail with Ice Body or Snow Cloak.
-- The AI now notices Snow Warning's hail (before, it only recognised hail from the move).
+- Bosses are keener on Sunny Day with Solar Power (or Chlorophyll when slower), and on Hail with Ice Body, Snow Cloak or an Aurora Veil still to set up (the Chlorophyll and Aurora Veil cases are checked in a simulator only).
+- Bosses can use a weather move again once the weather wears off.
+- The AI notices Snow Warning's hail (before, it only recognised hail from the move).
 - No trainer uses Aurora Veil without hail, or repeats Tailwind or Aurora Veil while it is up. Bosses favor Quiver Dance and Shell Smash while healthy (Shell Smash only once), Aurora Veil when it will work, and Tailwind in a single battle only when you are faster (not yet tested; checked in a simulator).
 - The Sp. Atk-lowering logic now checks Sp. Atk. No move currently in the game only lowers Sp. Atk, so this changes nothing yet.
 - **Bosses switch when they can't get anywhere** (not yet tested in game). The rule is described just below.

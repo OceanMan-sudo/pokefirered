@@ -2146,6 +2146,11 @@ AI_CV_RainDance_End::
 	end
 
 AI_CV_SunnyDay::
+	if_user_faster AI_CV_SunnyDay_CheckHP
+	get_ability AI_USER
+	if_equal ABILITY_CHLOROPHYLL, AI_CV_SunnyDay2
+
+AI_CV_SunnyDay_CheckHP::
 	if_hp_less_than AI_USER, 40, AI_CV_SunnyDay_ScoreDown1
 	get_ability AI_USER
 	if_equal ABILITY_SOLAR_POWER, AI_CV_SunnyDay2
@@ -2336,6 +2341,10 @@ AI_CV_SpitUp_End::
 
 AI_CV_Hail::
 	if_hp_less_than AI_USER, 40, AI_CV_Hail_ScoreDown1
+	if_doesnt_have_move_with_effect AI_USER, EFFECT_AURORA_VEIL, AI_CV_Hail_CheckAbility
+	if_not_side_affecting AI_USER, SIDE_STATUS_AURORA_VEIL, AI_CV_Hail_ForVeil
+
+AI_CV_Hail_CheckAbility::
 	get_ability AI_USER
 	if_equal ABILITY_ICE_BODY, AI_CV_Hail2
 	if_equal ABILITY_SNOW_CLOAK, AI_CV_Hail2
@@ -2347,6 +2356,11 @@ AI_CV_Hail::
 
 AI_CV_Hail2::
 	score +1
+	goto AI_CV_Hail_End
+
+@ Hail opens up Aurora Veil.
+AI_CV_Hail_ForVeil::
+	score +2
 	goto AI_CV_Hail_End
 
 AI_CV_Hail_ScoreDown1::
