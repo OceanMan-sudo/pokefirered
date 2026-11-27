@@ -306,6 +306,10 @@
 #define ANIM_TAG_MOONBLAST_MOON             (ANIM_SPRITES_START + 296)
 #define ANIM_TAG_MOONBLAST_ORB              (ANIM_SPRITES_START + 297)
 #define ANIM_TAG_MOONBLAST_SPARK            (ANIM_SPRITES_START + 298)
+#define ANIM_TAG_FAIRY_SPARKLE              (ANIM_SPRITES_START + 299)
+#define ANIM_TAG_FAIRY_GUST                 (ANIM_SPRITES_START + 300)
+#define ANIM_TAG_DRAIN_KISS_ORB             (ANIM_SPRITES_START + 301)
+#define ANIM_TAG_FAE_RING                   (ANIM_SPRITES_START + 302)
 
 // battlers
 #define ANIM_ATTACKER    0

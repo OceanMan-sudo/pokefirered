@@ -785,6 +785,18 @@ const struct SpriteTemplate gHyperVoiceRingSpriteTemplate =
     .callback = AnimHyperVoiceRing,
 };
 
+// Hyper Voice's ring in pink, for Fae Voice
+const struct SpriteTemplate gFaeVoiceRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FAE_RING,
+    .paletteTag = ANIM_TAG_FAE_RING,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sHyperVoiceRingAffineAnimTable,
+    .callback = AnimHyperVoiceRing,
+};
+
 const struct SpriteTemplate gUproarRingSpriteTemplate =    
 {
     .tileTag = ANIM_TAG_THIN_RING,
@@ -917,6 +929,18 @@ const struct SpriteTemplate gRedHeartProjectileSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimRedHeartProjectile,
+};
+
+// Little hearts that scatter from Drain Kiss
+const struct SpriteTemplate gDrainKissBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MAGENTA_HEART,
+    .paletteTag = ANIM_TAG_MAGENTA_HEART,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimParticleBurst,
 };
 
 const struct SpriteTemplate gRedHeartBurstSpriteTemplate =

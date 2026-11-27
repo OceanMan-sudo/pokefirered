@@ -408,6 +408,10 @@ gBattleAnims_Moves::
 	.4byte Move_AURA_SPHERE
 	.4byte Move_MOONBLAST
 	.4byte Move_PLAY_ROUGH
+	.4byte Move_FAIRY_WIND
+	.4byte Move_DRAIN_KISS
+	.4byte Move_DAZZLE_GLEAM
+	.4byte Move_FAE_VOICE
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -11044,6 +11048,159 @@ Move_PLAY_ROUGH:
 	waitforvisualfinish
 	blendoff
 	end
+
+Move_FAIRY_WIND:
+	loadspritegfx ANIM_TAG_FAIRY_GUST
+	loadspritegfx ANIM_TAG_FAIRY_SPARKLE
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	panse SE_M_GUST, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +2, 0
+	call FairyWindSparkles
+	createsprite gFairyWindGustSpriteTemplate, ANIM_ATTACKER, 2, 0, -16
+	createvisualtask AnimTask_AnimateFairyGustPalette, 5, 1, 70
+	delay 16
+	call FairyWindSparkles
+	waitforvisualfinish
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_TARGET, 1, 0, 7, 1
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	playsewithpan SE_M_GUST2, SOUND_PAN_TARGET
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -18, -14, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 20, 6, 1
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+FairyWindSparkles:
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 20, -10, 8, -16, 24, 24, 0
+	delay 4
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 20, 4, -10, 4, 24, -20, 0
+	delay 4
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 20, -4, 4, 12, 24, 14, 0
+	delay 4
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 20, 8, -4, -6, 24, -26, 0
+	delay 4
+	return
+
+Move_DRAIN_KISS:
+	loadspritegfx ANIM_TAG_MAGENTA_HEART
+	loadspritegfx ANIM_TAG_DRAIN_KISS_ORB
+	loadspritegfx ANIM_TAG_BLUE_STAR
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_DEF_PARTNER
+	splitbgprio_foes ANIM_TARGET
+	setalpha 12, 8
+	@ lean in for the kiss
+	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 6, 5
+	delay 8
+	playsewithpan SE_M_CHARM, SOUND_PAN_TARGET
+	createsprite gDrainKissHeartSpriteTemplate, ANIM_TARGET, 3, 0, -8
+	waitforvisualfinish
+	playsewithpan SE_M_ATTRACT, SOUND_PAN_TARGET
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 3, 0, 6, 1
+	createsprite gDrainKissBurstSpriteTemplate, ANIM_TARGET, 3, 224, -34
+	createsprite gDrainKissBurstSpriteTemplate, ANIM_TARGET, 3, -224, -34
+	createsprite gDrainKissBurstSpriteTemplate, ANIM_TARGET, 3, 384, -20
+	createsprite gDrainKissBurstSpriteTemplate, ANIM_TARGET, 3, -384, -20
+	delay 14
+	call DrainKissOrbs
+	waitforvisualfinish
+	delay 10
+	call HealingEffect
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+@ Orbs drawn from the target back to the user
+DrainKissOrbs:
+	playsewithpan SE_M_ABSORB, SOUND_PAN_TARGET
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 0, 5, 8, 26
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 10, -5, -8, 26
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, -5, 15, 16, 33
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 0, -15, -16, 36
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 0, 5, 8, 26
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 10, -5, -8, 26
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, -10, 20, 20, 39
+	delay 4
+	createsprite gDrainKissOrbSpriteTemplate, ANIM_ATTACKER, 3, 5, -18, -20, 35
+	return
+
+Move_DAZZLE_GLEAM:
+	loadspritegfx ANIM_TAG_FAIRY_SPARKLE
+	loadspritegfx ANIM_TAG_MOONBLAST_SPARK
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 8, RGB_BLACK
+	waitforvisualfinish
+	@ light gathers on the user
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 0, 14, RGB(31, 22, 28)
+	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
+	call MoonblastGather
+	waitforvisualfinish
+	@ the flash
+	playsewithpan SE_M_MORNING_SUN, 0
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 0, 0, 12, RGB(31, 24, 29)
+	delay 6
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, 0, -24, 18, -32, 1
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, 0, 24, 18, 32, 1
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, -32, -8, 18, -16, 1
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, 32, 8, 18, 16, 1
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, -16, 16, 22, 8, 1
+	createsprite gFairySparkleSpriteTemplate, ANIM_TARGET, 3, 0, 0, 16, -16, 22, -8, 1
+	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG | F_PAL_BATTLERS, 1, 12, 0, RGB(31, 24, 29)
+	playsewithpan SE_M_REFLECT, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 3, 0, 14, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 3, 0, 14, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -20, -18, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -20, -18, 2
+	delay 6
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 22, -2, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 22, -2, 2
+	delay 6
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -8, 18, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -8, 18, 2
+	delay 6
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 14, -22, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 14, -22, 2
+	waitforvisualfinish
+	end
+
+Move_FAE_VOICE:
+	loadspritegfx ANIM_TAG_FAE_RING
+	loadspritegfx ANIM_TAG_FAIRY_SPARKLE
+	call FaeVoiceEffect
+	waitforvisualfinish
+	delay 8
+	call FaeVoiceEffect
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -18, -14, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, -18, -14, 2
+	delay 10
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 18, 8, 1
+	createsprite gFairyTwinkleSpriteTemplate, ANIM_TARGET, 4, 18, 8, 2
+	waitforvisualfinish
+	end
+
+@ Hyper Voice's cry, with pink rings and no shaking ground
+FaeVoiceEffect:
+	createvisualtask SoundTask_PlayCryWithEcho, 5
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 3, 8, 0, RGB(31, 20, 27)
+	createvisualtask AnimTask_ScaleMonAndRestore, 5, -5, -5, 5, ANIM_ATTACKER, 0
+	createsprite gFaeVoiceRingSpriteTemplate, ANIM_ATTACKER, 0, 45, 0, 0, 0, 0, 0, 1
+	delay 10
+	createsprite gFaeVoiceRingSpriteTemplate, ANIM_ATTACKER, 0, 45, 0, 0, 0, 0, 0, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 6, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 1, 0, 6, 1
+	createvisualtask SoundTask_WaitForCry, 5
+	return
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

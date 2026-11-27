@@ -589,6 +589,10 @@ const u32 gBattleAnimSpritePal_PsychoTorpedo[] = INCBIN_U32("graphics/battle_ani
 const u32 gBattleAnimSpritePal_MoonblastMoon[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_moon.gbapal.lz");
 const u32 gBattleAnimSpritePal_MoonblastOrb[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_orb.gbapal.lz");
 const u32 gBattleAnimSpritePal_MoonblastSpark[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_spark.gbapal.lz");
+const u32 gBattleAnimSpritePal_FairySparkle[] = INCBIN_U32("graphics/battle_anims/sprites/fairy_sparkle.gbapal.lz");
+const u32 gBattleAnimSpritePal_FairyGust[] = INCBIN_U32("graphics/battle_anims/sprites/fairy_gust.gbapal.lz");
+const u32 gBattleAnimSpritePal_DrainKissOrb[] = INCBIN_U32("graphics/battle_anims/sprites/drain_kiss_orb.gbapal.lz");
+const u32 gBattleAnimSpritePal_FaeRing[] = INCBIN_U32("graphics/battle_anims/sprites/fae_ring.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.4bpp.lz");
 const u32 gBattleAnimSpritePal_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.gbapal.lz");

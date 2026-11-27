@@ -382,4 +382,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_AURA_SPHERE]     = _("AURA SPHERE"),
     [MOVE_MOONBLAST]     = _("MOONBLAST"),
     [MOVE_PLAY_ROUGH]     = _("PLAY ROUGH"),
+    [MOVE_FAIRY_WIND]     = _("FAIRY WIND"),
+    [MOVE_DRAIN_KISS]     = _("DRAIN KISS"),
+    [MOVE_DAZZLE_GLEAM]     = _("DAZZLE GLEAM"),
+    [MOVE_FAE_VOICE]     = _("FAE VOICE"),
 };

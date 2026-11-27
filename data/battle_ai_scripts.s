@@ -103,6 +103,7 @@ AI_CheckBadMove_CheckSoundproof::
 	if_move MOVE_GRASS_WHISTLE, Score_Minus10
 	if_move MOVE_HYPER_VOICE, Score_Minus10
 	if_move MOVE_BOOMBURST, Score_Minus10
+	if_move MOVE_FAE_VOICE, Score_Minus10
 
 AI_CheckBadMove_CheckEffect::
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
@@ -657,6 +658,7 @@ Score_Plus5::
 AI_CheckViability::
 	if_effect EFFECT_SLEEP, AI_CV_Sleep
 	if_effect EFFECT_ABSORB, AI_CV_Absorb
+	if_effect EFFECT_DRAINING_KISS, AI_CV_Absorb
 	if_effect EFFECT_EXPLOSION, AI_CV_SelfKO
 	if_effect EFFECT_DREAM_EATER, AI_CV_DreamEater
 	if_effect EFFECT_MIRROR_MOVE, AI_CV_MirrorMove

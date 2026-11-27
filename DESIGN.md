@@ -74,7 +74,7 @@ Steel no longer resists Ghost or Dark.
 | Steel/Fairy | Mawile |
 
 - Charm, Sweet Kiss and Moonlight are Fairy moves.
-- The damaging Fairy moves are [Moonblast and Play Rough](#28-new-moves). Four more are planned. No Pokémon learns them naturally yet.
+- Damaging Fairy moves: [Fairy Wind, Drain Kiss, Dazzle Gleam, Fae Voice, Moonblast and Play Rough](#32-new-moves). No Pokémon learns them naturally yet.
 - Hidden Power cannot be Fairy.
 - No held item boosts Fairy moves.
 
@@ -207,7 +207,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 ## Moves
 
-### 28 new moves
+### 32 new moves
 † added with Claude.
 
 | Move | Type | Category | Power | Acc | PP | Effect code |
@@ -240,12 +240,22 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 | Aura Sphere † | Fighting | Special | 80 | never misses | 20 | Always Hit |
 | Moonblast † | Fairy | Special | 95 | 100 | 15 | Special Attack Down Hit (20%) |
 | Play Rough † | Fairy | Physical | 90 | 90 | 10 | Attack Down Hit (10%) |
+| Fairy Wind † | Fairy | Special | 40 | 100 | 30 | Hit |
+| Drain Kiss † | Fairy | Special | 50 | 100 | 10 | Draining Kiss (new) |
+| Dazzle Gleam † | Fairy | Special | 80 | 100 | 10 | Hit, both opponents |
+| Fae Voice † | Fairy | Special | 40 | never misses | 15 | Always Hit, both opponents |
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, Moonblast and Play Rough are on no level-up list**, and Shadow Sneak is on one. (Moonblast and Play Rough can be taught with the debug menu, moves 381 and 382.) No new TMs or egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere and the six Fairy moves are on no level-up list**, and Shadow Sneak is on one. (The Fairy moves can be taught with the debug menu, moves 381 to 386.) No new TMs or egg moves use them.
 
-Moonblast and Play Rough, with their animations, are **Tested**.
+Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
+
+- **Drain Kiss** gives the user back three quarters of the damage dealt (other draining moves give half). It makes contact, and Liquid Ooze turns the healing into damage. Trainer AI judges it like other draining moves.
+- **Fae Voice** is a sound move, so Soundproof blocks it.
+- **Dazzle Gleam and Fae Voice** hit both opponents. When both are out, each takes half damage, as with Surf (Generation 6 uses three quarters).
+
+Moonblast and Play Rough, with their animations, are **Tested**. Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice are **not yet tested**.
 
 62 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
 

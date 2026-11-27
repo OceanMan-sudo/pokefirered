@@ -482,6 +482,58 @@ const struct SpriteTemplate gMoonblastBurstSpriteTemplate =
     .callback = AnimGrowOnTarget,
 };
 
+// Pink sparkles carried to the target on Fairy Wind and Dazzle Gleam.
+// args are the same as Swift's stars
+const struct SpriteTemplate gFairySparkleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FAIRY_SPARKLE,
+    .paletteTag = ANIM_TAG_FAIRY_SPARKLE,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimTranslateLinearSingleSineWave,
+};
+
+// The same sparkle, swelling and shrinking in one place
+const struct SpriteTemplate gFairyTwinkleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FAIRY_SPARKLE,
+    .paletteTag = ANIM_TAG_FAIRY_SPARKLE,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_MoonblastTwinkle,
+    .callback = AnimMoonblastTwinkle,
+};
+
+// Drain Kiss: a heart swells on the target (its orbs are further down)
+static const union AffineAnimCmd sAffineAnim_DrainKissHeart[] =
+{
+    AFFINEANIMCMD_FRAME(0x40, 0x40, 0, 0),
+    AFFINEANIMCMD_FRAME(32, 32, 0, 12),
+    AFFINEANIMCMD_FRAME(-24, -24, 0, 4),
+    AFFINEANIMCMD_FRAME(24, 24, 0, 4),
+    AFFINEANIMCMD_FRAME(0, 0, 0, 12),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DrainKissHeart[] =
+{
+    sAffineAnim_DrainKissHeart,
+};
+
+const struct SpriteTemplate gDrainKissHeartSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MAGENTA_HEART,
+    .paletteTag = ANIM_TAG_MAGENTA_HEART,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DrainKissHeart,
+    .callback = AnimGrowOnTarget,
+};
+
 const struct SpriteTemplate gSolarBeamBigOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ORBS,
@@ -542,6 +594,18 @@ const struct SpriteTemplate gAbsorptionOrbSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ORBS,
     .paletteTag = ANIM_TAG_ORBS,
+    .oam = &gOamData_AffineNormal_ObjBlend_16x16,
+    .anims = sPowerAbsorptionOrbAnimTable,
+    .images = NULL,
+    .affineAnims = sAbsorptionOrbAffineAnimTable,
+    .callback = AnimAbsorptionOrb,
+};
+
+// Drain Kiss draws pink orbs back to the user the way Absorb does
+const struct SpriteTemplate gDrainKissOrbSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_DRAIN_KISS_ORB,
+    .paletteTag = ANIM_TAG_DRAIN_KISS_ORB,
     .oam = &gOamData_AffineNormal_ObjBlend_16x16,
     .anims = sPowerAbsorptionOrbAnimTable,
     .images = NULL,
@@ -2873,17 +2937,33 @@ static void AnimMoonblastMoon(struct Sprite *sprite)
 // A sparkle that swells and shrinks once.
 // arg 0: x
 // arg 1: y
-// arg 2: 0 = x and y are a spot on the screen, 1 = they are offsets from the target
+// arg 2: 0 = x and y are a spot on the screen, 1 = they are offsets from the
+//        target, 2 = offsets from the target's partner (hidden if there is none)
 static void AnimMoonblastTwinkle(struct Sprite *sprite)
 {
+    u8 partner;
+
     if (gBattleAnimArgs[2] == 0)
     {
         sprite->x = gBattleAnimArgs[0];
         sprite->y = gBattleAnimArgs[1];
     }
-    else
+    else if (gBattleAnimArgs[2] == 1)
     {
         InitSpritePosToAnimTarget(sprite, TRUE);
+    }
+    else
+    {
+        partner = BATTLE_PARTNER(gBattleAnimTarget);
+        if (IsBattlerSpriteVisible(partner))
+        {
+            sprite->x = GetBattlerSpriteCoord(partner, BATTLER_COORD_X_2) + gBattleAnimArgs[0];
+            sprite->y = GetBattlerSpriteCoord(partner, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[1];
+        }
+        else
+        {
+            sprite->invisible = TRUE;
+        }
     }
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
     sprite->callback = RunStoredCallbackWhenAffineAnimEnds;

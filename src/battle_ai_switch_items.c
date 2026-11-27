@@ -655,7 +655,8 @@ static u32 EstimateMoveDamage(struct BattlePokemon *attacker, u16 move, u8 defen
          || (target->ability == ABILITY_FLASH_FIRE && moveType == TYPE_FIRE && !(target->status1 & STATUS1_FREEZE)))
             return 0;
         if (target->ability == ABILITY_SOUNDPROOF
-         && (move == MOVE_SNORE || move == MOVE_UPROAR || move == MOVE_HYPER_VOICE || move == MOVE_BOOMBURST))
+         && (move == MOVE_SNORE || move == MOVE_UPROAR || move == MOVE_HYPER_VOICE || move == MOVE_BOOMBURST
+          || move == MOVE_FAE_VOICE))
             return 0;
     }
 

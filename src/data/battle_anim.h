@@ -1308,6 +1308,10 @@ const struct CompressedSpriteSheet gBattleAnimPicTable[] =
     {gBattleAnimSpriteGfx_Moon, 0x0800, ANIM_TAG_MOONBLAST_MOON},
     {gBattleAnimSpriteGfx_ShadowBall, 0x0200, ANIM_TAG_MOONBLAST_ORB},
     {gBattleAnimSpriteGfx_GlowyRedOrb, 0x0020, ANIM_TAG_MOONBLAST_SPARK},
+    {gBattleAnimSpriteGfx_Sparkle6, 0x0080, ANIM_TAG_FAIRY_SPARKLE},
+    {gBattleAnimSpriteGfx_Gust, 0x0400, ANIM_TAG_FAIRY_GUST},
+    {gBattleAnimSpriteGfx_Orbs, 0x0180, ANIM_TAG_DRAIN_KISS_ORB},
+    {gBattleAnimSpriteGfx_ThinRing, 0x0800, ANIM_TAG_FAE_RING},
 };
 
 const struct CompressedSpritePalette gBattleAnimPaletteTable[] =
@@ -1611,6 +1615,10 @@ const struct CompressedSpritePalette gBattleAnimPaletteTable[] =
     {gBattleAnimSpritePal_MoonblastMoon, ANIM_TAG_MOONBLAST_MOON},
     {gBattleAnimSpritePal_MoonblastOrb, ANIM_TAG_MOONBLAST_ORB},
     {gBattleAnimSpritePal_MoonblastSpark, ANIM_TAG_MOONBLAST_SPARK},
+    {gBattleAnimSpritePal_FairySparkle, ANIM_TAG_FAIRY_SPARKLE},
+    {gBattleAnimSpritePal_FairyGust, ANIM_TAG_FAIRY_GUST},
+    {gBattleAnimSpritePal_DrainKissOrb, ANIM_TAG_DRAIN_KISS_ORB},
+    {gBattleAnimSpritePal_FaeRing, ANIM_TAG_FAE_RING},
 };
 
 const struct BattleAnimBackground gBattleAnimBackgroundTable[] =

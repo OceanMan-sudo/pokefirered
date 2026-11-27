@@ -383,6 +383,10 @@ const u8 gMoveDescription_NightSlash[] = _("User slashes\nwhen an opportunity\na
 const u8 gMoveDescription_AuraSphere[] = _("The user blasts\nthe foe with its\naura. This attack\nnever misses.");
 const u8 gMoveDescription_Moonblast[] = _("The user attacks\nwith the moon's\npower. It may lower\nthe foe's SP. ATK.");
 const u8 gMoveDescription_PlayRough[] = _("The user plays\nrough with the foe.\nIt may also lower\nthe foe's ATTACK.");
+const u8 gMoveDescription_FairyWind[] = _("The user stirs up\na fairy wind and\nstrikes the foe\nwith it.");
+const u8 gMoveDescription_DrainKiss[] = _("A draining kiss.\nThe user gets back\nmost of the damage\nit deals as HP.");
+const u8 gMoveDescription_DazzleGleam[] = _("The user gives off\na powerful flash\nthat damages\nboth foes.");
+const u8 gMoveDescription_FaeVoice[] = _("A charming cry\nthat hits both\nfoes. This attack\nnever misses.");
 
 
 
@@ -769,5 +773,9 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_AURA_SPHERE      -1] = gMoveDescription_AuraSphere,
     [MOVE_MOONBLAST      -1] = gMoveDescription_Moonblast,
     [MOVE_PLAY_ROUGH      -1] = gMoveDescription_PlayRough,
+    [MOVE_FAIRY_WIND      -1] = gMoveDescription_FairyWind,
+    [MOVE_DRAIN_KISS      -1] = gMoveDescription_DrainKiss,
+    [MOVE_DAZZLE_GLEAM      -1] = gMoveDescription_DazzleGleam,
+    [MOVE_FAE_VOICE      -1] = gMoveDescription_FaeVoice,
 
 };

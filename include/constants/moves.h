@@ -384,8 +384,12 @@
 #define MOVE_AURA_SPHERE 380
 #define MOVE_MOONBLAST 381
 #define MOVE_PLAY_ROUGH 382
+#define MOVE_FAIRY_WIND 383
+#define MOVE_DRAIN_KISS 384
+#define MOVE_DAZZLE_GLEAM 385
+#define MOVE_FAE_VOICE 386
 
-#define MOVES_COUNT 383
+#define MOVES_COUNT 387
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

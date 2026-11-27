@@ -46,6 +46,18 @@ const struct SpriteTemplate gEllipticalGustSpriteTemplate =
     .callback = AnimEllipticalGust,
 };
 
+// Gust's whirlwind in pink, for Fairy Wind
+const struct SpriteTemplate gFairyWindGustSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FAIRY_GUST,
+    .paletteTag = ANIM_TAG_FAIRY_GUST,
+    .oam = &gOamData_AffineOff_ObjNormal_32x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimEllipticalGust,
+};
+
 static const union AffineAnimCmd sAffineAnim_GustToTarget[] =
 {
     AFFINEANIMCMD_FRAME(0x10, 0x100, 0, 0),
@@ -382,6 +394,15 @@ void AnimTask_AnimateGustTornadoPalette(u8 taskId)
     gTasks[taskId].data[0] = gBattleAnimArgs[1];
     gTasks[taskId].data[1] = gBattleAnimArgs[0];
     gTasks[taskId].data[2] = IndexOfSpritePaletteTag(ANIM_TAG_GUST);
+    gTasks[taskId].func = AnimTask_AnimateGustTornadoPalette_Step;
+}
+
+// The same spinning colours for Fairy Wind's whirlwind. args as above
+void AnimTask_AnimateFairyGustPalette(u8 taskId)
+{
+    gTasks[taskId].data[0] = gBattleAnimArgs[1];
+    gTasks[taskId].data[1] = gBattleAnimArgs[0];
+    gTasks[taskId].data[2] = IndexOfSpritePaletteTag(ANIM_TAG_FAIRY_GUST);
     gTasks[taskId].func = AnimTask_AnimateGustTornadoPalette_Step;
 }
 

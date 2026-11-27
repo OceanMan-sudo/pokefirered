@@ -90,31 +90,15 @@ Build the rules and their menu switches together.
 - [x] Type label, colours and TM disc colour
 - [x] Clefable's stats set to Generation 6
 - [x] Moonblast and Play Rough, with animations
-- [ ] Fairy Wind, Drain Kiss, Dazzle Gleam and Fairy Voice: **next up** (plan under [Next Fairy moves](#next-fairy-moves))
+- [x] Fairy Wind, Drain Kiss, Dazzle Gleam and Fae Voice, with animations
 
 Checked items are in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
-
-### Next Fairy moves
-Agreed on 27 November 2026. Moonblast and Play Rough were built first and have been tested. Baby-Doll Eyes and Spirit Break were left out.
-
-| In-game name | Category | Power / Accuracy / PP | Effect | Animation idea |
-|---|---|---|---|---|
-| FAIRY WIND | Special | 40 / 100 / 30 | None | Pink gust with sparkles |
-| DRAIN KISS (Draining Kiss) | Special | 50 / 100 / 10 | Heals 75% of damage | A kiss, then orbs flow back to the user |
-| DAZZLE GLEAM (Dazzling Gleam) | Special | 80 / 100 / 10 | Hits both opponents | Pink flash with a burst of sparkles |
-| FAIRY VOICE (Disarming Voice) | Special | 40 / never misses / 15 | Hits both opponents; sound move | Pink sound rings |
-
-- All four names fit on screen.
-- Drain Kiss needs a new drain effect, including the AI's handling of it (such as Liquid Ooze). It makes contact in Generation 6.
-- Fairy Voice must be added to every Soundproof list: `sSoundMovesTable` in `src/battle_util.c`, `AI_CheckBadMove_CheckSoundproof` in `data/battle_ai_scripts.s`, and the Soundproof check for damaging moves in `src/battle_ai_switch_items.c`.
-- In double battles, Dazzle Gleam and Fairy Voice do half damage to each opponent when both are out, like Surf (Generation 6 uses three quarters).
-- No learnset or trainer team changes. The moves are taught through the debug menu.
 
 ### Phase 5: groundwork for the Kanto pass
 Do these before changing teams area by area, so work is not redone.
 - [x] Agree the level caps (below); revisit when teams change
 - [ ] Learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
-- [ ] Add Scorch Sand, Aura Sphere and the new Fairy moves to learnsets as part of that work
+- [ ] Add Scorch Sand, Aura Sphere and the Fairy moves to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
 - [ ] Plan where each missing Pokémon will come from (list at the end)
 
@@ -283,7 +267,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 - Reusable, unique TMs
 - HM field moves without teaching them
 - Physical/Special split
-- 28 new moves and 8 new abilities
+- 32 new moves and 8 new abilities
 - Evolution changes with no trade evolutions (7 friendship evolutions remain)
 - House that gives Rare Candies
 
@@ -339,6 +323,13 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Trainer AI: Lance's Gyarados and Dragonair do not use Dragon Rage on a Fairy Pokémon
 - [x] Moonblast (381): move and animation
 - [x] Play Rough (382): move and animation
+- [ ] Fairy Wind (383): move and animation
+- [ ] Drain Kiss (384): animation, and the user gets back three quarters of the damage dealt
+- [ ] Drain Kiss against a Pokémon with Liquid Ooze (some Tentacool have it): the user loses HP instead
+- [ ] Dazzle Gleam (385): animation in a single battle and a double battle; both opponents are hit
+- [ ] Fae Voice (386): animation in a single battle and a double battle; both opponents are hit and it never misses
+- [ ] Fae Voice against a Pokémon with Soundproof (some Voltorb and Mr. Mime have it): no effect
+- [ ] Dazzle Gleam and Fae Voice used by an opponent look right too
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
