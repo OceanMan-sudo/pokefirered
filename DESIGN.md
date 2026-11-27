@@ -312,8 +312,25 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 - No trainer uses Boomburst or Hyper Voice into Soundproof once your ability has shown itself; until then the AI guesses between the species' abilities, as it always has. Draco Meteor, Leaf Storm and Overheat are checked against immunities like other attacks.
 - Bosses are keener on Sunny Day with Solar Power, and on Hail with Ice Body or Snow Cloak.
 - The Sp. Atk-lowering logic now checks Sp. Atk. No move currently in the game only lowers Sp. Atk, so this changes nothing yet.
-- Switching out mid-battle works as before. Enemy trainers never use items. The AI does not look at the move you are about to choose.
+- **Bosses switch when they can't get anywhere** (not yet tested in game). The rule is described just below.
+- Otherwise switching out mid-battle works as before. Enemy trainers never use items. The AI does not look at the move you are about to choose.
 - Special battles whose teams are not in `trainers.h` (such as Trainer Tower) use the full logic and do not save a Pokémon.
+
+#### When a boss switches because it is walled
+Level 3, single battles only. All of these must be true at the start of its turn:
+
+1. No attack it can use would take 20% of your Pokémon's maximum HP, or knock it out.
+2. It has no useful status move that would work on you: sleep, Yawn, poison, paralysis, burn, confusion, Leech Seed, Perish Song or a Ghost-type's Curse.
+3. It is not trapped.
+4. It did not switch for this reason on its previous turn.
+5. A teammate (not the saved last Pokémon, not asleep or frozen) can do that 20% or knock you out, and your Pokémon's types are not super effective against it.
+
+It then sends out the best of those teammates, every time. Boosting, healing, screens and Protect do not keep it in.
+
+- The estimate uses real stats, types and abilities, so for this one decision a boss knows your ability. It covers fixed-damage moves, absorbing abilities, Soundproof, Disable, Encore, Taunt, Choice Band and running out of PP.
+- Moves whose strength cannot be known beforehand (such as Hidden Power, Counter, Low Kick, Metronome and one-hit knockouts) keep the active Pokémon in, but do not count for a teammate. Return and Frustration are worked out from friendship.
+- The 20% is `AI_WALLED_DAMAGE_PERCENT` in `include/constants/battle_ai.h`.
+- Choosing a replacement after a knockout still uses the simpler estimate above.
 
 ### Gym leaders and Elite Four
 | Boss | Team (species, level) | Status |

@@ -456,7 +456,8 @@ struct BattleStruct
         struct MultiBattlePokemonTx multiBattleMons[3];
     } multiBuffer;
     u8 quickEscapeFailed; // you lose your first turn
-    u8 padding_1E5[0x1B];
+    u8 aiSwitchedWhenWalled; // stops a boss doing so two turns running
+    u8 padding_1E6[0x1A];
 }; // size == 0x200 bytes
 
 extern struct BattleStruct *gBattleStruct;

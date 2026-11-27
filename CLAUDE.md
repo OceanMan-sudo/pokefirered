@@ -105,7 +105,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | IV/EV viewer | `src/pokemon_summary_screen.c` |
 | Move relearner | `data/scripts/move_relearner_pc.inc` |
 | Repel reuse prompt | `data/scripts/repel.inc`, `GetRepelToReuse` in `src/item_use.c`, `VAR_LAST_REPEL_USED` |
-| Trainer AI levels | Classes in `src/data/trainer_ai_levels.h`; `GetOpponentAiLevel` and AI commands `0x5E`, `0x5F` in `src/battle_ai_script_commands.c`; replacement choice and saved ace in `src/battle_ai_switch_items.c`; scripts in `data/battle_ai_scripts.s` |
+| Trainer AI levels | Classes in `src/data/trainer_ai_levels.h`; `GetOpponentAiLevel` and AI commands `0x5E`, `0x5F` in `src/battle_ai_script_commands.c`; replacement choice, saved ace and walled switching (`ShouldSwitchIfWalled`) in `src/battle_ai_switch_items.c`; scripts in `data/battle_ai_scripts.s` |
 | Enemy trainers use no items | `BattleAI_HandleItemUseBeforeAISetup` in `src/battle_ai_script_commands.c` (the `items` fields in `trainers.h` are ignored) |
 | Running everywhere and auto run | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
 | Level cap | Numbers in `src/data/level_caps.h`; logic in `src/level_cap.c`; enforced in `Cmd_getexp` (`src/battle_script_commands.c`), `src/pokemon.c` and `src/party_menu.c` (Rare Candy), and `src/daycare.c` |

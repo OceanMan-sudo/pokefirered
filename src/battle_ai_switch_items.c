@@ -17,6 +17,13 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(bool8 noRng);
 static bool8 FindMonWithFlagsAndSuperEffective(u8 flags, u8 moduloPercent);
 static bool8 ShouldUseItem(void);
 static void ModulateByTypeEffectiveness(u8 atkType, u8 defType1, u8 defType2, u8 *var);
+static bool8 ShouldSwitchIfWalled(bool8 switchedLastTurn);
+
+// An attack whose strength can't be worked out before it is used.
+#define DAMAGE_UNKNOWN 0xFFFFFFFF
+
+// Counting normal effectiveness as 40 keeps double resistances exact.
+#define EFFECTIVENESS_NORMAL 40
 
 // Party slot of the Pokemon this trainer is saving for last (the last one in
 // the team), or PARTY_SIZE if they aren't saving one.
@@ -334,7 +341,9 @@ static bool8 ShouldSwitch(void)
     u8 aceId = GetSavedAceId();
     s32 i;
     s32 availableToSwitch;
+    bool8 switchedWhenWalled = gBattleStruct->aiSwitchedWhenWalled;
 
+    gBattleStruct->aiSwitchedWhenWalled = FALSE;
     if ((gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
      || (gStatuses3[gActiveBattler] & STATUS3_ROOTED)
      || AbilityBattleEffects(ABILITYEFFECT_CHECK_OTHER_SIDE, gActiveBattler, ABILITY_SHADOW_TAG, 0, 0)
@@ -375,7 +384,8 @@ static bool8 ShouldSwitch(void)
     if (ShouldSwitchIfPerishSong()
      || ShouldSwitchIfWonderGuard()
      || FindMonThatAbsorbsOpponentsMove()
-     || ShouldSwitchIfNaturalCure())
+     || ShouldSwitchIfNaturalCure()
+     || ShouldSwitchIfWalled(switchedWhenWalled))
         return TRUE;
     if (HasSuperEffectiveMoveAgainstOpponents(FALSE)
      || AreStatsRaised())
@@ -487,6 +497,7 @@ static void GetPartyMonAsBattler(u8 partyId, struct BattlePokemon *dst)
     dst->level = GetMonData(mon, MON_DATA_LEVEL);
     dst->item = GetMonData(mon, MON_DATA_HELD_ITEM);
     dst->status1 = GetMonData(mon, MON_DATA_STATUS);
+    dst->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
     dst->ability = gSpeciesInfo[dst->species].abilities[GetMonData(mon, MON_DATA_ABILITY_NUM)];
     dst->type1 = gSpeciesInfo[dst->species].types[0];
     dst->type2 = gSpeciesInfo[dst->species].types[1];
@@ -542,38 +553,362 @@ static u32 GetBestMoveDamage(struct BattlePokemon *attacker, u8 defender)
     return bestDamage;
 }
 
-// Higher is better: how hard this Pokemon can hit the opponent, divided by how
-// badly the opponent's types hit it.
-static u32 ScoreSwitchInCandidate(u8 partyId, u8 opposingBattler)
+// How hard the opponent's own types hit this Pokemon, in tenths: 10 is normal
+// damage, and anything above that is super effective.
+static u8 GetTypeThreat(struct BattlePokemon *mon, u8 opposingBattler)
 {
-    struct BattlePokemon candidate;
-    u32 damage;
     u8 threat = 0;
     u8 effectiveness;
     u8 atkType;
     s32 i;
 
-    GetPartyMonAsBattler(partyId, &candidate);
-
-    damage = GetBestMoveDamage(&candidate, opposingBattler);
-    // Anything past a knockout is no better than a knockout.
-    if (damage > gBattleMons[opposingBattler].hp)
-        damage = gBattleMons[opposingBattler].hp;
-
     for (i = 0; i < 2; ++i)
     {
         atkType = (i == 0) ? gBattleMons[opposingBattler].type1 : gBattleMons[opposingBattler].type2;
         effectiveness = 10;
-        ModulateByTypeEffectiveness(atkType, candidate.type1, candidate.type2, &effectiveness);
-        if (candidate.ability == ABILITY_LEVITATE && atkType == TYPE_GROUND)
+        ModulateByTypeEffectiveness(atkType, mon->type1, mon->type2, &effectiveness);
+        if (mon->ability == ABILITY_LEVITATE && atkType == TYPE_GROUND)
             effectiveness = 0;
         if (threat < effectiveness)
             threat = effectiveness;
     }
+    return threat;
+}
+
+// Higher is better: how hard a Pokemon can hit the opponent, divided by how
+// badly the opponent's types hit it.
+static u32 ScoreMatchup(u32 damage, u8 threat, u8 opposingBattler)
+{
+    // Anything past a knockout is no better than a knockout.
+    if (damage > gBattleMons[opposingBattler].hp)
+        damage = gBattleMons[opposingBattler].hp;
     if (threat < 2) // immune
         threat = 2;
 
     return (damage + 1) * 40 / threat;
+}
+
+static u32 ScoreSwitchInCandidate(u8 partyId, u8 opposingBattler)
+{
+    struct BattlePokemon candidate;
+
+    GetPartyMonAsBattler(partyId, &candidate);
+
+    return ScoreMatchup(GetBestMoveDamage(&candidate, opposingBattler),
+                        GetTypeThreat(&candidate, opposingBattler),
+                        opposingBattler);
+}
+
+// Type effectiveness of a move type against a battler, where
+// EFFECTIVENESS_NORMAL is normal damage.
+static u8 GetEffectivenessOnBattler(u8 moveType, u8 defender)
+{
+    u8 type1 = gBattleMons[defender].type1;
+    u8 type2 = gBattleMons[defender].type2;
+    u8 effectiveness = EFFECTIVENESS_NORMAL;
+
+    // Foresight lets Normal and Fighting moves hit Ghosts.
+    if ((gBattleMons[defender].status2 & STATUS2_FORESIGHT)
+     && (moveType == TYPE_NORMAL || moveType == TYPE_FIGHTING))
+    {
+        if (type1 == TYPE_GHOST)
+            type1 = TYPE_MYSTERY;
+        if (type2 == TYPE_GHOST)
+            type2 = TYPE_MYSTERY;
+    }
+    ModulateByTypeEffectiveness(moveType, type1, type2, &effectiveness);
+    if (gBattleMons[defender].ability == ABILITY_LEVITATE && moveType == TYPE_GROUND)
+        effectiveness = 0;
+    return effectiveness;
+}
+
+// Roughly how much damage one use of an attacking move would do to the
+// defender, going by its real stats, types and ability. The attacker is either
+// the active Pokemon or a copy of one waiting in the party.
+static u32 EstimateMoveDamage(struct BattlePokemon *attacker, u16 move, u8 defender)
+{
+    struct BattlePokemon *target = &gBattleMons[defender];
+    bool8 isActive = (attacker == &gBattleMons[gActiveBattler]);
+    u8 effect = gBattleMoves[move].effect;
+    u8 moveType = gBattleMoves[move].type;
+    u8 effectiveness;
+    u16 power = 0; // 0 means the move's usual power
+    u8 savedCritMultiplier;
+    u32 damage;
+
+    // Future Sight ignores types and abilities.
+    if (effect == EFFECT_FUTURE_SIGHT)
+    {
+        if (gWishFutureKnock.futureSightCounter[defender] != 0)
+            return 0;
+    }
+    else
+    {
+        // The type of Hidden Power isn't worked out here.
+        if (effect == EFFECT_HIDDEN_POWER)
+            return DAMAGE_UNKNOWN;
+        effectiveness = GetEffectivenessOnBattler(moveType, defender);
+        if (effectiveness == 0
+         || (target->ability == ABILITY_WONDER_GUARD && effectiveness <= EFFECTIVENESS_NORMAL)
+         || (target->ability == ABILITY_VOLT_ABSORB && moveType == TYPE_ELECTRIC)
+         || (target->ability == ABILITY_WATER_ABSORB && moveType == TYPE_WATER)
+         || (target->ability == ABILITY_FLASH_FIRE && moveType == TYPE_FIRE && !(target->status1 & STATUS1_FREEZE)))
+            return 0;
+        if (target->ability == ABILITY_SOUNDPROOF
+         && (move == MOVE_SNORE || move == MOVE_UPROAR || move == MOVE_HYPER_VOICE || move == MOVE_BOOMBURST))
+            return 0;
+    }
+
+    // Moves that can fail.
+    if (effect == EFFECT_EXPLOSION && (attacker->ability == ABILITY_DAMP || target->ability == ABILITY_DAMP))
+        return 0;
+    if (effect == EFFECT_DREAM_EATER && (!(target->status1 & STATUS1_SLEEP) || (target->status2 & STATUS2_SUBSTITUTE)))
+        return 0;
+    if (effect == EFFECT_SNORE && !(attacker->status1 & STATUS1_SLEEP))
+        return 0;
+    if (effect == EFFECT_FAKE_OUT && isActive && !gDisableStructs[gActiveBattler].isFirstTurn)
+        return 0;
+    if (effect == EFFECT_SPIT_UP)
+    {
+        if (isActive && gDisableStructs[gActiveBattler].stockpileCounter != 0)
+            return DAMAGE_UNKNOWN;
+        return 0;
+    }
+
+    // Moves that don't use the normal damage formula.
+    if (effect == EFFECT_LEVEL_DAMAGE || effect == EFFECT_PSYWAVE)
+        return attacker->level;
+    if (effect == EFFECT_DRAGON_RAGE)
+        return 40;
+    if (effect == EFFECT_SONICBOOM)
+        return 20;
+    if (effect == EFFECT_SUPER_FANG)
+        return (target->hp > 1) ? target->hp / 2 : 1;
+    if (effect == EFFECT_ENDEAVOR)
+        return (target->hp > attacker->hp) ? target->hp - attacker->hp : 0;
+    if (effect == EFFECT_OHKO)
+    {
+        if (attacker->level < target->level || target->ability == ABILITY_STURDY)
+            return 0;
+        return DAMAGE_UNKNOWN;
+    }
+
+    if (effect == EFFECT_RETURN)
+        power = 10 * attacker->friendship / 25;
+    else if (effect == EFFECT_FRUSTRATION)
+        power = 10 * (255 - attacker->friendship) / 25;
+    else if (effect == EFFECT_ERUPTION && attacker->maxHP != 0)
+        power = gBattleMoves[move].power * attacker->hp / attacker->maxHP;
+    else if (effect == EFFECT_WEATHER_BALL && gBattleWeather != 0)
+        return DAMAGE_UNKNOWN;
+    else if (gBattleMoves[move].power <= 1)
+        return DAMAGE_UNKNOWN;
+    if (power == 0
+     && (effect == EFFECT_RETURN || effect == EFFECT_FRUSTRATION || effect == EFFECT_ERUPTION))
+        power = 1;
+
+    savedCritMultiplier = gCritMultiplier;
+    gCritMultiplier = 1;
+    damage = CalculateBaseDamage(attacker, target, move, gSideStatuses[GET_BATTLER_SIDE(defender)], power, 0, gActiveBattler, defender);
+    gCritMultiplier = savedCritMultiplier;
+
+    if (effect != EFFECT_FUTURE_SIGHT)
+    {
+        if (moveType == attacker->type1 || moveType == attacker->type2)
+            damage = damage * 15 / 10;
+        damage = damage * effectiveness / EFFECTIVENESS_NORMAL;
+    }
+    if (effect == EFFECT_FACADE
+     && (attacker->status1 & (STATUS1_PSN_ANY | STATUS1_BURN | STATUS1_PARALYSIS)))
+        damage *= 2;
+    if (effect == EFFECT_MULTI_HIT)
+        damage *= 3;
+    else if (effect == EFFECT_DOUBLE_HIT || effect == EFFECT_TWINEEDLE)
+        damage *= 2;
+    else if (effect == EFFECT_TRIPLE_KICK)
+        damage *= 6;
+    return damage;
+}
+
+// Whether an attack is worth staying in for.
+static bool8 IsWorthwhileDamage(u32 damage, u8 defender)
+{
+    if (damage == 0)
+        return FALSE;
+    if (damage >= gBattleMons[defender].hp)
+        return TRUE;
+    return damage * 100 >= gBattleMons[defender].maxHP * AI_WALLED_DAMAGE_PERCENT;
+}
+
+// Whether a move with no power of its own would still get the active Pokemon
+// somewhere against the defender.
+static bool8 IsUsefulStatusMove(u16 move, u8 defender)
+{
+    struct BattlePokemon *attacker = &gBattleMons[gActiveBattler];
+    struct BattlePokemon *target = &gBattleMons[defender];
+    u8 effect = gBattleMoves[move].effect;
+    bool8 safeguarded = (gSideStatuses[GET_BATTLER_SIDE(defender)] & SIDE_STATUS_SAFEGUARD) != 0;
+    s32 i;
+
+    // These could turn into anything.
+    if (effect == EFFECT_METRONOME || effect == EFFECT_MIRROR_MOVE
+     || effect == EFFECT_NATURE_POWER || effect == EFFECT_ASSIST)
+        return TRUE;
+    if (effect == EFFECT_SLEEP_TALK)
+        return (attacker->status1 & STATUS1_SLEEP) != 0;
+    if (effect == EFFECT_TRANSFORM)
+        return !(attacker->status2 & STATUS2_TRANSFORMED);
+    // Soundproof stops the sound moves among the rest.
+    if (target->ability == ABILITY_SOUNDPROOF
+     && (move == MOVE_SING || move == MOVE_GRASS_WHISTLE || move == MOVE_SUPERSONIC || move == MOVE_PERISH_SONG))
+        return FALSE;
+    // Perish Song gets past Substitute and Safeguard.
+    if (effect == EFFECT_PERISH_SONG)
+        return !(gStatuses3[defender] & STATUS3_PERISH_SONG);
+
+    // Nothing else here gets past a Substitute.
+    if (target->status2 & STATUS2_SUBSTITUTE)
+        return FALSE;
+    if (effect == EFFECT_LEECH_SEED)
+        return !(gStatuses3[defender] & STATUS3_LEECHSEED)
+            && target->type1 != TYPE_GRASS && target->type2 != TYPE_GRASS;
+    if (effect == EFFECT_CURSE)
+        return (attacker->type1 == TYPE_GHOST || attacker->type2 == TYPE_GHOST)
+            && !(target->status2 & STATUS2_CURSED);
+
+    // Safeguard stops everything below.
+    if (safeguarded)
+        return FALSE;
+    if (effect == EFFECT_CONFUSE || effect == EFFECT_TEETER_DANCE)
+        return !(target->status2 & STATUS2_CONFUSION) && target->ability != ABILITY_OWN_TEMPO;
+
+    // The rest need a target with no status condition.
+    if (target->status1 != 0)
+        return FALSE;
+    if (effect == EFFECT_SLEEP || effect == EFFECT_YAWN)
+    {
+        if (target->ability == ABILITY_INSOMNIA || target->ability == ABILITY_VITAL_SPIRIT)
+            return FALSE;
+        for (i = 0; i < gBattlersCount; ++i)
+        {
+            if (gBattleMons[i].status2 & STATUS2_UPROAR)
+                return FALSE;
+        }
+        return effect != EFFECT_YAWN || !(gStatuses3[defender] & STATUS3_YAWN);
+    }
+    if (effect == EFFECT_TOXIC || effect == EFFECT_POISON)
+        return target->ability != ABILITY_IMMUNITY
+            && target->type1 != TYPE_POISON && target->type2 != TYPE_POISON
+            && target->type1 != TYPE_STEEL && target->type2 != TYPE_STEEL;
+    if (effect == EFFECT_PARALYZE)
+        return target->ability != ABILITY_LIMBER
+            && GetEffectivenessOnBattler(gBattleMoves[move].type, defender) != 0;
+    if (effect == EFFECT_WILL_O_WISP)
+        return target->type1 != TYPE_FIRE && target->type2 != TYPE_FIRE
+            && target->ability != ABILITY_WATER_VEIL && target->ability != ABILITY_FLASH_FIRE;
+    return FALSE;
+}
+
+// Whether any move the active Pokemon can pick right now would get it somewhere.
+static bool8 CanActiveMonAffect(u8 defender)
+{
+    // Torment only blocks a move for one turn, so it doesn't count.
+    u8 unusable = CheckMoveLimitations(gActiveBattler, 0, MOVE_LIMITATIONS_ALL ^ MOVE_LIMITATION_TORMENTED);
+    u16 move;
+    s32 i;
+
+    for (i = 0; i < MAX_MON_MOVES; ++i)
+    {
+        move = gBattleMons[gActiveBattler].moves[i];
+        if (move == MOVE_NONE || (unusable & gBitTable[i]))
+            continue;
+        if (gBattleMoves[move].power == 0)
+        {
+            if (IsUsefulStatusMove(move, defender))
+                return TRUE;
+        }
+        else if (IsWorthwhileDamage(EstimateMoveDamage(&gBattleMons[gActiveBattler], move, defender), defender))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+// The most damage a waiting team member can be counted on to do. Moves of
+// unknown strength and moves that knock out the user don't count.
+static u32 GetReliableDamage(struct BattlePokemon *attacker, u8 defender)
+{
+    u32 bestDamage = 0;
+    u32 damage;
+    u16 move;
+    s32 i;
+
+    for (i = 0; i < MAX_MON_MOVES; ++i)
+    {
+        move = attacker->moves[i];
+        if (move == MOVE_NONE || attacker->pp[i] == 0 || gBattleMoves[move].power == 0
+         || gBattleMoves[move].effect == EFFECT_EXPLOSION)
+            continue;
+        damage = EstimateMoveDamage(attacker, move, defender);
+        if (damage != DAMAGE_UNKNOWN && bestDamage < damage)
+            bestDamage = damage;
+    }
+    return bestDamage;
+}
+
+// A boss that can't get anywhere against the opposing Pokemon swaps to a team
+// member that can. Single battles only.
+static bool8 ShouldSwitchIfWalled(bool8 switchedLastTurn)
+{
+    struct BattlePokemon candidate;
+    u8 opposingBattler;
+    u8 bestMonId = PARTY_SIZE;
+    u8 aceId;
+    u8 threat;
+    u32 damage, score;
+    u32 bestScore = 0;
+    s32 i;
+
+    // Not twice running, so the player can't keep it switching back and forth.
+    if (switchedLastTurn
+     || (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+     || GetOpponentAiLevel() != AI_LEVEL_BOSS)
+        return FALSE;
+    opposingBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+    if ((gAbsentBattlerFlags & gBitTable[opposingBattler]) || gBattleMons[opposingBattler].hp == 0)
+        return FALSE;
+    if (CanActiveMonAffect(opposingBattler))
+        return FALSE;
+
+    aceId = GetSavedAceId();
+    for (i = 0; i < PARTY_SIZE; ++i)
+    {
+        if (i == aceId || !CanSwitchIn(i, gActiveBattler, gActiveBattler))
+            continue;
+        GetPartyMonAsBattler(i, &candidate);
+        if (candidate.status1 & (STATUS1_SLEEP | STATUS1_FREEZE))
+            continue;
+        threat = GetTypeThreat(&candidate, opposingBattler);
+        if (threat > 10) // weak to the opponent
+            continue;
+        damage = GetReliableDamage(&candidate, opposingBattler);
+        if (!IsWorthwhileDamage(damage, opposingBattler))
+            continue;
+        score = ScoreMatchup(damage, threat, opposingBattler);
+        if (bestMonId == PARTY_SIZE || bestScore < score)
+        {
+            bestScore = score;
+            bestMonId = i;
+        }
+    }
+    if (bestMonId == PARTY_SIZE)
+        return FALSE;
+
+    gBattleStruct->aiSwitchedWhenWalled = TRUE;
+    *(gBattleStruct->AI_monToSwitchIntoId + (GetBattlerPosition(gActiveBattler) >> 1)) = bestMonId;
+    BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+    return TRUE;
 }
 
 // Picks the Pokemon the opposing trainer sends out next. Returns PARTY_SIZE if

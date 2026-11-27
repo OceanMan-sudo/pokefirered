@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 38 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 39 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -102,6 +102,7 @@ Tables were generated from the game files, so they show the **net difference** f
 | Double battle enemy switching slip fixed (BUG-19) | Not yet tested |
 | Faster bosses use healing moves when hurt; Sp. Atk-lowering logic checks Sp. Atk | Not yet tested |
 | Trainer AI accounts for Soundproof against Boomburst and Hyper Voice, immunities against Overheat-type moves, and new weather abilities | Not yet tested |
+| Level 3 trainers switch out when nothing they have can affect your Pokémon and a teammate can | Not yet tested |
 
 These changes did not touch species data, TM compatibility or trainers. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 

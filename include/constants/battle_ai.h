@@ -33,6 +33,10 @@
 #define AI_LEVEL_KNOCKOUT 2
 #define AI_LEVEL_BOSS     3
 
+// A boss switches out if nothing it can do would take this percentage of the
+// opposing Pokemon's max HP, and another team member can.
+#define AI_WALLED_DAMAGE_PERCENT 20
+
 // get_how_powerful_move_is
 #define MOVE_POWER_DISCOURAGED  0
 #define MOVE_NOT_MOST_POWERFUL  1
