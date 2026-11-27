@@ -128,7 +128,7 @@ struct PartyMenuInternal
     u32 spriteIdCancelPokeball:7;
     u32 messageId:14;
     u8 windowId[3];
-    u8 actions[8];
+    u8 actions[9];  // as many lines as fit on screen
     u8 numActions;
     u16 palBuffer[BG_PLTT_SIZE / sizeof(u16)];
     s16 data[16];
@@ -275,6 +275,8 @@ static void CreateHeldItemSpriteForTrade(u8 spriteId, bool8 isMail);
 static void SetPartyMonAilmentGfx(struct Pokemon *mon, struct PartyMenuBox *menuBox);
 static void UpdatePartyMonAilmentGfx(u8 status, struct PartyMenuBox *menuBox);
 static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId);
+static void AppendFieldMoveActions(struct Pokemon *mon);
+static bool8 IsFieldMoveUsableHere(u8 fieldMove);
 static u8 GetPartyMenuActionsTypeInBattle(struct Pokemon *mon);
 static u8 GetPartySlotEntryStatus(s8 slot);
 static void Task_HandleSelectionMenuInput(u8 taskId);
@@ -2962,22 +2964,9 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
 
 static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 {
-    u8 i, j;
-
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_SUMMARY);
-    // Add field moves to action list
-    for (i = 0; i < MAX_MON_MOVES; ++i)
-    {
-        for (j = 0; sFieldMoves[j] != FIELD_MOVE_END; ++j)
-        {
-            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
-            {
-                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + CURSOR_OPTION_FIELD_MOVES);
-                break;
-            }
-        }
-    }
+    AppendFieldMoveActions(&mons[slotId]);
     if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_SWITCH);
     if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
@@ -2985,6 +2974,87 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     else
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_ITEM);
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_CANCEL1);
+}
+
+// The menu also needs room for Summary, Switch, Item and Cancel
+#define MAX_FIELD_MOVE_ACTIONS 5
+
+// Which HM moves are kept first if there isn't room for all of them. Those that
+// can only be started from this menu come first, ahead of those that also work
+// by pressing A.
+static const u8 sHmFieldMovePriority[] =
+{
+    FIELD_MOVE_FLY,
+    FIELD_MOVE_FLASH,
+    FIELD_MOVE_CUT,
+    FIELD_MOVE_SURF,
+    FIELD_MOVE_STRENGTH,
+    FIELD_MOVE_ROCK_SMASH,
+    FIELD_MOVE_WATERFALL,
+};
+
+// HM moves are listed when they can be used on the spot, whether or not they
+// have been learned. Other field moves are listed when they have been learned.
+static void AppendFieldMoveActions(struct Pokemon *mon)
+{
+    u8 i, j, fieldMove;
+    u8 learned[MAX_MON_MOVES];
+    u8 numLearned = 0;
+    u8 numHms = 0;
+    u8 shownHms = 0; // one bit for each HM field move
+
+    for (i = 0; i < MAX_MON_MOVES; ++i)
+    {
+        for (j = FIELD_MOVE_WATERFALL + 1; sFieldMoves[j] != FIELD_MOVE_END; ++j)
+        {
+            if (GetMonData(mon, i + MON_DATA_MOVE1) == sFieldMoves[j])
+            {
+                learned[numLearned++] = j;
+                break;
+            }
+        }
+    }
+
+    if (MenuHelpers_IsLinkActive() != TRUE && InUnionRoom() != TRUE)
+    {
+        for (i = 0; i < ARRAY_COUNT(sHmFieldMovePriority) && numLearned + numHms < MAX_FIELD_MOVE_ACTIONS; ++i)
+        {
+            fieldMove = sHmFieldMovePriority[i];
+            // The first seven field moves use the first seven badges, in order
+            if (FlagGet(FLAG_BADGE01_GET + fieldMove) == TRUE
+             && MonCanUseFieldMove(mon, sFieldMoves[fieldMove]) == TRUE
+             && IsFieldMoveUsableHere(fieldMove) == TRUE)
+            {
+                shownHms |= 1 << fieldMove;
+                numHms++;
+            }
+        }
+    }
+
+    for (fieldMove = 0; fieldMove <= FIELD_MOVE_WATERFALL; ++fieldMove)
+    {
+        if (shownHms & (1 << fieldMove))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, fieldMove + CURSOR_OPTION_FIELD_MOVES);
+    }
+    for (i = 0; i < numLearned; ++i)
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, learned[i] + CURSOR_OPTION_FIELD_MOVES);
+}
+
+// Asks the move's own setup function whether it would work here. Those functions
+// also arrange what happens once the menu closes, so that is put back.
+static bool8 IsFieldMoveUsableHere(u8 fieldMove)
+{
+    bool8 (*fieldCallback)(void) = gFieldCallback2;
+    MainCallback postMenuCallback = gPostMenuFieldCallback;
+    u16 result = gSpecialVar_Result;
+    u16 lastTalked = gSpecialVar_LastTalked;
+    bool8 usable = sFieldMoveCursorCallbacks[fieldMove].fieldMoveFunc();
+
+    gFieldCallback2 = fieldCallback;
+    gPostMenuFieldCallback = postMenuCallback;
+    gSpecialVar_Result = result;
+    gSpecialVar_LastTalked = lastTalked;
+    return usable;
 }
 
 static u8 GetPartyMenuActionsType(struct Pokemon *mon)
@@ -4725,6 +4795,53 @@ bool8 IsMoveHm(u16 move)
         if (sTMHMMoves[i + NUM_TECHNICAL_MACHINES] == move)
             return TRUE;
     return FALSE;
+}
+
+// Whether the player owns the HM for this move and the Pokemon is able to learn it
+static bool8 MonCanLearnOwnedHm(struct Pokemon *mon, u16 move)
+{
+    u8 i;
+
+    for (i = 0; i < NUM_HIDDEN_MACHINES - 1; ++i) // no dive
+    {
+        if (sTMHMMoves[i + NUM_TECHNICAL_MACHINES] == move)
+        {
+            return CheckBagHasItem(ITEM_HM01 + i, 1) == TRUE
+                && CanMonLearnTMHM(mon, i + NUM_TECHNICAL_MACHINES) != 0;
+        }
+    }
+    return FALSE;
+}
+
+// A Pokemon can use a field move if it knows it. For HM moves it is also enough
+// that the player owns the HM and the Pokemon could learn it. Eggs never can.
+// Badges are checked by the callers.
+bool8 MonCanUseFieldMove(struct Pokemon *mon, u16 move)
+{
+    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
+        return FALSE;
+    if (MonKnowsMove(mon, move) == TRUE)
+        return TRUE;
+    return MonCanLearnOwnedHm(mon, move);
+}
+
+// The party slot of the Pokemon that should use a field move, preferring one that
+// knows it. Returns PARTY_SIZE if none can.
+u8 GetPartyMonForFieldMove(u16 move)
+{
+    u8 i;
+
+    for (i = 0; i < PARTY_SIZE; ++i)
+    {
+        if (MonCanUseFieldMove(&gPlayerParty[i], move) == TRUE && MonKnowsMove(&gPlayerParty[i], move) == TRUE)
+            return i;
+    }
+    for (i = 0; i < PARTY_SIZE; ++i)
+    {
+        if (MonCanUseFieldMove(&gPlayerParty[i], move) == TRUE)
+            return i;
+    }
+    return PARTY_SIZE;
 }
 
 bool8 MonKnowsMove(struct Pokemon *mon, u16 move)
