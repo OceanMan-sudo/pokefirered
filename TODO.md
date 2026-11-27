@@ -16,15 +16,15 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Pokémon | Focus on the original 386. Evolutionary relatives, and maybe more legends, later |
 | Fairy type | Follow Generation 6, including the type chart |
 | Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. **On hold until you start it** |
-| Trainers | Every trainer gets updated. AI updated a little, not brutally hard |
-| Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Must be easy to change later |
-| Default rules | No difficulty mode. Set battle style, no items in battle and level cap on by default, each switchable in the menu at any time |
+| Trainers | Every trainer gets updated. AI stepped up by trainer type, not brutally hard: early trainers stay simple, stronger route trainers learn to go for knockouts, bosses keep their full logic with small tweaks |
+| Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Pokémon at the cap still earn EVs, and the Day Care stops at the cap. Must be easy to change later |
+| Default rules | No difficulty mode. Set battle style, no Bag items in trainer battles and level cap on by default, each switchable in the Options menu at any time |
 | Enemy trainers | Never use items |
 | Rare Candies | Keep the house that gives them |
 | Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
 | Running | Run from the start (no shoes needed), allowed everywhere. Auto-run switchable, off at first |
 | Pewter City aide | Gives a starter type booster as a gift from Mom, in place of the Running Shoes |
-| Wild battles | Holding B as the wild Pokémon slides in shows a Yes/No box asking whether to escape. The usual escape checks apply |
+| Wild battles | Holding B as the wild Pokémon slides in shows a Yes/No box asking whether to escape, right after "Wild ___ appeared!" and before your Pokémon comes out. The usual escape checks apply, and a failed escape costs the turn like a failed Run |
 | All 386 obtainable | Not required for version 1; some can wait |
 | Unfinished areas | Seafoam Resort, Pokémon Tower B1F, `NewMap1` and Cinnabar Battle House are part of version 1, tackled later |
 | New areas | Both after the story and woven into it. Ideas later |
@@ -65,13 +65,15 @@ Build the rules and their menu switches together.
 
 | Done | Feature | Difficulty |
 |---|---|---|
-| ☐ | Hard level cap, blocks EXP and Rare Candies, lifts after Champion | Easy to medium |
-| ☐ | Set battle style by default | Easy |
-| ☐ | No items in trainer battles by default (your side; enemy trainers already never use items) | Easy |
-| ☐ | Menu switches for Set, items and level cap | Medium |
-| ☐ | Auto-run switch | Easy to medium |
+| ✅ | Hard level cap, blocks EXP and Rare Candies, lifts after Champion | Easy to medium |
+| ✅ | Set battle style by default | Easy |
+| ✅ | No items in trainer battles by default (your side; enemy trainers already never use items) | Easy |
+| ✅ | Menu switches for Set, items and level cap | Medium |
+| ✅ | Auto-run switch | Easy to medium |
 | ☐ | Hold B as a wild Pokémon slides in to get an escape prompt (usual escape checks) | Medium |
 | ☐ | AI update: better existing logic for more trainers, plus small tweaks | Easy to medium |
+
+✅ means the feature is in the code. Test it using the list under [Waiting to be tested](#waiting-to-be-tested). The caps themselves are in `src/data/level_caps.h`.
 
 ### Phase 4: Fairy type (medium)
 - [ ] Add the type and include it everywhere types are listed
@@ -276,6 +278,15 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Debug menu: every option (hold B, press SELECT)
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
+- [ ] Level cap in battle: a Pokémon stops exactly at the cap, gains no EXP after that, and one below the cap still gains normally
+- [ ] Level cap with Rare Candies: no effect at the cap, works again after the next badge
+- [ ] A Pokémon at the cap still gains EVs, and its stats rise after the battle
+- [ ] Day Care: a Pokémon left there comes back no higher than the cap
+- [ ] Champion marked as beaten: no cap
+- [ ] Trainer battles: the Bag says "Items can't be used now." Wild battles still allow it
+- [ ] Auto run on: you run without holding B, and holding B walks
+- [ ] Options menu: both pages display correctly, each switch changes what it says, and settings stay after saving and reloading
+- [ ] A new game starts with Set style, level cap on, trainer battle items off and auto run off
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

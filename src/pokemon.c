@@ -8,6 +8,7 @@
 #include "battle.h"
 #include "battle_anim.h"
 #include "item.h"
+#include "level_cap.h"
 #include "event_data.h"
 #include "util.h"
 #include "pokemon_storage_system.h"
@@ -4199,7 +4200,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
             // Rare Candy
             if ((itemEffect[cmdIndex] & ITEM3_LEVEL_UP)
-             && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) < GetLevelCap())
             {
                 data = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 SetMonData(mon, MON_DATA_EXP, &data);
@@ -4689,7 +4690,7 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
 
             // Rare Candy
             if ((itemEffect[cmdIndex] & ITEM3_LEVEL_UP)
-             && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) < GetLevelCap())
                 retVal = FALSE;
 
             // Cure status
@@ -5740,7 +5741,7 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
 
     if (level < MAX_LEVEL)
     {
-        if (exp > gExperienceTables[gSpeciesInfo[species].growthRate][newLevel])
+        if (exp >= gExperienceTables[gSpeciesInfo[species].growthRate][newLevel])
         {
             SetMonData(mon, MON_DATA_LEVEL, &newLevel);
             SetMonExpWithMaxLevelCheck(mon, species, newLevel, exp);

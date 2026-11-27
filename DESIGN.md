@@ -18,6 +18,31 @@ A **debug menu** is in the normal game for testing and will be removed before ve
 
 In the number picker, up and down change by 1, left and right by 10, A confirms. Story events still happen after warping.
 
+## Rules and settings
+
+The Options menu has a second page. Press **Down** past FRAME to reach it, and **Up** to go back. **A** or **B** saves and closes from either page.
+
+| Setting | Where | New game | What it does |
+|---|---|---|---|
+| Battle style | Page 1 | **Set** | Set gives no free switch when the opponent sends out its next Pokémon |
+| Level cap | Page 2 | **On** | Shows the current cap beside ON |
+| Items vs trainers | Page 2 | **Off** | Off: your Bag cannot be used in trainer battles (this includes the first rival battle). Wild battles and held items work normally |
+| Auto run | Page 2 | **Off** | On: you run without holding B, and holding B walks |
+
+A save made before these settings existed starts with the cap on, trainer battle items off and auto run off, and keeps the battle style it had.
+
+### Level cap
+| Badges | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|---|
+| Cap | 14 | 23 | 26 | 34 | 43 | 44 | 46 | 50 | 63 |
+
+- The cap counts badges, whatever order you got them in. The whole League uses 63.
+- It lifts after you first beat the Champion.
+- A Pokémon at or above the cap can still battle. It gains no EXP, and Rare Candies have no effect on it.
+- It still earns EVs, and its stats update after the battle.
+- The Day Care stops at the cap in force when you pick the Pokémon up.
+- To change the numbers, edit `src/data/level_caps.h`.
+
 ## Battle mechanics
 
 ### Physical/Special split
@@ -55,6 +80,7 @@ Each move is Physical, Special or Status on its own, whatever its type. An icon 
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
 - In wild battles, pressing **B** on the action menu jumps the cursor to **RUN**.
 - Enemy trainers never use items, including gym leaders and the League.
+- By default you cannot use your Bag in trainer battles either (see [Rules and settings](#rules-and-settings)).
 
 ## Training and progression
 
@@ -86,7 +112,7 @@ Each move is Physical, Special or Status on its own, whatever its type. An icon 
 - Places that used to require the National Dex (Indigo Plateau, the One Island Celio quest) now check that you have beaten the game.
 
 ### Running
-Hold **B** to run, from the start of the game. No Running Shoes are needed, and running is allowed on every map and floor tile, indoors included.
+Hold **B** to run, from the start of the game. No Running Shoes are needed, and running is allowed on every map and floor tile, indoors included. With **Auto run** switched on, you run by default and hold **B** to walk.
 
 ### Cycling
 There is no cycling theme. The area's music keeps playing on the bike, including on Cycling Road.

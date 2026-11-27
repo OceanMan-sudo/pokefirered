@@ -17,6 +17,7 @@
 #include "graphics.h"
 #include "help_system.h"
 #include "item.h"
+#include "level_cap.h"
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
@@ -3175,7 +3176,10 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
-                    if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_EREADER_TRAINER))
+                    if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_EREADER_TRAINER)
+                     // The "items vs trainers" rule, switchable in the Options menu
+                     || ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && !(gBattleTypeFlags & BATTLE_TYPE_POKEDUDE)
+                         && !gSaveBlock2Ptr->optionsTrainerItemsOn))
                     {
                         gSelectionBattleScripts[gActiveBattler] = BattleScript_ActionSelectionItemsCantBeUsed;
                         gBattleCommunication[gActiveBattler] = STATE_SELECTION_SCRIPT;
@@ -3913,6 +3917,7 @@ static void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
+        RecalculateCappedMonStats();
         RandomlyGivePartyPokerus(gPlayerParty);
         PartySpreadPokerus(gPlayerParty);
     }

@@ -6,6 +6,7 @@
 #include "task.h"
 #include "overworld.h"
 #include "help_system.h"
+#include "level_cap.h"
 #include "text_window.h"
 #include "strings.h"
 #include "field_fadetransition.h"
@@ -23,9 +24,16 @@ enum
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
+    // Second page starts here
+    MENUITEM_LEVELCAP,
+    MENUITEM_TRAINERITEMS,
+    MENUITEM_AUTORUN,
     MENUITEM_CANCEL,
     MENUITEM_COUNT
 };
+
+#define MENUITEM_SECOND_PAGE MENUITEM_LEVELCAP
+#define PAGE_HINT_ROW        6 // bottom line of the window
 
 // Window Ids
 enum
@@ -37,11 +45,12 @@ enum
 // RAM symbols
 struct OptionMenu
 {
-    /*0x00*/ u16 option[MENUITEM_COUNT];
-    /*0x0E*/ u16 cursorPos;
-    /*0x10*/ u8 loadState;
-    /*0x11*/ u8 state;
-    /*0x12*/ u8 loadPaletteState;
+    u16 option[MENUITEM_COUNT];
+    u16 cursorPos;
+    u8 loadState;
+    u8 state;
+    u8 loadPaletteState;
+    u8 shownPage;
 };
 
 static EWRAM_DATA struct OptionMenu *sOptionMenuPtr = NULL;
@@ -65,6 +74,9 @@ static void PrintOptionMenuHeader(void);
 static void DrawOptionMenuBg(void);
 static void LoadOptionMenuItemNames(void);
 static void UpdateSettingSelectionDisplay(u16 selection);
+static u8 GetOptionMenuPage(u16 item);
+static u8 GetOptionMenuRow(u16 item);
+static void PrintOptionMenuPage(void);
 
 // Data Definitions
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -131,7 +143,18 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuPalette[] = INCBIN_U16("graphics/misc/option_menu.gbapal");
-static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 2, 2, 3, 10, 0};
+static const u16 sOptionMenuItemCounts[MENUITEM_COUNT] = {3, 2, 2, 2, 3, 10, 2, 2, 2, 0};
+
+static const u8 sText_LevelCap[] = _("LEVEL CAP");
+static const u8 sText_TrainerItems[] = _("ITEMS VS TRAINERS");
+static const u8 sText_AutoRun[] = _("AUTO RUN");
+static const u8 sText_On[] = _("ON");
+static const u8 sText_Off[] = _("OFF");
+static const u8 sText_CapOnLevel[] = _("ON (Lv. ");
+static const u8 sText_CapOnLevelEnd[] = _(")");
+static const u8 sText_CapOnNone[] = _("ON (NONE)");
+static const u8 sText_MoreBelow[] = _("DOWN: GAME RULES");
+static const u8 sText_MoreAbove[] = _("UP: MORE OPTIONS");
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -141,6 +164,9 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
+    [MENUITEM_LEVELCAP]    = sText_LevelCap,
+    [MENUITEM_TRAINERITEMS] = sText_TrainerItems,
+    [MENUITEM_AUTORUN]     = sText_AutoRun,
     [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
 };
 
@@ -174,6 +200,19 @@ static const u8 *const sButtonTypeOptions[] =
     gText_ButtonTypeHelp,
 	gText_ButtonTypeLR,
 	gText_ButtonTypeLEqualsA
+};
+
+// The level cap is stored as "off", so ON comes first
+static const u8 *const sLevelCapOptions[] =
+{
+    sText_On,
+    sText_Off
+};
+
+static const u8 *const sOffOnOptions[] =
+{
+    sText_Off,
+    sText_On
 };
 
 static const u8 sOptionMenuPickSwitchCancelTextColor[] = {TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
@@ -212,6 +251,9 @@ void CB2_OptionsMenuFromStartMenu(void)
     sOptionMenuPtr->option[MENUITEM_SOUND] = gSaveBlock2Ptr->optionsSound;
     sOptionMenuPtr->option[MENUITEM_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
     sOptionMenuPtr->option[MENUITEM_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
+    sOptionMenuPtr->option[MENUITEM_LEVELCAP] = gSaveBlock2Ptr->optionsLevelCapOff;
+    sOptionMenuPtr->option[MENUITEM_TRAINERITEMS] = gSaveBlock2Ptr->optionsTrainerItemsOn;
+    sOptionMenuPtr->option[MENUITEM_AUTORUN] = gSaveBlock2Ptr->optionsAutoRun;
     
     for (i = 0; i < MENUITEM_COUNT - 1; i++)
     {
@@ -386,6 +428,8 @@ static void Task_OptionMenu(u8 taskId)
             BufferOptionMenuString(sOptionMenuPtr->cursorPos);
             break;
         case 3:
+            if (sOptionMenuPtr->shownPage != GetOptionMenuPage(sOptionMenuPtr->cursorPos))
+                PrintOptionMenuPage();
             UpdateSettingSelectionDisplay(sOptionMenuPtr->cursorPos);
             break;
         case 4:
@@ -469,10 +513,15 @@ static void BufferOptionMenuString(u8 selection)
     u8 buf[12];
     u8 dst[3];
     u8 x, y;
+    u8 levelCap;
     
+    // Only the page on screen is drawn
+    if (GetOptionMenuPage(selection) != GetOptionMenuPage(sOptionMenuPtr->cursorPos))
+        return;
+
     memcpy(dst, sOptionMenuTextColor, 3);
     x = 0x82;
-    y = ((GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) - 1) * selection) + 2;
+    y = ((GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) - 1) * GetOptionMenuRow(selection)) + 2;
     FillWindowPixelRect(1, 1, x, y, 0x46, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT));
 
     switch (selection)
@@ -498,6 +547,30 @@ static void BufferOptionMenuString(u8 selection)
         StringAppendN(str, buf, 3);
         AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, str);
         break;
+    case MENUITEM_LEVELCAP:
+        // When on, also show the current cap
+        levelCap = GetStoryLevelCap();
+        if (sOptionMenuPtr->option[selection] != 0)
+        {
+            StringCopy(str, sLevelCapOptions[sOptionMenuPtr->option[selection]]);
+        }
+        else if (levelCap >= MAX_LEVEL)
+        {
+            StringCopy(str, sText_CapOnNone);
+        }
+        else
+        {
+            StringCopy(str, sText_CapOnLevel);
+            ConvertIntToDecimalStringN(buf, levelCap, STR_CONV_MODE_LEFT_ALIGN, 3);
+            StringAppend(str, buf);
+            StringAppend(str, sText_CapOnLevelEnd);
+        }
+        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, str);
+        break;
+    case MENUITEM_TRAINERITEMS:
+    case MENUITEM_AUTORUN:
+        AddTextPrinterParameterized3(1, FONT_NORMAL, x, y, dst, -1, sOffOnOptions[sOptionMenuPtr->option[selection]]);
+        break;
     default:
         break;
     }
@@ -516,6 +589,9 @@ static void CloseAndSaveOptionMenu(u8 taskId)
     gSaveBlock2Ptr->optionsSound = sOptionMenuPtr->option[MENUITEM_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptionMenuPtr->option[MENUITEM_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptionMenuPtr->option[MENUITEM_FRAMETYPE];
+    gSaveBlock2Ptr->optionsLevelCapOff = sOptionMenuPtr->option[MENUITEM_LEVELCAP];
+    gSaveBlock2Ptr->optionsTrainerItemsOn = sOptionMenuPtr->option[MENUITEM_TRAINERITEMS];
+    gSaveBlock2Ptr->optionsAutoRun = sOptionMenuPtr->option[MENUITEM_AUTORUN];
     SetPokemonCryStereo(gSaveBlock2Ptr->optionsSound);
     FREE_AND_SET_NULL(sOptionMenuPtr);
     DestroyTask(taskId);
@@ -556,12 +632,42 @@ static void DrawOptionMenuBg(void)
 static void LoadOptionMenuItemNames(void)
 {
     u8 i;
+    u8 row;
+    const u8 *hint;
     
+    sOptionMenuPtr->shownPage = GetOptionMenuPage(sOptionMenuPtr->cursorPos);
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
     for (i = 0; i < MENUITEM_COUNT; i++)
     {
-        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (u8)((i * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - i, TEXT_SKIP_DRAW, NULL);    
+        if (GetOptionMenuPage(i) != sOptionMenuPtr->shownPage)
+            continue;
+        row = GetOptionMenuRow(i);
+        AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, sOptionMenuItemsNames[i], 8, (u8)((row * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - row, TEXT_SKIP_DRAW, NULL);
     }
+    hint = (sOptionMenuPtr->shownPage == 0) ? sText_MoreBelow : sText_MoreAbove;
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, hint, 8, (u8)((PAGE_HINT_ROW * (GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT))) + 2) - PAGE_HINT_ROW, TEXT_SKIP_DRAW, NULL);
+}
+
+static u8 GetOptionMenuPage(u16 item)
+{
+    return item >= MENUITEM_SECOND_PAGE;
+}
+
+// The line of the window an item is drawn on
+static u8 GetOptionMenuRow(u16 item)
+{
+    if (item >= MENUITEM_SECOND_PAGE)
+        return item - MENUITEM_SECOND_PAGE;
+    return item;
+}
+
+static void PrintOptionMenuPage(void)
+{
+    u8 i;
+
+    LoadOptionMenuItemNames();
+    for (i = 0; i < MENUITEM_COUNT; i++)
+        BufferOptionMenuString(i);
 }
 
 static void UpdateSettingSelectionDisplay(u16 selection)
@@ -569,7 +675,7 @@ static void UpdateSettingSelectionDisplay(u16 selection)
     u16 maxLetterHeight, y;
     
     maxLetterHeight = GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT);
-    y = selection * (maxLetterHeight - 1) + 0x3A;
+    y = GetOptionMenuRow(selection) * (maxLetterHeight - 1) + 0x3A;
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(y, y + maxLetterHeight));
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0x10, 0xE0));
 }

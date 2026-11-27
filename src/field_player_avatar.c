@@ -513,8 +513,9 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    // Running needs no shoes and is allowed on every map and floor tile
-    if (heldKeys & B_BUTTON)
+    // Running needs no shoes and is allowed on every map and floor tile.
+    // With auto-run on, you run by default and hold B to walk.
+    if (((heldKeys & B_BUTTON) != 0) != gSaveBlock2Ptr->optionsAutoRun)
     {
         if (PlayerIsMovingOnRockStairs(direction))
             PlayerRunSlow(direction);

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "gflib.h"
 #include "item.h"
+#include "level_cap.h"
 #include "util.h"
 #include "random.h"
 #include "pokedex.h"
@@ -3233,7 +3234,15 @@ static void Cmd_getexp(void)
                     }
                 }
 
-                if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP))
+                if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP)
+                 && !(gBattleTypeFlags & BATTLE_TYPE_POKEDUDE)
+                 && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) >= GetLevelCap())
+                {
+                    // At the level cap: EVs but no EXP, and no message
+                    gBattleMoveDamage = 0;
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
+                }
+                else if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP))
                 {
                     if (gBattleStruct->sentInPokes & 1)
                         gBattleMoveDamage = *exp;
@@ -3255,6 +3264,14 @@ static void Cmd_getexp(void)
                     else
                     {
                         i = STRINGID_EMPTYSTRING4;
+                    }
+
+                    // Stop at the level cap
+                    if (!(gBattleTypeFlags & BATTLE_TYPE_POKEDUDE))
+                    {
+                        gBattleMoveDamage = LimitExpToLevelCap(GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES),
+                                                               GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_EXP),
+                                                               gBattleMoveDamage);
                     }
 
                     // get exp getter battlerId
@@ -3292,7 +3309,8 @@ static void Cmd_getexp(void)
         if (gBattleControllerExecFlags == 0)
         {
             gBattleBufferB[gBattleStruct->expGetterBattlerId][0] = 0;
-            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) != MAX_LEVEL)
+            if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) != MAX_LEVEL
+             && gBattleMoveDamage != 0)
             {
                 gBattleResources->beforeLvlUp->stats[STAT_HP]    = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MAX_HP);
                 gBattleResources->beforeLvlUp->stats[STAT_ATK]   = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_ATK);

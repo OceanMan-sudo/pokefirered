@@ -89,6 +89,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Shared scripts | `data/scripts/` |
 | Story flags | `include/constants/flags.h` |
 | Starting PC items | `src/player_pc.c` |
+| Level caps | `src/data/level_caps.h` |
 
 ## Custom systems
 
@@ -105,7 +106,10 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Move relearner | `data/scripts/move_relearner_pc.inc` |
 | Repel reuse prompt | `data/scripts/repel.inc`, `GetRepelToReuse` in `src/item_use.c`, `VAR_LAST_REPEL_USED` |
 | Enemy trainers use no items | `BattleAI_HandleItemUseBeforeAISetup` in `src/battle_ai_script_commands.c` (the `items` fields in `trainers.h` are ignored) |
-| Running everywhere | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
+| Running everywhere and auto run | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
+| Level cap | Numbers in `src/data/level_caps.h`; logic in `src/level_cap.c`; enforced in `Cmd_getexp` (`src/battle_script_commands.c`), `src/pokemon.c` and `src/party_menu.c` (Rare Candy), and `src/daycare.c` |
+| No Bag in trainer battles | `B_ACTION_USE_ITEM` case in `src/battle_main.c` |
+| Rule switches | `optionsLevelCapOff`, `optionsTrainerItemsOn`, `optionsAutoRun` in `SaveBlock2` (0 is the default for each); defaults in `SetDefaultRules` (`src/new_game.c`); second page in `src/option_menu.c` |
 | Dynamic multichoice menus | `src/script_menu.c`, `src/scrcmd.c` (script commands `0xd5`, `0xd6`) |
 | Debug menu (temporary) | `data/scripts/debug_menu.inc`, `src/debug_menu.c`, `include/constants/debug_menu.h`; opened from `src/field_control_avatar.c`; switch `DEBUG_MENU` in `include/config.h` |
 
