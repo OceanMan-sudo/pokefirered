@@ -297,6 +297,11 @@
 #define ANIM_TAG_WHIP_HIT                   (ANIM_SPRITES_START + 287)
 #define ANIM_TAG_BLUE_RING_2                (ANIM_SPRITES_START + 288)
 #define ANIM_TAG_AURA_SPHERE                (ANIM_SPRITES_START + 289)
+#define ANIM_TAG_DARK_PULSE_RING             (ANIM_SPRITES_START + 290)
+#define ANIM_TAG_SHADOW_CLAW                 (ANIM_SPRITES_START + 291)
+#define ANIM_TAG_SHADOW_SNEAK                (ANIM_SPRITES_START + 292)
+#define ANIM_TAG_FOCUS_BLAST                 (ANIM_SPRITES_START + 293)
+#define ANIM_TAG_FLASH_CANNON                (ANIM_SPRITES_START + 294)
 
 // battlers
 #define ANIM_ATTACKER    0

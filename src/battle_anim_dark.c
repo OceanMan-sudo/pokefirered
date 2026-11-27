@@ -184,6 +184,17 @@ const struct SpriteTemplate gClawSlashSpriteTemplate =
     .callback = AnimClawSlash,
 };
 
+const struct SpriteTemplate gShadowClawSlashSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SHADOW_CLAW,
+    .paletteTag = ANIM_TAG_SHADOW_CLAW,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_ClawSlash,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimClawSlash,
+};
+
 void AnimTask_AttackerFadeToInvisible(u8 taskId)
 {
     s32 battler;

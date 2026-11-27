@@ -20,8 +20,14 @@ static void AnimSolarBeamSmallOrb(struct Sprite *);
 static void AnimSolarBeamSmallOrb_Step(struct Sprite *);
 static void AnimSolarBeamBigOrb(struct Sprite *);
 static void AnimPowerAbsorptionOrb(struct Sprite *);
-static void AnimAuraSphereCharge(struct Sprite *);
-static void AnimAuraSphereBurst(struct Sprite *);
+static void AnimGrowOnAttacker(struct Sprite *);
+static void AnimGrowOnTarget(struct Sprite *);
+static void AnimSeedBombSeed(struct Sprite *);
+static void AnimSeedBombSeed_Step(struct Sprite *);
+static void AnimShadowSneakCreep(struct Sprite *);
+static void AnimPsychoCrusherFlame(struct Sprite *);
+static void AnimPsychoCrusherFlame_Step(struct Sprite *);
+static void AnimTask_PsychoCrusher_Step(u8);
 static void AnimAbsorptionOrb(struct Sprite *);
 static void AnimAbsorptionOrb_Step(struct Sprite *);
 static void AnimHyperBeamOrb(struct Sprite *);
@@ -354,7 +360,7 @@ const struct SpriteTemplate gAuraSphereChargeSpriteTemplate =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = sAffineAnims_AuraSphereCharge,
-    .callback = AnimAuraSphereCharge,
+    .callback = AnimGrowOnAttacker,
 };
 
 const struct SpriteTemplate gAuraSphereThrowSpriteTemplate =
@@ -376,7 +382,7 @@ const struct SpriteTemplate gAuraSphereBurstSpriteTemplate =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = sAffineAnims_AuraSphereBurst,
-    .callback = AnimAuraSphereBurst,
+    .callback = AnimGrowOnTarget,
 };
 
 const struct SpriteTemplate gSolarBeamBigOrbSpriteTemplate =
@@ -485,6 +491,356 @@ const struct SpriteTemplate gLeechSeedSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimLeechSeed,
+};
+
+// Focus Blast: the Aura Sphere idea, bigger and golden
+static const union AffineAnimCmd sAffineAnim_FocusBlastCharge[] =
+{
+    AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 0),
+    AFFINEANIMCMD_FRAME(9, 9, 8, 32),
+    AFFINEANIMCMD_FRAME(0, 0, 18, 16),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_FocusBlastSpin[] =
+{
+    AFFINEANIMCMD_FRAME(0x140, 0x140, 0, 0),
+    AFFINEANIMCMD_FRAME(0, 0, 18, 1),
+    AFFINEANIMCMD_JUMP(1),
+};
+
+static const union AffineAnimCmd sAffineAnim_FocusBlastBurst[] =
+{
+    AFFINEANIMCMD_FRAME(0x140, 0x140, 0, 0),
+    AFFINEANIMCMD_FRAME(16, 16, 14, 12),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_FocusBlastCharge[] =
+{
+    sAffineAnim_FocusBlastCharge,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_FocusBlastSpin[] =
+{
+    sAffineAnim_FocusBlastSpin,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_FocusBlastBurst[] =
+{
+    sAffineAnim_FocusBlastBurst,
+};
+
+const struct SpriteTemplate gFocusBlastChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FOCUS_BLAST,
+    .paletteTag = ANIM_TAG_FOCUS_BLAST,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_FocusBlastCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gFocusBlastThrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FOCUS_BLAST,
+    .paletteTag = ANIM_TAG_FOCUS_BLAST,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_FocusBlastSpin,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gFocusBlastBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FOCUS_BLAST,
+    .paletteTag = ANIM_TAG_FOCUS_BLAST,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_FocusBlastBurst,
+    .callback = AnimGrowOnTarget,
+};
+
+// Flash Cannon: a silver sphere, then a beam of white rings
+static const union AffineAnimCmd sAffineAnim_FlashCannonRing[] =
+{
+    AFFINEANIMCMD_FRAME(0x80, 0x80, 0, 0),
+    AFFINEANIMCMD_FRAME(10, 10, 0, 14),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_FlashCannonRing[] =
+{
+    sAffineAnim_FlashCannonRing,
+};
+
+const struct SpriteTemplate gFlashCannonChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FLASH_CANNON,
+    .paletteTag = ANIM_TAG_FLASH_CANNON,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gFlashCannonShotSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_FLASH_CANNON,
+    .paletteTag = ANIM_TAG_FLASH_CANNON,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereSpin,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gFlashCannonRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BLUE_RING_2,
+    .paletteTag = ANIM_TAG_BLUE_RING_2,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_FlashCannonRing,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+// Dragon Pulse: alternating violet and blue rings
+static const union AffineAnimCmd sAffineAnim_DragonPulseCharge[] =
+{
+    AFFINEANIMCMD_FRAME(0x1C0, 0x1C0, 0, 0),
+    AFFINEANIMCMD_FRAME(-18, -18, 0, 18),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_DragonPulseTravel[] =
+{
+    AFFINEANIMCMD_FRAME(0x80, 0x80, 0, 0),
+    AFFINEANIMCMD_FRAME(8, 8, 0, 20),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_DragonPulseBurst[] =
+{
+    AFFINEANIMCMD_FRAME(0x80, 0x80, 0, 0),
+    AFFINEANIMCMD_FRAME(24, 24, 0, 10),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DragonPulseCharge[] =
+{
+    sAffineAnim_DragonPulseCharge,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DragonPulseTravel[] =
+{
+    sAffineAnim_DragonPulseTravel,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DragonPulseBurst[] =
+{
+    sAffineAnim_DragonPulseBurst,
+};
+
+const struct SpriteTemplate gDragonPulsePurpleChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PURPLE_RING,
+    .paletteTag = ANIM_TAG_PURPLE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gDragonPulseBlueChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BLUE_RING,
+    .paletteTag = ANIM_TAG_BLUE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gDragonPulsePurpleRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PURPLE_RING,
+    .paletteTag = ANIM_TAG_PURPLE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseTravel,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gDragonPulseBlueRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BLUE_RING,
+    .paletteTag = ANIM_TAG_BLUE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseTravel,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gDragonPulsePurpleBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PURPLE_RING,
+    .paletteTag = ANIM_TAG_PURPLE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseBurst,
+    .callback = AnimGrowOnTarget,
+};
+
+const struct SpriteTemplate gDragonPulseBlueBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BLUE_RING,
+    .paletteTag = ANIM_TAG_BLUE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DragonPulseBurst,
+    .callback = AnimGrowOnTarget,
+};
+
+// Dark Pulse: dark rings ripple out from the user and roll over the target
+static const union AffineAnimCmd sAffineAnim_DarkPulseExpand[] =
+{
+    AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 0),
+    AFFINEANIMCMD_FRAME(16, 16, 0, 28),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_DarkPulseWave[] =
+{
+    AFFINEANIMCMD_FRAME(0x30, 0x30, 0, 0),
+    AFFINEANIMCMD_FRAME(10, 10, 0, 22),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DarkPulseExpand[] =
+{
+    sAffineAnim_DarkPulseExpand,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_DarkPulseWave[] =
+{
+    sAffineAnim_DarkPulseWave,
+};
+
+const struct SpriteTemplate gDarkPulseExpandSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_DARK_PULSE_RING,
+    .paletteTag = ANIM_TAG_DARK_PULSE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DarkPulseExpand,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gDarkPulseWaveSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_DARK_PULSE_RING,
+    .paletteTag = ANIM_TAG_DARK_PULSE_RING,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_DarkPulseWave,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+// Shadow Sneak: a flat shadow slides along the ground, then rears up
+static const union AffineAnimCmd sAffineAnim_ShadowSneakCreep[] =
+{
+    AFFINEANIMCMD_FRAME(0x120, 0x50, 0, 0),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_ShadowSneakStrike[] =
+{
+    AFFINEANIMCMD_FRAME(0x120, 0x50, 0, 0),
+    AFFINEANIMCMD_FRAME(-16, 24, 0, 8),
+    AFFINEANIMCMD_FRAME(0, 0, 0, 12),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_ShadowSneakCreep[] =
+{
+    sAffineAnim_ShadowSneakCreep,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_ShadowSneakStrike[] =
+{
+    sAffineAnim_ShadowSneakStrike,
+};
+
+const struct SpriteTemplate gShadowSneakCreepSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SHADOW_SNEAK,
+    .paletteTag = ANIM_TAG_SHADOW_SNEAK,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_ShadowSneakCreep,
+    .callback = AnimShadowSneakCreep,
+};
+
+const struct SpriteTemplate gShadowSneakStrikeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SHADOW_SNEAK,
+    .paletteTag = ANIM_TAG_SHADOW_SNEAK,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_ShadowSneakStrike,
+    .callback = AnimGrowOnTarget,
+};
+
+const struct SpriteTemplate gSeedBombSeedSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SEED,
+    .paletteTag = ANIM_TAG_SEED,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = sLeechSeedAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimSeedBombSeed,
+};
+
+static const union AnimCmd sAnim_PsychoCrusherFlame[] =
+{
+    ANIMCMD_FRAME(0, 3),
+    ANIMCMD_FRAME(8, 3),
+    ANIMCMD_FRAME(16, 3),
+    ANIMCMD_FRAME(24, 3),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnims_PsychoCrusherFlame[] =
+{
+    sAnim_PsychoCrusherFlame,
+};
+
+const struct SpriteTemplate gPsychoCrusherFlameSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PURPLE_FLAME,
+    .paletteTag = ANIM_TAG_PURPLE_FLAME,
+    .oam = &gOamData_AffineDouble_ObjNormal_16x32,
+    .anims = sAnims_PsychoCrusherFlame,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPsychoCrusherFlame,
 };
 
 static const union AnimCmd sSporeParticleAnimCmds1[] =
@@ -2358,25 +2714,316 @@ static void AnimPowerAbsorptionOrb(struct Sprite* sprite)
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
 }
 
-// Holds the sphere on the user until it has finished growing.
+// Holds a sprite on the user until its affine animation has finished.
 // arg 0: x pixel offset
 // arg 1: y pixel offset
-static void AnimAuraSphereCharge(struct Sprite* sprite)
+static void AnimGrowOnAttacker(struct Sprite* sprite)
 {
     InitSpritePosToAnimAttacker(sprite, TRUE);
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
     sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
 }
 
-// Swells the sphere on the target and removes it.
+// The same, on the target.
 // arg 0: x pixel offset
 // arg 1: y pixel offset
-static void AnimAuraSphereBurst(struct Sprite* sprite)
+static void AnimGrowOnTarget(struct Sprite* sprite)
 {
     InitSpritePosToAnimTarget(sprite, TRUE);
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
     sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
 }
+
+// A seed that arcs to the target and is gone when it lands.
+// args are the same as Leech Seed's
+static void AnimSeedBombSeed(struct Sprite *sprite)
+{
+    AnimLeechSeed(sprite);
+    sprite->callback = AnimSeedBombSeed_Step;
+}
+
+static void AnimSeedBombSeed_Step(struct Sprite *sprite)
+{
+    if (TranslateAnimHorizontalArc(sprite))
+        DestroyAnimSprite(sprite);
+}
+
+// Where the ground is under a battler, kept above the message box
+static s16 GetShadowSneakGroundY(u8 battlerId)
+{
+    s16 y = GetBattlerSpriteCoordAttr(battlerId, BATTLER_COORD_ATTR_BOTTOM);
+
+    if (y > 104)
+        y = 104;
+    return y;
+}
+
+// Slides along the ground from the user to the target.
+// arg 0: number of frames
+static void AnimShadowSneakCreep(struct Sprite *sprite)
+{
+    sprite->x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X);
+    sprite->y = GetShadowSneakGroundY(gBattleAnimAttacker);
+    sprite->data[0] = gBattleAnimArgs[0];
+    sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X);
+    sprite->data[4] = GetShadowSneakGroundY(gBattleAnimTarget);
+    StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+    sprite->callback = StartAnimLinearTranslation;
+}
+
+// Psycho Power: the user wreathes itself in psychic fire, leans in and rams
+// straight through the target, then comes back to its place.
+// AnimTask_PsychoCrusher moves the user and uses arg 7 to tell the flames
+// what to do.
+#define PSYCHO_FLAMES_ORBIT 0
+#define PSYCHO_FLAMES_TRAIL 1
+#define PSYCHO_FLAMES_END   0xFFFF
+
+// Rotation of the user when leaning in, about 53 degrees
+#define PSYCHO_LEAN 0x2600
+
+enum
+{
+    PSYCHO_WIND_UP,
+    PSYCHO_HOLD,
+    PSYCHO_DASH,
+    PSYCHO_DRILL,
+    PSYCHO_EXIT,
+    PSYCHO_GONE,
+    PSYCHO_RETURN,
+    PSYCHO_STATE_COUNT
+};
+
+// Frames spent in each state. Move_PSYCHO_POWER's delays are timed to these.
+static const u8 sPsychoCrusherFrames[PSYCHO_STATE_COUNT] = {16, 24, 10, 40, 10, 14, 24};
+
+#define tState       data[0]
+#define tTimer       data[1]
+#define tSpriteId    data[2]
+#define tTargetX     data[3] // relative to the user's place
+#define tTargetY     data[4]
+#define tExitX       data[5]
+#define tExitY       data[6]
+#define tLean        data[7]
+#define tSubpriority data[8]
+
+void AnimTask_PsychoCrusher(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
+    u8 targetSpriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
+    s16 x, y, dx, dy, exitX, exitY;
+
+    if (spriteId == SPRITE_NONE)
+    {
+        gBattleAnimArgs[7] = PSYCHO_FLAMES_END;
+        DestroyAnimVisualTask(taskId);
+        return;
+    }
+    x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2);
+    y = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET);
+    dx = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) - x;
+    dy = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) - y;
+    if (dx == 0)
+        dx = 1;
+
+    // Carry on along the same line until off the screen
+    if (dx > 0)
+        exitX = 300 - x;
+    else
+        exitX = -60 - x;
+    exitY = dy * exitX / dx;
+    if (y + exitY < -20)
+        exitY = -20 - y;
+    if (y + exitY > 180)
+        exitY = 180 - y;
+
+    task->tState = PSYCHO_WIND_UP;
+    task->tTimer = 0;
+    task->tSpriteId = spriteId;
+    task->tTargetX = dx;
+    task->tTargetY = dy;
+    task->tExitX = exitX;
+    task->tExitY = exitY;
+    task->tLean = (dx > 0) ? -PSYCHO_LEAN : PSYCHO_LEAN;
+
+    // Pass in front of the target
+    task->tSubpriority = gSprites[spriteId].subpriority;
+    if (targetSpriteId != SPRITE_NONE && targetSpriteId != spriteId
+     && gSprites[spriteId].subpriority >= gSprites[targetSpriteId].subpriority
+     && gSprites[targetSpriteId].subpriority > 1)
+        gSprites[spriteId].subpriority = gSprites[targetSpriteId].subpriority - 1;
+
+    PrepareBattlerSpriteForRotScale(spriteId, ST_OAM_OBJ_NORMAL);
+    gBattleAnimArgs[7] = PSYCHO_FLAMES_ORBIT;
+    task->func = AnimTask_PsychoCrusher_Step;
+}
+
+static s16 PsychoCrusherSlide(s16 from, s16 to, s16 frame, s16 frames)
+{
+    return from + (to - from) * frame / frames;
+}
+
+static void AnimTask_PsychoCrusher_Step(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    struct Sprite *sprite = &gSprites[task->tSpriteId];
+    s16 frames = sPsychoCrusherFrames[task->tState];
+    s16 frame = ++task->tTimer;
+    s16 backX = -task->tTargetX / 8;
+    s16 backY = -task->tTargetY / 8;
+    s16 nearX = task->tTargetX * 4 / 5;
+    s16 nearY = task->tTargetY * 4 / 5;
+    s16 farX = task->tTargetX * 6 / 5;
+    s16 farY = task->tTargetY * 6 / 5;
+
+    switch (task->tState)
+    {
+    case PSYCHO_WIND_UP:
+        sprite->x2 = PsychoCrusherSlide(0, backX, frame, frames);
+        sprite->y2 = PsychoCrusherSlide(0, backY, frame, frames);
+        SetSpriteRotScale(task->tSpriteId, 0x100, 0x100, task->tLean * frame / frames);
+        break;
+    case PSYCHO_HOLD:
+        sprite->x2 = backX + ((frame & 2) ? 1 : -1);
+        sprite->y2 = backY;
+        break;
+    case PSYCHO_DASH:
+        sprite->x2 = PsychoCrusherSlide(backX, nearX, frame, frames);
+        sprite->y2 = PsychoCrusherSlide(backY, nearY, frame, frames);
+        break;
+    case PSYCHO_DRILL:
+        sprite->x2 = PsychoCrusherSlide(nearX, farX, frame, frames);
+        sprite->y2 = PsychoCrusherSlide(nearY, farY, frame, frames) + ((frame & 2) ? 2 : -2);
+        break;
+    case PSYCHO_EXIT:
+        sprite->x2 = PsychoCrusherSlide(farX, task->tExitX, frame, frames);
+        sprite->y2 = PsychoCrusherSlide(farY, task->tExitY, frame, frames);
+        break;
+    case PSYCHO_RETURN:
+        sprite->invisible = (frame / 3) & 1;
+        break;
+    }
+
+    if (frame < frames)
+        return;
+
+    task->tTimer = 0;
+    switch (++task->tState)
+    {
+    case PSYCHO_DASH:
+        gBattleAnimArgs[7] = PSYCHO_FLAMES_TRAIL;
+        break;
+    case PSYCHO_GONE:
+        sprite->invisible = TRUE;
+        gBattleAnimArgs[7] = PSYCHO_FLAMES_END;
+        break;
+    case PSYCHO_RETURN:
+        ResetSpriteRotScale(task->tSpriteId);
+        sprite->x2 = 0;
+        sprite->y2 = 0;
+        sprite->subpriority = task->tSubpriority;
+        break;
+    case PSYCHO_STATE_COUNT:
+        sprite->invisible = FALSE;
+        DestroyAnimVisualTask(taskId);
+        break;
+    }
+}
+
+#undef tState
+#undef tTimer
+#undef tSpriteId
+#undef tTargetX
+#undef tTargetY
+#undef tExitX
+#undef tExitY
+#undef tLean
+#undef tSubpriority
+
+#define sUserSpriteId data[0]
+#define sAngle        data[1]
+#define sAlong        data[2] // distance ahead of the user's middle when trailing
+#define sTimer        data[3]
+
+// arg 0: starting angle
+// arg 1: distance ahead of the user's middle when trailing
+static void AnimPsychoCrusherFlame(struct Sprite *sprite)
+{
+    u8 userSpriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
+
+    if (userSpriteId == SPRITE_NONE)
+    {
+        DestroyAnimSprite(sprite);
+        return;
+    }
+    sprite->sUserSpriteId = userSpriteId;
+    sprite->sAngle = gBattleAnimArgs[0];
+    sprite->sAlong = gBattleAnimArgs[1];
+    sprite->sTimer = 0;
+    sprite->affineAnimPaused = TRUE;
+    sprite->callback = AnimPsychoCrusherFlame_Step;
+    sprite->callback(sprite);
+}
+
+static void AnimPsychoCrusherFlame_Step(struct Sprite *sprite)
+{
+    struct Sprite *user = &gSprites[sprite->sUserSpriteId];
+    u16 mode = gBattleAnimArgs[7];
+    s16 dx, dy, length, unitX, unitY, across;
+    u16 rotation;
+    bool8 inFront;
+
+    // The time limit makes sure the animation can always finish
+    if (mode == PSYCHO_FLAMES_END || ++sprite->sTimer > 240)
+    {
+        DestroyAnimSprite(sprite);
+        return;
+    }
+
+    sprite->sAngle = (sprite->sAngle + 11) & 0xFF;
+    sprite->x = user->x + user->x2;
+    sprite->y = user->y + user->y2;
+
+    if (mode == PSYCHO_FLAMES_ORBIT)
+    {
+        // Circle the user
+        sprite->x += Cos(sprite->sAngle, 30);
+        sprite->y += Sin(sprite->sAngle, 12) + 4;
+        inFront = (sprite->sAngle < 128);
+        rotation = 0;
+    }
+    else
+    {
+        // Spiral around the line of flight, tails streaming backwards
+        dx = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2)
+           - GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2);
+        dy = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET)
+           - GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET);
+        length = Sqrt(dx * dx + dy * dy);
+        if (length == 0)
+            length = 1;
+        unitX = dx * 256 / length;
+        unitY = dy * 256 / length;
+        across = Sin(sprite->sAngle, 22);
+        sprite->x += (unitX * sprite->sAlong - unitY * across) / 256;
+        sprite->y += (unitY * sprite->sAlong + unitX * across) / 256;
+        inFront = (sprite->sAngle < 64 || sprite->sAngle >= 192);
+        rotation = ArcTan2(unitY, unitX);
+    }
+
+    SetSpriteRotScale(sprite - gSprites, 0x100, 0x100, rotation);
+    sprite->oam.priority = user->oam.priority;
+    if (inFront)
+        sprite->subpriority = user->subpriority - 1;
+    else
+        sprite->subpriority = user->subpriority + 1;
+}
+
+#undef sUserSpriteId
+#undef sAngle
+#undef sAlong
+#undef sTimer
 
 // Moves an orb in a straight line towards the target mon.
 // arg 0: initial x pixel offset

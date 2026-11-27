@@ -579,6 +579,11 @@ const u32 gBattleAnimSpritePal_LargeFreshEgg[] = INCBIN_U32("graphics/battle_ani
 const u32 gBattleAnimSpriteGfx_ShadowBall[] = INCBIN_U32("graphics/battle_anims/sprites/shadow_ball.4bpp.lz");
 const u32 gBattleAnimSpritePal_ShadowBall[] = INCBIN_U32("graphics/battle_anims/sprites/shadow_ball.gbapal.lz");
 const u32 gBattleAnimSpritePal_AuraSphere[] = INCBIN_U32("graphics/battle_anims/sprites/aura_sphere.gbapal.lz");
+const u32 gBattleAnimSpritePal_DarkPulseRing[] = INCBIN_U32("graphics/battle_anims/sprites/dark_pulse_ring.gbapal.lz");
+const u32 gBattleAnimSpritePal_ShadowClaw[] = INCBIN_U32("graphics/battle_anims/sprites/shadow_claw.gbapal.lz");
+const u32 gBattleAnimSpritePal_ShadowSneak[] = INCBIN_U32("graphics/battle_anims/sprites/shadow_sneak.gbapal.lz");
+const u32 gBattleAnimSpritePal_FocusBlast[] = INCBIN_U32("graphics/battle_anims/sprites/focus_blast.gbapal.lz");
+const u32 gBattleAnimSpritePal_FlashCannon[] = INCBIN_U32("graphics/battle_anims/sprites/flash_cannon.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.4bpp.lz");
 const u32 gBattleAnimSpritePal_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.gbapal.lz");
