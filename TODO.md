@@ -17,21 +17,21 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Fairy type | Follow Generation 6, including the type chart |
 | Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. **On hold until you start it** |
 | Trainers | Every trainer gets updated. AI updated a little, not brutally hard |
-| Level cap | Hard cap: no EXP and no Rare Candies at the cap. Lifts after the first Champion clear |
-| Default rules | No difficulty mode. Set battle style, no items in battle and level cap on by default, each switchable in the menu |
+| Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Must be easy to change later |
+| Default rules | No difficulty mode. Set battle style, no items in battle and level cap on by default, each switchable in the menu at any time |
 | Enemy trainers | Never use items |
 | Rare Candies | Keep the house that gives them |
 | Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
-| Running | Run from the start (no shoes needed), allowed everywhere, auto-run switchable |
+| Running | Run from the start (no shoes needed), allowed everywhere. Auto-run switchable, off at first |
 | Pewter City aide | Gives a starter type booster as a gift from Mom, in place of the Running Shoes |
-| Wild battles | Holding B as the wild Pokémon slides in prompts you to escape. The usual escape checks apply |
+| Wild battles | Holding B as the wild Pokémon slides in shows a Yes/No box asking whether to escape. The usual escape checks apply |
 | All 386 obtainable | Not required for version 1; some can wait |
 | Unfinished areas | Seafoam Resort, Pokémon Tower B1F, `NewMap1` and Cinnabar Battle House are part of version 1, tackled later |
 | New areas | Both after the story and woven into it. Ideas later |
 
 ## Open questions
 
-- [ ] Level caps: confirm the numbers (see the level curve), and decide how the cap works during the League
+None right now.
 
 ## Order of work
 
@@ -84,7 +84,7 @@ Build the rules and their menu switches together.
 
 ### Phase 5: groundwork for the Kanto pass
 Do these before changing teams area by area, so work is not redone.
-- [ ] Agree the level curve (below)
+- [x] Agree the level caps (below); revisit when teams change
 - [ ] Learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
 - [ ] Add Scorch Sand, Aura Sphere and the new Fairy moves to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
@@ -92,20 +92,20 @@ Do these before changing teams area by area, so work is not redone.
 
 #### Level curve
 
-| Milestone | Highest enemy level now | New level cap |
-|---|---|---|
-| Brock | 14 | to decide |
-| Misty | 23 | to decide |
-| Lt. Surge | 26 | to decide |
-| Erika | 34 | to decide |
-| Koga | 43 | to decide |
-| Sabrina | 44 | to decide |
-| Blaine | 46 | to decide |
-| Giovanni | 50 | to decide |
-| Lorelei, Bruno, Agatha, Lance | 54, 56, 58, 60 | to decide |
-| Champion (first time) | 63 | to decide, then the cap lifts |
+The cap goes by how many badges you have, so gym order does not matter to it. **Keep the numbers in one place in the code** so they are easy to change when teams are redone.
 
-Koga, Sabrina and Blaine can be fought in more than one order in the original game, so decide whether the caps should force an order.
+| Badges | Next boss | Highest enemy level now | Level cap |
+|---|---|---|---|
+| 0 | Brock | 14 | 14 |
+| 1 | Misty | 23 | 23 |
+| 2 | Lt. Surge | 26 | 26 |
+| 3 | Erika | 34 | 34 |
+| 4 | Koga | 43 | 43 |
+| 5 | Sabrina | 44 | 44 |
+| 6 | Blaine | 46 | 46 |
+| 7 | Giovanni | 50 | 50 |
+| 8 | Lorelei, Bruno, Agatha, Lance, Champion | 54, 56, 58, 60, 63 | 63 for the whole League |
+| Champion beaten | — | — | No cap |
 
 ### Phase 6: Kanto pass, town by town and route by route
 
