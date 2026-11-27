@@ -4167,17 +4167,17 @@ static const struct TrainerMonNoItemDefaultMoves sParty_ScientistIvan[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_BossGiovanni[] = {
     {
         .iv = 250,
-        .lvl = 25,
-        .species = SPECIES_ONIX,
+        .lvl = 30,
+        .species = SPECIES_PERSIAN,
     },
     {
         .iv = 250,
-        .lvl = 24,
+        .lvl = 28,
         .species = SPECIES_RHYHORN,
     },
     {
         .iv = 250,
-        .lvl = 29,
+        .lvl = 30,
         .species = SPECIES_KANGASKHAN,
     },
 };
@@ -5821,7 +5821,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderKoga[] = {
         .iv = 0,
         .lvl = 41,
         .species = SPECIES_MUK,
-        .moves = {MOVE_MINIMIZE, MOVE_SLUDGE, MOVE_ACID_ARMOR, MOVE_TOXIC},
+        .moves = {MOVE_PROTECT, MOVE_SLUDGE_BOMB, MOVE_ACID_ARMOR, MOVE_TOXIC},
     },
     {
         .iv = 0,
@@ -5840,54 +5840,66 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderKoga[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_LeaderBlaine[] = {
     {
         .iv = 0,
-        .lvl = 42,
-        .species = SPECIES_GROWLITHE,
-        .moves = {MOVE_BITE, MOVE_ROAR, MOVE_TAKE_DOWN, MOVE_FIRE_BLAST},
+        .lvl = 43,
+        .species = SPECIES_MAGCARGO,
+        .moves = {MOVE_FIRE_BLAST, MOVE_YAWN, MOVE_ANCIENT_POWER, MOVE_AMNESIA},
     },
     {
         .iv = 0,
-        .lvl = 40,
-        .species = SPECIES_PONYTA,
-        .moves = {MOVE_STOMP, MOVE_BOUNCE, MOVE_FIRE_SPIN, MOVE_FIRE_BLAST},
-    },
-    {
-        .iv = 0,
-        .lvl = 42,
+        .lvl = 44,
         .species = SPECIES_RAPIDASH,
-        .moves = {MOVE_STOMP, MOVE_BOUNCE, MOVE_FIRE_SPIN, MOVE_FIRE_BLAST},
+        .moves = {MOVE_FIRE_SPIN, MOVE_BOUNCE, MOVE_QUICK_ATTACK, MOVE_FIRE_BLAST},
     },
     {
         .iv = 0,
-        .lvl = 47,
+        .lvl = 45,
+        .species = SPECIES_MAGMAR,
+        .moves = {MOVE_CROSS_CHOP, MOVE_THUNDER_PUNCH, MOVE_SLUDGE_BOMB, MOVE_FIRE_BLAST},
+    },
+    {
+        .iv = 0,
+        .lvl = 44,
+        .species = SPECIES_OCTILLERY,
+        .moves = {MOVE_BULLET_SEED, MOVE_ICE_BEAM, MOVE_OCTAZOOKA, MOVE_FIRE_BLAST},
+    },
+    {
+        .iv = 0,
+        .lvl = 46,
         .species = SPECIES_ARCANINE,
-        .moves = {MOVE_BITE, MOVE_ROAR, MOVE_TAKE_DOWN, MOVE_FIRE_BLAST},
+        .moves = {MOVE_MORNING_SUN, MOVE_EXTREME_SPEED, MOVE_OUTRAGE, MOVE_FIRE_BLAST},
     },
 };
 
 static const struct TrainerMonNoItemCustomMoves sParty_LeaderSabrina[] = {
     {
         .iv = 0,
-        .lvl = 38,
-        .species = SPECIES_KADABRA,
-        .moves = {MOVE_PSYBEAM, MOVE_REFLECT, MOVE_FUTURE_SIGHT, MOVE_CALM_MIND},
+        .lvl = 39,
+        .species = SPECIES_MR_MIME,
+        .moves = {MOVE_PSYBEAM, MOVE_REFLECT, MOVE_MAGICAL_LEAF, MOVE_CALM_MIND},
+    },
+    {
+        .iv = 0,
+        .lvl = 41,
+        .species = SPECIES_ESPEON,
+        .moves = {MOVE_PSYBEAM, MOVE_SIGNAL_BEAM, MOVE_SHADOW_BALL, MOVE_CALM_MIND},
     },
     {
         .iv = 0,
         .lvl = 37,
-        .species = SPECIES_MR_MIME,
-        .moves = {MOVE_BARRIER, MOVE_PSYBEAM, MOVE_BATON_PASS, MOVE_CALM_MIND},
+        .species = SPECIES_HAUNTER,
+        .moves = {MOVE_DESTINY_BOND, MOVE_PERISH_SONG, MOVE_MEAN_LOOK, MOVE_SHADOW_PUNCH},
     },
     {
         .iv = 0,
-        .lvl = 38,
-        .species = SPECIES_VENOMOTH,
-        .moves = {MOVE_PSYBEAM, MOVE_GUST, MOVE_LEECH_LIFE, MOVE_SUPERSONIC},
+        .lvl = 37,
+        .species = SPECIES_GIRAFARIG,
+        .moves = {MOVE_PSYBEAM, MOVE_WISH, MOVE_NASTY_PLOT, MOVE_TAKE_DOWN},
     },
     {
         .iv = 0,
-        .lvl = 43,
+        .lvl = 44,
         .species = SPECIES_ALAKAZAM,
-        .moves = {MOVE_PSYCHIC, MOVE_RECOVER, MOVE_FUTURE_SIGHT, MOVE_CALM_MIND},
+        .moves = {MOVE_PSYCHIC, MOVE_RECOVER, MOVE_SAFEGUARD, MOVE_CALM_MIND},
     },
 };
 
