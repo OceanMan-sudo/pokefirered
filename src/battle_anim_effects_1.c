@@ -20,6 +20,8 @@ static void AnimSolarBeamSmallOrb(struct Sprite *);
 static void AnimSolarBeamSmallOrb_Step(struct Sprite *);
 static void AnimSolarBeamBigOrb(struct Sprite *);
 static void AnimPowerAbsorptionOrb(struct Sprite *);
+static void AnimAuraSphereCharge(struct Sprite *);
+static void AnimAuraSphereBurst(struct Sprite *);
 static void AnimAbsorptionOrb(struct Sprite *);
 static void AnimAbsorptionOrb_Step(struct Sprite *);
 static void AnimHyperBeamOrb(struct Sprite *);
@@ -293,6 +295,88 @@ const struct SpriteTemplate gPowerAbsorptionOrbSpriteTemplate =
     .images = NULL,
     .affineAnims = sPowerAbsorptionOrbAffineAnimTable,
     .callback = AnimPowerAbsorptionOrb,
+};
+
+// Aura Sphere: small orbs gather on the user, a sphere grows there, flies to the
+// target and bursts
+static const union AffineAnimCmd sAffineAnim_AuraSphereCharge[] =
+{
+    AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 0),
+    AFFINEANIMCMD_FRAME(7, 7, 8, 32),
+    AFFINEANIMCMD_FRAME(0, 0, 14, 14),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd sAffineAnim_AuraSphereSpin[] =
+{
+    AFFINEANIMCMD_FRAME(0, 0, 20, 1),
+    AFFINEANIMCMD_JUMP(0),
+};
+
+static const union AffineAnimCmd sAffineAnim_AuraSphereBurst[] =
+{
+    AFFINEANIMCMD_FRAME(0x100, 0x100, 0, 0),
+    AFFINEANIMCMD_FRAME(20, 20, 12, 12),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_AuraSphereCharge[] =
+{
+    sAffineAnim_AuraSphereCharge,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_AuraSphereSpin[] =
+{
+    sAffineAnim_AuraSphereSpin,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_AuraSphereBurst[] =
+{
+    sAffineAnim_AuraSphereBurst,
+};
+
+const struct SpriteTemplate gAuraSphereParticleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GLOWY_BLUE_ORB,
+    .paletteTag = ANIM_TAG_GLOWY_BLUE_ORB,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
+const struct SpriteTemplate gAuraSphereChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AURA_SPHERE,
+    .paletteTag = ANIM_TAG_AURA_SPHERE,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereCharge,
+    .callback = AnimAuraSphereCharge,
+};
+
+const struct SpriteTemplate gAuraSphereThrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AURA_SPHERE,
+    .paletteTag = ANIM_TAG_AURA_SPHERE,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereSpin,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gAuraSphereBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AURA_SPHERE,
+    .paletteTag = ANIM_TAG_AURA_SPHERE,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereBurst,
+    .callback = AnimAuraSphereBurst,
 };
 
 const struct SpriteTemplate gSolarBeamBigOrbSpriteTemplate =
@@ -2272,6 +2356,26 @@ static void AnimPowerAbsorptionOrb(struct Sprite* sprite)
     sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET);
     sprite->callback = StartAnimLinearTranslation;
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+}
+
+// Holds the sphere on the user until it has finished growing.
+// arg 0: x pixel offset
+// arg 1: y pixel offset
+static void AnimAuraSphereCharge(struct Sprite* sprite)
+{
+    InitSpritePosToAnimAttacker(sprite, TRUE);
+    StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+    sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
+}
+
+// Swells the sphere on the target and removes it.
+// arg 0: x pixel offset
+// arg 1: y pixel offset
+static void AnimAuraSphereBurst(struct Sprite* sprite)
+{
+    InitSpritePosToAnimTarget(sprite, TRUE);
+    StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+    sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
 }
 
 // Moves an orb in a straight line towards the target mon.

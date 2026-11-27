@@ -405,6 +405,7 @@ gBattleAnims_Moves::
 
 
 
+	.4byte Move_AURA_SPHERE
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -10820,6 +10821,58 @@ WeatherBallIce:
 	call IceCrystalEffectShort
 	waitforvisualfinish
 	end
+
+Move_AURA_SPHERE:
+	loadspritegfx ANIM_TAG_AURA_SPHERE
+	loadspritegfx ANIM_TAG_GLOWY_BLUE_ORB
+	loadspritegfx ANIM_TAG_IMPACT
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 0, 7, RGB_BLACK
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 2, 0, 9, RGB(8, 20, 31)
+	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
+	call AuraSphereGather
+	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
+	createsprite gAuraSphereChargeSpriteTemplate, ANIM_ATTACKER, 2, 0, 0
+	call AuraSphereGather
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 9, 0, RGB(8, 20, 31)
+	panse SE_M_MEGA_KICK2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +4, 0
+	createsprite gAuraSphereThrowSpriteTemplate, ANIM_TARGET, 2, 0, 0, 0, 0, 18, 0
+	waitforvisualfinish
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gAuraSphereBurstSpriteTemplate, ANIM_TARGET, 2, 0, 0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 16, 1
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 12, 0, RGB(8, 20, 31)
+	delay 8
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, -12, -10, ANIM_TARGET, 1
+	delay 4
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 12, 8, ANIM_TARGET, 1
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 7, 0, RGB_BLACK
+	waitforvisualfinish
+	end
+
+AuraSphereGather:
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, 40, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, -40, -40, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 40, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -40, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, -20, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, -40, 20, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 16
+	delay 2
+	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, 20, 16
+	delay 2
+	return
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

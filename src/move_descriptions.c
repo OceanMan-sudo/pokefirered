@@ -380,6 +380,7 @@ const u8 gMoveDescription_DrainPunch[] = _("An energy-draining\npunch that\nrest
 const u8 gMoveDescription_AquaJet[] = _("Attacks at speed\nthat makes it\nalmost invisible.\nAlways goes first.");
 const u8 gMoveDescription_Boomburst[] = _("Attacks with\nthe destructive\npower of an\nexplosive sound.");
 const u8 gMoveDescription_NightSlash[] = _("User slashes\nwhen an opportunity\narises. High\ncrit chance.");
+const u8 gMoveDescription_AuraSphere[] = _("The user blasts\nthe foe with its\naura. This attack\nnever misses.");
 
 
 
@@ -763,5 +764,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_AQUA_JET      -1] = gMoveDescription_AquaJet,
     [MOVE_BOOMBURST      -1] = gMoveDescription_Boomburst,
     [MOVE_NIGHT_SLASH      -1] = gMoveDescription_NightSlash,
+    [MOVE_AURA_SPHERE      -1] = gMoveDescription_AuraSphere,
 
 };

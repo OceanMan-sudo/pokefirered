@@ -3730,6 +3730,7 @@ extern const u32 gBattleAnimSpritePal_PurpleGasCloud[];
 extern const u32 gBattleAnimSpritePal_YellowStar[];
 extern const u32 gBattleAnimSpritePal_LargeFreshEgg[];
 extern const u32 gBattleAnimSpritePal_ShadowBall[];
+extern const u32 gBattleAnimSpritePal_AuraSphere[];
 extern const u32 gBattleAnimSpritePal_Lick[];
 extern const u32 gBattleAnimSpritePal_VoidLines[];
 extern const u32 gBattleAnimSpritePal_String[];
