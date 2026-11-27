@@ -50,6 +50,7 @@ gBattleAI_ScriptsTable::
 	.4byte AI_FirstBattle
 
 AI_CheckBadMove::
+	if_effect EFFECT_OVERHEAT, AI_CBM_CheckIfNegatesType
 @	if_move MOVE_FISSURE, AI_CBM_CheckIfNegatesType  @ Improvement in Emerald
 @	if_move MOVE_HORN_DRILL, AI_CBM_CheckIfNegatesType
 	get_how_powerful_move_is
@@ -100,6 +101,8 @@ AI_CheckBadMove_CheckSoundproof::
 	if_move MOVE_UPROAR, Score_Minus10
 	if_move MOVE_METAL_SOUND, Score_Minus10
 	if_move MOVE_GRASS_WHISTLE, Score_Minus10
+	if_move MOVE_HYPER_VOICE, Score_Minus10
+	if_move MOVE_BOOMBURST, Score_Minus10
 
 AI_CheckBadMove_CheckEffect::
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
@@ -1160,7 +1163,7 @@ AI_CV_SpeedDown_End::
 	end
 
 AI_CV_SpAtkDown::
-	if_stat_level_equal AI_TARGET, STAT_ATK, 6, AI_CV_SpAtkDown3
+	if_stat_level_equal AI_TARGET, STAT_SPATK, 6, AI_CV_SpAtkDown3
 	score -1
 	if_hp_more_than AI_USER, 90, AI_CV_SpAtkDown2
 	score -1
@@ -1346,10 +1349,8 @@ AI_CV_HealWeather_ScoreDown2::
 AI_CV_Heal::
 	if_hp_equal AI_USER, 100, AI_CV_Heal3
 	if_target_faster AI_CV_Heal4
-	score -8
-	goto AI_CV_Heal_End
 
-@ Never reached
+@ The user is faster than the target
 AI_CV_Heal2:
 	if_hp_less_than AI_USER, 50, AI_CV_Heal5
 	if_hp_more_than AI_USER, 80, AI_CV_Heal3
@@ -2093,6 +2094,8 @@ AI_CV_RainDance_End::
 
 AI_CV_SunnyDay::
 	if_hp_less_than AI_USER, 40, AI_CV_SunnyDay_ScoreDown1
+	get_ability AI_USER
+	if_equal ABILITY_SOLAR_POWER, AI_CV_SunnyDay2
 	get_weather
 	if_equal AI_WEATHER_HAIL, AI_CV_SunnyDay2
 	if_equal AI_WEATHER_RAIN, AI_CV_SunnyDay2
@@ -2280,6 +2283,9 @@ AI_CV_SpitUp_End::
 
 AI_CV_Hail::
 	if_hp_less_than AI_USER, 40, AI_CV_Hail_ScoreDown1
+	get_ability AI_USER
+	if_equal ABILITY_ICE_BODY, AI_CV_Hail2
+	if_equal ABILITY_SNOW_CLOAK, AI_CV_Hail2
 	get_weather
 	if_equal AI_WEATHER_SUN, AI_CV_Hail2
 	if_equal AI_WEATHER_RAIN, AI_CV_Hail2

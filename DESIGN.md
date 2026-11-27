@@ -308,6 +308,10 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 - A saved Pokémon comes out only when it is the last one able to fight. Your Roar or Whirlwind can still drag it out.
 - When bosses decide about stat moves, screens, Counter and Mirror Coat, they go by each move's Physical or Special category and the target species' higher attacking stat.
 - Bosses now judge Facade, and stalling with Fly or Dig in sandstorm or hail, correctly (both were mistakes in the original).
+- Bosses faster than you now use healing moves such as Recover when hurt (in the original they practically never did).
+- No trainer uses Boomburst or Hyper Voice into Soundproof once your ability has shown itself; until then the AI guesses between the species' abilities, as it always has. Draco Meteor, Leaf Storm and Overheat are checked against immunities like other attacks.
+- Bosses are keener on Sunny Day with Solar Power, and on Hail with Ice Body or Snow Cloak.
+- The Sp. Atk-lowering logic now checks Sp. Atk. No move currently in the game only lowers Sp. Atk, so this changes nothing yet.
 - Switching out mid-battle works as before. Enemy trainers never use items. The AI does not look at the move you are about to choose.
 - Special battles whose teams are not in `trainers.h` (such as Trainer Tower) use the full logic and do not save a Pokémon.
 

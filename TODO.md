@@ -306,6 +306,7 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Trainer AI, mid-level (Hiker, Channeler, Team Rocket): takes a knockout when your Pokémon is low
 - [x] Trainer AI, gym leader: after a knockout, sends out a sensible matchup and keeps the last team member for last
 - [x] Trainer AI: a double battle plays through without problems
+- [ ] Trainer AI: Misty's Starmie uses Recover when hurt
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
