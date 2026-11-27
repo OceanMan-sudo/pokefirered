@@ -173,6 +173,11 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
         return FALSE;
 
     pocket = ItemId_GetPocket(itemId) - 1;
+
+    // A TM or HM that is already owned never needs more space (see AddBagItem)
+    if (pocket == POCKET_TM_CASE - 1 && CheckBagHasItem(itemId, 1))
+        return TRUE;
+
     // Check for item slots that contain the item
     for (i = 0; i < gBagPockets[pocket].capacity; i++)
     {
@@ -208,6 +213,16 @@ bool8 AddBagItem(u16 itemId, u16 count)
         return FALSE;
 
     pocket = ItemId_GetPocket(itemId) - 1;
+
+    // Only one of each TM or HM is ever kept. Getting another still counts as
+    // success, so item balls and gift events carry on normally.
+    if (pocket == POCKET_TM_CASE - 1)
+    {
+        if (CheckBagHasItem(itemId, 1))
+            return TRUE;
+        count = 1;
+    }
+
     for (i = 0; i < gBagPockets[pocket].capacity; i++)
     {
         if (gBagPockets[pocket].itemSlots[i].itemId == itemId)
