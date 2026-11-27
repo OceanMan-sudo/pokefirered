@@ -96,6 +96,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | System | Main files |
 |---|---|
 | Physical/Special split | `category` field in `battle_moves.h`; `IS_MOVE_PHYSICAL` / `IS_MOVE_SPECIAL` in `include/battle.h`; icon in `src/battle_controller_player.c` and `graphics/battle_interface/split_icons_battle.png` |
+| Fairy type | `TYPE_FAIRY` in `include/constants/pokemon.h`; chart and names in `src/battle_main.c` (the chart size is also in `include/battle_main.h`); label position in `src/list_menu.c`, artwork in `graphics/interface/menu_info.png`; TM disc color in `src/tm_case.c` and `graphics/tm_case/disc_types_2.pal`; Hidden Power in `src/battle_script_commands.c`; trade board in `src/data/union_room.h`; Pokédex order in `src/data/pokemon/pokedex_orders.h` |
 | New abilities (78–85) | `src/pokemon.c`, `src/battle_util.c`, `src/battle_script_commands.c` |
 | Permanent hail (Snow Warning) | `B_WEATHER_HAIL_PERMANENT` in `include/constants/battle.h` |
 | EXP when catching, then evolving | `data/battle_scripts_2.s`, `src/battle_main.c` |

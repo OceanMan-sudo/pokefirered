@@ -12,6 +12,7 @@ A **debug menu** is in the normal game for testing and will be removed before ve
 |---|---|
 | Warp | Towns, gym entrances, the Pokémon League and a few test spots. Needs a Pokémon in the party; not available in the Safari Zone |
 | Pokémon | Pick any of the 386 by National Dex number and a level from 1 to 100 |
+| Teach Move | Pick a party Pokémon and any move by number. If it already knows four moves, you choose which to replace. Learnsets are not changed |
 | Items | Repels, Poké Balls, evolution items, all TMs and HMs, Bicycle, money, or any item by number |
 | Progress | All badges; badges plus HM01–HM07; Fly map; Pokédex with National Dex; mark the Champion as beaten |
 | Heal | Heals the party |
@@ -49,6 +50,33 @@ A save made before these settings existed starts with the cap on, trainer battle
 
 ### Physical/Special split
 Each move is Physical, Special or Status on its own, whatever its type. An icon in the battle move menu shows which. Counter and Mirror Coat follow the category.
+
+### Fairy type
+Fairy follows Generation 6.
+
+| Fairy | Types |
+|---|---|
+| Fairy attacks do 2x to | Fighting, Dragon, Dark |
+| Fairy attacks do ½x to | Fire, Poison, Steel |
+| Fairy Pokémon take 2x from | Poison, Steel |
+| Fairy Pokémon take ½x from | Fighting, Bug, Dark |
+| Fairy Pokémon are immune to | Dragon |
+
+Steel no longer resists Ghost or Dark.
+
+| Typing | Pokémon |
+|---|---|
+| Fairy | Cleffa, Clefairy, Clefable, Togepi, Snubbull, Granbull |
+| Normal/Fairy | Azurill, Igglybuff, Jigglypuff, Wigglytuff |
+| Psychic/Fairy | Mr. Mime, Ralts, Kirlia, Gardevoir |
+| Water/Fairy | Marill, Azumarill |
+| Fairy/Flying | Togetic |
+| Steel/Fairy | Mawile |
+
+- Charm, Sweet Kiss and Moonlight are Fairy moves.
+- **There is no damaging Fairy move yet.** New moves wait for the move overhaul, so the pure Fairy Pokémon currently have no attack that gets a same-type bonus.
+- Hidden Power cannot be Fairy.
+- No held item boosts Fairy moves.
 
 ### Damage rules that differ from the original
 - Type-boosting held items (Charcoal and so on) boost both Attack and Sp. Atk.

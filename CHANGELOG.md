@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 40 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 43 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -13,6 +13,8 @@ Claude-assisted changes you have not yet reported as working.
 - **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
 - **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
+- **Fairy type:** the label, the TM Case screen, the new matchups, the retyped Pokémon and moves, and Clefable's stats.
+- **Debug menu Teach Move option.**
 - **Walled bosses switching** (testing in progress).
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
@@ -91,6 +93,14 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
+### Fairy type
+| Change | In-game status |
+|---|---|
+| Fairy type with the Generation 6 matchups; Steel no longer resists Ghost or Dark | Not yet tested |
+| 18 Pokémon become Fairy; Charm, Sweet Kiss and Moonlight are Fairy moves | Not yet tested |
+| Fairy label and TM disc color; Fairy added to the Pokédex type order and the trade board; Hidden Power cannot be Fairy | Not yet tested |
+| Clefable: Defense and Sp. Def set to Generation 6 (90→73, 95→90) | Not yet tested |
+
 ### Moves and animations
 | Change | In-game status |
 |---|---|
@@ -137,22 +147,27 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 |---|---|
 | Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
 | Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
+| Debug menu: Teach Move option | Not yet tested |
 | Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 
-The Claude-assisted changes did not touch species data, TM compatibility or trainer teams. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+The Claude-assisted changes did not touch TM compatibility or trainer teams. The only species data edits are the 18 Fairy retypes and Clefable's two stats. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 
 ### Pokémon types
-21 Pokémon.
+39 Pokémon.
 
 | Pokémon | Original | Now |
 |---|---|---|
 | Ekans | Poison | Poison/Dark |
 | Arbok | Poison | Poison/Dark |
 | Sandslash | Ground | Ground/Steel |
+| Clefairy | Normal | Fairy |
+| Clefable | Normal | Fairy |
+| Jigglypuff | Normal | Normal/Fairy |
+| Wigglytuff | Normal | Normal/Fairy |
 | Parasect | Bug/Grass | Bug/Ghost |
 | Venomoth | Bug/Poison | Bug/Psychic |
 | Meowth | Normal | Normal/Dark |
@@ -165,11 +180,25 @@ The Claude-assisted changes did not touch species data, TM compatibility or trai
 | Hypno | Psychic | Psychic/Dark |
 | Kingler | Water | Water/Steel |
 | Marowak | Ground | Ground/Ghost |
+| Mr. Mime | Psychic | Psychic/Fairy |
 | Aerodactyl | Rock/Flying | Rock/Dragon |
 | Noctowl | Normal/Flying | Ghost/Flying |
+| Cleffa | Normal | Fairy |
+| Igglybuff | Normal | Normal/Fairy |
+| Togepi | Normal | Fairy |
+| Togetic | Normal/Flying | Fairy/Flying |
+| Marill | Water | Water/Fairy |
+| Azumarill | Water | Water/Fairy |
 | Sunflora | Grass | Grass/Fire |
+| Snubbull | Normal | Fairy |
+| Granbull | Normal | Fairy |
 | Octillery | Water | Water/Fire |
 | Sceptile | Grass | Grass/Dragon |
+| Ralts | Psychic | Psychic/Fairy |
+| Kirlia | Psychic | Psychic/Fairy |
+| Gardevoir | Psychic | Psychic/Fairy |
+| Azurill | Normal | Normal/Fairy |
+| Mawile | Steel | Steel/Fairy |
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
@@ -287,7 +316,7 @@ The Claude-assisted changes did not touch species data, TM compatibility or trai
 | Raichu | Spe 100→110 |
 | Nidoqueen | Atk 82→92 |
 | Nidoking | Atk 92→102 |
-| Clefable | Def 73→90, SpA 85→95, SpD 90→95 |
+| Clefable | SpA 85→95 |
 | Wigglytuff | SpA 75→85 |
 | Vileplume | SpA 100→110 |
 | Poliwrath | Atk 85→95 |
@@ -367,7 +396,7 @@ The Claude-assisted changes did not touch species data, TM compatibility or trai
 Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Metapod, Butterfree, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magneton, Farfetch'd, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo, Chikorita, Bayleef, Meganium, Cyndaquil, Quilava, Typhlosion, Totodile, Croconaw, Feraligatr, Sentret, Furret, Hoothoot, Noctowl, Ledyba, Ledian, Spinarak, Ariados, Crobat, Chinchou, Lanturn, Pichu, Togetic, Natu, Xatu, Mareep, Flaaffy, Ampharos, Bellossom, Marill, Azumarill, Sudowoodo, Politoed, Hoppip, Skiploom, Jumpluff, Aipom, Sunkern, Sunflora, Yanma, Wooper, Quagsire, Espeon, Umbreon, Murkrow, Slowking, Misdreavus, Girafarig, Pineco, Forretress, Dunsparce, Gligar, Steelix, Snubbull, Granbull, Qwilfish, Scizor, Shuckle, Heracross, Sneasel, Teddiursa, Ursaring, Slugma, Magcargo, Swinub, Piloswine, Corsola, Remoraid, Octillery, Mantine, Skarmory, Houndour, Houndoom, Kingdra, Phanpy, Donphan, Porygon2, Stantler, Tyrogue, Hitmontop, Smoochum, Elekid, Magby, Miltank, Blissey, Raikou, Entei, Suicune, Tyranitar
 
 ### Changes to original moves
-62 moves (category additions not counted).
+65 moves (category additions not counted).
 
 | Move | Change (original → now) |
 |---|---|
@@ -415,13 +444,16 @@ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Warto
 | Rock Slide | power 75→90; PP 10→15 |
 | Triple Kick | PP 10→20 |
 | Curse | type Mystery→Ghost |
+| Sweet Kiss | type Normal→Fairy |
 | Octazooka | accuracy 85→100 |
 | Outrage | power 90→120 |
 | Giga Drain | power 60→75; PP 5→15 |
+| Charm | type Normal→Fairy |
 | False Swipe | power 40→60 |
 | Steel Wing | power 70→75; accuracy 90→100 |
 | Iron Tail | accuracy 75→85; effect chance 30→10 |
 | Metal Claw | accuracy 95→100 |
+| Moonlight | type Normal→Fairy |
 | Extreme Speed | priority 1→2 |
 | Future Sight | power 80→120; accuracy 90→100 |
 | Nature Power | accuracy 0→95 |

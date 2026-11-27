@@ -82,13 +82,16 @@ Build the rules and their menu switches together.
 ✅ means the feature is in the code. Test it using the list under [Waiting to be tested](#waiting-to-be-tested). The caps themselves are in `src/data/level_caps.h`.
 
 ### Phase 4: Fairy type (medium)
-- [ ] Add the type and include it everywhere types are listed
-- [ ] Generation 6 type chart (includes Steel no longer resisting Ghost and Dark)
-- [ ] Retype the 18 Pokémon that become Fairy
-- [ ] Retype Charm, Sweet Kiss and Moonlight
-- [ ] Stop Hidden Power from rolling Fairy
-- [ ] Type label, colours and TM disc colour
-- [ ] New Fairy moves and animations (Moonblast, Play Rough, Dazzling Gleam and others you choose)
+- [x] Add the type and include it everywhere types are listed
+- [x] Generation 6 type chart (includes Steel no longer resisting Ghost and Dark)
+- [x] Retype the 18 Pokémon that become Fairy
+- [x] Retype Charm, Sweet Kiss and Moonlight
+- [x] Stop Hidden Power from rolling Fairy
+- [x] Type label, colours and TM disc colour
+- [x] Clefable's stats set to Generation 6
+- [ ] New Fairy moves and animations (Moonblast, Play Rough, Dazzling Gleam and others you choose). **Waiting for the move overhaul.** Until then there is no damaging Fairy move
+
+Checked items are in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
 
 ### Phase 5: groundwork for the Kanto pass
 Do these before changing teams area by area, so work is not redone.
@@ -309,6 +312,13 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Trainer AI: Misty's Starmie uses Recover when hurt
 - [ ] Walled boss: with a level 39 Chansey against Sabrina, Mr. Mime switches to Girafarig on the first turn
 - [ ] Walled boss: it does not switch this way two turns in a row
+- [ ] Debug menu, Teach Move: fills an empty slot, replaces a chosen move when there are four, B cancels, and a known move is refused
+- [ ] Fairy label: correct on the summary screen (both pages with types), when replacing a move, and in the Pokédex
+- [ ] Fairy matchups against Clefairy: Dragon Claw (337) has no effect; Sludge Bomb (188) and Steel Wing (211) are super effective; Brick Break (280) and Crunch (242) are not very effective
+- [ ] Steel change: Shadow Ball (247) and Crunch (242) do normal damage to Magnemite
+- [ ] Charm (204), Sweet Kiss (186) and Moonlight (236) show as Fairy and still work
+- [ ] Clefable has the new Defense and Sp. Def
+- [ ] TM Case: opens normally and the disc colors look as before
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
@@ -326,7 +336,7 @@ Before version 1 is finished. To only switch it off, set `DEBUG_MENU` to `FALSE`
 1. Delete `src/debug_menu.c`, `data/scripts/debug_menu.inc` and `include/constants/debug_menu.h`.
 2. Remove the `#if DEBUG_MENU` block in `src/field_control_avatar.c` and the `DEBUG_MENU` lines in `include/config.h`.
 3. Remove the two `.include` / `#include` lines in `data/event_scripts.s`.
-4. Remove the five `DebugMenu_` lines in `data/specials.inc`.
+4. Remove the eight `DebugMenu_` lines in `data/specials.inc`.
 5. Remove `EventScript_DebugMenu` from `include/event_scripts.h`.
 6. Remove the two `debug_menu.o` lines in `ld_script.ld`.
 
