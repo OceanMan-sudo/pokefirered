@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 45 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 46 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -15,7 +15,6 @@ Claude-assisted changes you have not yet reported as working.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
 - **Walled bosses switching** (testing in progress).
 - **Dragon Rage against Fairy types:** checked in a simulator only.
-- **Moonblast and Play Rough:** compiled, but the animations have not been seen in game.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -107,7 +106,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 |---|---|
 | Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Tested |
 | New move: Aura Sphere with animation | Tested |
-| New moves: Moonblast and Play Rough with animations | Not yet tested |
+| New moves: Moonblast and Play Rough with animations | Tested |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 
 ### Items, TMs and field moves

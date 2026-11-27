@@ -245,6 +245,8 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, Moonblast and Play Rough are on no level-up list**, and Shadow Sneak is on one. (Moonblast and Play Rough can be taught with the debug menu, moves 381 and 382.) No new TMs or egg moves use them.
 
+Moonblast and Play Rough, with their animations, are **Tested**.
+
 62 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
 
 Animations for thirteen of the new moves were fixed or redrawn with Claude (**Tested**).
