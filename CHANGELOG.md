@@ -73,7 +73,7 @@ Tables were generated from the game files, so they show the **net difference** f
 | Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Not recorded |
 | New move: Aura Sphere with animation | Tested |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
-| **Temporary:** three Pallet Town test characters (Aura Sphere giver, two move tutors) | To be removed |
+| Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
 | Magneton level-up list put in order (BUG-02) | Not yet tested |
 | Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Not yet tested |
 | Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Not yet tested |

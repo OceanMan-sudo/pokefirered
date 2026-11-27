@@ -165,7 +165,7 @@ Animations for thirteen of the new moves were fixed or redrawn with Claude (**Te
 
 ### Move tutors and relearner
 - **Move relearner**, free: Fuchsia City House 3 and the new Cerulean City house.
-- **Route 15 House of Elements:** Ice Punch, Fire Punch and Thunder Punch tutors Compatibility follows newer official games (89 Pokémon for Fire Punch, 104 for Ice Punch, 109 for Thunder Punch).
+- **Route 15 House of Elements:** Ice Punch, Fire Punch and Thunder Punch tutors. Compatibility follows newer official games (89 Pokémon for Fire Punch, 104 for Ice Punch, 109 for Thunder Punch).
 
 ## Items and shops
 

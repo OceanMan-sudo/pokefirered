@@ -279,7 +279,6 @@ No in-game confirmation is recorded for these:
 
 | Item | Where | Added by |
 |---|---|---|
-| Aura Sphere giver and two move tutors | Pallet Town (40,16), (38,16), (42,16); `data/scripts/item_ball_scripts.inc` | Claude (temporary) |
 | Giovanni who grants the Fuchsia gym flags | Pallet Town (5,16), `EightBadges` | You |
 | Chef who marks the game cleared and gives Leftovers | Pallet Town (2,16), `ClearGame` | You |
 | Doors from Pallet Town to other towns (likely) | Pallet Town, row 4, x 37–45 | You |
