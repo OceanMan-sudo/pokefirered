@@ -89,6 +89,8 @@
 #define VARIOUS_RETURN_OPPONENT_MON2            10
 #define VARIOUS_CHECK_POKEFLUTE                 11
 #define VARIOUS_WAIT_FANFARE                    12
+#define VARIOUS_SET_AURORA_VEIL                 13
+#define VARIOUS_SET_TAILWIND                    14
 
 // Cmd_manipulatedmg
 #define DMG_CHANGE_SIGN            0

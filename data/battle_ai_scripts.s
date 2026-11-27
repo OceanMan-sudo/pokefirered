@@ -218,6 +218,10 @@ AI_CheckBadMove_CheckEffect::
 	if_effect EFFECT_WATER_SPORT, AI_CBM_WaterSport
 	if_effect EFFECT_CALM_MIND, AI_CBM_CalmMind
 	if_effect EFFECT_DRAGON_DANCE, AI_CBM_DragonDance
+	if_effect EFFECT_QUIVER_DANCE, AI_CBM_QuiverDance
+	if_effect EFFECT_SHELL_SMASH, AI_CBM_ShellSmash
+	if_effect EFFECT_AURORA_VEIL, AI_CBM_AuroraVeil
+	if_effect EFFECT_TAILWIND, AI_CBM_Tailwind
 	end
 
 AI_CBM_Sleep::
@@ -363,6 +367,7 @@ AI_CBM_Poison::
 
 AI_CBM_LightScreen::
 	if_side_affecting AI_USER, SIDE_STATUS_LIGHTSCREEN, Score_Minus8
+	if_side_affecting AI_USER, SIDE_STATUS_AURORA_VEIL, Score_Minus8
 	end
 
 AI_CBM_OneHitKO::
@@ -403,6 +408,7 @@ AI_CBM_Confuse::
 
 AI_CBM_Reflect::
 	if_side_affecting AI_USER, SIDE_STATUS_REFLECT, Score_Minus8
+	if_side_affecting AI_USER, SIDE_STATUS_AURORA_VEIL, Score_Minus8
 	end
 
 AI_CBM_Paralyze::
@@ -608,6 +614,38 @@ AI_CBM_DragonDance::
 	if_stat_level_equal AI_USER, STAT_SPEED, 12, Score_Minus8
 	end
 
+AI_CBM_QuiverDance::
+	if_stat_level_equal AI_USER, STAT_SPATK, 12, Score_Minus10
+	if_stat_level_equal AI_USER, STAT_SPDEF, 12, Score_Minus8
+	if_stat_level_equal AI_USER, STAT_SPEED, 12, Score_Minus8
+	end
+
+AI_CBM_ShellSmash::
+	if_stat_level_equal AI_USER, STAT_ATK, 12, Score_Minus10
+	if_stat_level_equal AI_USER, STAT_SPATK, 12, Score_Minus10
+	end
+
+@ Aurora Veil only works in hail, and adds nothing on top of both screens.
+AI_CBM_AuroraVeil::
+	if_side_affecting AI_USER, SIDE_STATUS_AURORA_VEIL, Score_Minus10
+	get_ability AI_TARGET
+	if_equal ABILITY_CLOUD_NINE, Score_Minus10
+	if_equal ABILITY_AIR_LOCK, Score_Minus10
+	get_ability AI_USER
+	if_equal ABILITY_CLOUD_NINE, Score_Minus10
+	if_equal ABILITY_AIR_LOCK, Score_Minus10
+	get_weather
+	if_not_equal AI_WEATHER_HAIL, Score_Minus10
+	if_not_side_affecting AI_USER, SIDE_STATUS_REFLECT, AI_CBM_AuroraVeil_End
+	if_side_affecting AI_USER, SIDE_STATUS_LIGHTSCREEN, Score_Minus8
+
+AI_CBM_AuroraVeil_End::
+	end
+
+AI_CBM_Tailwind::
+	if_side_affecting AI_USER, SIDE_STATUS_TAILWIND, Score_Minus10
+	end
+
 Score_Minus1::
 	score -1
 	end
@@ -782,6 +820,10 @@ AI_CheckViability::
 	if_effect EFFECT_WATER_SPORT, AI_CV_WaterSport
 	if_effect EFFECT_CALM_MIND, AI_CV_SpDefUp
 	if_effect EFFECT_DRAGON_DANCE, AI_CV_DragonDance
+	if_effect EFFECT_QUIVER_DANCE, AI_CV_QuiverDance
+	if_effect EFFECT_SHELL_SMASH, AI_CV_ShellSmash
+	if_effect EFFECT_AURORA_VEIL, AI_CV_AuroraVeil
+	if_effect EFFECT_TAILWIND, AI_CV_Tailwind
 	end
 
 AI_CV_Sleep::
@@ -1788,6 +1830,10 @@ AI_CV_Encore_EncouragedMovesToEncore::
 	.byte EFFECT_MUD_SPORT
 	.byte EFFECT_WATER_SPORT
 	.byte EFFECT_DRAGON_DANCE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte EFFECT_CAMOUFLAGE
 	.byte -1
 
@@ -2500,6 +2546,7 @@ AI_CV_Revenge_End::
 
 AI_CV_BrickBreak::
 	if_side_affecting AI_TARGET, SIDE_STATUS_REFLECT, AI_CV_BrickBreak_ScoreUp1
+	if_side_affecting AI_TARGET, SIDE_STATUS_AURORA_VEIL, AI_CV_BrickBreak_ScoreUp1
 	goto AI_CV_BrickBreak_End
 
 AI_CV_BrickBreak_ScoreUp1::
@@ -2670,6 +2717,70 @@ AI_CV_DragonDance2::
 AI_CV_DragonDance_End::
 	end
 
+AI_CV_QuiverDance::
+	if_stat_level_more_than AI_USER, STAT_SPATK, 8, AI_CV_QuiverDance_ScoreDown1
+	if_hp_less_than AI_USER, 50, AI_CV_QuiverDance_ScoreDown1
+	if_target_faster AI_CV_QuiverDance_TargetFaster
+	if_random_less_than 128, AI_CV_QuiverDance_End
+	score +1
+	goto AI_CV_QuiverDance_End
+
+AI_CV_QuiverDance_TargetFaster::
+	if_random_less_than 64, AI_CV_QuiverDance_End
+	score +2
+	goto AI_CV_QuiverDance_End
+
+AI_CV_QuiverDance_ScoreDown1::
+	score -1
+
+AI_CV_QuiverDance_End::
+	end
+
+@ Shell Smash is worth using once, while healthy.
+AI_CV_ShellSmash::
+	if_stat_level_more_than AI_USER, STAT_ATK, 7, AI_CV_ShellSmash_ScoreDown3
+	if_stat_level_more_than AI_USER, STAT_SPATK, 7, AI_CV_ShellSmash_ScoreDown3
+	if_hp_less_than AI_USER, 60, AI_CV_ShellSmash_ScoreDown2
+	if_random_less_than 80, AI_CV_ShellSmash_End
+	score +2
+	goto AI_CV_ShellSmash_End
+
+AI_CV_ShellSmash_ScoreDown3::
+	score -1
+
+AI_CV_ShellSmash_ScoreDown2::
+	score -2
+
+AI_CV_ShellSmash_End::
+	end
+
+AI_CV_AuroraVeil::
+	if_hp_less_than AI_USER, 35, AI_CV_AuroraVeil_ScoreDown2
+	if_random_less_than 48, AI_CV_AuroraVeil_End
+	score +3
+	goto AI_CV_AuroraVeil_End
+
+AI_CV_AuroraVeil_ScoreDown2::
+	score -2
+
+AI_CV_AuroraVeil_End::
+	end
+
+@ In a single battle there is no point if the user already moves first.
+AI_CV_Tailwind::
+	if_double_battle AI_CV_Tailwind_Encourage
+	if_target_faster AI_CV_Tailwind_Encourage
+	score -3
+	goto AI_CV_Tailwind_End
+
+AI_CV_Tailwind_Encourage::
+	if_hp_less_than AI_USER, 30, AI_CV_Tailwind_End
+	if_random_less_than 64, AI_CV_Tailwind_End
+	score +2
+
+AI_CV_Tailwind_End::
+	end
+
 AI_TryToFaint::
 	if_can_faint AI_TryToFaint_TryToEncourageQuickAttack
 	get_how_powerful_move_is
@@ -2761,6 +2872,10 @@ AI_SetupFirstTurn_SetupEffectsToEncourage::
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
 	.byte EFFECT_CAMOUFLAGE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte -1
 
 AI_PreferStrongestMove::
@@ -2960,6 +3075,10 @@ AI_HPAware_DiscouragedEffectsWhenMediumHP::
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
 	.byte EFFECT_DRAGON_DANCE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte -1
 
 AI_HPAware_DiscouragedEffectsWhenLowHP::
@@ -3010,6 +3129,10 @@ AI_HPAware_DiscouragedEffectsWhenLowHP::
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
 	.byte EFFECT_DRAGON_DANCE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte -1
 
 AI_HPAware_DiscouragedEffectsWhenTargetHighHP::
@@ -3055,6 +3178,10 @@ AI_HPAware_DiscouragedEffectsWhenTargetMediumHP::
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
 	.byte EFFECT_DRAGON_DANCE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte -1
 
 AI_HPAware_DiscouragedEffectsWhenTargetLowHP::
@@ -3117,6 +3244,10 @@ AI_HPAware_DiscouragedEffectsWhenTargetLowHP::
 	.byte EFFECT_BULK_UP
 	.byte EFFECT_CALM_MIND
 	.byte EFFECT_DRAGON_DANCE
+	.byte EFFECT_QUIVER_DANCE
+	.byte EFFECT_SHELL_SMASH
+	.byte EFFECT_AURORA_VEIL
+	.byte EFFECT_TAILWIND
 	.byte -1
 
 AI_Unknown::

@@ -74,7 +74,7 @@ Steel no longer resists Ghost or Dark.
 | Steel/Fairy | Mawile |
 
 - Charm, Sweet Kiss and Moonlight are Fairy moves.
-- Damaging Fairy moves: [Fairy Wind, Drain Kiss, Dazzle Gleam, Fae Voice, Moonblast and Play Rough](#42-new-moves). No Pokémon learns them naturally yet.
+- Damaging Fairy moves: [Fairy Wind, Drain Kiss, Dazzle Gleam, Fae Voice, Moonblast and Play Rough](#46-new-moves). No Pokémon learns them naturally yet.
 - Hidden Power cannot be Fairy.
 - No held item boosts Fairy moves.
 
@@ -206,7 +206,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 ## Moves
 
-### 42 new moves
+### 46 new moves
 † added with Claude.
 
 | Move | Type | Category | Power | Acc | PP | Effect code |
@@ -253,10 +253,14 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 | Energy Ball † | Grass | Special | 90 | 100 | 10 | Special Defense Down Hit (10%) |
 | Bulldoze † | Ground | Physical | 60 | 100 | 20 | Bulldoze (new), everyone but the user |
 | Snarl † | Dark | Special | 55 | 95 | 15 | Special Attack Down Hit (100%), both opponents |
+| Quiver Dance † | Bug | Status | — | — | 20 | Quiver Dance (new) |
+| Shell Smash † | Normal | Status | — | — | 15 | Shell Smash (new) |
+| Aurora Veil † | Ice | Status | — | — | 20 | Aurora Veil (new) |
+| Tailwind † | Flying | Status | — | — | 15 | Tailwind (new) |
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the ten moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 396 can be taught with the debug menu.) No new TMs or egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) No new TMs or egg moves use them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 
@@ -273,6 +277,13 @@ The ten moves from Close Combat to Snarl are **Tested**, apart from the reworked
 - **Bulldoze** lowers Speed and, like Earthquake, hits every other Pokémon, including your partner in a double battle, at full damage. It does not affect Flying types or Pokémon with Levitate.
 - **Snarl** hits both opponents. When both are out, each takes half damage.
 - **Bug Buzz and Snarl** are sound moves, so Soundproof blocks them.
+
+Quiver Dance, Shell Smash, Aurora Veil and Tailwind are **not yet tested**.
+
+- **Quiver Dance** raises Sp. Atk, Sp. Def and Speed by one stage.
+- **Shell Smash** lowers Defense and Sp. Def by one stage and raises Attack, Sp. Atk and Speed by two. A held White Herb restores the lowered stats.
+- **Aurora Veil** can only be used in hail (including Snow Warning's), and fails while Cloud Nine or Air Lock is out. For five turns it halves damage from both physical and special moves for your whole side (a third off in a double battle with both Pokémon out). It stays up if the hail stops, does not stack with Reflect or Light Screen, is ignored by critical hits, and Brick Break removes it.
+- **Tailwind** doubles your side's Speed for four turns, counting the turn it is used, so the boost changes the turn order for the next three turns. It does not change your odds of running away.
 
 64 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
 
@@ -382,6 +393,8 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 - Bosses faster than you now use healing moves such as Recover when hurt (in the original they practically never did).
 - No trainer uses Boomburst or Hyper Voice into Soundproof once your ability has shown itself; until then the AI guesses between the species' abilities, as it always has. Draco Meteor, Leaf Storm and Overheat are checked against immunities like other attacks.
 - Bosses are keener on Sunny Day with Solar Power, and on Hail with Ice Body or Snow Cloak.
+- The AI now notices Snow Warning's hail (before, it only recognised hail from the move).
+- No trainer uses Aurora Veil without hail, or repeats Tailwind or Aurora Veil while it is up. Bosses favor Quiver Dance and Shell Smash while healthy (Shell Smash only once), Aurora Veil when it will work, and Tailwind in a single battle only when you are faster (not yet tested; checked in a simulator).
 - The Sp. Atk-lowering logic now checks Sp. Atk. No move currently in the game only lowers Sp. Atk, so this changes nothing yet.
 - **Bosses switch when they can't get anywhere** (not yet tested in game). The rule is described just below.
 - Otherwise switching out mid-battle works as before. Enemy trainers never use items. The AI does not look at the move you are about to choose.

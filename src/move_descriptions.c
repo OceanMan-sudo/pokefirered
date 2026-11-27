@@ -400,6 +400,29 @@ const u8 gMoveDescription_Snarl[] = _("The user yells at\nthe foes, lowering\nth
 
 
 
+const u8 gMoveDescription_QuiverDance[] = _(
+    "A mystic dance that\n"
+    "raises SP. ATK,\n"
+    "SP. DEF, and SPEED.");
+
+const u8 gMoveDescription_ShellSmash[] = _(
+    "Lowers defenses to\n"
+    "sharply raise\n"
+    "ATTACK, SP. ATK,\n"
+    "and SPEED.");
+
+const u8 gMoveDescription_AuroraVeil[] = _(
+    "Weakens all attacks\n"
+    "for five turns.\n"
+    "Can only be used\n"
+    "in a hailstorm.");
+
+const u8 gMoveDescription_Tailwind[] = _(
+    "Stirs up a wind that\n"
+    "doubles the party's\n"
+    "SPEED for four\n"
+    "turns.");
+
 const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_POUND         - 1] = gMoveDescription_Pound,
     [MOVE_KARATE_CHOP   - 1] = gMoveDescription_KarateChop,
@@ -797,5 +820,9 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_ENERGY_BALL      -1] = gMoveDescription_EnergyBall,
     [MOVE_BULLDOZE      -1] = gMoveDescription_Bulldoze,
     [MOVE_SNARL      -1] = gMoveDescription_Snarl,
+    [MOVE_QUIVER_DANCE -1] = gMoveDescription_QuiverDance,
+    [MOVE_SHELL_SMASH -1] = gMoveDescription_ShellSmash,
+    [MOVE_AURORA_VEIL -1] = gMoveDescription_AuroraVeil,
+    [MOVE_TAILWIND -1] = gMoveDescription_Tailwind,
 
 };

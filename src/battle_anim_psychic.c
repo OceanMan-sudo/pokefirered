@@ -103,6 +103,17 @@ const struct SpriteTemplate gMagicCoatWallSpriteTemplate =
     .callback = AnimDefensiveWall,
 };
 
+const struct SpriteTemplate gAuroraVeilWallSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AURORA_WALL,
+    .paletteTag = ANIM_TAG_AURORA_WALL,
+    .oam = &gOamData_AffineOff_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimDefensiveWall,
+};
+
 static const union AnimCmd sAnim_ReflectSparkle[] =
 {
     ANIMCMD_FRAME(0, 3),

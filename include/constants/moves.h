@@ -398,8 +398,12 @@
 #define MOVE_ENERGY_BALL 394
 #define MOVE_BULLDOZE 395
 #define MOVE_SNARL 396
+#define MOVE_QUIVER_DANCE 397
+#define MOVE_SHELL_SMASH 398
+#define MOVE_AURORA_VEIL 399
+#define MOVE_TAILWIND 400
 
-#define MOVES_COUNT 397
+#define MOVES_COUNT 401
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

@@ -3750,6 +3750,7 @@ extern const u32 gBattleAnimSpritePal_BugRing[];
 extern const u32 gBattleAnimSpriteGfx_PowerGem[];
 extern const u32 gBattleAnimSpritePal_PowerGem[];
 extern const u32 gBattleAnimSpritePal_EnergyBall[];
+extern const u32 gBattleAnimSpritePal_AuroraWall[];
 extern const u32 gBattleAnimSpritePal_Lick[];
 extern const u32 gBattleAnimSpritePal_VoidLines[];
 extern const u32 gBattleAnimSpritePal_String[];

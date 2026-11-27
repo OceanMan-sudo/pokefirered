@@ -98,7 +98,7 @@ Checked items are in the code. Test them using the list under [Waiting to be tes
 Do these before changing teams area by area, so work is not redone.
 - [x] Agree the level caps (below); revisit when teams change
 - [ ] Learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
-- [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 396 to learnsets as part of that work
+- [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
 - [ ] Plan where each missing Pokémon will come from (list at the end)
 
@@ -267,7 +267,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 - Reusable, unique TMs
 - HM field moves without teaching them
 - Physical/Special split
-- 42 new moves and 8 new abilities
+- 46 new moves and 8 new abilities
 - Evolution changes with no trade evolutions (7 friendship evolutions remain)
 - House that gives Rare Candies
 
@@ -347,6 +347,14 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Bulldoze (395): damage and Speed drop
 - [x] Snarl (396): animation; in a double battle both opponents lose Sp. Atk
 - [ ] Moves 387 to 396 used by an opponent look right too
+- [ ] Quiver Dance (397): animation; Sp. Atk, Sp. Def and Speed rise
+- [ ] Shell Smash (398): animation; Defense and Sp. Def fall, then Attack, Sp. Atk and Speed rise sharply
+- [ ] Shell Smash while holding a White Herb: the lowered stats come back
+- [ ] Aurora Veil (399) with no hail: "But it failed!"
+- [ ] Aurora Veil in hail: animation and message; damage taken drops; "wore off" after five turns
+- [ ] Brick Break removes an opponent's Aurora Veil
+- [ ] Tailwind (400): animation and message; a slower Pokémon moves first from the next turn; "wore off" at the end of the fourth turn, counting the one it was used
+- [ ] Moves 397 to 400 used by an opponent look right too
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

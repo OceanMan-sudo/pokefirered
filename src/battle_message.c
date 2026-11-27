@@ -128,6 +128,8 @@ static const u8 sText_PkmnRaisedSpDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT
 static const u8 sText_PkmnRaisedDef[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE!");
 static const u8 sText_PkmnRaisedDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE a little!");
 static const u8 sText_PkmnCoveredByVeil[] = _("{B_ATK_PREFIX2}'s party is covered\nby a veil!");
+static const u8 sText_PkmnVeilRaisedDefenses[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised its defenses!");
+static const u8 sText_PkmnTailwindRaisedSpeed[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised SPEED!");
 static const u8 sText_PkmnUsedSafeguard[] = _("{B_DEF_NAME_WITH_PREFIX}'s party is protected\nby SAFEGUARD!");
 static const u8 sText_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}'s party is no longer\nprotected by SAFEGUARD!");
 static const u8 sText_PkmnWentToSleep[] = _("{B_ATK_NAME_WITH_PREFIX} went\nto sleep!");
@@ -890,7 +892,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
     [STRINGID_TRAINER1WINTEXT - BATTLESTRINGS_TABLE_START]               = sText_Trainer1WinText,
     [STRINGID_TRAINER1MON2COMEBACK - BATTLESTRINGS_TABLE_START]          = sText_Trainer1RecallPkmn2,
     [STRINGID_TRAINER1MON1AND2COMEBACK - BATTLESTRINGS_TABLE_START]      = sText_Trainer1RecallBoth,
-    [STRINGID_PKMNSXWHIPPEDUPHAILSTORM - BATTLESTRINGS_TABLE_START]      = sText_PkmnsXWhippedUpHailstorm
+    [STRINGID_PKMNSXWHIPPEDUPHAILSTORM - BATTLESTRINGS_TABLE_START]      = sText_PkmnsXWhippedUpHailstorm,
+    [STRINGID_PKMNVEILRAISEDDEFENSES - BATTLESTRINGS_TABLE_START]        = sText_PkmnVeilRaisedDefenses,
+    [STRINGID_PKMNTAILWINDRAISEDSPEED - BATTLESTRINGS_TABLE_START]       = sText_PkmnTailwindRaisedSpeed
 };
 
 const u16 gMissStringIds[] =
@@ -960,7 +964,9 @@ const u16 gReflectLightScreenSafeguardStringIds[] =
     [B_MSG_SET_REFLECT_DOUBLE]     = STRINGID_PKMNRAISEDDEFALITTLE,
     [B_MSG_SET_LIGHTSCREEN_SINGLE] = STRINGID_PKMNRAISEDSPDEF,
     [B_MSG_SET_LIGHTSCREEN_DOUBLE] = STRINGID_PKMNRAISEDSPDEFALITTLE,
-    [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL
+    [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL,
+    [B_MSG_SET_AURORA_VEIL]        = STRINGID_PKMNVEILRAISEDDEFENSES,
+    [B_MSG_SET_TAILWIND]           = STRINGID_PKMNTAILWINDRAISEDSPEED
 };
 
 const u16 gLeechSeedStringIds[] =

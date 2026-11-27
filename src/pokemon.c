@@ -2584,8 +2584,8 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         if ((attacker->status1 & STATUS1_BURN) && attacker->ability != ABILITY_GUTS)
             damage /= 2;
 
-        // Apply Reflect
-        if ((sideStatus & SIDE_STATUS_REFLECT) && gCritMultiplier == 1)
+        // Apply Reflect (Aurora Veil does the same job and does not stack with it)
+        if ((sideStatus & (SIDE_STATUS_REFLECT | SIDE_STATUS_AURORA_VEIL)) && gCritMultiplier == 1)
         {
             if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
                 damage = 2 * (damage / 3);
@@ -2636,7 +2636,7 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         damage /= 50;
 
         // Apply Lightscreen
-        if ((sideStatus & SIDE_STATUS_LIGHTSCREEN) && gCritMultiplier == 1)
+        if ((sideStatus & (SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)) && gCritMultiplier == 1)
         {
             if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && CountAliveMonsInBattle(BATTLE_ALIVE_DEF_SIDE) == 2)
                 damage = 2 * (damage / 3);

@@ -396,4 +396,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_ENERGY_BALL]     = _("ENERGY BALL"),
     [MOVE_BULLDOZE]     = _("BULLDOZE"),
     [MOVE_SNARL]     = _("SNARL"),
+    [MOVE_QUIVER_DANCE] = _("QUIVER DANCE"),
+    [MOVE_SHELL_SMASH] = _("SHELL SMASH"),
+    [MOVE_AURORA_VEIL] = _("AURORA VEIL"),
+    [MOVE_TAILWIND] = _("TAILWIND"),
 };

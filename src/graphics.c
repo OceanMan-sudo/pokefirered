@@ -598,6 +598,7 @@ const u32 gBattleAnimSpritePal_BugRing[] = INCBIN_U32("graphics/battle_anims/spr
 const u32 gBattleAnimSpriteGfx_PowerGem[] = INCBIN_U32("graphics/battle_anims/sprites/power_gem.4bpp.lz");
 const u32 gBattleAnimSpritePal_PowerGem[] = INCBIN_U32("graphics/battle_anims/sprites/power_gem.gbapal.lz");
 const u32 gBattleAnimSpritePal_EnergyBall[] = INCBIN_U32("graphics/battle_anims/sprites/energy_ball.gbapal.lz");
+const u32 gBattleAnimSpritePal_AuroraWall[] = INCBIN_U32("graphics/battle_anims/sprites/aurora_wall.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.4bpp.lz");
 const u32 gBattleAnimSpritePal_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.gbapal.lz");

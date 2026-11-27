@@ -314,6 +314,7 @@
 #define ANIM_TAG_BUG_RING                   (ANIM_SPRITES_START + 304)
 #define ANIM_TAG_POWER_GEM                  (ANIM_SPRITES_START + 305)
 #define ANIM_TAG_ENERGY_BALL                (ANIM_SPRITES_START + 306)
+#define ANIM_TAG_AURORA_WALL                (ANIM_SPRITES_START + 307)
 
 // battlers
 #define ANIM_ATTACKER    0

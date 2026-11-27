@@ -385,8 +385,10 @@
 #define STRINGID_TRAINER1MON2COMEBACK 384
 #define STRINGID_TRAINER1MON1AND2COMEBACK 385
 #define STRINGID_PKMNSXWHIPPEDUPHAILSTORM   386
+#define STRINGID_PKMNVEILRAISEDDEFENSES     387
+#define STRINGID_PKMNTAILWINDRAISEDSPEED    388
 
-#define BATTLESTRINGS_COUNT     387
+#define BATTLESTRINGS_COUNT     389
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -464,6 +466,8 @@
 #define B_MSG_SET_LIGHTSCREEN_SINGLE 3
 #define B_MSG_SET_LIGHTSCREEN_DOUBLE 4
 #define B_MSG_SET_SAFEGUARD          5
+#define B_MSG_SET_AURORA_VEIL        6
+#define B_MSG_SET_TAILWIND           7
 
 // gProtectLikeUsedStringIds
 #define B_MSG_PROTECTED_ITSELF 0

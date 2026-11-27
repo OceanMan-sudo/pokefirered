@@ -6239,6 +6239,37 @@ static void Cmd_various(void)
         if (!IsFanfareTaskInactive())
             return;
         break;
+    case VARIOUS_SET_AURORA_VEIL:
+        side = GET_BATTLER_SIDE(gActiveBattler);
+        if (gSideStatuses[side] & SIDE_STATUS_AURORA_VEIL
+         || !(WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_HAIL))
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SIDE_STATUS_FAILED;
+        }
+        else
+        {
+            gSideStatuses[side] |= SIDE_STATUS_AURORA_VEIL;
+            gSideTimers[side].auroraVeilTimer = 5;
+            gSideTimers[side].auroraVeilBattlerId = gActiveBattler;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_AURORA_VEIL;
+        }
+        break;
+    case VARIOUS_SET_TAILWIND:
+        side = GET_BATTLER_SIDE(gActiveBattler);
+        if (gSideStatuses[side] & SIDE_STATUS_TAILWIND)
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SIDE_STATUS_FAILED;
+        }
+        else
+        {
+            gSideStatuses[side] |= SIDE_STATUS_TAILWIND;
+            gSideTimers[side].tailwindTimer = 4; // includes the turn it is used
+            gSideTimers[side].tailwindBattlerId = gActiveBattler;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_TAILWIND;
+        }
+        break;
     }
 
     gBattlescriptCurrInstr += 3;
@@ -9482,12 +9513,16 @@ static void Cmd_removelightscreenreflect(void)
 {
     u8 opposingSide = GetBattlerSide(gBattlerAttacker) ^ BIT_SIDE;
 
-    if (gSideTimers[opposingSide].reflectTimer || gSideTimers[opposingSide].lightscreenTimer)
+    if (gSideTimers[opposingSide].reflectTimer
+     || gSideTimers[opposingSide].lightscreenTimer
+     || gSideTimers[opposingSide].auroraVeilTimer)
     {
         gSideStatuses[opposingSide] &= ~SIDE_STATUS_REFLECT;
         gSideStatuses[opposingSide] &= ~SIDE_STATUS_LIGHTSCREEN;
+        gSideStatuses[opposingSide] &= ~SIDE_STATUS_AURORA_VEIL;
         gSideTimers[opposingSide].reflectTimer = 0;
         gSideTimers[opposingSide].lightscreenTimer = 0;
+        gSideTimers[opposingSide].auroraVeilTimer = 0;
         gBattleScripting.animTurn = 1;
         gBattleScripting.animTargetsHit = 1;
     }
