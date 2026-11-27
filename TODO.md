@@ -279,11 +279,10 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
 
 ## Test content to remove
-Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items and the Pallet Town grass battles. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
+Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
 
 | Item | Where | Added by |
 |---|---|---|
-| Unplaced `Tester` script | `data/maps/Route2/scripts.pory` | You |
 | Unused original Fishing Guru script | `data/maps/VermilionCity_House1/scripts.pory` | You |
 | Screenshots and save states | Repository root | You |
 | **Debug menu** (hold B, press SELECT) | See below | Claude, at your request |
