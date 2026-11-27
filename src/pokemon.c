@@ -2520,6 +2520,16 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         attack = (150 * attack) / 100;
     if (defender->ability == ABILITY_MARVEL_SCALE && defender->status1)
         defense = (150 * defense) / 100;
+
+    // Sandstorm raises the Sp. Def of Rock types
+    if ((gBattleWeather & B_WEATHER_SANDSTORM) && WEATHER_HAS_EFFECT2
+     && (defender->type1 == TYPE_ROCK || defender->type2 == TYPE_ROCK))
+        spDefense = (150 * spDefense) / 100;
+    // Hail raises the Defense of Ice types
+    if ((gBattleWeather & B_WEATHER_HAIL) && WEATHER_HAS_EFFECT2
+     && (defender->type1 == TYPE_ICE || defender->type2 == TYPE_ICE))
+        defense = (150 * defense) / 100;
+
     if (type == TYPE_ELECTRIC && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_MUD_SPORT, 0))
         gBattleMovePower /= 2;
     if (type == TYPE_FIRE && AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_WATER_SPORT, 0))
@@ -2631,7 +2641,7 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
                 damage /= 2;
         }
 
-        if (attacker->ability == ABILITY_SOLAR_POWER && gBattleWeather & B_WEATHER_SUN)
+        if (attacker->ability == ABILITY_SOLAR_POWER && (gBattleWeather & B_WEATHER_SUN) && WEATHER_HAS_EFFECT2)
         damage = (15 * damage) / 10;
 
         // Moves hitting both targets do half damage in double battles

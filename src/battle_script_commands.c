@@ -996,8 +996,8 @@ static bool8 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
-    if ((WEATHER_HAS_EFFECT && (gBattleWeather & B_WEATHER_HAIL) && gBattleMoves[move].effect == EFFECT_FREEZE_HIT) 
-     || (gBattleMoves[move].effect == EFFECT_ALWAYS_HIT || gBattleMoves[move].effect == EFFECT_VITAL_THROW))
+    // Only Blizzard skips the accuracy check in hail
+    if (WEATHER_HAS_EFFECT && (gBattleWeather & B_WEATHER_HAIL) && move == MOVE_BLIZZARD)
     {
         JumpIfMoveFailed(7, move);
         return TRUE;
