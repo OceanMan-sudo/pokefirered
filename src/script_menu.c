@@ -14,11 +14,13 @@
 #include "malloc.h"
 #include "util.h"
 #include "item_menu_icons.h"
+#include "item.h"
 #include "field_specials.h"
 #include "menu_indicators.h"
 #include "constants/songs.h"
 #include "constants/seagallop.h"
 #include "constants/menu.h"
+#include "constants/items.h"
 
 struct DynamicListMenuEventArgs
 {
@@ -251,6 +253,18 @@ static const struct MenuAction sMultichoiceList_GameCornerTMPrizes[] = {
     { gText_Tm35_4000Coins },
     { gText_NoThanks_2 }
 };
+
+// The TM on each line of sMultichoiceList_GameCornerTMPrizes, in the same order
+static const u16 sGameCornerTMPrizeItems[] = {
+    ITEM_TM13,
+    ITEM_TM23,
+    ITEM_TM24,
+    ITEM_TM30,
+    ITEM_TM35
+};
+
+// For each line shown in the Game Corner TM menu, its line number in the full list
+static EWRAM_DATA u8 sGameCornerTMPrizeChoices[ARRAY_COUNT(sMultichoiceList_GameCornerTMPrizes)] = {0};
 
 static const struct MenuAction sMultichoiceList_GameCornerBattleItemPrizes[] = {
     { gText_SmokeBall_800Coins },
@@ -1128,8 +1142,28 @@ static void Task_HandleScrollingMultichoiceInput(u8 taskId)
     }
 }
 
+// Builds the Game Corner TM menu without the TMs the player already owns. The
+// map script picks the prize by line number in the full list, so remember that.
+static u8 BuildGameCornerTMPrizeList(struct MenuAction *dest)
+{
+    u8 i;
+    u8 count = 0;
+
+    for (i = 0; i < ARRAY_COUNT(sMultichoiceList_GameCornerTMPrizes); i++)
+    {
+        // The last line ("No thanks") has no TM and is always shown
+        if (i < ARRAY_COUNT(sGameCornerTMPrizeItems) && CheckBagHasItem(sGameCornerTMPrizeItems[i], 1))
+            continue;
+        dest[count] = sMultichoiceList_GameCornerTMPrizes[i];
+        sGameCornerTMPrizeChoices[count] = i;
+        count++;
+    }
+    return count;
+}
+
 static void DrawVerticalMultichoiceMenu(u8 left, u8 top, u8 mcId, u8 ignoreBpress, u8 initPos)
 {
+    struct MenuAction tmPrizes[ARRAY_COUNT(sMultichoiceList_GameCornerTMPrizes)];
     s32 i;
     s32 strWidth;
     s32 tmp;
@@ -1144,6 +1178,11 @@ static void DrawVerticalMultichoiceMenu(u8 left, u8 top, u8 mcId, u8 ignoreBpres
         ignoreBpress &= 1;
         count = sMultichoiceLists[mcId].count;
         list = sMultichoiceLists[mcId].list;
+        if (mcId == MULTICHOICE_GAME_CORNER_TMPRIZES)
+        {
+            count = BuildGameCornerTMPrizeList(tmPrizes);
+            list = tmPrizes;
+        }
         strWidth = 0;
         for (i = 0; i < count; i++)
         {
@@ -1251,6 +1290,8 @@ static void Task_MultichoiceMenu_HandleInput(u8 taskId)
                 break;
             default:
                 gSpecialVar_Result = input;
+                if (tMultichoiceId == MULTICHOICE_GAME_CORNER_TMPRIZES)
+                    gSpecialVar_Result = sGameCornerTMPrizeChoices[input];
                 break;
             }
             DestroyScriptMenuWindow(tWindowId);

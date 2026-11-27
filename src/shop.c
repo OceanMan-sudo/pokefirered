@@ -67,6 +67,7 @@ struct ShopData
              u16 itemSlot:2;
              u16 unk16_11:5;
     /*0x18*/ u16 unk18;
+    /*0x1A*/ u16 listedCount;   // itemCount minus the TMs left off the list
 };
 
 static EWRAM_DATA s16 sViewportObjectEvents[OBJECT_EVENTS_COUNT][4] = {0};
@@ -104,6 +105,8 @@ static void BuyMenuDecompressBgGraphics(void);
 static void RecolorItemDescriptionBox(bool32 a0);
 static void BuyMenuDrawGraphics(void);
 static bool8 BuyMenuBuildListMenuTemplate(void);
+static void BuyMenuSetListItems(void);
+static void BuyMenuRebuildList(u8 taskId);
 static void PokeMartWriteNameAndIdAt(struct ListMenuItem *list, u16 index, u8 *dst);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
@@ -507,8 +510,6 @@ static void BuyMenuDrawGraphics(void)
 
 bool8 BuyMenuBuildListMenuTemplate(void)
 {
-    u16 i, v;
-
     sShopMenuListMenu = Alloc((sShopData.itemCount + 1) * sizeof(*sShopMenuListMenu));
     if (sShopMenuListMenu == NULL
      || (sShopMenuItemStrings = Alloc((sShopData.itemCount + 1) * sizeof(*sShopMenuItemStrings))) == NULL)
@@ -518,15 +519,7 @@ bool8 BuyMenuBuildListMenuTemplate(void)
         return FALSE;
     }
 
-    for (i = 0; i < sShopData.itemCount; i++)
-    {
-        PokeMartWriteNameAndIdAt(&sShopMenuListMenu[i], sShopData.itemList[i], sShopMenuItemStrings[i]);
-    }
-    StringCopy(sShopMenuItemStrings[i], gFameCheckerText_Cancel);
-    sShopMenuListMenu[i].label = sShopMenuItemStrings[i];
-    sShopMenuListMenu[i].index = -2;
-    gMultiuseListMenuTemplate.items = sShopMenuListMenu;
-    gMultiuseListMenuTemplate.totalItems = sShopData.itemCount + 1;
+    BuyMenuSetListItems();
     gMultiuseListMenuTemplate.windowId = 4;
     gMultiuseListMenuTemplate.header_X = 0;
     gMultiuseListMenuTemplate.item_X = 9;
@@ -542,19 +535,61 @@ bool8 BuyMenuBuildListMenuTemplate(void)
     gMultiuseListMenuTemplate.itemPrintFunc = BuyMenuPrintPriceInList;
     gMultiuseListMenuTemplate.scrollMultiple = 0;
     gMultiuseListMenuTemplate.cursorKind = 0;
+    return TRUE;
+}
+
+// Fills in the lines of the buy list. TMs the player already owns are left off.
+static void BuyMenuSetListItems(void)
+{
+    u16 i, v, itemId;
+    u16 count = 0;
+
+    for (i = 0; i < sShopData.itemCount; i++)
+    {
+        itemId = sShopData.itemList[i];
+        if (ItemId_GetPocket(itemId) == POCKET_TM_CASE && CheckBagHasItem(itemId, 1))
+            continue;
+        PokeMartWriteNameAndIdAt(&sShopMenuListMenu[count], itemId, sShopMenuItemStrings[count]);
+        count++;
+    }
+    StringCopy(sShopMenuItemStrings[count], gFameCheckerText_Cancel);
+    sShopMenuListMenu[count].label = sShopMenuItemStrings[count];
+    sShopMenuListMenu[count].index = -2;
+    gMultiuseListMenuTemplate.items = sShopMenuListMenu;
+    gMultiuseListMenuTemplate.totalItems = count + 1;
 
     if (sShopData.martType == MART_TYPE_TMHM)
         v = 5;
     else
         v = 6;
 
-    if ((sShopData.itemCount + 1) > v)
+    if ((count + 1) > v)
         gMultiuseListMenuTemplate.maxShowed = v;
     else
-        gMultiuseListMenuTemplate.maxShowed = sShopData.itemCount + 1;
+        gMultiuseListMenuTemplate.maxShowed = count + 1;
 
+    sShopData.listedCount = count;
     sShopData.itemsShowed = gMultiuseListMenuTemplate.maxShowed;
-    return TRUE;
+}
+
+// Redraws the buy list after a line has dropped off it, keeping the cursor
+// where it was. The list can only have become shorter.
+static void BuyMenuRebuildList(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u16 position, lastScroll;
+
+    DestroyListMenuTask(tListTaskId, &sShopData.scrollOffset, &sShopData.selectedRow);
+    position = sShopData.scrollOffset + sShopData.selectedRow;
+    BuyMenuSetListItems();
+
+    // Don't scroll past the end of the shorter list
+    lastScroll = sShopData.listedCount + 1 - sShopData.itemsShowed;
+    if (sShopData.scrollOffset > lastScroll)
+        sShopData.scrollOffset = lastScroll;
+    sShopData.selectedRow = position - sShopData.scrollOffset;
+
+    tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, sShopData.scrollOffset, sShopData.selectedRow);
 }
 
 static void PokeMartWriteNameAndIdAt(struct ListMenuItem *list, u16 index, u8 *dst)
@@ -689,12 +724,12 @@ static void BuyMenuAddScrollIndicatorArrows(void)
     if (sShopData.martType != MART_TYPE_TMHM)
     {
         sShopData.unk16_11 = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 160, 8, 104,
-            (sShopData.itemCount - sShopData.itemsShowed) + 1, 110, 110, &sShopData.scrollOffset);
+            (sShopData.listedCount - sShopData.itemsShowed) + 1, 110, 110, &sShopData.scrollOffset);
     }
     else
     {
         sShopData.unk16_11 = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 160, 8, 88,
-            (sShopData.itemCount - sShopData.itemsShowed) + 1, 110, 110, &sShopData.scrollOffset);
+            (sShopData.listedCount - sShopData.itemsShowed) + 1, 110, 110, &sShopData.scrollOffset);
     }
 }
 
@@ -892,12 +927,7 @@ static void Task_BuyMenu(u8 taskId)
             BuyMenuPrintCursor(tListTaskId, 2);
             RecolorItemDescriptionBox(1);
             sShopData.itemPrice = ItemId_GetPrice(itemId);
-            if (ItemId_GetPocket(itemId) == POCKET_TM_CASE && CheckBagHasItem(itemId, 1))
-            {
-                CopyItemName(itemId, gStringVar1);
-                BuyMenuDisplayMessage(taskId, gText_YouAlreadyHaveVar1, BuyMenuReturnToItemList);
-            }
-            else if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData.itemPrice))
+            if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData.itemPrice))
             {
                 BuyMenuDisplayMessage(taskId, gText_YouDontHaveMoney, BuyMenuReturnToItemList);
             }
@@ -1011,9 +1041,14 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
 static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 {
+    s16 *data = gTasks[taskId].data;
+
     if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
+        // A TM that was just bought comes off the list
+        if (ItemId_GetPocket(tItemId) == POCKET_TM_CASE)
+            BuyMenuRebuildList(taskId);
         BuyMenuReturnToItemList(taskId);
     }
 }
