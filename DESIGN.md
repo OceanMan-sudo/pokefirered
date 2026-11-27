@@ -221,7 +221,7 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 ## World
 
 ### Expanded maps
-- **Pallet Town:** twice as wide (24 → 48), with tall grass, a pond and new houses.
+- **Pallet Town:** twice as wide (24 → 48), with a patch of tall grass (no wild Pokémon), a pond and new houses.
 - **Viridian City:** wider (48 → 60).
 - **Cinnabar Island:** taller (20 → 26).
 - Layout edits in Pewter, Cerulean, Vermilion, Celadon, Saffron, Route 5, Route 15, Route 20 and Pokémon Tower 1F.
@@ -347,7 +347,6 @@ The original game has 113 wild species across FireRed's tables; this hack has 21
 | Route 23 | **Grass/floor:** Primeape 38, Fearow 40, Arbok 41–44, Sandslash 41–44, Donphan 38–44, Larvitar 32, Tyrogue 33<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
 | Route 24 | **Grass/floor:** Snubbull 9, Mareep 11, Bellsprout 11–14, Oddish 12–13, Abra 10, Houndour 10–14<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
 | Route 25 | **Grass/floor:** Snubbull 12, Houndour 13, Bellsprout 11–13, Oddish 13–14, Abra 11, Mareep 9, Flaaffy 13<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
-| Pallet Town | **Grass/floor:** Murkrow 31, Kabuto 5, Unown 5, Krabby 5, Ivysaur 5, Venusaur 5, Bulbasaur 5, Heracross 5<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Krabby 5–15, Shellder 15–25, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
 | Cerulean City | **Grass/floor:** Marill 15–16, Houndour 16, Psyduck 15–17, Snubbull 17, Corsola 18–19<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
 | Celadon City | **Grass/floor:** Shroomish 19–21, Seedot 19–21, Exeggcute 21–22, Roselia 22–24, Chimecho 19<br>**Surf:** Psyduck 5–40, Koffing 30–40<br>**Fishing:** Magikarp 5–35, Grimer 30–40 |
 | Pokemon Tower B1F | **Grass/floor:** Misdreavus 15–18, Gastly 15–17, Duskull 16, Shuppet 16, Haunter 20, Cubone 15–17, Gengar 33 |
@@ -364,6 +363,6 @@ I checked wild tables, gifts, set encounters, evolution, and breeding and in-gam
 
 Also limited:
 - **Lugia, Ho-Oh and Deoxys** need event tickets, and I found nothing in the game that gives them.
-- **Charmander and Squirtle** come only as the starter choice. Bulbasaur also appears in Pallet Town grass.
+- **Bulbasaur, Charmander and Squirtle** come only as the starter choice.
 - **Raikou, Entei and Suicune** roam after the Sevii Islands quest, as in the original (one per save).
 - **Generation 3** Pokémon were not checked for completeness.

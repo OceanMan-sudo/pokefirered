@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 29 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 30 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -86,8 +86,10 @@ Tables were generated from the game files, so they show the **net difference** f
 | Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
 | Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
 | Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
+| New game PC back to the original single Potion | Not yet tested |
+| Removed the added Pallet Town grass encounters (BUG-01) | Not yet tested |
 
-These changes did not touch species data, TM compatibility, trainers or wild encounters. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+These changes did not touch species data, TM compatibility or trainers. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 

@@ -18,7 +18,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 
 | ID | Severity | Confidence | Short description | Status |
 |---|---|---|---|---|
-| BUG-01 | High | Likely | Wild battles can start in Pallet Town before you own a Pokémon | Deferred by you |
+| BUG-01 | High | Likely | Wild battles can start in Pallet Town before you own a Pokémon | Fixed, awaiting test |
 | BUG-02 | High | Confirmed | Magneton's level-up list is out of order | Fixed, tested |
 | BUG-03 | High | Confirmed | Cinnabar Battle House is a copy of the Cerulean one and has no trainers | Deferred by you |
 | BUG-04 | High | Confirmed | Only Mewtwo can learn the Route 15 elemental punches | Fixed, tested |
@@ -42,7 +42,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 ## High
 
 ### BUG-01: Wild battles can start in Pallet Town before you own a Pokémon
-**Status (2026-11-27):** Deferred. You are using Pallet Town for testing and will fix it later.
+**Status (2026-11-27):** Fixed, awaiting your test. The added Pallet Town grass encounters were removed, so the wild tables match the original game. The grass tiles remain as decoration.
 
 - **Where:** Pallet Town tall grass (6 tiles, map position x 22–24, y 3–4); table `sPalletTown_FireRed` in `src/data/wild_encounters.json`.
 - **Confirmed:** The grass is walkable and in the open next to the houses, it has an encounter table, and the encounter code (`src/wild_encounter.c`) does not check whether you have a Pokémon.

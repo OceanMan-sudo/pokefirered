@@ -41,7 +41,7 @@ Serious bugs, then easy features, then Fairy type and teams. Day/night and new P
 
 ### Phase 1: fix serious bugs
 Details are in [BUGS.md](BUGS.md).
-- [ ] BUG-01 Wild battles in Pallet Town before you have a Pokémon (**deferred:** fix with the Pallet Town clean-up)
+- [x] BUG-01 Wild battles in Pallet Town before you have a Pokémon (grass battles removed)
 - [x] BUG-02 Magneton's level-up order
 - [ ] BUG-03 Cinnabar Battle House free Choice Band (**deferred:** to be changed later)
 - [x] BUG-04 Route 15 punch compatibility (newer games' lists)
@@ -123,7 +123,7 @@ For each area:
 
 | Area | Now | Clean-up | Encounters | Teams |
 |---|---|---|---|---|
-| Pallet Town | Rival fight; wild tables changed 1/1, Lv 5–31; 3 new maps; BUG-01, test shortcuts | ☐ | ☐ | ☐ |
+| Pallet Town | Rival fight; wild tables same as the original; 3 new maps | ☐ | ☐ | ☐ |
 | Route 1 | Wild tables changed 1/1, Lv 2–5 | ☐ | ☐ | — |
 | Viridian City | Wild tables changed 0/1; 1 new map; Nuzlocke house; Old Rod hint (BUG-07) | ☐ | ☐ | — |
 | Route 22 | Rival fight; wild tables changed 1/1, Lv 2–5 | ☐ | ☐ | ☐ |
@@ -276,14 +276,13 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Mom's gift in Pewter City, for each starter if possible
 - [x] Debug menu: every option (hold B, press SELECT)
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
+- [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
 
 ## Test content to remove
-Removed on 27 November 2026: the Pallet Town Giovanni and chef, and the nine warp doors. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
+Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items and the Pallet Town grass battles. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
 
 | Item | Where | Added by |
 |---|---|---|
-| Starting PC items (likely) | `src/player_pc.c` | You |
-| Level 31 Murkrow and rare species in Pallet grass (possibly) | `wild_encounters.json` | You |
 | Unplaced `Tester` script | `data/maps/Route2/scripts.pory` | You |
 | Unused original Fishing Guru script | `data/maps/VermilionCity_House1/scripts.pory` | You |
 | Screenshots and save states | Repository root | You |
@@ -310,7 +309,7 @@ A code check found no way to get these 88 Pokémon (wild, gifts, set encounters,
 Also note:
 - Mantine appears only in the unreachable Seafoam Resort. Lugia, Ho-Oh and Deoxys need event tickets nothing gives. The Root and Claw Fossils have no source.
 - Only one of Raikou, Entei and Suicune appears per save, and some others are one-time choices (starters, fossils), so a single save needs another source for the rest.
-- Some of today's sources, such as the Pallet Town grass, may be removed during clean-up.
+- Some of today's sources may be removed during clean-up. With the Pallet Town grass battles gone, the Bulbasaur line comes only from the starter choice.
 
 ## Your original roadmap outline
 
