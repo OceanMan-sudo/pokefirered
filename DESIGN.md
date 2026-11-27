@@ -1,0 +1,347 @@
+# DESIGN — current game design and mechanics
+
+This describes the game as it stands on `claude-edits` (audit of 27 November 2026). For before-and-after details see [CHANGELOG.md](CHANGELOG.md). For problems see [BUGS.md](BUGS.md).
+
+**How to read this:** Everything here was read from the code and data (**confirmed in code**) unless marked **Assumption**. **Tested** means you reported that it worked in game. Anything not marked Tested has no recorded in-game confirmation.
+
+## Battle mechanics
+
+### Physical/Special split
+Each move is Physical, Special or Status on its own, whatever its type. An icon in the battle move menu shows which. Counter and Mirror Coat follow the category.
+
+### Damage rules that differ from the original
+- Type-boosting held items (Charcoal and so on) boost both Attack and Sp. Atk.
+- Thick Fat halves the move's power.
+- Weather and Flash Fire apply to physical moves as well as special ones.
+- Light Ball doubles Pikachu's Sp. Atk only.
+- Sky Attack no longer has a high critical-hit rate.
+
+### Weather
+| Weather | Effects added or changed |
+|---|---|
+| Sandstorm | Rock types get 1.5× Sp. Def |
+| Hail | Ice types get 1.5× Defense. Blizzard never misses |
+| Rain | Routes 12 and 13 are now rainy |
+
+### New abilities
+| Ability | What it does here | Pokémon with it |
+|---|---|---|
+| Solar Power | 1.5× special damage in sun, no HP loss | Charmander, Charmeleon, Charizard, Sunkern, Sunflora, Houndoom |
+| Super Luck | Higher critical-hit chance (+1 stage) | Spearow, Fearow, Farfetch'd, Spinarak, Ariados, Murkrow, Remoraid, Octillery |
+| Technician | 1.5× for moves with 60 power or less | Meowth, Persian, Mr. Mime, Scyther, Furret, Aipom, Scizor, Smeargle, Hitmontop |
+| Ice Body | Heals 1/16 HP each turn in hail | Seel, Dewgong |
+| Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Hitmonchan, Kangaskhan, Ledian |
+| Reckless | 1.2× for recoil and jump-kick moves, including Sky Attack | Hitmonlee, Rhyhorn, Rhydon |
+| Snow Warning | Starts permanent hail on entering | Jynx, Delibird |
+| Snow Cloak | Attacks against it are 20% less accurate in hail | Articuno, Sneasel, Swinub, Piloswine |
+
+95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+
+### Battle conveniences
+- You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
+- In wild battles, pressing **B** on the action menu jumps the cursor to **RUN**.
+
+## Training and progression
+
+### EVs and IVs
+- A single stat can hold up to **252** EVs (total limit unchanged at 510).
+- Vitamins now work up to 252 in a stat (originally 100).
+- On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
+
+### Level-up moves
+230 Pokémon have changed level-up lists (Generations 1 and 2). Learnset work is paused until you restart it.
+
+### TMs
+- TMs are reusable.
+- You own at most one of each. Receiving a duplicate still "succeeds", so gifts and item balls behave normally.
+- TMs cannot be sold or held, and the TM Case shows no quantity.
+- TMs you own are not listed in marts or at the Game Corner.
+- The Pickup ability gives Leftovers where it used to give TM10.
+
+### HMs and field moves
+- An HM move works outside battle if you have its badge and either a Pokémon that **knows** it, or the **HM item** and a Pokémon that **can learn** it (**Tested**).
+- The party menu lists an HM move only when you can use it where you are (five field moves at most).
+- Other field moves (such as Dig) still have to be learned.
+- HM moves can be forgotten like any other move.
+- You cannot release your last Pokémon able to use Surf, once you have the Soul Badge and HM03 (**Tested**).
+- Rock Tunnel is dark until Flash is used (**Tested**).
+
+### National Dex and game-clear checks
+- The National Dex is enabled when you first receive the Pokédex, so Pokémon from later regions can evolve and be recorded from the start.
+- Places that used to require the National Dex (Indigo Plateau, the One Island Celio quest) now check that you have beaten the game.
+
+### Running
+Hold **B** to run, as in the original. Running is now allowed inside the player's house 1F, Viridian School and one Vermilion house, and in the new buildings.
+
+## Evolution
+
+No Pokémon needs to be traded. Former trade-item evolutions work by using the item on the Pokémon.
+
+| Pokémon | Original | Now |
+|---|---|---|
+| Poliwag | Poliwhirl: level 25 | Poliwhirl: level 18 |
+| Poliwhirl | Politoed: trade holding Kings Rock | Politoed: use Kings Rock |
+| Kadabra | Alakazam: trade | Alakazam: level 38 |
+| Machop | Machoke: level 28 | Machoke: level 18 |
+| Machoke | Machamp: trade | Machamp: level 38 |
+| Geodude | Graveler: level 25 | Graveler: level 18 |
+| Graveler | Golem: trade | Golem: level 38 |
+| Ponyta | Rapidash: level 40 | Rapidash: level 28 |
+| Slowpoke | Slowbro: level 37; Slowking: trade holding Kings Rock | Slowbro: level 32; Slowking: use Kings Rock |
+| Seel | Dewgong: level 34 | Dewgong: level 30 |
+| Gastly | Haunter: level 25 | Haunter: level 24 |
+| Haunter | Gengar: trade | Gengar: level 40 |
+| Onix | Steelix: trade holding Metal Coat | Steelix: use Metal Coat |
+| Koffing | Weezing: level 35 | Weezing: level 30 |
+| Rhyhorn | Rhydon: level 42 | Rhydon: level 34 |
+| Horsea | Seadra: level 32 | Seadra: level 22 |
+| Seadra | Kingdra: trade holding Dragon Scale | Kingdra: use Dragon Scale |
+| Goldeen | Seaking: level 33 | Seaking: level 25 |
+| Scyther | Scizor: trade holding Metal Coat | Scizor: use Metal Coat |
+| Eevee | Espeon: friendship day; Umbreon: friendship night | Espeon: use Sun Stone; Umbreon: use Moon Stone |
+| Porygon | Porygon2: trade holding Up Grade | Porygon2: use Up Grade |
+| Omanyte | Omastar: level 40 | Omastar: level 28 |
+| Kabuto | Kabutops: level 40 | Kabutops: level 28 |
+| Dragonair | Dragonite: level 55 | Dragonite: level 50 |
+| Slugma | Magcargo: level 38 | Magcargo: level 33 |
+| Swinub | Piloswine: level 33 | Piloswine: level 30 |
+| Smoochum | Jynx: level 30 | Jynx: level 25 |
+| Elekid | Electabuzz: level 30 | Electabuzz: level 25 |
+| Magby | Magmar: level 30 | Magmar: level 25 |
+| Pupitar | Tyranitar: level 55 | Tyranitar: level 50 |
+| Feebas | Milotic: beauty 170 | Milotic: level 20 |
+| Clamperl | Huntail: trade holding Deep Sea Tooth; Gorebyss: trade holding Deep Sea Scale | Huntail: use Deep Sea Tooth; Gorebyss: use Deep Sea Scale |
+
+Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff, Togepi and Azurill.
+
+## Moves
+
+### 26 new moves
+† added with Claude.
+
+| Move | Type | Category | Power | Acc | PP | Effect code |
+|---|---|---|---|---|---|---|
+| Dragon Pulse | Dragon | Special | 90 | 100 | 15 | Hit |
+| Focus Blast | Fighting | Special | 110 | 80 | 10 | Special Defense Down Hit (10%) |
+| Shadow Claw | Ghost | Physical | 70 | 100 | 20 | High Critical |
+| Dark Pulse | Dark | Special | 80 | 100 | 15 | Flinch Hit (20%) |
+| Roost | Flying | Status | — | — | 5 | Restore Hp |
+| Bullet Punch | Steel | Physical | 40 | 100 | 30 | Quick Attack, priority 1 |
+| Flare Blitz | Fire | Physical | 120 | 100 | 10 | Recoil |
+| Poison Jab | Poison | Physical | 80 | 100 | 15 | Poison Hit (20%) |
+| Earth Power | Ground | Special | 80 | 100 | 15 | Special Defense Down Hit (10%) |
+| Giga Impact | Normal | Physical | 150 | 90 | 5 | Recharge |
+| Ice Shard | Ice | Physical | 40 | 100 | 30 | Quick Attack, priority 1 |
+| Shadow Sneak | Ghost | Physical | 40 | 100 | 30 | Quick Attack, priority 1 |
+| Psycho Power | Psychic | Physical | 90 | 100 | 30 | Defense Down Hit (10%) |
+| Flash Cannon | Steel | Special | 80 | 100 | 15 | Special Defense Down Hit (10%) |
+| Draco Meteor | Dragon | Special | 140 | 90 | 5 | Overheat |
+| Leaf Storm | Grass | Special | 140 | 90 | 5 | Overheat |
+| Ominous Wind | Ghost | Special | 60 | 100 | 5 | All Stats Up Hit (10%) |
+| Scorch Sand | Ground | Special | 70 | 100 | 15 | Burn Hit (30%) |
+| Nasty Plot | Dark | Status | — | 100 | 20 | Special Attack Up 2 |
+| X-Scissor | Bug | Physical | 80 | 100 | 15 | Hit |
+| Seed Bomb | Grass | Physical | 80 | 100 | 15 | Hit |
+| Drain Punch | Fighting | Physical | 75 | 100 | 15 | Absorb |
+| Aqua Jet | Water | Physical | 40 | 100 | 30 | Quick Attack, priority 1 |
+| Boomburst | Normal | Special | 140 | 100 | 15 | Hit |
+| Night Slash | Dark | Physical | 70 | 100 | 20 | High Critical |
+| Aura Sphere † | Fighting | Special | 80 | never misses | 20 | Always Hit |
+
+"Effect code" is the name of the battle effect the move uses.
+
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand and Aura Sphere are on no level-up list**, and Shadow Sneak is on one. (Aura Sphere is currently only available from a temporary test character.) No new TMs or egg moves use them.
+
+62 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
+
+Animations for thirteen of the new moves were fixed or redrawn with Claude (**Tested**).
+
+### Move tutors and relearner
+- **Move relearner**, free: Fuchsia City House 3 and the new Cerulean City house.
+- **Route 15 House of Elements:** Ice Punch, Fire Punch and Thunder Punch tutors (only Mewtwo is compatible at present, see BUG-04).
+
+## Items and shops
+
+No new items were created. These sources were added or changed:
+
+| Where | Sells |
+|---|---|
+| Celadon Dept. Store 4F | Original stock plus Sun Stone and Moon Stone |
+| Celadon Dept. Store 4F, "evolution seller" | Metal Coat, King's Rock, Dragon Scale, Up-Grade, Deep Sea Tooth, Deep Sea Scale |
+| Celadon Dept. Store 5F | Magnet, Charcoal, Miracle Seed, Mystic Water, Focus Band, Smoke Ball (vitamins removed here) |
+| Celadon Vitamin House | HP Up, Protein, Iron, Carbos, Calcium, Zinc, PP Up, PP Max |
+| Celadon Vitamin House, second seller | MooMoo Milk, Lava Cookie, Berry Juice |
+| Celadon Poké Ball shop | Poké, Great, Ultra, Luxury, Nest, Net, Dive, Timer and Repeat Balls |
+| Pewter Berry House | Cheri, Chesto, Pecha, Rawst, Aspear, Leppa, Oran, Persim Berries |
+| Vermilion Berry House | Figy, Wiki, Mago, Aguav, Iapapa, Oran Berries |
+| Celadon Berry House | Sitrus, Lum, Enigma, Leppa Berries |
+
+### Gifts
+| Gift | Where |
+|---|---|
+| Cheri Berry | A boy in Pallet Town |
+| Old Rod | A fisherman in Viridian City |
+| Good Rod | Vermilion City house (replaces the original Old Rod there) |
+| 99 Rare Candies, refilled when you run out | Viridian City, House of Nuzlocke |
+| TM10 Hidden Power, later a Focus Band after all 8 badges | Mr. Nuzlocke, same house |
+| Macho Brace | Celadon Vitamin House |
+| Nest Ball | Item ball in Fuchsia City |
+| Enigma Berry | A woman on Cinnabar Island |
+| Shell Bell | Cerulean Battle House prize |
+| Bright Powder | Saffron Battle House prize |
+| Choice Band | Cinnabar Battle House (faulty, see BUG-03) |
+
+### Fossils
+The Vermilion Fossil House revives Helix, Dome and Old Amber (and Root and Claw, which cannot currently be obtained) instantly, at level 20.
+
+Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon Scale, Goldeen and Lapras a Mystic Water, Sentret an Oran Berry. Nidoqueen can now breed.
+
+## World
+
+### Expanded maps
+- **Pallet Town:** twice as wide (24 → 48), with tall grass, a pond and new houses.
+- **Viridian City:** wider (48 → 60).
+- **Cinnabar Island:** taller (20 → 26).
+- Layout edits in Pewter, Cerulean, Vermilion, Celadon, Saffron, Route 5, Route 15, Route 20 and Pokémon Tower 1F.
+- Some Cut trees removed (four in Fuchsia, one on Route 15).
+- Oak's Aide removed from Vermilion City.
+- Routes 12 and 13 now have rain.
+
+### 18 new maps
+| Map | Contents | State |
+|---|---|---|
+| Pallet new home 1 (1F, 2F) | Residents | In use |
+| Pallet new home 2 | Residents | In use |
+| Viridian House of Nuzlocke | Rare Candies, Mr. Nuzlocke, rules signs | In use |
+| Pewter Berry House | Berry shop | In use |
+| Cerulean "Always Been Here" house | Move relearner | In use |
+| Cerulean Battle House | 3 trainers, Shell Bell | In use |
+| Vermilion Berry House | Berry shop | In use |
+| Vermilion Fossil House | Fossil revival | In use |
+| `NewMap1` (Vermilion) | Surge fan, truck rumour | Reachable; placeholder name |
+| Pokémon Tower B1F | Wild Pokémon only | Reachable from 1F; no people or items (**Assumption:** unfinished) |
+| Celadon Vitamin House | Two shops, Macho Brace, EV talk | In use |
+| Celadon Berry House | Berry shop | In use |
+| Celadon Poké Ball shop | Ball shop | In use |
+| Saffron Battle House | 4 trainers, Bright Powder | In use |
+| Cinnabar Battle House | Clerk only | Unfinished |
+| Route 15 House of Elements | Punch tutors | Mostly unusable (BUG-04) |
+| Seafoam Resort | 7 characters with no dialogue, surfing encounters | Unreachable, unfinished |
+
+## Trainers
+
+### Gym leaders and Elite Four
+| Boss | Team (species, level) | Status |
+|---|---|---|
+| Brock | Geodude 13, Zubat 12, Onix 14 | Changed |
+| Misty | Psyduck 20, Corsola 21, Starmie 23 | Changed |
+| Lt. Surge | Lanturn 23, Voltorb 21, Elekid 22, Raichu 26 | Changed |
+| Erika | Victreebel 33, Sunflora 32, Tangela 32, Vileplume 34 | Changed |
+| Koga | Crobat 39, Ariados 38, Muk 41, Venomoth 38, Weezing 43 | Changed |
+| Sabrina | Mr. Mime 39, Espeon 41, Haunter 37, Girafarig 37, Alakazam 44 | Changed |
+| Blaine | Magcargo 43, Rapidash 44, Magmar 45, Octillery 44, Arcanine 46 | Changed |
+| Giovanni | Rhyhorn 45, Dugtrio 42, Nidoqueen 44, Nidoking 45, Rhyhorn 50 | Original |
+| Lorelei | Dewgong 52, Cloyster 51, Slowbro 52, Jynx 54, Lapras 54 | Original |
+| Bruno | Onix 51, Hitmonchan 53, Hitmonlee 53, Onix 54, Machamp 56 | Original |
+| Agatha | Gengar 54, Golbat 54, Haunter 53, Arbok 56, Gengar 58 | Original |
+| Lance | Gyarados 56, Dragonair 54, Dragonair 54, Aerodactyl 58, Dragonite 60 | Original |
+
+The rival and Champion teams are unchanged. Full movesets for changed trainers are in [CHANGELOG.md](CHANGELOG.md#trainers). Koga, Erika and Lt. Surge were committed with the note "UNTESTED".
+
+### Other additions
+- **Cerulean Battle House** (levels 15–16): Youngster Jamie, Black Belt Rogan, Hiker Jones.
+- **Saffron Battle House** (levels 34–37): Brendan, May, Cooltrainer Duke, Cooltrainer Sylvia.
+- **Route 2:** Picnicker Sally (level 5).
+- **Route 24 (Nugget Bridge):** five of the battles are now double battles.
+- **Rocket Hideout:** Giovanni leads with Persian.
+
+## Where to find Pokémon (changed and new areas)
+
+The original game has 113 wild species across FireRed's tables; this hack has 214. Areas not listed keep their original Pokémon. Seafoam Resort is listed but cannot be reached.
+
+| Location | Pokémon (level range) |
+|---|---|
+| Viridian Forest | **Grass/floor:** Caterpie 4–5, Weedle 4, Pineco 5, Spinarak 3, Ledyba 3, Metapod 5, Kakuna 4–5, Pikachu 3–5, Pidgeotto 8 |
+| Mt Moon 1F | **Grass/floor:** Zubat 7–8, Geodude 7–9, Teddiursa 9, Phanpy 9, Paras 7–8, Cleffa 7, Clefairy 8 |
+| Mt Moon B1F | **Grass/floor:** Paras 5–10, Parasect 10 |
+| Mt Moon B2F | **Grass/floor:** Zubat 8–11, Geodude 9–10, Teddiursa 9, Phanpy 9, Paras 10–12, Clefairy 10–12, Cleffa 11 |
+| Digletts Cave B1F | **Grass/floor:** Diglett 17–22, Phanpy 15–17, Swinub 16, Dugtrio 29–31 |
+| Victory Road 1F | **Grass/floor:** Rhyhorn 37, Graveler 38, Onix 40–46, Golbat 38–44, Golem 49, Ursaring 44–46, Tyrogue 44, Steelix 46 |
+| Victory Road 2F | **Grass/floor:** Donphan 37, Graveler 38, Marowak 40, Machoke 43–46, Golbat 38–44, Golem 49, Larvitar 33, Pupitar 49 |
+| Victory Road 3F | **Grass/floor:** Donphan 37, Graveler 38, Gligar 40–44, Ursaring 43, Onix 46–48, Golem 50, Bagon 33, Shelgon 49, Steelix 55 |
+| Pokemon Mansion 1F | **Grass/floor:** Slugma 28–30, Grimer 28–32, Koffing 30–34, Magmar 35, Magcargo 36, Weezing 32, Muk 32 |
+| Pokemon Mansion 2F | **Grass/floor:** Slugma 28–30, Grimer 28–32, Koffing 30–34, Magmar 35, Magcargo 36, Weezing 32, Muk 32 |
+| Pokemon Mansion 3F | **Grass/floor:** Slugma 28–30, Grimer 28–32, Koffing 30–34, Magmar 35, Magcargo 36, Weezing 32, Muk 32, Castform 30 |
+| Pokemon Mansion B1F | **Grass/floor:** Slugma 30, Grimer 28–32, Koffing 30–34, Magmar 35, Magcargo 36–42, Weezing 32, Muk 32 |
+| Rock Tunnel 1F | **Grass/floor:** Zubat 15–16, Geodude 16, Rhyhorn 16–17, Machop 16–17, Skarmory 17–18, Onix 13–15 |
+| Rock Tunnel B1F | **Grass/floor:** Zubat 15–16, Geodude 17, Sneasel 16–17, Machop 16–17, Onix 13–22, Skarmory 16–19<br>**Rock Smash:** Geodude 5–30, Graveler 25–40 |
+| Seafoam Islands 1F | **Grass/floor:** Seel 27–28, Swinub 29–31, Zubat 22–26, Golbat 26–30, Piloswine 30–33 |
+| Seafoam Islands B1F | **Grass/floor:** Seel 27–28, Swinub 29–31, Zubat 22–26, Golbat 26–30, Piloswine 30–33 |
+| Seafoam Islands B2F | **Grass/floor:** Seel 30, Swinub 29–32, Sneasel 28–32, Jynx 26–34 |
+| Seafoam Islands B3F | **Grass/floor:** Piloswine 30, Sneasel 24–32, Delibird 32, Jynx 26–34<br>**Surf:** Shellder 25–35, Seel 25–30, Dewgong 30–40<br>**Fishing:** Magikarp 5–15, Horsea 5–30, Krabby 5–15, Gyarados 15–35, Psyduck 15–25 |
+| Seafoam Islands B4F | **Grass/floor:** Delibird 24–32, Sneasel 32, Jynx 26–34<br>**Surf:** Shellder 25–35, Seel 25–30, Dewgong 30–40<br>**Fishing:** Magikarp 5–15, Horsea 5–30, Krabby 5–15, Gyarados 15–35, Psyduck 15–25 |
+| Pokemon Tower 3F | **Grass/floor:** Gastly 15–16, Vulpix 13–19, Noctowl 18, Cubone 15–17, Haunter 20 |
+| Pokemon Tower 4F | **Grass/floor:** Gastly 15–17, Misdreavus 13–17, Noctowl 14, Cubone 15–18, Haunter 20, Ninetales 26 |
+| Pokemon Tower 5F | **Grass/floor:** Gastly 16–19, Misdreavus 13–17, Noctowl 18, Haunter 20, Cubone 15–17 |
+| Pokemon Tower 6F | **Grass/floor:** Gastly 16–18, Misdreavus 14–19, Haunter 21–23, Cubone 17–19 |
+| Pokemon Tower 7F | **Grass/floor:** Gastly 16–18, Misdreavus 15–19, Haunter 23–25, Cubone 17–19 |
+| Power Plant | **Grass/floor:** Voltorb 22–25, Magnemite 22–25, Muk 29, Pikachu 24, Magneton 31–34, Electabuzz 30–35 |
+| Mt Ember Exterior | **Grass/floor:** Numel 30–33, Meditite 30–34, Medicham 39, Trapinch 33, Vibrava 36, Camerupt 42<br>**Rock Smash:** Geodude 5–30, Graveler 25–40 |
+| Mt Ember Summit Path 1F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39 |
+| Mt Ember Summit Path 2F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 5–30, Graveler 25–40 |
+| Mt Ember Summit Path 3F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39 |
+| Mt Ember Ruby Path 1F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 25–40, Graveler 30–50 |
+| Mt Ember Ruby Path B1F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 25–40, Graveler 30–50 |
+| Mt Ember Ruby Path B2F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 25–40, Graveler 30–50 |
+| Mt Ember Ruby Path B3F | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Slugma 15–35, Magcargo 25–45 |
+| Mt Ember Ruby Path B1F Stairs | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 25–40, Graveler 30–50 |
+| Mt Ember Ruby Path B2F Stairs | **Grass/floor:** Makuhita 31–33, Slugma 29–35, Aron 31–33, Torkoal 35–37, Machoke 37–39<br>**Rock Smash:** Geodude 25–40, Graveler 30–50 |
+| Three Island Berry Forest | **Grass/floor:** Wurmple 30–32, Silcoon 36, Cascoon 36, Slakoth 34, Vigoroth 38–39, Illumise 37, Volbeat 37, Hypno 44<br>**Surf:** Psyduck 5–40, Golduck 35–40<br>**Fishing:** Magikarp 5–15, Goldeen 5–25, Poliwag 5–15, Seaking 20–30, Gyarados 15–25, Psyduck 15–35 |
+| One Island Kindle Road | **Grass/floor:** Taillow 30–32, Numel 33–34, Swellow 27–40, Meditite 31–33, Spoink 32–33, Camerupt 40<br>**Surf:** Tentacool 5–40, Tentacruel 35–40<br>**Rock Smash:** Geodude 5–30, Graveler 25–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
+| One Island Treasure Beach | **Grass/floor:** Lotad 32, Skitty 33, Lombre 35, Corphish 35–36, Wingull 31–33, Pelipper 40<br>**Surf:** Tentacool 5–40, Tentacruel 35–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
+| Two Island Cape Brink | **Grass/floor:** Taillow 31–33, Poochyena 30–32, Zigzagoon 31–33, Swellow 38, Mightyena 40, Linoone 37–40, Persian 37–40<br>**Surf:** Psyduck 5–40, Golduck 35–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
+| Three Island Bond Bridge | **Grass/floor:** Electrike 29–32, Gulpin 31, Swalot 39, Minun 36, Plusle 36, Ralts 31–34, Kirlia 37–40, Manectric 40<br>**Surf:** Tentacool 5–40, Tentacruel 35–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
+| Three Island Port | **Grass/floor:** Spinda 10–30, Dunsparce 5–35 |
+| Route 1 | **Grass/floor:** Pidgey 2–3, Rattata 3–4, Pichu 2, Sentret 3–5, Eevee 3 |
+| Route 2 | **Grass/floor:** Pidgey 3–4, Rattata 3–4, Vulpix 3, Hoothoot 4, Hoppip 5, Mankey 4–5 |
+| Route 3 | **Grass/floor:** Spearow 6–8, Pidgey 6, Teddiursa 7, Mankey 7, Nidoran♂ 6–7, Phanpy 7, Jigglypuff 3–7, Nidoran♀ 6 |
+| Route 4 | **Grass/floor:** Sandshrew 10, Ekans 10, Spearow 10–13, Smoochum 10–12, Magby 10–12, Elekid 10–12, Corsola 12<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 5 | **Grass/floor:** Meowth 10–12, Pidgey 13, Farfetch'd 13–16, Psyduck 15, Lickitung 16 |
+| Route 6 | **Grass/floor:** Meowth 13, Natu 13, Ekans 13–15, Sandshrew 12–15, Psyduck 14–16, Golduck 16<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
+| Route 7 | **Grass/floor:** Aipom 17–19, Teddiursa 17, Oddish 19, Bellsprout 18, Weepinbell 22, Gloom 22, Skiploom 17–19, Scyther 20, Sudowoodo 20 |
+| Route 8 | **Grass/floor:** Ponyta 16–18, Teddiursa 18, Pidgeotto 20, Aipom 17–20, Murkrow 15–19, Smeargle 18 |
+| Route 9 | **Grass/floor:** Spearow 16, Rattata 16, Venonat 15–16, Tangela 13–14, Slowpoke 15–18 |
+| Route 10 | **Grass/floor:** Wooper 13–17, Voltorb 14–16, Venonat 11–15, Yanma 13–17<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 11 | **Grass/floor:** Farfetch'd 14, Natu 15, Growlithe 12–13, Drowzee 11–13, Magnemite 12–17, Heracross 15, Magneton 22<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 12 | **Grass/floor:** Poliwag 24, Krabby 24, Marill 22–26, Tauros 23, Miltank 25, Poliwhirl 26–27, Growlithe 23–28, Politoed 33<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 13 | **Grass/floor:** Ledian 24–29, Stantler 24–28, Girafarig 22–27, Tauros 26, Miltank 26, Shuckle 25–26, Chansey 30<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 14 | **Grass/floor:** Pidgeotto 24, Furret 24, Ledian 22, Ditto 23, Nidorino 26–27, Nidorina 26–27, Girafarig 26–29 |
+| Route 15 | **Grass/floor:** Gloom 24, Weepinbell 24, Gligar 22–26, Pidgeotto 25–27, Ditto 25, Mr. Mime 28–30 |
+| Route 16 | **Grass/floor:** Meowth 20, Doduo 18–20, Ponyta 18–23, Snubbull 20, Persian 24, Granbull 22, Pinsir 22–25 |
+| Route 17 | **Grass/floor:** Ponyta 20, Doduo 24–26, Koffing 22–25, Raticate 25–27, Fearow 28–29, Rapidash 30 |
+| Route 18 | **Grass/floor:** Koffing 20–22, Doduo 24–26, Raticate 25–29, Fearow 25, Ariados 26–28, Dodrio 27–29, Weezing 29 |
+| Route 21 North | **Grass/floor:** Tangela 22–28, Pidgeotto 25, Poliwhirl 22–28, Kangaskhan 29, Dunsparce 25–28<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Krabby 5–15, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
+| Route 22 | **Grass/floor:** Nidoran♀ 3, Nidoran♂ 3, Mankey 4, Hoppip 2, Spearow 2–5, Jigglypuff 5<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
+| Route 23 | **Grass/floor:** Primeape 38, Fearow 40, Arbok 41–44, Sandslash 41–44, Donphan 38–44, Larvitar 32, Tyrogue 33<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
+| Route 24 | **Grass/floor:** Snubbull 9, Mareep 11, Bellsprout 11–14, Oddish 12–13, Abra 10, Houndour 10–14<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Route 25 | **Grass/floor:** Snubbull 12, Houndour 13, Bellsprout 11–13, Oddish 13–14, Abra 11, Mareep 9, Flaaffy 13<br>**Surf:** Psyduck 20–40<br>**Fishing:** Magikarp 5–15, Poliwag 5–25, Goldeen 5–15, Poliwhirl 20–30, Gyarados 15–25, Psyduck 15–35 |
+| Pallet Town | **Grass/floor:** Murkrow 31, Kabuto 5, Unown 5, Krabby 5, Ivysaur 5, Venusaur 5, Bulbasaur 5, Heracross 5<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–25, Krabby 5–15, Shellder 15–25, Gyarados 15–25, Seadra 25–35, Psyduck 25–35 |
+| Cerulean City | **Grass/floor:** Marill 15–16, Houndour 16, Psyduck 15–17, Snubbull 17, Corsola 18–19<br>**Surf:** Tentacool 5–40<br>**Fishing:** Magikarp 5–15, Horsea 5–35, Krabby 5–15, Gyarados 15–25, Psyduck 25–35 |
+| Celadon City | **Grass/floor:** Shroomish 19–21, Seedot 19–21, Exeggcute 21–22, Roselia 22–24, Chimecho 19<br>**Surf:** Psyduck 5–40, Koffing 30–40<br>**Fishing:** Magikarp 5–35, Grimer 30–40 |
+| Pokemon Tower B1F | **Grass/floor:** Misdreavus 15–18, Gastly 15–17, Duskull 16, Shuppet 16, Haunter 20, Cubone 15–17, Gengar 33 |
+| Seafoam Resort | **Surf:** Wooper 23–24, Quagsire 28–31, Mantine 21–55 |
+| Pewter City | **Grass/floor:** Rattata 3–4, Hoothoot 4, Sunkern 3–5, Vulpix 4–6, Poliwag 3–5 |
+
+### Not obtainable (from Pokémon #1–251)
+I checked wild tables, gifts, set encounters, evolution, and breeding and in-game trades:
+
+- **Staryu, Starmie, Chinchou, Lanturn, Remoraid, Octillery**
+- **Mantine** (only in the unreachable Seafoam Resort)
+- **All Johto starters** and their evolutions (9 Pokémon)
+- **Mew and Celebi** (event Pokémon)
+
+Also limited:
+- **Lugia, Ho-Oh and Deoxys** need event tickets, and I found nothing in the game that gives them.
+- **Charmander and Squirtle** come only as the starter choice. Bulbasaur also appears in Pallet Town grass.
+- **Raikou, Entei and Suicune** roam after the Sevii Islands quest, as in the original (one per save).
+- **Generation 3** Pokémon were not checked for completeness.
