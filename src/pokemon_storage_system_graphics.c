@@ -907,26 +907,6 @@ void DestroyReleaseMonIcon(void)
     }
 }
 
-void DoReleaseMonComeBackAnim(void)
-{
-    if (*gStorage->releaseMonSpritePtr != NULL)
-    {
-        (*gStorage->releaseMonSpritePtr)->invisible = FALSE;
-        StartSpriteAffineAnim(*gStorage->releaseMonSpritePtr, RELEASE_ANIM_COME_BACK);
-    }
-}
-
-bool8 ResetReleaseMonSpritePtr(void)
-{
-    if (gStorage->releaseMonSpritePtr == NULL)
-        return FALSE;
-
-    if ((*gStorage->releaseMonSpritePtr)->affineAnimEnded)
-        gStorage->releaseMonSpritePtr = NULL;
-
-    return TRUE;
-}
-
 void SetMovingMonPriority(u8 priority)
 {
     gStorage->movingMonSprite->oam.priority = priority;

@@ -5,6 +5,7 @@
 #include "mail_data.h"
 #include "menu.h"
 #include "new_menu_helpers.h"
+#include "party_menu.h"
 #include "pokemon_storage_system_internal.h"
 #include "pokemon_summary_screen.h"
 #include "strings.h"
@@ -738,116 +739,76 @@ void TrySetCursorFistAnim(void)
         StartSpriteAnim(gStorage->cursorSprite, 3);
 }
 
-void InitCanReleaseMonVars(void)
+// Moves that get the player past parts of the world. The player can't release
+// the last Pokemon able to use any one of them.
+static const u16 sReleaseProtectedMoves[NUM_RELEASE_PROTECTED_MOVES] =
 {
-    u16 knownMoveFlags;
-    if (sIsMonBeingMoved)
-    {
-        gStorage->tempMon = gStorage->movingMon;
-        gStorage->releaseBoxId = -1;
-        gStorage->releaseBoxPos = -1;
-    }
-    else
-    {
-        if (sCursorArea == CURSOR_AREA_IN_PARTY)
-        {
-            gStorage->tempMon = gPlayerParty[sCursorPosition];
-            gStorage->releaseBoxId = TOTAL_BOXES_COUNT;
-        }
-        else
-        {
-            BoxMonAtToMon(StorageGetCurrentBox(), sCursorPosition, &gStorage->tempMon);
-            gStorage->releaseBoxId = StorageGetCurrentBox();
-        }
-        gStorage->releaseBoxPos = sCursorPosition;
-    }
+    MOVE_SURF,
+    MOVE_FLY,
+    MOVE_CUT,
+    MOVE_STRENGTH,
+    MOVE_ROCK_SMASH,
+    MOVE_WATERFALL,
+};
 
-    gStorage->isSurfMon = FALSE;
-    gStorage->isDiveMon = FALSE;
-    gStorage->restrictedMoveList[0] = MOVE_SURF;
-    gStorage->restrictedMoveList[1] = MOVE_DIVE;
-    gStorage->restrictedMoveList[2] = MOVES_COUNT;
-    knownMoveFlags = GetMonData(&gStorage->tempMon, MON_DATA_KNOWN_MOVES, (u8 *)gStorage->restrictedMoveList);
-    gStorage->isSurfMon = knownMoveFlags & 1;
-    gStorage->isDiveMon = (knownMoveFlags >> 1) & 1;
-    if (gStorage->isSurfMon || gStorage->isDiveMon)
-        gStorage->releaseMonStatusResolved = FALSE;
-    else
-    {
-        gStorage->releaseMonStatusResolved = TRUE;
-        gStorage->releaseMonStatus = RELEASE_MON_ALLOWED;
-    }
+// Whether any Pokemon in the party or the boxes, other than the one in the slot
+// being released, can use the move
+static bool8 AnotherMonCanUseFieldMove(u16 move, u8 releaseBoxId, u8 releasePos)
+{
+    u8 boxId, pos;
 
-    gStorage->releaseCheckState = 0;
+    for (pos = 0; pos < PARTY_SIZE; pos++)
+    {
+        if ((releaseBoxId != TOTAL_BOXES_COUNT || releasePos != pos)
+         && BoxMonCanUseFieldMove(&gPlayerParty[pos].box, move))
+            return TRUE;
+    }
+    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
+    {
+        for (pos = 0; pos < IN_BOX_COUNT; pos++)
+        {
+            if ((releaseBoxId != boxId || releasePos != pos)
+             && BoxMonCanUseFieldMove(GetBoxedMonPtr(boxId, pos), move))
+                return TRUE;
+        }
+    }
+    return FALSE;
 }
 
-s8 RunCanReleaseMon(void)
+// Lists the protected moves that no Pokemon could use after releasing the
+// selected one. Returns TRUE if there are any.
+bool8 FindFieldMovesLostByRelease(void)
 {
-    u16 i;
-    u16 knownMoveFlags;
+    struct BoxPokemon *boxMon;
+    u8 boxId, pos, i;
 
-    if (gStorage->releaseMonStatusResolved)
-        return gStorage->releaseMonStatus;
-
-    switch (gStorage->releaseCheckState)
+    pos = sCursorPosition;
+    if (sIsMonBeingMoved)
     {
-    case 0:
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            if (gStorage->releaseBoxId != TOTAL_BOXES_COUNT || gStorage->releaseBoxPos != i)
-            {
-                knownMoveFlags = GetMonData(&gPlayerParty[i], MON_DATA_KNOWN_MOVES, (u8 *)gStorage->restrictedMoveList);
-                if (knownMoveFlags & 1)
-                    gStorage->isSurfMon = FALSE;
-                if (knownMoveFlags & 2)
-                    gStorage->isDiveMon = FALSE;
-            }
-        }
-        if (!(gStorage->isSurfMon || gStorage->isDiveMon))
-        {
-            gStorage->releaseMonStatusResolved = TRUE;
-            gStorage->releaseMonStatus = RELEASE_MON_ALLOWED;
-        }
-        else
-        {
-            gStorage->releaseCheckBoxId = 0;
-            gStorage->releaseCheckBoxPos = 0;
-            gStorage->releaseCheckState++;
-        }
-        break;
-    case 1:
-        // for some reason, check only 5 mons in box each time this function is called
-        for (i = 0; i < 5; i++)
-        {
-            knownMoveFlags = GetAndCopyBoxMonDataAt(gStorage->releaseCheckBoxId, gStorage->releaseCheckBoxPos, MON_DATA_KNOWN_MOVES, (u8 *)gStorage->restrictedMoveList);
-            if (knownMoveFlags != 0
-                && !(gStorage->releaseBoxId == gStorage->releaseCheckBoxId && gStorage->releaseBoxPos == gStorage->releaseCheckBoxPos))
-            {
-                if (knownMoveFlags & 1)
-                    gStorage->isSurfMon = FALSE;
-                if (knownMoveFlags & 2)
-                    gStorage->isDiveMon = FALSE;
-            }
-            if (++gStorage->releaseCheckBoxPos >= IN_BOX_COUNT)
-            {
-                gStorage->releaseCheckBoxPos = 0;
-                if (++gStorage->releaseCheckBoxId >= TOTAL_BOXES_COUNT)
-                {
-                    gStorage->releaseMonStatusResolved = TRUE;
-                    gStorage->releaseMonStatus = RELEASE_MON_NOT_ALLOWED;
-                    break;
-                }
-            }
-        }
-        if (!(gStorage->isSurfMon || gStorage->isDiveMon))
-        {
-            gStorage->releaseMonStatusResolved = TRUE;
-            gStorage->releaseMonStatus = RELEASE_MON_ALLOWED;
-        }
-        break;
+        // A held Pokemon is in neither the party nor a box, so no slot is skipped
+        boxMon = &gStorage->movingMon.box;
+        boxId = TOTAL_BOXES_COUNT + 1;
+    }
+    else if (sCursorArea == CURSOR_AREA_IN_PARTY)
+    {
+        boxMon = &gPlayerParty[pos].box;
+        boxId = TOTAL_BOXES_COUNT;
+    }
+    else
+    {
+        boxId = StorageGetCurrentBox();
+        boxMon = GetBoxedMonPtr(boxId, pos);
     }
 
-    return RELEASE_MON_UNDETERMINED;
+    gStorage->numLostFieldMoves = 0;
+    for (i = 0; i < NUM_RELEASE_PROTECTED_MOVES; i++)
+    {
+        u16 move = sReleaseProtectedMoves[i];
+
+        if (BoxMonCanUseFieldMove(boxMon, move) && !AnotherMonCanUseFieldMove(move, boxId, pos))
+            gStorage->lostFieldMoves[gStorage->numLostFieldMoves++] = move;
+    }
+    return gStorage->numLostFieldMoves != 0;
 }
 
 void SaveMovingMon(void)

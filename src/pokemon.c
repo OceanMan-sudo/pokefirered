@@ -5758,6 +5758,11 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
 u32 CanMonLearnTMHM(struct Pokemon *mon, u8 tm)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+    return CanSpeciesLearnTMHM(species, tm);
+}
+
+u32 CanSpeciesLearnTMHM(u16 species, u8 tm)
+{
     if (species == SPECIES_EGG)
     {
         return 0;

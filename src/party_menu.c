@@ -4797,8 +4797,8 @@ bool8 IsMoveHm(u16 move)
     return FALSE;
 }
 
-// Whether the player owns the HM for this move and the Pokemon is able to learn it
-static bool8 MonCanLearnOwnedHm(struct Pokemon *mon, u16 move)
+// Whether the player owns the HM for this move and the species is able to learn it
+static bool8 SpeciesCanLearnOwnedHm(u16 species, u16 move)
 {
     u8 i;
 
@@ -4807,7 +4807,7 @@ static bool8 MonCanLearnOwnedHm(struct Pokemon *mon, u16 move)
         if (sTMHMMoves[i + NUM_TECHNICAL_MACHINES] == move)
         {
             return CheckBagHasItem(ITEM_HM01 + i, 1) == TRUE
-                && CanMonLearnTMHM(mon, i + NUM_TECHNICAL_MACHINES) != 0;
+                && CanSpeciesLearnTMHM(species, i + NUM_TECHNICAL_MACHINES) != 0;
         }
     }
     return FALSE;
@@ -4816,13 +4816,26 @@ static bool8 MonCanLearnOwnedHm(struct Pokemon *mon, u16 move)
 // A Pokemon can use a field move if it knows it. For HM moves it is also enough
 // that the player owns the HM and the Pokemon could learn it. Eggs never can.
 // Badges are checked by the callers.
+bool8 BoxMonCanUseFieldMove(struct BoxPokemon *boxMon, u16 move)
+{
+    u16 species;
+    u16 moves[2];
+
+    if (!GetBoxMonData(boxMon, MON_DATA_SANITY_HAS_SPECIES))
+        return FALSE;
+    species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+    moves[0] = move;
+    moves[1] = MOVES_COUNT;
+    if (GetBoxMonData(boxMon, MON_DATA_KNOWN_MOVES, (u8 *)moves))
+        return TRUE;
+    return SpeciesCanLearnOwnedHm(species, move);
+}
+
 bool8 MonCanUseFieldMove(struct Pokemon *mon, u16 move)
 {
-    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
-        return FALSE;
-    if (MonKnowsMove(mon, move) == TRUE)
-        return TRUE;
-    return MonCanLearnOwnedHm(mon, move);
+    return BoxMonCanUseFieldMove(&mon->box, move);
 }
 
 // The party slot of the Pokemon that should use a field move, preferring one that

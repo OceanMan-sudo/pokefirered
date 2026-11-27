@@ -47,6 +47,7 @@ static void Task_ShiftMon(u8 taskId);
 static void Task_WithdrawMon(u8 taskId);
 static void Task_DepositMenu(u8 taskId);
 static void Task_ReleaseMon(u8 taskId);
+static void Task_RefuseRelease(u8 taskId);
 static void Task_ShowMarkMenu(u8 taskId);
 static void Task_TakeItemForMoving(u8 taskId);
 static void Task_GiveMovingItemToMon(u8 taskId);
@@ -140,9 +141,9 @@ enum
     MSG_WHICH_ONE_WILL_TAKE,
     MSG_CANT_RELEASE_EGG,
     MSG_CONTINUE_BOX,
-    MSG_CAME_BACK,
-    MSG_WORRIED,
-    MSG_SURPRISE,
+    MSG_CANT_RELEASE_IT,
+    MSG_LAST_FIELD_MOVE_USER,
+    MSG_COULD_GET_STUCK,
     MSG_PLEASE_REMOVE_MAIL,
     MSG_IS_SELECTED2,
     MSG_GIVE_TO_MON,
@@ -164,6 +165,7 @@ enum
     MSG_FMT_RELEASE_MON_2,
     MSG_FMT_RELEASE_MON_3,
     MSG_FMT_ITEM_NAME,
+    MSG_FMT_LOST_FIELD_MOVE,
 };
 
 static const u32 sScrollingBg_Gfx[]     = INCBIN_U32("graphics/pokemon_storage/scrolling_bg.4bpp.lz");
@@ -292,9 +294,9 @@ static const struct StorageMessage sMessages[] = {
     [MSG_WHICH_ONE_WILL_TAKE]  = {gText_WhichOneWillYouTake,     MSG_FMT_NONE},
     [MSG_CANT_RELEASE_EGG]     = {gText_YouCantReleaseAnEgg,     MSG_FMT_NONE},
     [MSG_CONTINUE_BOX]         = {gText_ContinueBoxOperations,   MSG_FMT_NONE},
-    [MSG_CAME_BACK]            = {gText_PkmnCameBack,            MSG_FMT_MON_NAME_1},
-    [MSG_WORRIED]              = {gText_WasItWorriedAboutYou,    MSG_FMT_NONE},
-    [MSG_SURPRISE]             = {gText_FourEllipsesExclamation, MSG_FMT_NONE},
+    [MSG_CANT_RELEASE_IT]      = {gText_YouCantReleaseIt,        MSG_FMT_NONE},
+    [MSG_LAST_FIELD_MOVE_USER] = {gText_LastUserOfMove,          MSG_FMT_LOST_FIELD_MOVE},
+    [MSG_COULD_GET_STUCK]      = {gText_YouCouldGetStuck,        MSG_FMT_NONE},
     [MSG_PLEASE_REMOVE_MAIL]   = {gText_PleaseRemoveTheMail,     MSG_FMT_NONE},
     [MSG_IS_SELECTED2]         = {gText_PkmnIsSelected,          MSG_FMT_ITEM_NAME},
     [MSG_GIVE_TO_MON]          = {gText_GiveToAPkmn,             MSG_FMT_NONE},
@@ -1012,6 +1014,8 @@ static void Task_OnSelectedMon(u8 taskId)
                 gStorage->state = 5;
             else if (ItemIsMail(gStorage->displayMonItemId))
                 gStorage->state = 4;
+            else if (FindFieldMovesLostByRelease())
+                SetPokeStorageTask(Task_RefuseRelease);
             else
             {
                 PlaySE(SE_SELECT);
@@ -1271,32 +1275,14 @@ static void Task_ReleaseMon(u8 taskId)
             break;
         case 0:
             ClearBottomWindow();
-            InitCanReleaseMonVars();
             InitReleaseMon();
             gStorage->state++;
             break;
         }
         break;
     case 2:
-        RunCanReleaseMon();
         if (!TryHideReleaseMon())
-        {
-            while (TRUE)
-            {
-                // keep checking until status is no longer RELEASE_MON_UNDETERMINED
-                s8 canReleaseStatus = RunCanReleaseMon();
-                if (canReleaseStatus == RELEASE_MON_ALLOWED)
-                {
-                    gStorage->state++;
-                    break;
-                }
-                else if (canReleaseStatus == RELEASE_MON_NOT_ALLOWED)
-                {
-                    gStorage->state = 8; // Can't release the mon.
-                    break;
-                }
-            }
-        }
+            gStorage->state++;
         break;
     case 3:
         ReleaseMon();
@@ -1337,42 +1323,36 @@ static void Task_ReleaseMon(u8 taskId)
     case 7:
         SetPokeStorageTask(Task_PokeStorageMain);
         break;
-    case 8:
-        // Start "can't release" sequence
-        PrintStorageMessage(MSG_WAS_RELEASED);
+    }
+}
+
+// Explains why a Pokemon can't be released, one message per button press
+static void Task_RefuseRelease(u8 taskId)
+{
+    switch (gStorage->state)
+    {
+    case 0:
+        PlaySE(SE_FAILURE);
+        PrintStorageMessage(MSG_CANT_RELEASE_IT);
+        gStorage->lostFieldMoveId = 0;
         gStorage->state++;
         break;
-    case 9:
+    case 1:
         if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
         {
-            PrintStorageMessage(MSG_SURPRISE);
-            gStorage->state++;
+            PrintStorageMessage(MSG_LAST_FIELD_MOVE_USER);
+            if (++gStorage->lostFieldMoveId >= gStorage->numLostFieldMoves)
+                gStorage->state++;
         }
         break;
-    case 10:
+    case 2:
         if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
         {
-            ClearBottomWindow();
-            DoReleaseMonComeBackAnim();
+            PrintStorageMessage(MSG_COULD_GET_STUCK);
             gStorage->state++;
         }
         break;
-    case 11:
-        if (!ResetReleaseMonSpritePtr())
-        {
-            TrySetCursorFistAnim();
-            PrintStorageMessage(MSG_CAME_BACK);
-            gStorage->state++;
-        }
-        break;
-    case 12:
-        if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
-        {
-            PrintStorageMessage(MSG_WORRIED);
-            gStorage->state++;
-        }
-        break;
-    case 13:
+    case 3:
         if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
         {
             ClearBottomWindow();
@@ -2580,6 +2560,9 @@ static void PrintStorageMessage(u8 id)
 
         *txtPtr = EOS;
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStorage->itemName);
+        break;
+    case MSG_FMT_LOST_FIELD_MOVE:
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gMoveNames[gStorage->lostFieldMoves[gStorage->lostFieldMoveId]]);
         break;
     }
 

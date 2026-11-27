@@ -97,12 +97,8 @@ enum {
     INPUT_MULTIMOVE_PLACE_MONS,
 };
 
-enum
-{
-    RELEASE_MON_NOT_ALLOWED,
-    RELEASE_MON_ALLOWED,
-    RELEASE_MON_UNDETERMINED = -1,
-};
+// Number of field moves that releasing a Pokemon must not take away
+#define NUM_RELEASE_PROTECTED_MOVES 6
 
 enum
 {
@@ -392,16 +388,9 @@ struct PokemonStorageSystemData
     struct ChooseBoxMenu chooseBoxMenu;
     struct Pokemon movingMon;
     struct Pokemon tempMon;
-    s8 releaseMonStatus;
-    bool8 releaseMonStatusResolved;
-    bool8 isSurfMon;
-    bool8 isDiveMon;
-    s8 releaseCheckBoxId;
-    s8 releaseCheckBoxPos;
-    s8 releaseBoxId;
-    s8 releaseBoxPos;
-    u16 releaseCheckState;
-    u16 restrictedMoveList[3];
+    u16 lostFieldMoves[NUM_RELEASE_PROTECTED_MOVES];
+    u8 numLostFieldMoves;
+    u8 lostFieldMoveId;
     u8 summaryLastIndex;
     u8 summaryCursorPos;
     u8 summaryScreenMode;
@@ -500,7 +489,7 @@ bool8 DoWallpaperGfxChange(void);
 u8 GetBoxCursorPosition(void);
 u16 GetMovingItem(void);
 u8 HandleInput(void);
-void InitCanReleaseMonVars(void);
+bool8 FindFieldMovesLostByRelease(void);
 void InitMonPlaceChange(u8 type);
 bool8 IsActiveItemMoving(void);
 bool8 IsCursorOnCloseBox(void);
@@ -511,7 +500,6 @@ void Item_SwitchMonsWithMoving(u8 cursorArea, u8 cursorPos);
 void Item_TakeMons(u8 cursorArea, u8 cursorPos);
 void PrintItemDescription(void);
 void ReleaseMon(void);
-s8 RunCanReleaseMon(void);
 bool8 ScrollToBox(void);
 void SetMonMarkings(u8 markings);
 void SetMovingMonPriority(u8 priority);
@@ -533,8 +521,6 @@ void CompactPartySprites(void);
 u8 GetNumPartySpritesCompacting(void);
 void MovePartySprites(s16 yDelta);
 void DestroyAllPartyMonIcons(void);
-void DoReleaseMonComeBackAnim(void);
-bool8 ResetReleaseMonSpritePtr(void);
 void CreateInitBoxTask(u8 boxId);
 bool8 IsInitBoxActive(void);
 void AnimateBoxScrollArrows(bool8 species);
