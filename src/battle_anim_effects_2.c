@@ -797,6 +797,29 @@ const struct SpriteTemplate gFaeVoiceRingSpriteTemplate =
     .callback = AnimHyperVoiceRing,
 };
 
+// The same ring in green for Bug Buzz, and in purple for Snarl
+const struct SpriteTemplate gBugBuzzRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BUG_RING,
+    .paletteTag = ANIM_TAG_BUG_RING,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sHyperVoiceRingAffineAnimTable,
+    .callback = AnimHyperVoiceRing,
+};
+
+const struct SpriteTemplate gSnarlRingSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_DARK_PULSE_RING,
+    .paletteTag = ANIM_TAG_DARK_PULSE_RING,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sHyperVoiceRingAffineAnimTable,
+    .callback = AnimHyperVoiceRing,
+};
+
 const struct SpriteTemplate gUproarRingSpriteTemplate =    
 {
     .tileTag = ANIM_TAG_THIN_RING,

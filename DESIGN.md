@@ -74,7 +74,7 @@ Steel no longer resists Ghost or Dark.
 | Steel/Fairy | Mawile |
 
 - Charm, Sweet Kiss and Moonlight are Fairy moves.
-- Damaging Fairy moves: [Fairy Wind, Drain Kiss, Dazzle Gleam, Fae Voice, Moonblast and Play Rough](#32-new-moves). No Pokémon learns them naturally yet.
+- Damaging Fairy moves: [Fairy Wind, Drain Kiss, Dazzle Gleam, Fae Voice, Moonblast and Play Rough](#42-new-moves). No Pokémon learns them naturally yet.
 - Hidden Power cannot be Fairy.
 - No held item boosts Fairy moves.
 
@@ -206,7 +206,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 ## Moves
 
-### 32 new moves
+### 42 new moves
 † added with Claude.
 
 | Move | Type | Category | Power | Acc | PP | Effect code |
@@ -243,10 +243,20 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 | Drain Kiss † | Fairy | Special | 50 | 100 | 10 | Draining Kiss (new) |
 | Dazzle Gleam † | Fairy | Special | 80 | 100 | 10 | Hit, both opponents |
 | Fae Voice † | Fairy | Special | 40 | never misses | 15 | Always Hit, both opponents |
+| Close Combat † | Fighting | Physical | 120 | 100 | 5 | Close Combat (new) |
+| Brave Bird † | Flying | Physical | 120 | 100 | 15 | Double Edge (recoil 1/3) |
+| Wild Charge † | Electric | Physical | 90 | 100 | 15 | Recoil (1/4) |
+| Icicle Crash † | Ice | Physical | 85 | 90 | 10 | Flinch Hit (30%) |
+| Iron Head † | Steel | Physical | 80 | 100 | 15 | Flinch Hit (20%) |
+| Bug Buzz † | Bug | Special | 90 | 100 | 10 | Special Defense Down Hit (10%) |
+| Power Gem † | Rock | Special | 80 | 100 | 20 | Hit |
+| Energy Ball † | Grass | Special | 90 | 100 | 10 | Special Defense Down Hit (10%) |
+| Bulldoze † | Ground | Physical | 60 | 100 | 20 | Bulldoze (new), everyone but the user |
+| Snarl † | Dark | Special | 55 | 95 | 15 | Special Attack Down Hit (100%), both opponents |
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere and the six Fairy moves are on no level-up list**, and Shadow Sneak is on one. (The Fairy moves can be taught with the debug menu, moves 381 to 386.) No new TMs or egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the ten moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 396 can be taught with the debug menu.) No new TMs or egg moves use them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 
@@ -255,6 +265,14 @@ Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Glea
 - **Dazzle Gleam and Fae Voice** hit both opponents. When both are out, each takes half damage, as with Surf (Generation 6 uses three quarters).
 
 The six Fairy moves, with their animations, are **Tested**.
+
+The ten moves from Close Combat to Snarl are not yet tested.
+
+- **Close Combat** lowers the user's Defense and Sp. Def by one stage after hitting.
+- **Brave Bird and Wild Charge** damage the user (a third and a quarter of the damage dealt). Rock Head prevents this, and Reckless boosts both moves.
+- **Bulldoze** lowers Speed and, like Earthquake, hits every other Pokémon, including your partner in a double battle, at full damage. It does not affect Flying types or Pokémon with Levitate.
+- **Snarl** hits both opponents. When both are out, each takes half damage.
+- **Bug Buzz and Snarl** are sound moves, so Soundproof blocks them.
 
 64 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
 

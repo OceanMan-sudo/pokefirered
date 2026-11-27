@@ -388,8 +388,18 @@
 #define MOVE_DRAIN_KISS 384
 #define MOVE_DAZZLE_GLEAM 385
 #define MOVE_FAE_VOICE 386
+#define MOVE_CLOSE_COMBAT 387
+#define MOVE_BRAVE_BIRD 388
+#define MOVE_WILD_CHARGE 389
+#define MOVE_ICICLE_CRASH 390
+#define MOVE_IRON_HEAD 391
+#define MOVE_BUG_BUZZ 392
+#define MOVE_POWER_GEM 393
+#define MOVE_ENERGY_BALL 394
+#define MOVE_BULLDOZE 395
+#define MOVE_SNARL 396
 
-#define MOVES_COUNT 387
+#define MOVES_COUNT 397
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

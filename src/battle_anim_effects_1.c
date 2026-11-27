@@ -482,6 +482,74 @@ const struct SpriteTemplate gMoonblastBurstSpriteTemplate =
     .callback = AnimGrowOnTarget,
 };
 
+// Energy Ball: Aura Sphere's pieces in green
+const struct SpriteTemplate gEnergyBallParticleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GLOWY_GREEN_ORB,
+    .paletteTag = ANIM_TAG_GLOWY_GREEN_ORB,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
+const struct SpriteTemplate gEnergyBallChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ENERGY_BALL,
+    .paletteTag = ANIM_TAG_ENERGY_BALL,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gEnergyBallThrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ENERGY_BALL,
+    .paletteTag = ANIM_TAG_ENERGY_BALL,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereSpin,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gEnergyBallBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ENERGY_BALL,
+    .paletteTag = ANIM_TAG_ENERGY_BALL,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereBurst,
+    .callback = AnimGrowOnTarget,
+};
+
+// Power Gem: cut stones gather around the user, then fly at the target
+const struct SpriteTemplate gPowerGemGatherSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_POWER_GEM,
+    .paletteTag = ANIM_TAG_POWER_GEM,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
+const struct SpriteTemplate gPowerGemThrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_POWER_GEM,
+    .paletteTag = ANIM_TAG_POWER_GEM,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
 // Pink sparkles carried to the target on Fairy Wind and Dazzle Gleam.
 // args are the same as Swift's stars
 const struct SpriteTemplate gFairySparkleSpriteTemplate =

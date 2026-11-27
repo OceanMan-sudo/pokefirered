@@ -104,6 +104,8 @@ AI_CheckBadMove_CheckSoundproof::
 	if_move MOVE_HYPER_VOICE, Score_Minus10
 	if_move MOVE_BOOMBURST, Score_Minus10
 	if_move MOVE_FAE_VOICE, Score_Minus10
+	if_move MOVE_BUG_BUZZ, Score_Minus10
+	if_move MOVE_SNARL, Score_Minus10
 
 AI_CheckBadMove_CheckEffect::
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
@@ -710,6 +712,7 @@ AI_CheckViability::
 	if_effect EFFECT_PARALYZE, AI_CV_Paralyze
 	@ if_effect EFFECT_SWAGGER, AI_CV_Swagger  @ Improvement in Emerald
 	if_effect EFFECT_SPEED_DOWN_HIT, AI_CV_SpeedDownFromChance
+	if_effect EFFECT_BULLDOZE, AI_CV_SpeedDownFromChance
 	if_effect EFFECT_SKY_ATTACK, AI_CV_ChargeUpMove
 	if_effect EFFECT_VITAL_THROW, AI_CV_VitalThrow
 	if_effect EFFECT_SUBSTITUTE, AI_CV_Substitute
@@ -1151,6 +1154,7 @@ AI_CV_SpeedDownFromChance::
 	if_move MOVE_ICY_WIND, AI_CV_SpeedDown
 	if_move MOVE_ROCK_TOMB, AI_CV_SpeedDown
 	if_move MOVE_MUD_SHOT, AI_CV_SpeedDown
+	if_move MOVE_BULLDOZE, AI_CV_SpeedDown
 	end
 
 AI_CV_SpeedDown::

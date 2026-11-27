@@ -16,6 +16,7 @@ struct HailStruct
 };
 
 static void AnimUnusedIceCrystalThrow(struct Sprite *sprite);
+static void AnimIcicleCrash(struct Sprite *sprite);
 static void AnimUnusedIceCrystalThrow_Step(struct Sprite *sprite);
 static void AnimIcePunchSwirlingParticle(struct Sprite *sprite);
 static void AnimIceBeamParticle(struct Sprite *sprite);
@@ -43,6 +44,29 @@ static void AnimTask_HazeScrollingFog_Step(u8 taskId);
 static void AnimTask_MistBallFog_Step(u8 taskId);
 static void AnimTask_Hail2(u8 taskId);
 static bool8 GenerateHailParticle(u8 hailStructId, u8 affineAnimNum, u8 taskId, u8 c);
+
+// Icicle Crash: the Icicle Spear sprite, enlarged and pointing down
+static const union AffineAnimCmd sAffineAnim_IcicleCrash[] =
+{
+    AFFINEANIMCMD_FRAME(0x160, 0x160, -128, 0),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_IcicleCrash[] =
+{
+    sAffineAnim_IcicleCrash,
+};
+
+const struct SpriteTemplate gIcicleCrashSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ICICLE_SPEAR,
+    .paletteTag = ANIM_TAG_ICICLE_SPEAR,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_IcicleCrash,
+    .callback = AnimIcicleCrash,
+};
 
 static const union AnimCmd sAnim_Unused[] =
 {
@@ -1471,4 +1495,20 @@ void AnimTask_GetRolloutCounter(u8 taskId)
 
     gBattleAnimArgs[arg] = gAnimDisableStructPtr->rolloutTimerStartValue - gAnimDisableStructPtr->rolloutTimer - 1;
     DestroyAnimVisualTask(taskId);
+}
+
+// An icicle that drops onto the target.
+// arg 0: x offset from the target
+// arg 1: y offset where it lands
+// arg 2: how far it falls
+// arg 3: how long the fall takes
+static void AnimIcicleCrash(struct Sprite *sprite)
+{
+    InitSpritePosToAnimTarget(sprite, TRUE);
+    sprite->data[0] = gBattleAnimArgs[3];
+    sprite->data[2] = sprite->x;
+    sprite->data[4] = sprite->y;
+    sprite->y -= gBattleAnimArgs[2];
+    StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+    sprite->callback = StartAnimLinearTranslation;
 }

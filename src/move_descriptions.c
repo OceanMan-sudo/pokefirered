@@ -387,6 +387,16 @@ const u8 gMoveDescription_FairyWind[] = _("The user stirs up\na fairy wind and\n
 const u8 gMoveDescription_DrainKiss[] = _("A draining kiss.\nThe user gets back\nmost of the damage\nit deals as HP.");
 const u8 gMoveDescription_DazzleGleam[] = _("The user gives off\na powerful flash\nthat damages\nboth foes.");
 const u8 gMoveDescription_FaeVoice[] = _("A charming cry\nthat hits both\nfoes. This attack\nnever misses.");
+const u8 gMoveDescription_CloseCombat[] = _("The user fights\nup close, lowering\nits own DEFENSE\nand SP. DEF.");
+const u8 gMoveDescription_BraveBird[] = _("A reckless dive at\nfull power. The\nuser also takes\ndamage.");
+const u8 gMoveDescription_WildCharge[] = _("An electrified\ntackle that also\nhurts the user\na little.");
+const u8 gMoveDescription_IcicleCrash[] = _("Large icicles drop\nonto the foe. It\nmay make the foe\nflinch.");
+const u8 gMoveDescription_IronHead[] = _("The user rams with\nits steel-hard\nhead. It may make\nthe foe flinch.");
+const u8 gMoveDescription_BugBuzz[] = _("A buzzing sound\nwave attacks. It\nmay lower the\nfoe's SP. DEF.");
+const u8 gMoveDescription_PowerGem[] = _("The user attacks\nwith a ray of light\nthat sparkles like\ngemstones.");
+const u8 gMoveDescription_EnergyBall[] = _("The power of nature\nis fired in a ball.\nIt may lower the\nfoe's SP. DEF.");
+const u8 gMoveDescription_Bulldoze[] = _("The user stomps,\nhitting everyone\nnearby and lowering\ntheir SPEED.");
+const u8 gMoveDescription_Snarl[] = _("The user yells at\nthe foes, lowering\ntheir SP. ATK.");
 
 
 
@@ -777,5 +787,15 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_DRAIN_KISS      -1] = gMoveDescription_DrainKiss,
     [MOVE_DAZZLE_GLEAM      -1] = gMoveDescription_DazzleGleam,
     [MOVE_FAE_VOICE      -1] = gMoveDescription_FaeVoice,
+    [MOVE_CLOSE_COMBAT      -1] = gMoveDescription_CloseCombat,
+    [MOVE_BRAVE_BIRD      -1] = gMoveDescription_BraveBird,
+    [MOVE_WILD_CHARGE      -1] = gMoveDescription_WildCharge,
+    [MOVE_ICICLE_CRASH      -1] = gMoveDescription_IcicleCrash,
+    [MOVE_IRON_HEAD      -1] = gMoveDescription_IronHead,
+    [MOVE_BUG_BUZZ      -1] = gMoveDescription_BugBuzz,
+    [MOVE_POWER_GEM      -1] = gMoveDescription_PowerGem,
+    [MOVE_ENERGY_BALL      -1] = gMoveDescription_EnergyBall,
+    [MOVE_BULLDOZE      -1] = gMoveDescription_Bulldoze,
+    [MOVE_SNARL      -1] = gMoveDescription_Snarl,
 
 };

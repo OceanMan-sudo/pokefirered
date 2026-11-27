@@ -236,6 +236,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDragonDance            @ EFFECT_DRAGON_DANCE
 	.4byte BattleScript_EffectCamouflage             @ EFFECT_CAMOUFLAGE
 	.4byte BattleScript_EffectAbsorb                 @ EFFECT_DRAINING_KISS
+	.4byte BattleScript_EffectCloseCombat            @ EFFECT_CLOSE_COMBAT
+	.4byte BattleScript_EffectBulldoze               @ EFFECT_BULLDOZE
 
 BattleScript_EffectHit::
 	jumpifnotmove MOVE_SURF, BattleScript_HitFromAtkCanceler
@@ -1874,6 +1876,52 @@ BattleScript_HitAllWithUndergroundBonusMissed::
 	moveendto MOVEEND_NEXT_TARGET
 	jumpifnexttargetvalid BattleScript_HitsAllWithUndergroundBonusLoop
 	end
+
+@ Hits everyone else in turn, like Earthquake, and lowers each one's Speed
+BattleScript_EffectBulldoze::
+	attackcanceler
+	attackstring
+	ppreduce
+	selectfirstvalidtarget
+BattleScript_BulldozeLoop::
+	movevaluescleanup
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
+	accuracycheck BattleScript_BulldozeMissed, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	typecalc
+	adjustnormaldamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	tryfaintmon BS_TARGET
+	moveendto MOVEEND_NEXT_TARGET
+	jumpifnexttargetvalid BattleScript_BulldozeLoop
+	end
+BattleScript_BulldozeMissed::
+	pause B_WAIT_TIME_SHORT
+	typecalc
+	effectivenesssound
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	moveendto MOVEEND_NEXT_TARGET
+	jumpifnexttargetvalid BattleScript_BulldozeLoop
+	end
+
+BattleScript_EffectCloseCombat::
+	setmoveeffect MOVE_EFFECT_DEF_SPDEF_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	goto BattleScript_EffectHit
 
 BattleScript_EffectFutureSight::
 	attackcanceler
@@ -3589,6 +3637,25 @@ BattleScript_AtkDefDownAtkFail::
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_AtkDefDownDefFail::
+	return
+
+BattleScript_DefSpDefDown::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	playstatchangeanimation BS_ATTACKER, BIT_DEF, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_DEF, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_DefSpDefDownDefFail
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 2, BattleScript_DefSpDefDownDefFail
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DefSpDefDownDefFail::
+	playstatchangeanimation BS_ATTACKER, BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_CANT_PREVENT
+	setstatchanger STAT_SPDEF, 1, TRUE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_CERTAIN, BattleScript_DefSpDefDownEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 2, BattleScript_DefSpDefDownEnd
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DefSpDefDownEnd::
 	return
 
 BattleScript_KnockedOff::

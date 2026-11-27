@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 48 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 49 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -17,6 +17,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Dragon Rage against Fairy types:** checked in a simulator only.
 - **Fairy move special cases:** Drain Kiss against Liquid Ooze, Fae Voice against Soundproof, and opponents using the spread moves.
 - **Latest move changes:** the punches, Superpower, Sky Attack, Double Slap and multi-hit moves.
+- **Ten newest moves:** Close Combat to Snarl (387 to 396), with their animations.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -58,7 +59,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 - New game PC now contains Potion, 99 Rare Candy, 99 Master Ball, TM03, Dragon Scale, 99 Nugget and 99 Max Repel (testing items; removed on `claude-edits`).
 
 ### Content
-- 25 of the 32 new moves, and changes to 62 original moves.
+- 25 of the 42 new moves, and changes to 62 original moves.
 - All of the species, learnset and TM compatibility changes below.
 - 18 new maps, expanded towns, new characters, shops and gifts (see [DESIGN.md](DESIGN.md#world)).
 - Trainer changes and new trainers.
@@ -114,6 +115,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Sky Attack: special, 140 power, 90 accuracy, 5 PP, lowers the user's Sp. Atk by two stages; no longer boosted by Reckless | Not yet tested |
 | Rock Slide flinch chance 30%→20%; Double Slap is Fairy | Not yet tested |
 | Multi-hit moves use modern odds for 2, 3, 4 and 5 hits (35/35/15/15%); Pin Missile accuracy 95, Bone Rush and Rock Blast 90; Bullet Seed 25 power | Not yet tested (odds checked outside the game) |
+| New moves: Close Combat, Brave Bird, Wild Charge, Icicle Crash, Iron Head, Bug Buzz, Power Gem, Energy Ball, Bulldoze and Snarl with animations; new effects for Close Combat and Bulldoze; Bug Buzz and Snarl blocked by Soundproof | Not yet tested |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 
 ### Items, TMs and field moves
@@ -474,7 +476,7 @@ Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Warto
 | Rock Blast | accuracy 80→90 |
 
 ### New moves
-See [DESIGN.md](DESIGN.md#32-new-moves).
+See [DESIGN.md](DESIGN.md#42-new-moves).
 
 ### Trainers
 22 trainers added or changed. Numbers after each Pokémon are levels.

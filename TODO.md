@@ -98,7 +98,7 @@ Checked items are in the code. Test them using the list under [Waiting to be tes
 Do these before changing teams area by area, so work is not redone.
 - [x] Agree the level caps (below); revisit when teams change
 - [ ] Learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
-- [ ] Add Scorch Sand, Aura Sphere and the Fairy moves to learnsets as part of that work
+- [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 396 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
 - [ ] Plan where each missing Pokémon will come from (list at the end)
 
@@ -267,7 +267,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 - Reusable, unique TMs
 - HM field moves without teaching them
 - Physical/Special split
-- 32 new moves and 8 new abilities
+- 42 new moves and 8 new abilities
 - Evolution changes with no trade evolutions (7 friendship evolutions remain)
 - House that gives Rare Candies
 
@@ -335,6 +335,17 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Sky Attack (143): hits in one turn, sharply lowers the user's Sp. Atk, and shows its new description
 - [ ] Double Slap (3): shows as Fairy and is super effective against Fighting, Dragon and Dark types
 - [ ] Multi-hit moves, such as Fury Swipes (154) or Pin Missile (42): mostly 2 or 3 hits, sometimes 4 or 5
+- [ ] Close Combat (387): animation; the user's Defense and Sp. Def fall
+- [ ] Brave Bird (388): animation, the user comes back into view, and it takes recoil damage
+- [ ] Wild Charge (389): animation and recoil damage
+- [ ] Icicle Crash (390): animation; sometimes causes a flinch
+- [ ] Iron Head (391): animation, the user's colors return to normal; sometimes causes a flinch
+- [ ] Bug Buzz (392): animation; no effect on Soundproof
+- [ ] Power Gem (393): animation
+- [ ] Energy Ball (394): animation
+- [ ] Bulldoze (395): animation and Speed drop; in a double battle it hits both opponents and your partner
+- [ ] Snarl (396): animation; in a double battle both opponents lose Sp. Atk
+- [ ] Moves 387 to 396 used by an opponent look right too
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

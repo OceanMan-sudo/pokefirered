@@ -310,6 +310,10 @@
 #define ANIM_TAG_FAIRY_GUST                 (ANIM_SPRITES_START + 300)
 #define ANIM_TAG_DRAIN_KISS_ORB             (ANIM_SPRITES_START + 301)
 #define ANIM_TAG_FAE_RING                   (ANIM_SPRITES_START + 302)
+#define ANIM_TAG_BRAVE_BIRD                 (ANIM_SPRITES_START + 303)
+#define ANIM_TAG_BUG_RING                   (ANIM_SPRITES_START + 304)
+#define ANIM_TAG_POWER_GEM                  (ANIM_SPRITES_START + 305)
+#define ANIM_TAG_ENERGY_BALL                (ANIM_SPRITES_START + 306)
 
 // battlers
 #define ANIM_ATTACKER    0
