@@ -74,7 +74,7 @@ Steel no longer resists Ghost or Dark.
 | Steel/Fairy | Mawile |
 
 - Charm, Sweet Kiss and Moonlight are Fairy moves.
-- **There is no damaging Fairy move yet.** New moves wait for the move overhaul, so the pure Fairy Pokémon currently have no attack that gets a same-type bonus.
+- The damaging Fairy moves are [Moonblast and Play Rough](#28-new-moves). Four more are planned. No Pokémon learns them naturally yet.
 - Hidden Power cannot be Fairy.
 - No held item boosts Fairy moves.
 
@@ -207,7 +207,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 ## Moves
 
-### 26 new moves
+### 28 new moves
 † added with Claude.
 
 | Move | Type | Category | Power | Acc | PP | Effect code |
@@ -238,10 +238,12 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 | Boomburst | Normal | Special | 140 | 100 | 15 | Hit |
 | Night Slash | Dark | Physical | 70 | 100 | 20 | High Critical |
 | Aura Sphere † | Fighting | Special | 80 | never misses | 20 | Always Hit |
+| Moonblast † | Fairy | Special | 95 | 100 | 15 | Special Attack Down Hit (20%) |
+| Play Rough † | Fairy | Physical | 90 | 90 | 10 | Attack Down Hit (10%) |
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand and Aura Sphere are on no level-up list**, and Shadow Sneak is on one. (Aura Sphere is currently only available from a temporary test character.) No new TMs or egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, Moonblast and Play Rough are on no level-up list**, and Shadow Sneak is on one. (Moonblast and Play Rough can be taught with the debug menu, moves 381 and 382.) No new TMs or egg moves use them.
 
 62 original moves were also changed. See [CHANGELOG.md](CHANGELOG.md#changes-to-original-moves).
 

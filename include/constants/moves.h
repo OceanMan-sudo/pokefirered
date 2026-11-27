@@ -382,8 +382,10 @@
 #define MOVE_BOOMBURST 378
 #define MOVE_NIGHT_SLASH 379
 #define MOVE_AURA_SPHERE 380
+#define MOVE_MOONBLAST 381
+#define MOVE_PLAY_ROUGH 382
 
-#define MOVES_COUNT 381
+#define MOVES_COUNT 383
 
 // Used for checks for moves affected by Disable, Mimic, etc.
 #define MOVE_UNAVAILABLE 0xFFFF

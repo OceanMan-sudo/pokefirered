@@ -406,6 +406,8 @@ gBattleAnims_Moves::
 
 
 	.4byte Move_AURA_SPHERE
+	.4byte Move_MOONBLAST
+	.4byte Move_PLAY_ROUGH
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -10920,6 +10922,128 @@ AuraSphereGather:
 	createsprite gAuraSphereParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, 20, 16
 	delay 2
 	return
+
+Move_MOONBLAST:
+	loadspritegfx ANIM_TAG_MOONBLAST_MOON
+	loadspritegfx ANIM_TAG_MOONBLAST_ORB
+	loadspritegfx ANIM_TAG_MOONBLAST_SPARK
+	loadspritegfx ANIM_TAG_SPARKLE_6
+	loadspritegfx ANIM_TAG_IMPACT
+	setalpha 0, 16
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 12, RGB_BLACK
+	waitforvisualfinish
+	createsprite gMoonblastMoonSpriteTemplate, ANIM_ATTACKER, 2, 120, 40, 98
+	createvisualtask AnimTask_AlphaFadeIn, 3, 0, 16, 16, 0, 0
+	playsewithpan SE_M_MOONLIGHT, 0
+	delay 12
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_ATTACKER, 3, 94, 30, 0
+	delay 10
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_ATTACKER, 3, 148, 48, 0
+	delay 10
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_ATTACKER, 3, 140, 18, 0
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 2, 0, 9, RGB(31, 20, 27)
+	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
+	createsprite gMoonblastChargeSpriteTemplate, ANIM_ATTACKER, 2, 0, 0
+	call MoonblastGather
+	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
+	call MoonblastGather
+	createvisualtask AnimTask_AlphaFadeIn, 3, 16, 0, 0, 16, 0
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 9, 0, RGB(31, 20, 27)
+	panse SE_M_MEGA_KICK2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +4, 0
+	createsprite gMoonblastThrowSpriteTemplate, ANIM_TARGET, 2, 0, 0, 0, 0, 20, 0
+	waitforvisualfinish
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gMoonblastBurstSpriteTemplate, ANIM_TARGET, 2, 0, 0
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_TARGET, 4, -24, -16, 1
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_TARGET, 4, 26, 8, 1
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 16, 1
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 12, 0, RGB(31, 20, 27)
+	delay 8
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, -12, -10, ANIM_TARGET, 1
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_TARGET, 4, 20, -24, 1
+	createsprite gMoonblastTwinkleSpriteTemplate, ANIM_TARGET, 4, -20, 18, 1
+	delay 4
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 12, 8, ANIM_TARGET, 1
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 12, 0, RGB_BLACK
+	waitforvisualfinish
+	end
+
+@ Sparks of moonlight drawn in to the user
+MoonblastGather:
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, -40, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, -40, 40, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, -48, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, 0, 40, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, -40, -40, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, 40, 20, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, -48, 0, 16
+	delay 2
+	createsprite gMoonblastParticleSpriteTemplate, ANIM_ATTACKER, 2, 48, -10, 16
+	delay 2
+	return
+
+Move_PLAY_ROUGH:
+	loadspritegfx ANIM_TAG_PINK_CLOUD
+	loadspritegfx ANIM_TAG_GOLD_STARS
+	loadspritegfx ANIM_TAG_HANDS_AND_FEET
+	loadspritegfx ANIM_TAG_IMPACT
+	setalpha 16, 0
+	@ step back, then pounce
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_WindUpLunge, 5, ANIM_ATTACKER, -20, 8, 18, 6, 48, 7
+	waitforvisualfinish
+	invisible ANIM_ATTACKER
+	@ the scuffle
+	createsprite gPlayRoughCloudSpriteTemplate, ANIM_TARGET, 2, -18, 8, 0, 84
+	createsprite gPlayRoughCloudSpriteTemplate, ANIM_TARGET, 2, 18, 6, 1, 84
+	createsprite gPlayRoughCloudSpriteTemplate, ANIM_TARGET, 2, 0, -12, 0, 84
+	createsprite gPlayRoughCloudSpriteTemplate, ANIM_TARGET, 2, -6, 16, 1, 84
+	createsprite gPlayRoughCloudSpriteTemplate, ANIM_TARGET, 2, 12, -4, 1, 84
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 3, 0, 40, 1
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 4, 1, 10, -1
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 8, 0, 416, -36
+	delay 16
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 4, 1, 10, -1
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, -8, 0, -416, -30
+	delay 16
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 4, 1, 10, -1
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 6, -8, 224, -42
+	delay 16
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 4, 1, 10, -1
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, -6, -8, -224, -38
+	delay 16
+	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
+	createsprite gFistFootRandomPosSpriteTemplate, ANIM_TARGET, 4, 1, 10, -1
+	waitforvisualfinish
+	@ the user tumbles back out as the last hit lands
+	visible ANIM_ATTACKER
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 10
+	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 4, 0, 0, ANIM_TARGET, 0
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 0, 0, 320, -24
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 0, 0, -320, -24
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 0, -4, 128, -44
+	createsprite gPlayRoughStarSpriteTemplate, ANIM_TARGET, 5, 0, -4, -128, -44
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 5, 0, 8, 1
+	waitforvisualfinish
+	blendoff
+	end
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

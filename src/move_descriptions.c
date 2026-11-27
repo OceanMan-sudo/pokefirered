@@ -381,6 +381,8 @@ const u8 gMoveDescription_AquaJet[] = _("Attacks at speed\nthat makes it\nalmost
 const u8 gMoveDescription_Boomburst[] = _("Attacks with\nthe destructive\npower of an\nexplosive sound.");
 const u8 gMoveDescription_NightSlash[] = _("User slashes\nwhen an opportunity\narises. High\ncrit chance.");
 const u8 gMoveDescription_AuraSphere[] = _("The user blasts\nthe foe with its\naura. This attack\nnever misses.");
+const u8 gMoveDescription_Moonblast[] = _("The user attacks\nwith the moon's\npower. It may lower\nthe foe's SP. ATK.");
+const u8 gMoveDescription_PlayRough[] = _("The user plays\nrough with the foe.\nIt may also lower\nthe foe's ATTACK.");
 
 
 
@@ -765,5 +767,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_BOOMBURST      -1] = gMoveDescription_Boomburst,
     [MOVE_NIGHT_SLASH      -1] = gMoveDescription_NightSlash,
     [MOVE_AURA_SPHERE      -1] = gMoveDescription_AuraSphere,
+    [MOVE_MOONBLAST      -1] = gMoveDescription_Moonblast,
+    [MOVE_PLAY_ROUGH      -1] = gMoveDescription_PlayRough,
 
 };

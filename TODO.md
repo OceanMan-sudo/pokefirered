@@ -89,7 +89,8 @@ Build the rules and their menu switches together.
 - [x] Stop Hidden Power from rolling Fairy
 - [x] Type label, colours and TM disc colour
 - [x] Clefable's stats set to Generation 6
-- [ ] New Fairy moves and animations (Moonblast, Play Rough, Dazzling Gleam and others you choose). **Waiting for the move overhaul.** Until then there is no damaging Fairy move
+- [x] Moonblast and Play Rough, with animations
+- [ ] Fairy Wind, Drain Kiss, Dazzle Gleam and Fairy Voice (Disarming Voice), after you have checked the first two animations
 
 Checked items are in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
 
@@ -266,7 +267,7 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 - Reusable, unique TMs
 - HM field moves without teaching them
 - Physical/Special split
-- 26 new moves and 8 new abilities
+- 28 new moves and 8 new abilities
 - Evolution changes with no trade evolutions (7 friendship evolutions remain)
 - House that gives Rare Candies
 
@@ -320,6 +321,8 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Clefable has the new Defense and Sp. Def
 - [x] TM Case: opens normally and the disc colors look as before
 - [ ] Trainer AI: Lance's Gyarados and Dragonair do not use Dragon Rage on a Fairy Pokémon
+- [ ] Moonblast (381): animation looks right from your side and from the enemy side; it sometimes lowers Sp. Atk
+- [ ] Play Rough (382): animation looks right and your Pokémon reappears afterwards; it sometimes lowers Attack
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

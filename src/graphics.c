@@ -586,6 +586,9 @@ const u32 gBattleAnimSpritePal_FocusBlast[] = INCBIN_U32("graphics/battle_anims/
 const u32 gBattleAnimSpritePal_FlashCannon[] = INCBIN_U32("graphics/battle_anims/sprites/flash_cannon.gbapal.lz");
 const u32 gBattleAnimSpriteGfx_PsychoTorpedo[] = INCBIN_U32("graphics/battle_anims/sprites/psycho_torpedo.4bpp.lz");
 const u32 gBattleAnimSpritePal_PsychoTorpedo[] = INCBIN_U32("graphics/battle_anims/sprites/psycho_torpedo.gbapal.lz");
+const u32 gBattleAnimSpritePal_MoonblastMoon[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_moon.gbapal.lz");
+const u32 gBattleAnimSpritePal_MoonblastOrb[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_orb.gbapal.lz");
+const u32 gBattleAnimSpritePal_MoonblastSpark[] = INCBIN_U32("graphics/battle_anims/sprites/moonblast_spark.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.4bpp.lz");
 const u32 gBattleAnimSpritePal_Lick[] = INCBIN_U32("graphics/battle_anims/sprites/lick.gbapal.lz");

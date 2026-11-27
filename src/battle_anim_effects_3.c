@@ -102,6 +102,8 @@ static void AnimSwallowBlueOrb(struct Sprite *);
 static void AnimWeakFrustrationAngerMark(struct Sprite *);
 static void AnimPainSplitProjectile(struct Sprite *);
 static void AnimSmokeBallEscapeCloud(struct Sprite *);
+static void AnimPlayRoughCloud(struct Sprite *);
+static void AnimPlayRoughCloud_Step(struct Sprite *);
 static void AnimFacadeSweatDrop(struct Sprite *);
 static void AnimGlareEyeDot(struct Sprite *);
 static void AnimAssistPawprint(struct Sprite *);
@@ -866,6 +868,42 @@ const struct SpriteTemplate gSmokeBallEscapeCloudSpriteTemplate =
     .images = NULL,
     .affineAnims = sSmokeBallEscapeCloudAffineAnimTable,
     .callback = AnimSmokeBallEscapeCloud,
+};
+
+// Play Rough's scuffle: puffs of cloud pop up over the target and jostle about
+static const union AffineAnimCmd sPlayRoughCloudAffineAnimCmds1[] =
+{
+    AFFINEANIMCMD_FRAME(0x60, 0x60, 0, 0),
+    AFFINEANIMCMD_FRAME(24, 24, 0, 8),
+    AFFINEANIMCMD_FRAME(4, -4, 0, 8),
+    AFFINEANIMCMD_FRAME(-4, 4, 0, 8),
+    AFFINEANIMCMD_JUMP(2),
+};
+
+static const union AffineAnimCmd sPlayRoughCloudAffineAnimCmds2[] =
+{
+    AFFINEANIMCMD_FRAME(0x40, 0x40, 0, 0),
+    AFFINEANIMCMD_FRAME(24, 24, 0, 8),
+    AFFINEANIMCMD_FRAME(-4, 4, 0, 8),
+    AFFINEANIMCMD_FRAME(4, -4, 0, 8),
+    AFFINEANIMCMD_JUMP(2),
+};
+
+static const union AffineAnimCmd *const sPlayRoughCloudAffineAnimTable[] =
+{
+    sPlayRoughCloudAffineAnimCmds1,
+    sPlayRoughCloudAffineAnimCmds2,
+};
+
+const struct SpriteTemplate gPlayRoughCloudSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PINK_CLOUD,
+    .paletteTag = ANIM_TAG_PINK_CLOUD,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sPlayRoughCloudAffineAnimTable,
+    .callback = AnimPlayRoughCloud,
 };
 
 static const union AffineAnimCmd sFacadeSquishAffineAnimCmds[] =
@@ -5427,4 +5465,27 @@ static void AnimTask_SlackOffSquish_Step(u8 taskId)
 
     if (!RunAffineAnimFromTaskData(&gTasks[taskId]))
         DestroyAnimVisualTask(taskId);
+}
+
+// arg 0: x pixel offset from the target
+// arg 1: y pixel offset from the target
+// arg 2: which growing pattern to use (0 or 1)
+// arg 3: how long it stays
+static void AnimPlayRoughCloud(struct Sprite *sprite)
+{
+    InitSpritePosToAnimTarget(sprite, TRUE);
+    StartSpriteAffineAnim(sprite, gBattleAnimArgs[2]);
+    // Start each puff at a different point of its wobble.
+    sprite->data[0] = gBattleAnimArgs[3];
+    sprite->data[1] = (gBattleAnimArgs[0] * 5 + gBattleAnimArgs[1] * 9) & 0xFF;
+    sprite->callback = AnimPlayRoughCloud_Step;
+}
+
+static void AnimPlayRoughCloud_Step(struct Sprite *sprite)
+{
+    sprite->data[1] = (sprite->data[1] + 20) & 0xFF;
+    sprite->x2 = Cos(sprite->data[1], 4);
+    sprite->y2 = Sin(sprite->data[1], 3);
+    if (--sprite->data[0] < 0)
+        DestroySpriteAndMatrix(sprite);
 }

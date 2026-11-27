@@ -22,6 +22,8 @@ static void AnimSolarBeamBigOrb(struct Sprite *);
 static void AnimPowerAbsorptionOrb(struct Sprite *);
 static void AnimGrowOnAttacker(struct Sprite *);
 static void AnimGrowOnTarget(struct Sprite *);
+static void AnimMoonblastMoon(struct Sprite *);
+static void AnimMoonblastTwinkle(struct Sprite *);
 static void AnimSeedBombSeed(struct Sprite *);
 static void AnimSeedBombSeed_Step(struct Sprite *);
 static void AnimShadowSneakCreep(struct Sprite *);
@@ -378,6 +380,101 @@ const struct SpriteTemplate gAuraSphereBurstSpriteTemplate =
 {
     .tileTag = ANIM_TAG_AURA_SPHERE,
     .paletteTag = ANIM_TAG_AURA_SPHERE,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereBurst,
+    .callback = AnimGrowOnTarget,
+};
+
+// Moonblast: a pink moon rises and twinkles, its light gathers into a sphere on
+// the user, and the sphere flies to the target and bursts
+const struct SpriteTemplate gMoonblastMoonSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOONBLAST_MOON,
+    .paletteTag = ANIM_TAG_MOONBLAST_MOON,
+    .oam = &gOamData_AffineOff_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimMoonblastMoon,
+};
+
+static const union AffineAnimCmd sAffineAnim_MoonblastTwinkle[] =
+{
+    AFFINEANIMCMD_FRAME(0x40, 0x40, 0, 0),
+    AFFINEANIMCMD_FRAME(24, 24, 0, 8),
+    AFFINEANIMCMD_FRAME(-24, -24, 0, 8),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_MoonblastTwinkle[] =
+{
+    sAffineAnim_MoonblastTwinkle,
+};
+
+const struct SpriteTemplate gMoonblastTwinkleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SPARKLE_6,
+    .paletteTag = ANIM_TAG_SPARKLE_6,
+    .oam = &gOamData_AffineNormal_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_MoonblastTwinkle,
+    .callback = AnimMoonblastTwinkle,
+};
+
+// Like Aura Sphere's charge, but it spins on while the moon fades away
+static const union AffineAnimCmd sAffineAnim_MoonblastCharge[] =
+{
+    AFFINEANIMCMD_FRAME(0x20, 0x20, 0, 0),
+    AFFINEANIMCMD_FRAME(7, 7, 8, 32),
+    AFFINEANIMCMD_FRAME(0, 0, 8, 36),
+    AFFINEANIMCMD_END,
+};
+
+static const union AffineAnimCmd *const sAffineAnims_MoonblastCharge[] =
+{
+    sAffineAnim_MoonblastCharge,
+};
+
+const struct SpriteTemplate gMoonblastParticleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOONBLAST_SPARK,
+    .paletteTag = ANIM_TAG_MOONBLAST_SPARK,
+    .oam = &gOamData_AffineOff_ObjNormal_8x8,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
+const struct SpriteTemplate gMoonblastChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOONBLAST_ORB,
+    .paletteTag = ANIM_TAG_MOONBLAST_ORB,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_MoonblastCharge,
+    .callback = AnimGrowOnAttacker,
+};
+
+const struct SpriteTemplate gMoonblastThrowSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOONBLAST_ORB,
+    .paletteTag = ANIM_TAG_MOONBLAST_ORB,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = sAffineAnims_AuraSphereSpin,
+    .callback = TranslateAnimSpriteToTargetMonLocation,
+};
+
+const struct SpriteTemplate gMoonblastBurstSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOONBLAST_ORB,
+    .paletteTag = ANIM_TAG_MOONBLAST_ORB,
     .oam = &gOamData_AffineDouble_ObjNormal_32x32,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
@@ -2757,6 +2854,37 @@ static void AnimGrowOnAttacker(struct Sprite* sprite)
 static void AnimGrowOnTarget(struct Sprite* sprite)
 {
     InitSpritePosToAnimTarget(sprite, TRUE);
+    StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
+    sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
+}
+
+// Shows the moon at a spot on the screen for a set time.
+// arg 0: x
+// arg 1: y
+// arg 2: how long it stays
+static void AnimMoonblastMoon(struct Sprite *sprite)
+{
+    sprite->x = gBattleAnimArgs[0];
+    sprite->y = gBattleAnimArgs[1];
+    sprite->data[0] = gBattleAnimArgs[2];
+    sprite->callback = DestroyAnimSpriteAfterTimer;
+}
+
+// A sparkle that swells and shrinks once.
+// arg 0: x
+// arg 1: y
+// arg 2: 0 = x and y are a spot on the screen, 1 = they are offsets from the target
+static void AnimMoonblastTwinkle(struct Sprite *sprite)
+{
+    if (gBattleAnimArgs[2] == 0)
+    {
+        sprite->x = gBattleAnimArgs[0];
+        sprite->y = gBattleAnimArgs[1];
+    }
+    else
+    {
+        InitSpritePosToAnimTarget(sprite, TRUE);
+    }
     StoreSpriteCallbackInData6(sprite, DestroySpriteAndMatrix);
     sprite->callback = RunStoredCallbackWhenAffineAnimEnds;
 }

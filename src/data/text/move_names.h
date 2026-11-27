@@ -380,4 +380,6 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] = {
     [MOVE_BOOMBURST]     = _("BOOMBURST"),
     [MOVE_NIGHT_SLASH]     = _("NIGHT SLASH"),
     [MOVE_AURA_SPHERE]     = _("AURA SPHERE"),
+    [MOVE_MOONBLAST]     = _("MOONBLAST"),
+    [MOVE_PLAY_ROUGH]     = _("PLAY ROUGH"),
 };
