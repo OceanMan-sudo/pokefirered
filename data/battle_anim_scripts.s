@@ -11646,21 +11646,17 @@ Move_SHELL_SMASH:
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_TORN_METAL, 0, 12, 12, RGB(27, 20, 10)
 	setalpha 12, 8
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_ShakeMon, 5, ANIM_ATTACKER, 3, 0, 14, 1
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_ATTACKER, 2, 0, 10, 1
 	waitforvisualfinish
 	playsewithpan SE_M_BRICK_BREAK, SOUND_PAN_ATTACKER
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_ATTACKER, 1, 14, 0, RGB_WHITE
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, ANIM_ATTACKER, 0
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0, -8, -12
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 1, 8, -12
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 2, -8, 12
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 3, 8, 12
-	delay 8
-	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_ATTACKER
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0, -20, 0
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 1, 20, 0
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 2, -20, 8
-	createsprite gBrickBreakWallShardSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 3, 20, 8
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 0, -12, -10, -440, -760
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 1, 12, -10, 440, -760
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 2, -18, 2, -660, -420
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 3, 18, 2, 660, -420
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 1, -8, 12, -300, -180
+	createsprite gShellSmashShardSpriteTemplate, ANIM_ATTACKER, 2, 2, 8, 12, 300, -180
 	waitforvisualfinish
 	playsewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_ATTACKER, RGB(31, 6, 0), 12, 2, 2

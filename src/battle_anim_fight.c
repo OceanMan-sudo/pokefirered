@@ -31,6 +31,8 @@ static void AnimStompFootStep(struct Sprite *sprite);
 static void AnimStompFootEnd(struct Sprite *sprite);
 static void AnimBrickBreakWall_Step(struct Sprite *sprite);
 static void AnimBrickBreakWallShard_Step(struct Sprite *sprite);
+static void AnimShellSmashShard(struct Sprite *sprite);
+static void AnimShellSmashShard_Step(struct Sprite *sprite);
 static void AnimSuperpowerOrb_Step(struct Sprite *sprite);
 static void AnimSuperpowerRock_Step1(struct Sprite *sprite);
 static void AnimSuperpowerRock_Step2(struct Sprite *sprite);
@@ -252,6 +254,17 @@ const struct SpriteTemplate gBrickBreakWallShardSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimBrickBreakWallShard,
+};
+
+const struct SpriteTemplate gShellSmashShardSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_TORN_METAL,
+    .paletteTag = ANIM_TAG_TORN_METAL,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimShellSmashShard,
 };
 
 static const union AffineAnimCmd sAffineAnim_SuperpowerOrb[] =
@@ -761,6 +774,36 @@ static void AnimBrickBreakWallShard_Step(struct Sprite *sprite)
     sprite->x += sprite->data[6];
     sprite->y += sprite->data[7];
     if (++sprite->data[0] > 40)
+        DestroyAnimSprite(sprite);
+}
+
+// A piece of broken shell that is thrown off the user, falls and blinks out.
+// arg 0: which of the four pieces
+// args 1-2: start position, from the center of the user
+// args 3-4: starting speed, in 1/256ths of a pixel per frame
+static void AnimShellSmashShard(struct Sprite *sprite)
+{
+    sprite->x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X) + gBattleAnimArgs[1];
+    sprite->y = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y) + gBattleAnimArgs[2];
+    sprite->oam.tileNum += gBattleAnimArgs[0] * 16;
+    sprite->data[0] = 0;
+    sprite->data[1] = gBattleAnimArgs[3];
+    sprite->data[2] = gBattleAnimArgs[4];
+    sprite->data[3] = 0;
+    sprite->data[4] = 0;
+    sprite->callback = AnimShellSmashShard_Step;
+}
+
+static void AnimShellSmashShard_Step(struct Sprite *sprite)
+{
+    sprite->data[2] += 48; // gravity
+    sprite->data[3] += sprite->data[1];
+    sprite->data[4] += sprite->data[2];
+    sprite->x2 = sprite->data[3] >> 8;
+    sprite->y2 = sprite->data[4] >> 8;
+    if (++sprite->data[0] > 22)
+        sprite->invisible = (sprite->data[0] & 2) != 0;
+    if (sprite->data[0] > 34)
         DestroyAnimSprite(sprite);
 }
 

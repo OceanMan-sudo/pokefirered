@@ -348,14 +348,14 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Snarl (396): animation; in a double battle both opponents lose Sp. Atk
 - [ ] Moves 387 to 396 used by an opponent look right too
 - [ ] Quiver Dance (397): animation; Sp. Atk, Sp. Def and Speed rise
-- [ ] Shell Smash (398): animation; Defense and Sp. Def fall, then Attack, Sp. Atk and Speed rise sharply
+- [ ] Shell Smash (398): reworked shell break (one burst, pieces arc down and blink out); Defense and Sp. Def fall, then Attack, Sp. Atk and Speed rise sharply
 - [ ] Shell Smash while holding a White Herb: the lowered stats come back
 - [ ] Aurora Veil (399) with no hail: "But it failed!"
 - [ ] Aurora Veil in hail: animation and message; damage taken drops; "wore off" after five turns
 - [ ] Brick Break removes an opponent's Aurora Veil
 - [ ] Tailwind (400): animation and message; a slower Pokémon moves first from the next turn; "wore off" at the end of the fourth turn, counting the one it was used
 - [ ] Moves 397 to 400 used by an opponent look right too
-- [ ] Snow Warning, Drought, Drizzle or Sand Stream: the weather wears off at the end of the fifth turn, with its message
+- [x] Snow Warning, Drought, Drizzle or Sand Stream: the weather wears off at the end of the fifth turn, with its message
 - [ ] Switching that Pokémon out and back in after the weather is gone starts it again
 - [ ] Switching it back in while its weather is still up shows no message and does not add turns
 

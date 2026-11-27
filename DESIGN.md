@@ -91,7 +91,7 @@ Steel no longer resists Ghost or Dark.
 | Hail | Ice types get 1.5× Defense. Blizzard never misses |
 | Rain | Routes 12 and 13 are now rainy |
 
-- Weather from an ability (Drizzle, Drought, Sand Stream, Snow Warning) lasts **five turns**, like weather from a move. In the original it lasted the whole battle.
+- Weather from an ability (Drizzle, Drought, Sand Stream, Snow Warning) lasts **five turns**, like weather from a move. In the original it lasted the whole battle. The count includes the turn it starts, so sandstorm and hail deal damage four times and stop on the fifth turn without damage.
 - The ability works again each time its Pokémon is sent in. It does nothing if that weather is already up, and it replaces any other weather.
 - Weather on a route still lasts the whole battle unless something replaces it, and it does not come back afterwards.
 

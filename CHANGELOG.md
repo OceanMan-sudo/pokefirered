@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 52 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 53 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -17,7 +17,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Dragon Rage against Fairy types:** checked in a simulator only.
 - **Fairy move special cases:** Drain Kiss against Liquid Ooze, Fae Voice against Soundproof, and opponents using the spread moves.
 - **Multi-hit moves:** the new odds and accuracy.
-- **Reworked animations:** Bulldoze and Wild Charge.
+- **Reworked animations:** Bulldoze, Wild Charge and the Shell Smash shell break.
 - **Four support moves:** Quiver Dance, Shell Smash, Aurora Veil and Tailwind.
 - **Five-turn weather abilities:** Drizzle, Drought, Sand Stream and Snow Warning.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
