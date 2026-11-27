@@ -982,38 +982,6 @@ PalletTownGirl::
 	end
 
 
-ClearGame::
-# 514 "data/maps/PalletTown/scripts.pory"
-	lock
-# 515 "data/maps/PalletTown/scripts.pory"
-	faceplayer
-# 516 "data/maps/PalletTown/scripts.pory"
-	msgbox ClearGame_Text_0
-# 517 "data/maps/PalletTown/scripts.pory"
-	giveitem ITEM_LEFTOVERS
-# 518 "data/maps/PalletTown/scripts.pory"
-	setflag SYS_FLAGS + 0x2C
-# 519 "data/maps/PalletTown/scripts.pory"
-	release
-	end
-
-
-EightBadges::
-# 524 "data/maps/PalletTown/scripts.pory"
-	lock
-# 525 "data/maps/PalletTown/scripts.pory"
-	faceplayer
-# 526 "data/maps/PalletTown/scripts.pory"
-	msgbox EightBadges_Text_0
-# 527 "data/maps/PalletTown/scripts.pory"
-	setflag FLAG_DEFEATED_KOGA
-# 528 "data/maps/PalletTown/scripts.pory"
-	setflag FLAG_BADGE05_GET
-# 529 "data/maps/PalletTown/scripts.pory"
-	release
-	end
-
-
 PalletTown_EventScript_HelloSign_Text_0:
 # 460 "data/maps/PalletTown/scripts.pory"
 	.string "Welcome to the world of {COLOR RED}{SHADOW LIGHT_RED}Super\n"
@@ -1046,11 +1014,3 @@ PalletTownGirl_Text_0:
 	.string "TOWN was a sort of testing grounds\l"
 	.string "for the rest of the region's\l"
 	.string "expansion.$"
-
-ClearGame_Text_0:
-# 516 "data/maps/PalletTown/scripts.pory"
-	.string "Way to go$"
-
-EightBadges_Text_0:
-# 526 "data/maps/PalletTown/scripts.pory"
-	.string "Enjoy surf$"

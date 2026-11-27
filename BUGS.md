@@ -19,17 +19,17 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 | ID | Severity | Confidence | Short description | Status |
 |---|---|---|---|---|
 | BUG-01 | High | Likely | Wild battles can start in Pallet Town before you own a Pokémon | Deferred by you |
-| BUG-02 | High | Confirmed | Magneton's level-up list is out of order | Fixed, awaiting test |
+| BUG-02 | High | Confirmed | Magneton's level-up list is out of order | Fixed, tested |
 | BUG-03 | High | Confirmed | Cinnabar Battle House is a copy of the Cerulean one and has no trainers | Deferred by you |
-| BUG-04 | High | Confirmed | Only Mewtwo can learn the Route 15 elemental punches | Fixed, awaiting test |
-| BUG-05 | Medium | Confirmed | Confusion and disobedience self-hits use the wrong damage rules | Fixed, awaiting test |
-| BUG-06 | Medium | Confirmed | Victory music never plays after knocking out a wild Pokémon | Fixed, awaiting test |
+| BUG-04 | High | Confirmed | Only Mewtwo can learn the Route 15 elemental punches | Fixed, tested |
+| BUG-05 | Medium | Confirmed | Confusion and disobedience self-hits use the wrong damage rules | Fixed, tested |
+| BUG-06 | Medium | Confirmed | Victory music never plays after knocking out a wild Pokémon | Fixed, tested |
 | BUG-07 | Medium | Confirmed | NPC hints mention things that are not in the game yet | Open |
 | BUG-08 | Medium | Confirmed | Seafoam Resort cannot be reached and its exits are wrong | Open |
 | BUG-09 | Medium | Likely | Two doors lead to the wrong place (Route 5, Cinnabar Island) | Open |
 | BUG-10 | Medium | Confirmed | Build fails on case-sensitive computers (Seafoam folder name) | Open |
 | BUG-11 | Low | Confirmed | `poryscript` is not marked as runnable | Open |
-| BUG-12 | Low | Confirmed | Using a TM can read past the end of the item effect table | Fixed, awaiting test |
+| BUG-12 | Low | Confirmed | Using a TM can read past the end of the item effect table | Fixed, tested |
 | BUG-13 | Low | Confirmed | Ariados and Donphan have one more move than the relearner can hold | Open |
 | BUG-14 | Low | Confirmed | Mr. Nuzlocke rewards can be missed after beating the game | Open |
 | BUG-15 | Low | Confirmed | Early National Dex means two vanilla events behave differently | Open |
@@ -51,7 +51,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Possible fix:** Decide whether the grass belongs there. If it does, block it until you have a starter and set the levels you want.
 
 ### BUG-02: Magneton's level-up list is out of order
-**Status (2026-11-27):** Fixed, awaiting your test. The Flash Cannon line now sits next to the other level 57 move. No move or level changed.
+**Status (2026-11-27):** Fixed, and you reported it tested. The Flash Cannon line now sits next to the other level 57 move. No move or level changed.
 
 - **Where:** `sMagnetonLevelUpLearnset` in `src/data/pokemon/level_up_learnsets.h`.
 - **Cause:** The list starts `1 Metal Sound`, `57 Flash Cannon`, then `1 Tackle`… The game stops reading at the first move above the Pokémon's level.
@@ -67,7 +67,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Note:** This looks like an unfinished room (**Assumption**).
 
 ### BUG-04: Only Mewtwo can learn the Route 15 elemental punches
-**Status (2026-11-27):** Fixed, awaiting your test. Compatibility now follows newer official games: 89 Pokémon can learn Fire Punch, 104 Ice Punch and 109 Thunder Punch (taken from the pokeemerald-expansion reference data, including Deoxys's Normal Forme list).
+**Status (2026-11-27):** Fixed, and you reported it tested. Compatibility now follows newer official games: 89 Pokémon can learn Fire Punch, 104 Ice Punch and 109 Thunder Punch (taken from the pokeemerald-expansion reference data, including Deoxys's Normal Forme list).
 
 - **Where:** `src/data/pokemon/tutor_learnsets.h`; tutors in `data/maps/Route15_HouseofElements/`.
 - **Confirmed:** Ice Punch, Fire Punch and Thunder Punch tutor flags are set for Mewtwo only.
@@ -77,7 +77,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 ## Medium
 
 ### BUG-05: Confusion and disobedience self-hits use the wrong rules
-**Status (2026-11-27):** Fixed, awaiting your test. `CalculateBaseDamage` now uses the move passed to it, and Technician is skipped for self-hits.
+**Status (2026-11-27):** Fixed, and you reported it tested. `CalculateBaseDamage` now uses the move passed to it, and Technician is skipped for self-hits.
 
 - **Where:** `CalculateBaseDamage` in `src/pokemon.c`.
 - **Cause:** It decides physical or special from the move you **chose** (`gCurrentMove`), not from the move passed in. Self-hits pass in a stand-in physical move.
@@ -88,7 +88,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Possible fix:** Use the passed-in move for the category check, and skip these abilities for self-hits.
 
 ### BUG-06: Victory music never plays after knocking out a wild Pokémon
-**Status (2026-11-27):** Fixed, awaiting your test. The music now plays only when the wild Pokémon has fainted, so catching does not trigger it.
+**Status (2026-11-27):** Fixed, and you reported it tested. The music now plays only when the wild Pokémon has fainted, so catching does not trigger it.
 
 - **Where:** `Cmd_getexp` in `src/battle_script_commands.c`.
 - **Cause:** The music only starts if the enemy has no Poké Ball recorded. Every newly created Pokémon is recorded with a Poké Ball, so the condition is never true.
@@ -121,7 +121,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 `tools/poryscript/poryscript` is stored without "executable" permission. On a native Linux copy, rebuilding scripts fails with `Permission denied`. Your Windows drive under WSL is not affected.
 
 ### BUG-12: Using a TM can read past the item effect table
-**Status (2026-11-27):** Fixed, awaiting your test. The limit is now `ITEM_UP_GRADE`, the last item in the effect table, and `GetItemEffectType` ignores items with no effect.
+**Status (2026-11-27):** Fixed, and you reported it tested. The limit is now `ITEM_UP_GRADE`, the last item in the effect table, and `GetItemEffectType` ignores items with no effect.
 
 `IS_POKEMON_ITEM` in `include/constants/items.h` lost its upper limit (so the new evolution items would work). TM item numbers are far beyond the end of `gItemEffectTable`, and `GetItemEffectType` does not check. It works in practice today, but what it reads is undefined and could change as the game changes. A fix is to restore a limit that includes the highest evolution item.
 

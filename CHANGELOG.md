@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 28 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 29 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -64,27 +64,28 @@ Tables were generated from the game files, so they show the **net difference** f
 |---|---|
 | IV/EV view with SELECT on the summary screen | Tested |
 | Evolution after catching | Tested |
-| Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Not recorded |
-| TMs unique, unsellable, unholdable, no quantity; owned TMs hidden from shops | Not recorded |
-| Pickup: TM10 replaced by Leftovers | Not recorded |
+| Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Tested |
+| TMs unique, unsellable, unholdable, no quantity; owned TMs hidden from shops | Tested |
+| Pickup: TM10 replaced by Leftovers | Tested |
 | HM field moves without teaching; HMs forgettable | Tested |
 | Release protection for the last Surf user | Tested |
 | Rock Tunnel dark again | Tested |
-| Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Not recorded |
+| Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Tested |
 | New move: Aura Sphere with animation | Tested |
 | Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
 | Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
-| Magneton level-up list put in order (BUG-02) | Not yet tested |
-| Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Not yet tested |
-| Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Not yet tested |
-| Victory music plays after knocking out a wild Pokémon (BUG-06) | Not yet tested |
-| Upper limit restored on items usable on Pokémon (BUG-12) | Not yet tested |
-| Running from the start and on every map and tile | Not yet tested |
-| Cycling theme removed | Not yet tested |
-| Enemy trainers never use items | Not yet tested |
-| Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Not yet tested |
-| Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Not yet tested |
-| Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Not yet tested |
+| Magneton level-up list put in order (BUG-02) | Tested |
+| Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Tested |
+| Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Tested |
+| Victory music plays after knocking out a wild Pokémon (BUG-06) | Tested |
+| Upper limit restored on items usable on Pokémon (BUG-12) | Tested |
+| Running from the start and on every map and tile | Tested |
+| Cycling theme removed | Tested |
+| Enemy trainers never use items | Tested |
+| Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Tested |
+| Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
+| Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
+| Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
 
 These changes did not touch species data, TM compatibility, trainers or wild encounters. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 

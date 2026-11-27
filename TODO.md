@@ -261,29 +261,27 @@ There are 455 placed trainers in these tables (22 changed), not counting rival a
 - House that gives Rare Candies
 
 ## Waiting to be tested
-No in-game confirmation is recorded for these:
-- [ ] Koga, Erika and Lt. Surge teams (committed as "UNTESTED"), plus the later edits to Sabrina, Blaine and others
-- [ ] Sandstorm, hail, Solar Power and Blizzard changes
-- [ ] TM changes: duplicates, shops, Game Corner, selling and holding
-- [ ] Pickup giving Leftovers
-- [ ] Boomburst, Draco Meteor, Leaf Storm and Psycho Power fixes
-- [ ] The eight new abilities
-- [ ] Phase 1 fixes: Magneton's moves, punch tutors, confusion damage, victory music, TMs and evolution items
-- [ ] Running without shoes, indoors and on Cycling Road
-- [ ] Music while biking, including Cycling Road
-- [ ] A gym leader battle with no enemy items
-- [ ] Repel prompt (yes, no, and with no Repels left) and shop prices
-- [ ] Mom's gift in Pewter City, for each starter if possible
-- [ ] Debug menu: every option (hold B, press SELECT)
+Ticked items: you reported on 27 November 2026 that they work.
+- [x] Koga, Erika and Lt. Surge teams (committed as "UNTESTED"), plus the later edits to Sabrina, Blaine and others
+- [x] Sandstorm, hail, Solar Power and Blizzard changes
+- [x] TM changes: duplicates, shops, Game Corner, selling and holding
+- [x] Pickup giving Leftovers
+- [x] Boomburst, Draco Meteor, Leaf Storm and Psycho Power fixes
+- [x] The eight new abilities
+- [x] Phase 1 fixes: Magneton's moves, punch tutors, confusion damage, victory music, TMs and evolution items
+- [x] Running without shoes, indoors and on Cycling Road
+- [x] Music while biking, including Cycling Road
+- [x] A gym leader battle with no enemy items
+- [x] Repel prompt (yes, no, and with no Repels left) and shop prices
+- [x] Mom's gift in Pewter City, for each starter if possible
+- [x] Debug menu: every option (hold B, press SELECT)
+- [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 
 ## Test content to remove
-**Nothing has been removed.** "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
+Removed on 27 November 2026: the Pallet Town Giovanni and chef, and the nine warp doors. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
 
 | Item | Where | Added by |
 |---|---|---|
-| Giovanni who grants the Fuchsia gym flags | Pallet Town (5,16), `EightBadges` | You |
-| Chef who marks the game cleared and gives Leftovers | Pallet Town (2,16), `ClearGame` | You |
-| Doors from Pallet Town to other towns (likely) | Pallet Town, row 4, x 37–45 | You |
 | Starting PC items (likely) | `src/player_pc.c` | You |
 | Level 31 Murkrow and rare species in Pallet grass (possibly) | `wild_encounters.json` | You |
 | Unplaced `Tester` script | `data/maps/Route2/scripts.pory` | You |

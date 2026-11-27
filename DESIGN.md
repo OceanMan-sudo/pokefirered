@@ -2,7 +2,7 @@
 
 This describes the game as it stands on `claude-edits` (audit of 27 November 2026). For before-and-after details see [CHANGELOG.md](CHANGELOG.md). For problems see [BUGS.md](BUGS.md).
 
-**How to read this:** Everything here was read from the code and data (**confirmed in code**) unless marked **Assumption**. **Tested** means you reported that it worked in game. Anything not marked Tested has no recorded in-game confirmation.
+**How to read this:** Everything here was read from the code and data (**confirmed in code**) unless marked **Assumption**. **Tested** means you reported that it worked in game. Anything not marked Tested has no recorded in-game confirmation, except the items ticked under "Waiting to be tested" in [TODO.md](TODO.md), which you reported working on 27 November 2026.
 
 ## Test tools (temporary)
 
