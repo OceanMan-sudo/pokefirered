@@ -452,4 +452,6 @@ gSpecials::
 	def_special UpdateLoreleiDollCollection
 	def_special LoopWingFlapSound
 	def_special CreateEnemyEventMon
+	def_special GetRepelToReuse
+	def_special UseRepelAgain
 gSpecialsEnd::

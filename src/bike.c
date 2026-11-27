@@ -322,12 +322,8 @@ void GetOnOffBike(u8 flags)
     }
     else
     {
+        // No cycling theme: the area's music keeps playing
         SetPlayerAvatarTransitionFlags(flags);
-        if (Overworld_MusicCanOverrideMapMusic(MUS_CYCLING))
-        {
-            Overworld_SetSavedMusic(MUS_CYCLING);
-            Overworld_ChangeMusicTo(MUS_CYCLING);
-        }
     }
 }
 

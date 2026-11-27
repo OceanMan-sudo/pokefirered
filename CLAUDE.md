@@ -102,6 +102,9 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Release protection (Surf) | `src/pokemon_storage_system_data.c`, `src/pokemon_storage_system_tasks.c` |
 | IV/EV viewer | `src/pokemon_summary_screen.c` |
 | Move relearner | `data/scripts/move_relearner_pc.inc` |
+| Repel reuse prompt | `data/scripts/repel.inc`, `GetRepelToReuse` in `src/item_use.c`, `VAR_LAST_REPEL_USED` |
+| Enemy trainers use no items | `BattleAI_HandleItemUseBeforeAISetup` in `src/battle_ai_script_commands.c` (the `items` fields in `trainers.h` are ignored) |
+| Running everywhere | `PlayerNotOnBikeMoving` in `src/field_player_avatar.c` |
 | Dynamic multichoice menus | `src/script_menu.c`, `src/scrcmd.c` (script commands `0xd5`, `0xd6`) |
 
 ## Rules that prevent common breakage

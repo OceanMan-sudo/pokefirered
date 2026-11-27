@@ -40,6 +40,7 @@ Each move is Physical, Special or Status on its own, whatever its type. An icon 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
 - In wild battles, pressing **B** on the action menu jumps the cursor to **RUN**.
+- Enemy trainers never use items, including gym leaders and the League.
 
 ## Training and progression
 
@@ -71,7 +72,13 @@ Each move is Physical, Special or Status on its own, whatever its type. An icon 
 - Places that used to require the National Dex (Indigo Plateau, the One Island Celio quest) now check that you have beaten the game.
 
 ### Running
-Hold **B** to run, as in the original. Running is now allowed inside the player's house 1F, Viridian School and one Vermilion house, and in the new buildings.
+Hold **B** to run, from the start of the game. No Running Shoes are needed, and running is allowed on every map and floor tile, indoors included.
+
+### Cycling
+There is no cycling theme. The area's music keeps playing on the bike, including on Cycling Road.
+
+### Repels
+When a Repel wears off, the game offers to use another: the kind used last, otherwise any other you carry (Repel first, then Super, then Max). Shop prices are 10, 20 and 30.
 
 ## Evolution
 
@@ -180,6 +187,7 @@ No new items were created. These sources were added or changed:
 | Gift | Where |
 |---|---|
 | Cheri Berry | A boy in Pallet Town |
+| Miracle Seed, Mystic Water or Charcoal, matching your starter (a gift from Mom, replacing the Running Shoes) | Oak's aide in Pewter City |
 | Old Rod | A fisherman in Viridian City |
 | Good Rod | Vermilion City house (replaces the original Old Rod there) |
 | 99 Rare Candies, refilled when you run out | Viridian City, House of Nuzlocke |

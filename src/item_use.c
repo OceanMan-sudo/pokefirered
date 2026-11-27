@@ -565,6 +565,7 @@ static void Task_UseRepel(u8 taskId)
     {
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, NULL, gSpecialVar_ItemId, 0xFFFF);
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
+        VarSet(VAR_LAST_REPEL_USED, gSpecialVar_ItemId);
         RemoveUsedItem();
         DisplayItemMessageInBag(taskId, FONT_NORMAL, gStringVar4, Task_ReturnToBagFromContextMenu);
     }
@@ -577,6 +578,43 @@ static void RemoveUsedItem(void)
     PocketCalculateInitialCursorPosAndItemsAbove(ItemId_GetPocket(gSpecialVar_ItemId));
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
     StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
+}
+
+// For EventScript_RepelWoreOff. Picks the Repel to offer: the kind used last,
+// otherwise any other one in the bag. Returns ITEM_NONE if there is none.
+u16 GetRepelToReuse(void)
+{
+    static const u16 sRepels[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};
+    u32 i;
+    u16 item = VarGet(VAR_LAST_REPEL_USED);
+
+    if (item == ITEM_NONE || !CheckBagHasItem(item, 1))
+    {
+        item = ITEM_NONE;
+        for (i = 0; i < NELEMS(sRepels); i++)
+        {
+            if (CheckBagHasItem(sRepels[i], 1))
+            {
+                item = sRepels[i];
+                break;
+            }
+        }
+    }
+
+    gSpecialVar_0x8004 = item;
+    if (item != ITEM_NONE)
+        CopyItemName(item, gStringVar1);
+    return item;
+}
+
+// Uses the Repel chosen by GetRepelToReuse
+void UseRepelAgain(void)
+{
+    u16 item = gSpecialVar_0x8004;
+
+    RemoveBagItem(item, 1);
+    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(item));
+    VarSet(VAR_LAST_REPEL_USED, item);
 }
 
 void FieldUseFunc_BlackWhiteFlute(u8 taskId)

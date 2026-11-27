@@ -513,8 +513,8 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if ((heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
-        && !IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior))
+    // Running needs no shoes and is allowed on every map and floor tile
+    if (heldKeys & B_BUTTON)
     {
         if (PlayerIsMovingOnRockStairs(direction))
             PlayerRunSlow(direction);

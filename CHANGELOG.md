@@ -79,6 +79,11 @@ Tables were generated from the game files, so they show the **net difference** f
 | Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Not yet tested |
 | Victory music plays after knocking out a wild Pokémon (BUG-06) | Not yet tested |
 | Upper limit restored on items usable on Pokémon (BUG-12) | Not yet tested |
+| Running from the start and on every map and tile | Not yet tested |
+| Cycling theme removed | Not yet tested |
+| Enemy trainers never use items | Not yet tested |
+| Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Not yet tested |
+| Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Not yet tested |
 
 These changes did not touch species data, TM compatibility, trainers or wild encounters. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 

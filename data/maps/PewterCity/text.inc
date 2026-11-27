@@ -128,28 +128,67 @@ PewterCity_Text_AskedToDeliverThis::
     .string "I've been asked to deliver this,\n"
     .string "so here you go.$"
 
-PewterCity_Text_ReceivedRunningShoesFromAide::
+PewterCity_Text_ReceivedMiracleSeedFromAide::
     .string "{PLAYER} received the\n"
-    .string "RUNNING SHOES from the AIDE.$"
+    .string "MIRACLE SEED from the AIDE.$"
 
-PewterCity_Text_SwitchedShoesWithRunningShoes::
-    .string "{PLAYER} switched shoes with the\n"
-    .string "RUNNING SHOES.$"
+PewterCity_Text_ReceivedMysticWaterFromAide::
+    .string "{PLAYER} received the\n"
+    .string "MYSTIC WATER from the AIDE.$"
 
-PewterCity_Text_ExplainRunningShoes::
-    .string "Press the B Button to run.\n"
-    .string "But only where there's room to run!$"
+PewterCity_Text_ReceivedCharcoalFromAide::
+    .string "{PLAYER} received the\n"
+    .string "CHARCOAL from the AIDE.$"
+
+PewterCity_Text_ExplainMiracleSeed::
+    .string "Have a POKéMON hold it, and\n"
+    .string "its GRASS-type moves will\l"
+    .string "get stronger.$"
+
+PewterCity_Text_ExplainMysticWater::
+    .string "Have a POKéMON hold it, and\n"
+    .string "its WATER-type moves will\l"
+    .string "get stronger.$"
+
+PewterCity_Text_ExplainCharcoal::
+    .string "Have a POKéMON hold it, and\n"
+    .string "its FIRE-type moves will\l"
+    .string "get stronger.$"
 
 PewterCity_Text_MustBeGoingBackToLab::
     .string "Well, I must be going back to\n"
     .string "the LAB.\p"
     .string "Bye-bye!$"
 
-PewterCity_Text_RunningShoesLetterFromMom::
+PewterCity_Text_MiracleSeedLetterFromMom::
     .string "There's a letter attached…\p"
     .string "Dear {PLAYER},\p"
-    .string "Here is a pair of RUNNING SHOES\n"
-    .string "for my beloved challenger.\p"
+    .string "Here is a MIRACLE SEED for\n"
+    .string "my beloved challenger.\p"
+    .string "May you and your partner\n"
+    .string "keep growing!\p"
+    .string "Remember, I'll always cheer for\n"
+    .string "you! Don't ever give up!\p"
+    .string "From Mom$"
+
+PewterCity_Text_MysticWaterLetterFromMom::
+    .string "There's a letter attached…\p"
+    .string "Dear {PLAYER},\p"
+    .string "Here is some MYSTIC WATER for\n"
+    .string "my beloved challenger.\p"
+    .string "May you and your partner\n"
+    .string "make a big splash!\p"
+    .string "Remember, I'll always cheer for\n"
+    .string "you! Don't ever give up!\p"
+    .string "From Mom$"
+
+PewterCity_Text_CharcoalLetterFromMom::
+    .string "There's a letter attached…\p"
+    .string "Dear {PLAYER},\p"
+    .string "Here is some CHARCOAL for\n"
+    .string "my beloved challenger.\p"
+    .string "May you and your partner\n"
+    .string "keep that fire burning!\p"
     .string "Remember, I'll always cheer for\n"
     .string "you! Don't ever give up!\p"
     .string "From Mom$"

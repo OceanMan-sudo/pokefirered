@@ -1031,6 +1031,10 @@ void Overworld_PlaySpecialMapMusic(void)
 
     music = GetCurrLocationDefaultMusic();
 
+    // A save made on the bike may still remember the cycling theme
+    if (gSaveBlock1Ptr->savedMusic == MUS_CYCLING)
+        Overworld_ClearSavedMusic();
+
     if (gSaveBlock1Ptr->savedMusic)
         music = gSaveBlock1Ptr->savedMusic;
     else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING) && Overworld_MusicCanOverrideMapMusic(MUS_SURF))

@@ -702,17 +702,9 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	call_if_eq VAR_TEMP_1, 2, PewterCity_EventScript_AideApproachPlayer2
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideApproachPlayer3
 	msgbox PewterCity_Text_AskedToDeliverThis
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_OBTAIN_KEY_ITEM
-	message PewterCity_Text_ReceivedRunningShoesFromAide
-	waitmessage
-	waitfanfare
-	msgbox PewterCity_Text_SwitchedShoesWithRunningShoes
-	special DisableMsgBoxWalkaway
-	signmsg
-	msgbox PewterCity_Text_ExplainRunningShoes
-	normalmsg
-	call EventScript_RestorePrevTextColor
+	call_if_eq VAR_STARTER_MON, 0, PewterCity_EventScript_AideGiveMiracleSeed
+	call_if_eq VAR_STARTER_MON, 1, PewterCity_EventScript_AideGiveMysticWater
+	call_if_eq VAR_STARTER_MON, 2, PewterCity_EventScript_AideGiveCharcoal
 	msgbox PewterCity_Text_MustBeGoingBackToLab
 	closemessage
 	call_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideExit0
@@ -721,11 +713,39 @@ PewterCity_EventScript_AideGiveRunningShoes::
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideExit3
 	delay 30
 	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox PewterCity_Text_RunningShoesLetterFromMom
+	call_if_eq VAR_STARTER_MON, 0, PewterCity_EventScript_MomLetterMiracleSeed
+	call_if_eq VAR_STARTER_MON, 1, PewterCity_EventScript_MomLetterMysticWater
+	call_if_eq VAR_STARTER_MON, 2, PewterCity_EventScript_MomLetterCharcoal
 	closemessage
 	removeobject LOCALID_AIDE
-	setflag FLAG_SYS_B_DASH
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 2
+	return
+
+PewterCity_EventScript_AideGiveMiracleSeed::
+	giveitem_msg PewterCity_Text_ReceivedMiracleSeedFromAide, ITEM_MIRACLE_SEED, 1, MUS_OBTAIN_KEY_ITEM
+	msgbox PewterCity_Text_ExplainMiracleSeed
+	return
+
+PewterCity_EventScript_MomLetterMiracleSeed::
+	msgbox PewterCity_Text_MiracleSeedLetterFromMom
+	return
+
+PewterCity_EventScript_AideGiveMysticWater::
+	giveitem_msg PewterCity_Text_ReceivedMysticWaterFromAide, ITEM_MYSTIC_WATER, 1, MUS_OBTAIN_KEY_ITEM
+	msgbox PewterCity_Text_ExplainMysticWater
+	return
+
+PewterCity_EventScript_MomLetterMysticWater::
+	msgbox PewterCity_Text_MysticWaterLetterFromMom
+	return
+
+PewterCity_EventScript_AideGiveCharcoal::
+	giveitem_msg PewterCity_Text_ReceivedCharcoalFromAide, ITEM_CHARCOAL, 1, MUS_OBTAIN_KEY_ITEM
+	msgbox PewterCity_Text_ExplainCharcoal
+	return
+
+PewterCity_EventScript_MomLetterCharcoal::
+	msgbox PewterCity_Text_CharcoalLetterFromMom
 	return
 
 PewterCity_EventScript_AideNoticePlayer::

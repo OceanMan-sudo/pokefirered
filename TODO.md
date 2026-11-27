@@ -21,15 +21,15 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Default rules | No difficulty mode. Set battle style, no items in battle and level cap on by default, each switchable in the menu |
 | Enemy trainers | Never use items |
 | Rare Candies | Keep the house that gives them |
-| Repels | Infinite repels dropped. Add the Black/White prompt to use another when one runs out |
-| Running | Running Shoes from the start, running allowed everywhere, auto-run switchable |
+| Repels | Infinite repels dropped. Prompt to use another when one runs out. Prices 10, 20, 30 |
+| Running | Run from the start (no shoes needed), allowed everywhere, auto-run switchable |
+| Pewter City aide | Gives a starter type booster as a gift from Mom, in place of the Running Shoes |
 | Wild battles | Be able to run before the battle menu appears |
 | New areas | Both after the story and woven into it. Ideas later |
 
 ## Open questions
 
 - [ ] Running from wild battles: should holding a button during the intro do it, and should escape always work?
-- [ ] Repel price: in the code on GitHub they still cost 350, 500 and 700. What should they cost?
 - [ ] Level caps: confirm the numbers (see the level curve), and decide how the cap works during the League
 - [ ] Is "Nuzlocke" the right reading of the version 1 goal?
 - [ ] Must all 386 be obtainable in version 1, or can some wait?
@@ -52,12 +52,15 @@ Details are in [BUGS.md](BUGS.md).
 Checked items are fixed in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
 
 ### Phase 2: easy features
-- [ ] Running Shoes from the start
-- [ ] Running allowed indoors and everywhere else it is blocked
-- [ ] Enemy trainers never use items
-- [ ] Prompt to use another Repel when one runs out
-- [ ] Set repel prices (after the question above)
-- [ ] Remove the cycling music
+- [x] Running from the start, with no shoes needed
+- [x] Running allowed indoors and everywhere else it was blocked
+- [x] Enemy trainers never use items
+- [x] Prompt to use another Repel when one runs out
+- [x] Repel prices set to 10, 20 and 30
+- [x] Remove the cycling music
+- [x] Pewter City aide gives Mom's starter gift
+
+Checked items are in the code. Test them using the list under [Waiting to be tested](#waiting-to-be-tested).
 
 ### Phase 3: rules and battle features
 Build the rules and their menu switches together.
@@ -66,7 +69,7 @@ Build the rules and their menu switches together.
 |---|---|---|
 | ☐ | Hard level cap, blocks EXP and Rare Candies, lifts after Champion | Easy to medium |
 | ☐ | Set battle style by default | Easy |
-| ☐ | No items in trainer battles by default | Easy |
+| ☐ | No items in trainer battles by default (your side; enemy trainers already never use items) | Easy |
 | ☐ | Menu switches for Set, items and level cap | Medium |
 | ☐ | Auto-run switch | Easy to medium |
 | ☐ | Run from wild battles before the menu appears | Medium |
@@ -265,6 +268,11 @@ No in-game confirmation is recorded for these:
 - [ ] Boomburst, Draco Meteor, Leaf Storm and Psycho Power fixes
 - [ ] The eight new abilities
 - [ ] Phase 1 fixes: Magneton's moves, punch tutors, confusion damage, victory music, TMs and evolution items
+- [ ] Running without shoes, indoors and on Cycling Road
+- [ ] Music while biking, including Cycling Road
+- [ ] A gym leader battle with no enemy items
+- [ ] Repel prompt (yes, no, and with no Repels left) and shop prices
+- [ ] Mom's gift in Pewter City, for each starter if possible
 
 ## Test content to remove
 **Nothing has been removed.** "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
@@ -300,7 +308,7 @@ Kept as you first wrote it. The decisions above replace it where they differ.
 **New Features:**
 - ~~Reusable TMs~~
 - Infinite rare candies
-- Infinite repels
+- ~~Infinite repels~~ (dropped)
 - ~~Remove need for HMs~~
 - Updated evolution methods
 - Increase Pokémon availability
@@ -308,7 +316,7 @@ Kept as you first wrote it. The decisions above replace it where they differ.
 - Level caps
 - Auto-Run, run in doors
 - Allow trainers to run from battles immediately
-- Remove cycling music
+- ~~Remove cycling music~~
 - Hard mode (no items in trainer battles, level cap)
 - Physical/Special split
 - New items, moves, and potentially new areas

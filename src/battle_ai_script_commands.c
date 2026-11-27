@@ -267,21 +267,8 @@ void BattleAI_HandleItemUseBeforeAISetup(void)
     for (i = 0; i < sizeof(struct BattleHistory); i++)
         data[i] = 0;
 
-    // Items are allowed to use in ONLY trainer battles.
-    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-        && (gTrainerBattleOpponent_A != TRAINER_SECRET_BASE)
-        && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_SAFARI | BATTLE_TYPE_LINK))
-        )
-    {
-        for (i = 0; i < MAX_TRAINER_ITEMS; i++)
-        {
-            if (gTrainers[gTrainerBattleOpponent_A].items[i] != 0)
-            {
-                BATTLE_HISTORY->trainerItems[BATTLE_HISTORY->itemsNo] = gTrainers[gTrainerBattleOpponent_A].items[i];
-                BATTLE_HISTORY->itemsNo++;
-            }
-        }
-    }
+    // CPU trainers never use items: the AI's item list is left empty,
+    // whatever items a trainer has in trainers.h.
 
     BattleAI_SetupAIData();
 }
