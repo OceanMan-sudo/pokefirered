@@ -302,6 +302,7 @@
 #define ANIM_TAG_SHADOW_SNEAK                (ANIM_SPRITES_START + 292)
 #define ANIM_TAG_FOCUS_BLAST                 (ANIM_SPRITES_START + 293)
 #define ANIM_TAG_FLASH_CANNON                (ANIM_SPRITES_START + 294)
+#define ANIM_TAG_PSYCHO_TORPEDO              (ANIM_SPRITES_START + 295)
 
 // battlers
 #define ANIM_ATTACKER    0

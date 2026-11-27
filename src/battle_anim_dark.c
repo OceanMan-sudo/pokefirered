@@ -11,6 +11,7 @@ static void AnimUnusedBagSteal_Step(struct Sprite *sprite);
 static void AnimBite(struct Sprite *sprite);
 static void AnimTearDrop(struct Sprite *sprite);
 static void AnimClawSlash(struct Sprite *sprite);
+static void AnimShadowClawSlash(struct Sprite *sprite);
 static void AnimTask_AttackerFadeToInvisible_Step(u8 taskId);
 static void AnimTask_AttackerFadeFromInvisible_Step(u8 taskId);
 static void AnimBite_Step1(struct Sprite *sprite);
@@ -192,7 +193,7 @@ const struct SpriteTemplate gShadowClawSlashSpriteTemplate =
     .anims = sAnims_ClawSlash,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimClawSlash,
+    .callback = AnimShadowClawSlash,
 };
 
 void AnimTask_AttackerFadeToInvisible(u8 taskId)
@@ -769,6 +770,23 @@ static void AnimClawSlash(struct Sprite *sprite)
     StartSpriteAnim(sprite, gBattleAnimArgs[2]);
     sprite->callback = RunStoredCallbackWhenAnimEnds;
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
+}
+
+// Like AnimClawSlash, but at the same height for every target on a side, so the
+// marks do not sink to the ground on short Pokemon.
+static void AnimShadowClawSlash(struct Sprite *sprite)
+{
+    s16 y = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y);
+
+    if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
+        y += 4;
+    else
+        y += 8;
+    // Any lower and the text box would cut off the marks
+    if (y > 84)
+        y = 84;
+    sprite->y = y;
+    AnimClawSlash(sprite);
 }
 
 // Makes the attacker metallic and shining.

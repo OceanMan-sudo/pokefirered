@@ -843,6 +843,33 @@ const struct SpriteTemplate gPsychoCrusherFlameSpriteTemplate =
     .callback = AnimPsychoCrusherFlame,
 };
 
+// The spinning mass of psychic energy that stands in for the user
+static const union AnimCmd sAnim_PsychoTorpedo[] =
+{
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_FRAME(32, 2),
+    ANIMCMD_FRAME(64, 2),
+    ANIMCMD_FRAME(96, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnims_PsychoTorpedo[] =
+{
+    sAnim_PsychoTorpedo,
+};
+
+// Created and moved by AnimTask_PsychoCrusher
+static const struct SpriteTemplate sPsychoTorpedoSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_PSYCHO_TORPEDO,
+    .paletteTag = ANIM_TAG_PSYCHO_TORPEDO,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x32,
+    .anims = sAnims_PsychoTorpedo,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
 static const union AnimCmd sSporeParticleAnimCmds1[] =
 {
     ANIMCMD_FRAME(0, 1),
@@ -2771,21 +2798,26 @@ static void AnimShadowSneakCreep(struct Sprite *sprite)
     sprite->callback = StartAnimLinearTranslation;
 }
 
-// Psycho Power: the user wreathes itself in psychic fire, leans in and rams
-// straight through the target, then comes back to its place.
-// AnimTask_PsychoCrusher moves the user and uses arg 7 to tell the flames
-// what to do.
+// Psycho Power: the user wreathes itself in psychic fire and vanishes. A
+// spinning mass of energy takes its place, drills through the target and flies
+// off, and then the user reappears. The user's picture never leaves its spot.
+// AnimTask_PsychoCrusher runs the sequence. It uses arg 7 to tell the flames
+// what to do and arg 6 to tell them which sprite to trail.
 #define PSYCHO_FLAMES_ORBIT 0
 #define PSYCHO_FLAMES_TRAIL 1
 #define PSYCHO_FLAMES_END   0xFFFF
 
-// Rotation of the user when leaning in, about 53 degrees
-#define PSYCHO_LEAN 0x2600
+// The lowest the torpedo may start, so the text box does not cover it
+#define PSYCHO_LOWEST_START 88
+
+// Starting scale of the torpedo as it forms. Larger numbers are smaller.
+#define PSYCHO_FORM_SCALE 0x280
 
 enum
 {
     PSYCHO_WIND_UP,
     PSYCHO_HOLD,
+    PSYCHO_FORM,
     PSYCHO_DASH,
     PSYCHO_DRILL,
     PSYCHO_EXIT,
@@ -2795,24 +2827,25 @@ enum
 };
 
 // Frames spent in each state. Move_PSYCHO_POWER's delays are timed to these.
-static const u8 sPsychoCrusherFrames[PSYCHO_STATE_COUNT] = {16, 24, 10, 40, 10, 14, 24};
+static const u8 sPsychoCrusherFrames[PSYCHO_STATE_COUNT] = {16, 24, 16, 10, 40, 12, 14, 24};
 
-#define tState       data[0]
-#define tTimer       data[1]
-#define tSpriteId    data[2]
-#define tTargetX     data[3] // relative to the user's place
-#define tTargetY     data[4]
-#define tExitX       data[5]
-#define tExitY       data[6]
-#define tLean        data[7]
-#define tSubpriority data[8]
+#define tState      data[0]
+#define tTimer      data[1]
+#define tSpriteId   data[2]
+#define tTorpedoId  data[3]
+#define tStartX     data[4]
+#define tStartY     data[5]
+#define tTargetX    data[6] // relative to the start
+#define tTargetY    data[7]
+#define tExitX      data[8]
+#define tExitY      data[9]
+#define tRotation   data[10]
 
 void AnimTask_PsychoCrusher(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     u8 spriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
-    u8 targetSpriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
-    s16 x, y, dx, dy, exitX, exitY;
+    s16 x, y, dx, dy, exitX, exitY, length;
 
     if (spriteId == SPRITE_NONE)
     {
@@ -2822,6 +2855,8 @@ void AnimTask_PsychoCrusher(u8 taskId)
     }
     x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2);
     y = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET);
+    if (y > PSYCHO_LOWEST_START)
+        y = PSYCHO_LOWEST_START;
     dx = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) - x;
     dy = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) - y;
     if (dx == 0)
@@ -2833,28 +2868,28 @@ void AnimTask_PsychoCrusher(u8 taskId)
     else
         exitX = -60 - x;
     exitY = dy * exitX / dx;
-    if (y + exitY < -20)
-        exitY = -20 - y;
+    if (y + exitY < -40)
+        exitY = -40 - y;
     if (y + exitY > 180)
         exitY = 180 - y;
+
+    length = Sqrt(dx * dx + dy * dy);
+    if (length == 0)
+        length = 1;
 
     task->tState = PSYCHO_WIND_UP;
     task->tTimer = 0;
     task->tSpriteId = spriteId;
+    task->tTorpedoId = MAX_SPRITES;
+    task->tStartX = x;
+    task->tStartY = y;
     task->tTargetX = dx;
     task->tTargetY = dy;
     task->tExitX = exitX;
     task->tExitY = exitY;
-    task->tLean = (dx > 0) ? -PSYCHO_LEAN : PSYCHO_LEAN;
+    // Point the torpedo's nose along the line to the target
+    task->tRotation = ArcTan2Neg(dx * 256 / length, dy * 256 / length);
 
-    // Pass in front of the target
-    task->tSubpriority = gSprites[spriteId].subpriority;
-    if (targetSpriteId != SPRITE_NONE && targetSpriteId != spriteId
-     && gSprites[spriteId].subpriority >= gSprites[targetSpriteId].subpriority
-     && gSprites[targetSpriteId].subpriority > 1)
-        gSprites[spriteId].subpriority = gSprites[targetSpriteId].subpriority - 1;
-
-    PrepareBattlerSpriteForRotScale(spriteId, ST_OAM_OBJ_NORMAL);
     gBattleAnimArgs[7] = PSYCHO_FLAMES_ORBIT;
     task->func = AnimTask_PsychoCrusher_Step;
 }
@@ -2864,45 +2899,82 @@ static s16 PsychoCrusherSlide(s16 from, s16 to, s16 frame, s16 frames)
     return from + (to - from) * frame / frames;
 }
 
+static void PsychoCrusherCreateTorpedo(struct Task *task)
+{
+    struct Sprite *user = &gSprites[task->tSpriteId];
+    u8 targetSpriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
+    u8 subpriority = user->subpriority;
+    u8 torpedoId;
+
+    // Drawn in front of the target
+    if (targetSpriteId != SPRITE_NONE)
+        subpriority = gSprites[targetSpriteId].subpriority;
+    if (subpriority > 4)
+        subpriority -= 2;
+
+    torpedoId = CreateSprite(&sPsychoTorpedoSpriteTemplate, task->tStartX, task->tStartY, subpriority);
+    task->tTorpedoId = torpedoId;
+    if (torpedoId == MAX_SPRITES)
+    {
+        gBattleAnimArgs[7] = PSYCHO_FLAMES_END;
+        return;
+    }
+    gSprites[torpedoId].oam.priority = user->oam.priority;
+    gSprites[torpedoId].affineAnimPaused = TRUE;
+    SetSpriteRotScale(torpedoId, PSYCHO_FORM_SCALE, PSYCHO_FORM_SCALE, task->tRotation);
+    gBattleAnimArgs[6] = torpedoId;
+    gBattleAnimArgs[7] = PSYCHO_FLAMES_TRAIL;
+}
+
 static void AnimTask_PsychoCrusher_Step(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
-    struct Sprite *sprite = &gSprites[task->tSpriteId];
+    struct Sprite *user = &gSprites[task->tSpriteId];
     s16 frames = sPsychoCrusherFrames[task->tState];
     s16 frame = ++task->tTimer;
-    s16 backX = -task->tTargetX / 8;
-    s16 backY = -task->tTargetY / 8;
     s16 nearX = task->tTargetX * 4 / 5;
     s16 nearY = task->tTargetY * 4 / 5;
     s16 farX = task->tTargetX * 6 / 5;
     s16 farY = task->tTargetY * 6 / 5;
+    s16 x = 0;
+    s16 y = 0;
+    s16 scale;
 
     switch (task->tState)
     {
-    case PSYCHO_WIND_UP:
-        sprite->x2 = PsychoCrusherSlide(0, backX, frame, frames);
-        sprite->y2 = PsychoCrusherSlide(0, backY, frame, frames);
-        SetSpriteRotScale(task->tSpriteId, 0x100, 0x100, task->tLean * frame / frames);
-        break;
     case PSYCHO_HOLD:
-        sprite->x2 = backX + ((frame & 2) ? 1 : -1);
-        sprite->y2 = backY;
+        // Tremble on the spot
+        user->x2 = (frame & 2) ? 1 : -1;
+        break;
+    case PSYCHO_FORM:
+        y = (frame & 2) ? 1 : -1;
         break;
     case PSYCHO_DASH:
-        sprite->x2 = PsychoCrusherSlide(backX, nearX, frame, frames);
-        sprite->y2 = PsychoCrusherSlide(backY, nearY, frame, frames);
+        x = PsychoCrusherSlide(0, nearX, frame, frames);
+        y = PsychoCrusherSlide(0, nearY, frame, frames);
         break;
     case PSYCHO_DRILL:
-        sprite->x2 = PsychoCrusherSlide(nearX, farX, frame, frames);
-        sprite->y2 = PsychoCrusherSlide(nearY, farY, frame, frames) + ((frame & 2) ? 2 : -2);
+        x = PsychoCrusherSlide(nearX, farX, frame, frames);
+        y = PsychoCrusherSlide(nearY, farY, frame, frames) + ((frame & 2) ? 2 : -2);
         break;
     case PSYCHO_EXIT:
-        sprite->x2 = PsychoCrusherSlide(farX, task->tExitX, frame, frames);
-        sprite->y2 = PsychoCrusherSlide(farY, task->tExitY, frame, frames);
+        x = PsychoCrusherSlide(farX, task->tExitX, frame, frames);
+        y = PsychoCrusherSlide(farY, task->tExitY, frame, frames);
         break;
     case PSYCHO_RETURN:
-        sprite->invisible = (frame / 3) & 1;
+        user->invisible = (frame / 3) & 1;
         break;
+    }
+
+    if (task->tTorpedoId != MAX_SPRITES)
+    {
+        gSprites[task->tTorpedoId].x2 = x;
+        gSprites[task->tTorpedoId].y2 = y;
+        if (task->tState == PSYCHO_FORM)
+        {
+            scale = PsychoCrusherSlide(PSYCHO_FORM_SCALE, 0x100, frame, frames);
+            SetSpriteRotScale(task->tTorpedoId, scale, scale, task->tRotation);
+        }
     }
 
     if (frame < frames)
@@ -2911,21 +2983,22 @@ static void AnimTask_PsychoCrusher_Step(u8 taskId)
     task->tTimer = 0;
     switch (++task->tState)
     {
-    case PSYCHO_DASH:
-        gBattleAnimArgs[7] = PSYCHO_FLAMES_TRAIL;
+    case PSYCHO_FORM:
+        user->x2 = 0;
+        user->invisible = TRUE;
+        PsychoCrusherCreateTorpedo(task);
         break;
     case PSYCHO_GONE:
-        sprite->invisible = TRUE;
+        if (task->tTorpedoId != MAX_SPRITES)
+        {
+            FreeSpriteOamMatrix(&gSprites[task->tTorpedoId]);
+            DestroySprite(&gSprites[task->tTorpedoId]);
+            task->tTorpedoId = MAX_SPRITES;
+        }
         gBattleAnimArgs[7] = PSYCHO_FLAMES_END;
         break;
-    case PSYCHO_RETURN:
-        ResetSpriteRotScale(task->tSpriteId);
-        sprite->x2 = 0;
-        sprite->y2 = 0;
-        sprite->subpriority = task->tSubpriority;
-        break;
     case PSYCHO_STATE_COUNT:
-        sprite->invisible = FALSE;
+        user->invisible = FALSE;
         DestroyAnimVisualTask(taskId);
         break;
     }
@@ -2934,20 +3007,22 @@ static void AnimTask_PsychoCrusher_Step(u8 taskId)
 #undef tState
 #undef tTimer
 #undef tSpriteId
+#undef tTorpedoId
+#undef tStartX
+#undef tStartY
 #undef tTargetX
 #undef tTargetY
 #undef tExitX
 #undef tExitY
-#undef tLean
-#undef tSubpriority
+#undef tRotation
 
 #define sUserSpriteId data[0]
 #define sAngle        data[1]
-#define sAlong        data[2] // distance ahead of the user's middle when trailing
+#define sBehind       data[2] // how far it trails behind the torpedo
 #define sTimer        data[3]
 
 // arg 0: starting angle
-// arg 1: distance ahead of the user's middle when trailing
+// arg 1: distance it trails behind the torpedo, or 0 to go out when the user vanishes
 static void AnimPsychoCrusherFlame(struct Sprite *sprite)
 {
     u8 userSpriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -2959,7 +3034,7 @@ static void AnimPsychoCrusherFlame(struct Sprite *sprite)
     }
     sprite->sUserSpriteId = userSpriteId;
     sprite->sAngle = gBattleAnimArgs[0];
-    sprite->sAlong = gBattleAnimArgs[1];
+    sprite->sBehind = gBattleAnimArgs[1];
     sprite->sTimer = 0;
     sprite->affineAnimPaused = TRUE;
     sprite->callback = AnimPsychoCrusherFlame_Step;
@@ -2968,22 +3043,27 @@ static void AnimPsychoCrusherFlame(struct Sprite *sprite)
 
 static void AnimPsychoCrusherFlame_Step(struct Sprite *sprite)
 {
-    struct Sprite *user = &gSprites[sprite->sUserSpriteId];
+    struct Sprite *center;
     u16 mode = gBattleAnimArgs[7];
     s16 dx, dy, length, unitX, unitY, across;
     u16 rotation;
     bool8 inFront;
 
     // The time limit makes sure the animation can always finish
-    if (mode == PSYCHO_FLAMES_END || ++sprite->sTimer > 240)
+    if (mode == PSYCHO_FLAMES_END || ++sprite->sTimer > 240
+     || (mode == PSYCHO_FLAMES_TRAIL && sprite->sBehind == 0))
     {
         DestroyAnimSprite(sprite);
         return;
     }
 
     sprite->sAngle = (sprite->sAngle + 11) & 0xFF;
-    sprite->x = user->x + user->x2;
-    sprite->y = user->y + user->y2;
+    if (mode == PSYCHO_FLAMES_ORBIT)
+        center = &gSprites[sprite->sUserSpriteId];
+    else
+        center = &gSprites[gBattleAnimArgs[6]];
+    sprite->x = center->x + center->x2;
+    sprite->y = center->y + center->y2;
 
     if (mode == PSYCHO_FLAMES_ORBIT)
     {
@@ -2995,7 +3075,7 @@ static void AnimPsychoCrusherFlame_Step(struct Sprite *sprite)
     }
     else
     {
-        // Spiral around the line of flight, tails streaming backwards
+        // Spiral along behind the torpedo, tails streaming backwards
         dx = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2)
            - GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2);
         dy = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET)
@@ -3005,24 +3085,25 @@ static void AnimPsychoCrusherFlame_Step(struct Sprite *sprite)
             length = 1;
         unitX = dx * 256 / length;
         unitY = dy * 256 / length;
-        across = Sin(sprite->sAngle, 22);
-        sprite->x += (unitX * sprite->sAlong - unitY * across) / 256;
-        sprite->y += (unitY * sprite->sAlong + unitX * across) / 256;
-        inFront = (sprite->sAngle < 64 || sprite->sAngle >= 192);
+        across = Sin(sprite->sAngle, 14);
+        sprite->x -= (unitX * sprite->sBehind + unitY * across) / 256;
+        sprite->y -= (unitY * sprite->sBehind - unitX * across) / 256;
+        // Only the ones past the tail may cross in front of it
+        inFront = (sprite->sBehind > 32 && (sprite->sAngle < 64 || sprite->sAngle >= 192));
         rotation = ArcTan2(unitY, unitX);
     }
 
     SetSpriteRotScale(sprite - gSprites, 0x100, 0x100, rotation);
-    sprite->oam.priority = user->oam.priority;
+    sprite->oam.priority = center->oam.priority;
     if (inFront)
-        sprite->subpriority = user->subpriority - 1;
+        sprite->subpriority = center->subpriority - 1;
     else
-        sprite->subpriority = user->subpriority + 1;
+        sprite->subpriority = center->subpriority + 1;
 }
 
 #undef sUserSpriteId
 #undef sAngle
-#undef sAlong
+#undef sBehind
 #undef sTimer
 
 // Moves an orb in a straight line towards the target mon.

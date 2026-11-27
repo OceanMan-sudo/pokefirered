@@ -7448,40 +7448,46 @@ Move_PSYCHO_POWER:
 	loadspritegfx ANIM_TAG_PURPLE_FLAME
 	loadspritegfx ANIM_TAG_PURPLE_RING
 	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_PSYCHO_TORPEDO
 	setalpha 12, 8
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 0, 11, RGB_BLACK
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 0, 11, RGB(18, 4, 31)
 	playsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_PsychoCrusher, 2
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 0, 24
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 160, 16
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 64, 6
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 224, -4
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 128, -14
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 32, -22
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 192, -30
-	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 96, -38
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 0, 20
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 160, 0
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 64, 28
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 224, 34
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 128, 40
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 32, 0
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 192, 46
+	createsprite gPsychoCrusherFlameSpriteTemplate, ANIM_ATTACKER, 2, 96, 54
 	delay 16
 	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
-	delay 24
-	panse SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +6, 0
-	createvisualtask AnimTask_TraceMonBlended, 2, ANIM_ATTACKER, 2, 8, 18
+	delay 8
+	createsprite gDragonPulsePurpleChargeSpriteTemplate, ANIM_ATTACKER, 2, 0, 0
 	delay 9
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 0, 11, 16, RGB_WHITE
+	delay 7
+	playsewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER
+	delay 14
+	panse SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +6, 0
+	delay 12
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 5, 2, 22, 1
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 0, 11, RGB(18, 4, 31)
 	call PsychoCrusherHits
 	call PsychoCrusherHits
 	delay 4
 	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 0
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 0, 0, ANIM_TARGET, 0
 	createsprite gDragonPulsePurpleBurstSpriteTemplate, ANIM_TARGET, 2, 0, 0
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 4, 11, RGB_BLACK
 	createvisualtask AnimTask_ShakeBattleTerrain, 2, 3, 0, 10, 1
 	delay 12
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 11, 0, RGB(18, 4, 31)
-	delay 12
+	delay 14
 	playsewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 1, 11, 0, RGB(18, 4, 31)
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_ATTACKER, 0, 16, 0, RGB_WHITE
 	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 11, 0, RGB_BLACK
 	waitforvisualfinish
@@ -7490,13 +7496,13 @@ Move_PSYCHO_POWER:
 
 PsychoCrusherHits:
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, -14, 10, ANIM_TARGET, 2
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, -14, 10, ANIM_TARGET, 2
 	delay 6
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 4, -8, ANIM_TARGET, 1
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 4, -8, ANIM_TARGET, 1
 	delay 6
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 16, 6, ANIM_TARGET, 2
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 16, 6, ANIM_TARGET, 2
 	delay 6
 	return
 

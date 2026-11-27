@@ -3736,6 +3736,8 @@ extern const u32 gBattleAnimSpritePal_ShadowClaw[];
 extern const u32 gBattleAnimSpritePal_ShadowSneak[];
 extern const u32 gBattleAnimSpritePal_FocusBlast[];
 extern const u32 gBattleAnimSpritePal_FlashCannon[];
+extern const u32 gBattleAnimSpriteGfx_PsychoTorpedo[];
+extern const u32 gBattleAnimSpritePal_PsychoTorpedo[];
 extern const u32 gBattleAnimSpritePal_Lick[];
 extern const u32 gBattleAnimSpritePal_VoidLines[];
 extern const u32 gBattleAnimSpritePal_String[];
