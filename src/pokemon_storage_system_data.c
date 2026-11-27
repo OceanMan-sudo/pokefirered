@@ -739,16 +739,12 @@ void TrySetCursorFistAnim(void)
         StartSpriteAnim(gStorage->cursorSprite, 3);
 }
 
-// Moves that get the player past parts of the world. The player can't release
-// the last Pokemon able to use any one of them.
+// Moves the player could be stranded without, as Surf is needed to leave places
+// like Cinnabar Island. The player can't release the last Pokemon able to use
+// any one of them.
 static const u16 sReleaseProtectedMoves[NUM_RELEASE_PROTECTED_MOVES] =
 {
     MOVE_SURF,
-    MOVE_FLY,
-    MOVE_CUT,
-    MOVE_STRENGTH,
-    MOVE_ROCK_SMASH,
-    MOVE_WATERFALL,
 };
 
 // Whether any Pokemon in the party or the boxes, other than the one in the slot

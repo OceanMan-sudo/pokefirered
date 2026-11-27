@@ -98,7 +98,7 @@ enum {
 };
 
 // Number of field moves that releasing a Pokemon must not take away
-#define NUM_RELEASE_PROTECTED_MOVES 6
+#define NUM_RELEASE_PROTECTED_MOVES 1
 
 enum
 {
