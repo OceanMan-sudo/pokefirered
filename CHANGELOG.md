@@ -3,9 +3,21 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 39 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 40 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
+
+## Still to test
+Claude-assisted changes you have not yet reported as working.
+
+- **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
+- **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
+- **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
+- **Walled bosses switching** (testing in progress).
+- **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
+- **Double battle switching fix (BUG-19):** too rare to check reliably in game.
+
+Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 
 ## Timeline
 
@@ -21,7 +33,7 @@ Tables were generated from the game files, so they show the **net difference** f
 | 16–29 Jul 2025 | Seafoam Resort, wild encounters, Boomburst, Night Slash, Snow Cloak, Johto learnsets |
 | 28 May 2026 | Encounters, collision fixes, gym leader updates (Koga, Erika, Surge "UNTESTED") |
 | 26 Nov 2026 | Trainer, learnset and TM edits ("cant remember") |
-| 26 Nov 2026 | Claude-assisted changes (below) |
+| 26–27 Nov 2026 | Claude-assisted changes (below) |
 
 ## Your changes (`master`)
 
@@ -40,7 +52,7 @@ Tables were generated from the game files, so they show the **net difference** f
 - National Dex enabled on receiving the Pokédex; former National Dex gates now check game clear.
 - National Dex evolution block removed from the evolution scene.
 - No trade evolutions; many level changes; six items now usable for evolution.
-- New game PC now contains Potion, 99 Rare Candy, 99 Master Ball, TM03, Dragon Scale, 99 Nugget and 99 Max Repel (**Assumption:** testing items).
+- New game PC now contains Potion, 99 Rare Candy, 99 Master Ball, TM03, Dragon Scale, 99 Nugget and 99 Max Repel (testing items; removed on `claude-edits`).
 
 ### Content
 - 25 of the 26 new moves, and changes to 62 original moves.
@@ -48,7 +60,7 @@ Tables were generated from the game files, so they show the **net difference** f
 - 18 new maps, expanded towns, new characters, shops and gifts (see [DESIGN.md](DESIGN.md#world)).
 - Trainer changes and new trainers.
 - Wild encounters in 67 FireRed areas, plus tables for Pewter City, Pokémon Tower B1F and Seafoam Resort. LeafGreen tables unchanged.
-- Test characters in Pallet Town: Giovanni (grants the Fuchsia gym flags) and a chef (gives Leftovers and marks the game cleared). Pallet Town also has doors to the other towns (**Assumption:** test shortcuts).
+- Test characters in Pallet Town: Giovanni (grants the Fuchsia gym flags) and a chef (gives Leftovers and marks the game cleared). Pallet Town also has doors to the other towns (test shortcuts). The characters and doors are removed on `claude-edits`.
 
 ### Code, tools and project files
 - Poryscript added (`tools/poryscript/`, Makefile rule, 32 `.pory` map scripts).
@@ -60,51 +72,76 @@ Tables were generated from the game files, so they show the **net difference** f
 
 ## Claude-assisted changes (`claude-edits`)
 
+### Trainer AI
 | Change | In-game status |
 |---|---|
-| IV/EV view with SELECT on the summary screen | Tested |
+| Trainer AI in three levels by trainer class; 364 trainer entries moved up, none down | Tested |
+| Opponents send out the best matchup (Levels 2 and 3) or go in team order (Level 1) | Tested |
+| Level 3 trainers save the last Pokémon in their team for last | Tested |
+| Trainer AI uses the Physical/Special split; Facade and sandstorm/hail stalling mistakes corrected | Battles tested with nothing odd; these decisions not checked one by one |
+| Faster bosses use healing moves when hurt; Sp. Atk-lowering logic checks Sp. Atk | Not yet tested |
+| Trainer AI accounts for Soundproof against Boomburst and Hyper Voice, immunities against Overheat-type moves, and new weather abilities | Not yet tested |
+| Level 3 trainers switch out when nothing they have can affect your Pokémon and a teammate can | Not yet tested |
+| Double battle enemy switching slip fixed (BUG-19) | Not yet tested |
+
+### Battle
+| Change | In-game status |
+|---|---|
 | Evolution after catching | Tested |
 | Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Tested |
+| Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
+
+### Moves and animations
+| Change | In-game status |
+|---|---|
+| Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Tested |
+| New move: Aura Sphere with animation | Tested |
+| Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
+
+### Items, TMs and field moves
+| Change | In-game status |
+|---|---|
 | TMs unique, unsellable, unholdable, no quantity; owned TMs hidden from shops | Tested |
 | Pickup: TM10 replaced by Leftovers | Tested |
 | HM field moves without teaching; HMs forgettable | Tested |
 | Release protection for the last Surf user | Tested |
 | Rock Tunnel dark again | Tested |
-| Soundproof blocks Boomburst; Draco Meteor and Leaf Storm non-contact; Psycho Power loses priority | Tested |
-| New move: Aura Sphere with animation | Tested |
-| Animations fixed or redrawn: Earth Power, X-Scissor, Poison Jab, Seed Bomb, Aqua Jet, Roost, Psycho Power, Dragon Pulse, Dark Pulse, Flash Cannon, Focus Blast, Shadow Claw, Shadow Sneak | Tested (Psycho Power and Shadow Claw after a second pass) |
-| Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
-| Magneton level-up list put in order (BUG-02) | Tested |
-| Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Tested |
-| Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Tested |
-| Victory music plays after knocking out a wild Pokémon (BUG-06) | Tested |
-| Upper limit restored on items usable on Pokémon (BUG-12) | Tested |
+| Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Tested |
+| Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
+
+### Rules, options and screens
+| Change | In-game status |
+|---|---|
+| IV/EV view with SELECT on the summary screen | Tested |
 | Running from the start and on every map and tile | Tested |
 | Cycling theme removed | Tested |
 | Enemy trainers never use items | Tested |
-| Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Tested |
-| Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
-| Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
-| Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
-| New game PC back to the original single Potion | Not yet tested |
-| Removed the added Pallet Town grass encounters (BUG-01) | Not yet tested |
-| Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 | Level cap by badge count: no EXP or Rare Candies at the cap, EVs still earned, Day Care stops at the cap, lifts after the Champion | Tested |
 | New games start in Set battle style (was Shift) | Tested |
 | Your Bag cannot be used in trainer battles unless switched on | Tested |
 | Auto run, off by default | Tested |
 | Options menu: second page with Level Cap, Items vs Trainers and Auto Run | Tested |
-| Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
-| Trainer AI in three levels by trainer class; 364 trainer entries moved up, none down | Tested |
-| Opponents send out the best matchup (Levels 2 and 3) or go in team order (Level 1) | Tested |
-| Level 3 trainers save the last Pokémon in their team for last | Tested |
-| Trainer AI uses the Physical/Special split; Facade and sandstorm/hail stalling mistakes corrected | Battles tested with nothing odd; these decisions not checked one by one |
-| Double battle enemy switching slip fixed (BUG-19) | Not yet tested |
-| Faster bosses use healing moves when hurt; Sp. Atk-lowering logic checks Sp. Atk | Not yet tested |
-| Trainer AI accounts for Soundproof against Boomburst and Hyper Voice, immunities against Overheat-type moves, and new weather abilities | Not yet tested |
-| Level 3 trainers switch out when nothing they have can affect your Pokémon and a teammate can | Not yet tested |
 
-These changes did not touch species data, TM compatibility or trainers. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+### Bug fixes
+| Change | In-game status |
+|---|---|
+| Magneton level-up list put in order (BUG-02) | Tested |
+| Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Tested |
+| Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Tested |
+| Victory music plays after knocking out a wild Pokémon (BUG-06) | Tested |
+| Upper limit restored on items usable on Pokémon (BUG-12) | Tested |
+| Removed the added Pallet Town grass encounters (BUG-01) | Not yet tested |
+
+### Test tools and clean-up
+| Change | In-game status |
+|---|---|
+| Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
+| Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
+| Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
+| New game PC back to the original single Potion | Not yet tested |
+| Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
+
+The Claude-assisted changes did not touch species data, TM compatibility or trainer teams. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 
