@@ -180,7 +180,11 @@ Seven TMs teach new moves:
 | 48 | X-Scissor | Skill Swap | Route 12 |
 | 49 | Dark Pulse | Snatch | Rocket Hideout B4F |
 
-Which Pokémon can use each TM and HM follows what they can learn in Generations 1–9 by TM, tutor or level-up (details in [CHANGELOG.md](CHANGELOG.md#tmhm-compatibility)).
+Which Pokémon can use each TM and HM follows what they can learn in Generations 1–9 by TM, tutor or level-up, not counting Let's Go or Legends: Z-A (details in [CHANGELOG.md](CHANGELOG.md#tmhm-compatibility)).
+
+### Egg moves
+- Egg move lists follow newer games, up to Generation 9 (details in [CHANGELOG.md](CHANGELOG.md#egg-moves)).
+- Only the father passes egg moves down.
 
 ### HMs and field moves
 - An HM move works outside battle if you have its badge and either a Pokémon that **knows** it, or the **HM item** and a Pokémon that **can learn** it (**Tested**).
@@ -300,7 +304,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) Five of them (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse) are also TMs (see [TMs](#tms)); no egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) Five of them (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse) are also TMs (see [TMs](#tms)), and 29 are egg moves (see [Egg moves](#egg-moves)).
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

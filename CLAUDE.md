@@ -73,6 +73,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Level-up moves | `src/data/pokemon/level_up_learnsets.h` |
 | TM/HM compatibility | `src/data/pokemon/tmhm_learnsets.h` |
 | Move tutor compatibility | `src/data/pokemon/tutor_learnsets.h` |
+| Egg moves | `src/data/pokemon/egg_moves.h` |
 | Evolutions | `src/data/pokemon/evolution.h` |
 | Move data (power, type, category…) | `src/data/battle_moves.h` |
 | Move names / descriptions | `src/data/text/move_names.h`, `src/move_descriptions.c` |
@@ -124,6 +125,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 - **Porymap:** after saving, check `git diff` for unexpected changes to maps you did not open.
 - **Level-up lists must be in level order.** The game stops at the first move above the Pokémon's level (see BUG-02).
 - **At most 20 level-up moves** per Pokémon for the relearner (`MAX_LEVEL_UP_MOVES`).
+- **At most 32 egg moves** per Pokémon (`EGG_MOVES_ARRAY_COUNT` in `include/constants/daycare.h`); the game ignores any beyond that.
 - **Wild encounters:** tables ending in `_FireRed` or `_LeafGreen` apply to that version only. Tables with other names (the three new ones) apply to both. Slot counts are fixed: 12 land, 5 surf, 5 Rock Smash, 10 fishing.
 - **`.pal` files** need Windows (CRLF) line endings. `.gitattributes` handles this.
 - **File names are case-sensitive** on some computers even though Windows ignores it (see BUG-10).

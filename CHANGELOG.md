@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 59 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 60 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -11,6 +11,7 @@ Tables were generated from the game files, so they show the **net difference** f
 Claude-assisted changes you have not yet reported as working.
 
 - **New TMs and TM compatibility:** the seven swapped TMs, their icons, and who can learn each TM and HM.
+- **New egg moves:** breeding passes them down, including from lists longer than 10.
 - **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
 - **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
@@ -147,6 +148,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
 | TM moves swapped: TM15 Fae Voice, TM20 Thunder Wave, TM41 Dazzle Gleam, TM43 Bulldoze, TM45 Will-O-Wisp, TM48 X-Scissor, TM49 Dark Pulse (new Bug and Fairy TM icon colors) | Not yet tested |
 | TM and HM compatibility rebuilt from Generation 1–9 data (see below) | Not yet tested |
+| Egg moves updated from the same games; up to 32 per Pokémon (was 10) | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -182,7 +184,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 
-Apart from the TM and HM compatibility rebuild, the Claude-assisted changes made few edits to Pokémon data and none to trainer teams (other than Brock's Geodude ability). Species data edits include the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+Apart from the TM/HM compatibility and egg move updates, the Claude-assisted changes made few edits to Pokémon data and none to trainer teams (other than Brock's Geodude ability). Species data edits include the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 
@@ -391,19 +393,19 @@ Apart from the TM and HM compatibility rebuild, the Claude-assisted changes made
 | Sunflora | Growth rate | Medium Slow | Medium Fast |
 
 ### TM/HM compatibility
-**Rebuild (`claude-edits`).** Each Pokémon can use a TM or HM if any main-series game from Generation 1 to 9 (including Let's Go, Brilliant Diamond/Shining Pearl and the Legends games) lets it learn that move by TM, HM, TR, move tutor or level-up. Egg moves, event-only moves and regional forms do not count. Source: [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) learnset data, commit `c4ada66`.
+**Rebuild (`claude-edits`).** Each Pokémon can use a TM or HM if any main-series game from Generation 1 to 9 (including Brilliant Diamond/Shining Pearl and Legends: Arceus, but **not** Let's Go or Legends: Z-A, at your request) lets it learn that move by TM, HM, TR, move tutor or level-up. Egg moves, event-only moves and regional forms do not count. Source: [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) learnset data, commit `c4ada66`.
 
-- On the 51 unchanged slots, nothing was removed (your additions below are kept) and 250 Pokémon gained 461 entries. The biggest gains: Reflect 83, Thief 38, Light Screen 36, Rock Tomb 34.
+- On the 51 unchanged slots, nothing was removed (your additions below are kept) and 239 Pokémon gained 435 entries. The biggest gains: Reflect 82, Thief 38, Light Screen 36, Rock Tomb 34. 68 of the 435 come only from Generations 1–2, 62 of them Reflect.
 - The seven swapped TMs have new lists:
 
 | TM | Move | Pokémon that can learn it |
 |---|---|---|
-| 15 | Fae Voice | 38 |
+| 15 | Fae Voice | 29 |
 | 20 | Thunder Wave | 111 |
-| 41 | Dazzle Gleam | 69 |
-| 43 | Bulldoze | 150 |
+| 41 | Dazzle Gleam | 63 |
+| 43 | Bulldoze | 146 |
 | 45 | Will-O-Wisp | 50 |
-| 48 | X-Scissor | 36 |
+| 48 | X-Scissor | 35 |
 | 49 | Dark Pulse | 51 |
 
 **Your earlier additions (`master`).** 23 Pokémon gained moves. None lost any.
@@ -433,6 +435,15 @@ Apart from the TM and HM compatibility rebuild, the Claude-assisted changes made
 | Blaziken | TM22 Solar Beam |
 | Torkoal | TM22 Solar Beam |
 | Camerupt | TM22 Solar Beam |
+
+### Egg moves
+**Updated (`claude-edits`)** from the same games and source as the TM/HM rebuild. A move was added if any of them lists it as an egg move. Original egg moves were all kept; regional forms and moves this game does not have were left out, as was this game's own Psycho Power.
+
+- 973 → 1855 entries. All 165 existing lists gained moves, and Magnemite, Voltorb and Tauros got lists.
+- Pokémon whose newer-game egg is a baby this game lacks get the baby's egg moves: Snorlax (Munchlax), Roselia (Budew), Mr. Mime (Mime Jr.), Sudowoodo (Bonsly), Chansey (Happiny), Mantine (Mantyke), Chimecho (Chingling). Marill and Azurill share both lists.
+- The longest list is Marill's (21). The game read only 10 per Pokémon, so the limit is now 32.
+- As before, only the **father** passes egg moves down.
+- 139 entries (135 of them new) have no parent able to learn the move in this game yet, not counting Smeargle's Sketch.
 
 ### Level-up learnsets
 230 Pokémon have changed level-up lists. Not listed move by move; use `git diff 539ed3616 -- src/data/pokemon/level_up_learnsets.h`.

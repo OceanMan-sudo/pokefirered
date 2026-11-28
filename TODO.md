@@ -15,7 +15,7 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Game version | FireRed first. A redone LeafGreen maybe later |
 | Pokémon | Focus on the original 386. Evolutionary relatives, and maybe more legends, later |
 | Fairy type | Follow Generation 6, including the type chart |
-| Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. TM list and TM/HM compatibility started; level-up moves and tutors are **on hold until you start them** |
+| Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. TM list, TM/HM compatibility and egg moves started; level-up moves and tutors are **on hold until you start them** |
 | Trainers | Every trainer gets updated. AI stepped up by trainer type, not brutally hard: early trainers stay simple, stronger route trainers learn to go for knockouts, bosses keep their full logic with small tweaks |
 | Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Pokémon at the cap still earn EVs, and the Day Care stops at the cap. Must be easy to change later |
 | Default rules | No difficulty mode. Set battle style, no Bag items in trainer battles and level cap on by default, each switchable in the Options menu at any time |
@@ -101,6 +101,7 @@ Checked items are in the code. Test them using the list under [Waiting to be tes
 Do these before changing teams area by area, so work is not redone.
 - [x] Agree the level caps (below); revisit when teams change
 - [x] TM list: seven moves swapped, TM/HM compatibility rebuilt from Generations 1–9
+- [x] Egg moves updated from the same games (some have no parent until level-up lists change)
 - [ ] Level-up learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
@@ -292,6 +293,7 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Debug menu: every option (hold B, press SELECT)
 - [ ] New TMs: each of the seven shows the right name, color and move, and teaches it
 - [ ] TM and HM compatibility: spot-check a few Pokémon (Houndoom takes TM49 Dark Pulse and TM45 Will-O-Wisp; Charmander cannot take TM15)
+- [ ] Egg moves: breed a father that knows a new egg move and check the hatched Pokémon has it
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
 - [x] Level cap in battle: a Pokémon stops exactly at the cap, gains no EXP after that, and one below the cap still gains normally
