@@ -91,6 +91,7 @@ CheckIfLevitateCancelsGroundMove::
 
 AI_CheckBadMove_CheckSoundproof::
 	get_ability AI_TARGET
+	if_equal ABILITY_SAP_SIPPER, CheckIfSapSipperCancelsGrass
 	if_not_equal ABILITY_SOUNDPROOF, AI_CheckBadMove_CheckEffect
 	if_move MOVE_GROWL, Score_Minus10
 	if_move MOVE_ROAR, Score_Minus10
@@ -106,6 +107,14 @@ AI_CheckBadMove_CheckSoundproof::
 	if_move MOVE_FAE_VOICE, Score_Minus10
 	if_move MOVE_BUG_BUZZ, Score_Minus10
 	if_move MOVE_SNARL, Score_Minus10
+	goto AI_CheckBadMove_CheckEffect
+
+CheckIfSapSipperCancelsGrass::
+	if_move MOVE_SYNTHESIS, AI_CheckBadMove_CheckEffect
+	if_move MOVE_INGRAIN, AI_CheckBadMove_CheckEffect
+	if_move MOVE_AROMATHERAPY, AI_CheckBadMove_CheckEffect
+	get_curr_move_type
+	if_equal_ TYPE_GRASS, Score_Minus12
 
 AI_CheckBadMove_CheckEffect::
 	if_effect EFFECT_SLEEP, AI_CBM_Sleep
@@ -2294,6 +2303,8 @@ AI_CV_SemiInvulnerable2::
 	goto AI_CV_SemiInvulnerable5
 
 AI_CV_SemiInvulnerable_CheckSandstormTypes::
+	get_ability AI_USER
+	if_equal ABILITY_SAND_RUSH, AI_CV_SemiInvulnerable_TryEncourage
 	get_user_type1
 	if_in_bytes AI_CV_SandstormResistantTypes, AI_CV_SemiInvulnerable_TryEncourage
 	get_user_type2
@@ -2486,6 +2497,14 @@ AI_CV_ChangeSelfAbility_AbilitiesToEncourage::
 	.byte ABILITY_PURE_POWER
 	.byte ABILITY_CHLOROPHYLL
 	.byte ABILITY_SHIELD_DUST
+	.byte ABILITY_ADAPTABILITY
+	.byte ABILITY_TINTED_LENS
+	.byte ABILITY_SAND_RUSH
+	.byte ABILITY_SAP_SIPPER
+	.byte ABILITY_MOXIE
+	.byte ABILITY_SHEER_FORCE
+	.byte ABILITY_MULTISCALE
+	.byte ABILITY_REGENERATOR
 	.byte -1
 
 AI_CV_Superpower::

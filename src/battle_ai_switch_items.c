@@ -142,6 +142,8 @@ static bool8 FindMonThatAbsorbsOpponentsMove(void)
         absorbingTypeAbility = ABILITY_WATER_ABSORB;
     else if (gBattleMoves[gLastLandedMoves[gActiveBattler]].type == TYPE_ELECTRIC)
         absorbingTypeAbility = ABILITY_VOLT_ABSORB;
+    else if (gBattleMoves[gLastLandedMoves[gActiveBattler]].type == TYPE_GRASS)
+        absorbingTypeAbility = ABILITY_SAP_SIPPER;
     else
         return FALSE;
     if (gBattleMons[gActiveBattler].ability == absorbingTypeAbility)
@@ -510,6 +512,22 @@ static void GetPartyMonAsBattler(u8 partyId, struct BattlePokemon *dst)
     }
 }
 
+// Applies the same-type bonus and type effectiveness to an estimated hit.
+static u32 ApplyTypeBonuses(u32 damage, struct BattlePokemon *attacker, u8 moveType, u8 effectiveness)
+{
+    if (moveType == attacker->type1 || moveType == attacker->type2)
+    {
+        if (attacker->ability == ABILITY_ADAPTABILITY)
+            damage = damage * 2;
+        else
+            damage = damage * 15 / 10;
+    }
+    damage = damage * effectiveness / 10;
+    if (attacker->ability == ABILITY_TINTED_LENS && effectiveness < 10)
+        damage *= 2;
+    return damage;
+}
+
 // The most damage any of the attacker's moves would do to the defending battler.
 static u32 GetBestMoveDamage(struct BattlePokemon *attacker, u8 defender)
 {
@@ -537,15 +555,15 @@ static u32 GetBestMoveDamage(struct BattlePokemon *attacker, u8 defender)
         ModulateByTypeEffectiveness(moveType, gBattleMons[defender].type1, gBattleMons[defender].type2, &effectiveness);
         if (gBattleMons[defender].ability == ABILITY_LEVITATE && moveType == TYPE_GROUND)
             effectiveness = 0;
+        if (gBattleMons[defender].ability == ABILITY_SAP_SIPPER && moveType == TYPE_GRASS)
+            effectiveness = 0;
         if (gBattleMons[defender].ability == ABILITY_WONDER_GUARD && effectiveness <= 10)
             effectiveness = 0;
         if (effectiveness == 0)
             continue;
 
         damage = CalculateBaseDamage(attacker, &gBattleMons[defender], move, sideStatus, 0, 0, gActiveBattler, defender);
-        if (moveType == attacker->type1 || moveType == attacker->type2)
-            damage = damage * 15 / 10;
-        damage = damage * effectiveness / 10;
+        damage = ApplyTypeBonuses(damage, attacker, moveType, effectiveness);
         if (bestDamage < damage)
             bestDamage = damage;
     }
@@ -568,6 +586,8 @@ static u8 GetTypeThreat(struct BattlePokemon *mon, u8 opposingBattler)
         effectiveness = 10;
         ModulateByTypeEffectiveness(atkType, mon->type1, mon->type2, &effectiveness);
         if (mon->ability == ABILITY_LEVITATE && atkType == TYPE_GROUND)
+            effectiveness = 0;
+        if (mon->ability == ABILITY_SAP_SIPPER && atkType == TYPE_GRASS)
             effectiveness = 0;
         if (threat < effectiveness)
             threat = effectiveness;
@@ -652,7 +672,8 @@ static u32 EstimateMoveDamage(struct BattlePokemon *attacker, u16 move, u8 defen
          || (target->ability == ABILITY_WONDER_GUARD && effectiveness <= EFFECTIVENESS_NORMAL)
          || (target->ability == ABILITY_VOLT_ABSORB && moveType == TYPE_ELECTRIC)
          || (target->ability == ABILITY_WATER_ABSORB && moveType == TYPE_WATER)
-         || (target->ability == ABILITY_FLASH_FIRE && moveType == TYPE_FIRE && !(target->status1 & STATUS1_FREEZE)))
+         || (target->ability == ABILITY_FLASH_FIRE && moveType == TYPE_FIRE && !(target->status1 & STATUS1_FREEZE))
+         || (target->ability == ABILITY_SAP_SIPPER && moveType == TYPE_GRASS))
             return 0;
         if (target->ability == ABILITY_SOUNDPROOF
          && (move == MOVE_SNORE || move == MOVE_UPROAR || move == MOVE_HYPER_VOICE || move == MOVE_BOOMBURST
@@ -714,16 +735,12 @@ static u32 EstimateMoveDamage(struct BattlePokemon *attacker, u16 move, u8 defen
     gCritMultiplier = savedCritMultiplier;
 
     if (effect != EFFECT_FUTURE_SIGHT)
-    {
-        if (moveType == attacker->type1 || moveType == attacker->type2)
-            damage = damage * 15 / 10;
-        damage = damage * effectiveness / EFFECTIVENESS_NORMAL;
-    }
+        damage = ApplyTypeBonuses(damage, attacker, moveType, effectiveness);
     if (effect == EFFECT_FACADE
      && (attacker->status1 & (STATUS1_PSN_ANY | STATUS1_BURN | STATUS1_PARALYSIS)))
         damage *= 2;
     if (effect == EFFECT_MULTI_HIT)
-        damage *= 3;
+        damage *= (attacker->ability == ABILITY_SKILL_LINK) ? 5 : 3;
     else if (effect == EFFECT_DOUBLE_HIT || effect == EFFECT_TWINEEDLE)
         damage *= 2;
     else if (effect == EFFECT_TRIPLE_KICK)
@@ -762,6 +779,10 @@ static bool8 IsUsefulStatusMove(u16 move, u8 defender)
     // Soundproof stops the sound moves among the rest.
     if (target->ability == ABILITY_SOUNDPROOF
      && (move == MOVE_SING || move == MOVE_GRASS_WHISTLE || move == MOVE_SUPERSONIC || move == MOVE_PERISH_SONG))
+        return FALSE;
+    // Sap Sipper takes in Grass moves.
+    if (target->ability == ABILITY_SAP_SIPPER && gBattleMoves[move].type == TYPE_GRASS
+     && gBattleMoves[move].target != MOVE_TARGET_USER)
         return FALSE;
     // Perish Song gets past Substitute and Safeguard.
     if (effect == EFFECT_PERISH_SONG)

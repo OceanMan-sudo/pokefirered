@@ -84,6 +84,17 @@ static const u8 sIronFistDescription[] = _("Enter the TEKKEN!");
 static const u8 sRecklessDescription[] = _("Ups damage of recoil moves.");
 static const u8 sSnowWarningDescription[] = _("Whips up a snow storm.");
 static const u8 sSnowCloakDescription[] = _("Evasion raised in snow.");
+static const u8 sAdaptabilityDescription[] = _("Powers up same-type moves.");
+static const u8 sSkillLinkDescription[] = _("Multi-hit moves hit 5 times.");
+static const u8 sSniperDescription[] = _("Powers up critical hits.");
+static const u8 sTintedLensDescription[] = _("Powers up resisted moves.");
+static const u8 sSandRushDescription[] = _("Ups SPEED in a sandstorm.");
+static const u8 sDownloadDescription[] = _("Raises an attacking stat.");
+static const u8 sSapSipperDescription[] = _("GRASS moves raise ATTACK.");
+static const u8 sMoxieDescription[] = _("KOs raise ATTACK.");
+static const u8 sSheerForceDescription[] = _("Trades effects for power.");
+static const u8 sMultiscaleDescription[] = _("Halves damage at full HP.");
+static const u8 sRegeneratorDescription[] = _("Heals when switched out.");
 
 
 
@@ -175,6 +186,17 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_RECKLESS] = sRecklessDescription,
     [ABILITY_SNOW_WARNING] = sSnowWarningDescription,
     [ABILITY_SNOW_CLOAK] = sSnowCloakDescription,
+    [ABILITY_ADAPTABILITY] = sAdaptabilityDescription,
+    [ABILITY_SKILL_LINK] = sSkillLinkDescription,
+    [ABILITY_SNIPER] = sSniperDescription,
+    [ABILITY_TINTED_LENS] = sTintedLensDescription,
+    [ABILITY_SAND_RUSH] = sSandRushDescription,
+    [ABILITY_DOWNLOAD] = sDownloadDescription,
+    [ABILITY_SAP_SIPPER] = sSapSipperDescription,
+    [ABILITY_MOXIE] = sMoxieDescription,
+    [ABILITY_SHEER_FORCE] = sSheerForceDescription,
+    [ABILITY_MULTISCALE] = sMultiscaleDescription,
+    [ABILITY_REGENERATOR] = sRegeneratorDescription,
 
 
 };
@@ -267,5 +289,16 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_RECKLESS] = _("RECKLESS"),
     [ABILITY_SNOW_WARNING] = _("SNOW WARNING"),
     [ABILITY_SNOW_CLOAK] = _("SNOW CLOAK"),
+    [ABILITY_ADAPTABILITY] = _("ADAPTABILITY"),
+    [ABILITY_SKILL_LINK] = _("SKILL LINK"),
+    [ABILITY_SNIPER] = _("SNIPER"),
+    [ABILITY_TINTED_LENS] = _("TINTED LENS"),
+    [ABILITY_SAND_RUSH] = _("SAND RUSH"),
+    [ABILITY_DOWNLOAD] = _("DOWNLOAD"),
+    [ABILITY_SAP_SIPPER] = _("SAP SIPPER"),
+    [ABILITY_MOXIE] = _("MOXIE"),
+    [ABILITY_SHEER_FORCE] = _("SHEER FORCE"),
+    [ABILITY_MULTISCALE] = _("MULTISCALE"),
+    [ABILITY_REGENERATOR] = _("REGENERATOR"),
 
 };

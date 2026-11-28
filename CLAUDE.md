@@ -97,7 +97,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 |---|---|
 | Physical/Special split | `category` field in `battle_moves.h`; `IS_MOVE_PHYSICAL` / `IS_MOVE_SPECIAL` in `include/battle.h`; icon in `src/battle_controller_player.c` and `graphics/battle_interface/split_icons_battle.png` |
 | Fairy type | `TYPE_FAIRY` in `include/constants/pokemon.h`; chart and names in `src/battle_main.c` (the chart size is also in `include/battle_main.h`); label position in `src/list_menu.c`, artwork in `graphics/interface/menu_info.png`; TM disc color in `src/tm_case.c` and `graphics/tm_case/disc_types_2.pal`; Hidden Power in `src/battle_script_commands.c`; trade board in `src/data/union_room.h`; Pokédex order in `src/data/pokemon/pokedex_orders.h` |
-| New abilities (78–85) | `src/pokemon.c`, `src/battle_util.c`, `src/battle_script_commands.c` |
+| New abilities (78–96) | `src/pokemon.c`, `src/battle_util.c`, `src/battle_script_commands.c`; Sand Rush in `GetWhoStrikesFirst` (`src/battle_main.c`); Moxie runs from `BattleScript_FaintTarget`; trainer AI in `src/battle_ai_switch_items.c` and `data/battle_ai_scripts.s` |
 | Aurora Veil and Tailwind | Side flags in `include/constants/battle.h` and timers in `SideTimer` (`include/battle.h`); set by `VARIOUS_SET_AURORA_VEIL` / `VARIOUS_SET_TAILWIND` in `src/battle_script_commands.c`; damage in `CalculateBaseDamage`; Speed in `GetWhoStrikesFirst`; expiry in `DoFieldEndTurnEffects` |
 | Five-turn weather abilities | `ABILITYEFFECT_ON_SWITCHIN` in `src/battle_util.c`; turn count in `gWishFutureKnock.weatherDuration`. `B_WEATHER_HAIL_PERMANENT` is still defined and checked, but nothing sets it |
 | EXP when catching, then evolving | `data/battle_scripts_2.s`, `src/battle_main.c` |

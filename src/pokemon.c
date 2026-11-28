@@ -2383,6 +2383,52 @@ static void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 mo
     (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_EREADER_TRAINER)) && FlagGet(flag) && GetBattlerSide(battler) == B_SIDE_PLAYER)
 
 
+// Sheer Force powers up moves that have an extra effect, and gives that effect up.
+// Drawbacks (Overheat and the like), trapping and item-stealing don't count.
+bool8 IsBoostedBySheerForce(u8 ability, u16 move)
+{
+    if (ability != ABILITY_SHEER_FORCE)
+        return FALSE;
+    // Fake Out's flinch is certain, so it has no effect chance listed
+    if (gBattleMoves[move].effect == EFFECT_FAKE_OUT)
+        return TRUE;
+    if (gBattleMoves[move].secondaryEffectChance == 0)
+        return FALSE;
+    switch (gBattleMoves[move].effect)
+    {
+    case EFFECT_ACCURACY_DOWN_HIT:
+    case EFFECT_ALL_STATS_UP_HIT:
+    case EFFECT_ATTACK_DOWN_HIT:
+    case EFFECT_ATTACK_UP_HIT:
+    case EFFECT_BLAZE_KICK:
+    case EFFECT_BULLDOZE:
+    case EFFECT_BURN_HIT:
+    case EFFECT_CONFUSE_HIT:
+    case EFFECT_DEFENSE_DOWN_HIT:
+    case EFFECT_DEFENSE_UP_HIT:
+    case EFFECT_FLINCH_HIT:
+    case EFFECT_FLINCH_MINIMIZE_HIT:
+    case EFFECT_FREEZE_HIT:
+    case EFFECT_PARALYZE_HIT:
+    case EFFECT_POISON_FANG:
+    case EFFECT_POISON_HIT:
+    case EFFECT_POISON_TAIL:
+    case EFFECT_SECRET_POWER:
+    case EFFECT_SEMI_INVULNERABLE: // Bounce
+    case EFFECT_SNORE:
+    case EFFECT_SPECIAL_ATTACK_DOWN_HIT:
+    case EFFECT_SPECIAL_DEFENSE_DOWN_HIT:
+    case EFFECT_SPEED_DOWN_HIT:
+    case EFFECT_THAW_HIT:
+    case EFFECT_THUNDER:
+    case EFFECT_TRI_ATTACK:
+    case EFFECT_TWINEEDLE:
+    case EFFECT_TWISTER:
+        return TRUE;
+    }
+    return FALSE;
+}
+
 s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *defender, u32 move, u16 sideStatus, u16 powerOverride, u8 typeOverride, u8 battlerIdAtk, u8 battlerIdDef)
 {
     u32 i;
@@ -2441,6 +2487,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     // Not for confusion or disobedience self-hits, where the attacker is also the target
     if (attacker->ability == ABILITY_TECHNICIAN && attacker != defender && gBattleMovePower <= 60)
         gBattleMovePower = (150 * gBattleMovePower) / 100;
+
+    if (IsBoostedBySheerForce(attacker->ability, move) && attacker != defender)
+        gBattleMovePower = (130 * gBattleMovePower) / 100;
 
     if (attacker->ability == ABILITY_IRON_FIST &&
         (move == MOVE_FIRE_PUNCH ||
@@ -2695,6 +2744,11 @@ for (i = 0; i < ARRAY_COUNT(sHoldEffectToType); i++)
         // Flash fire triggered
         if ((gBattleResources->flags->flags[battlerIdAtk] & RESOURCE_FLAG_FLASH_FIRE) && type == TYPE_FIRE)
             damage = (15 * damage) / 10;
+
+    // Future Sight and Doom Desire check this when they hit instead
+    if (defender->ability == ABILITY_MULTISCALE && attacker != defender && defender->hp == defender->maxHP
+     && gBattleMoves[move].effect != EFFECT_FUTURE_SIGHT)
+        damage /= 2;
     return damage + 2;
 
 }

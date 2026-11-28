@@ -2966,6 +2966,14 @@ BattleScript_FaintTarget::
 	cleareffectsonfaint BS_TARGET
 	printstring STRINGID_TARGETFAINTED
 	printstring STRINGID_EMPTYSTRING3
+	various BS_ATTACKER, VARIOUS_TRY_MOXIE
+	return
+
+BattleScript_MoxieActivates::
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNABILITYRAISEDATTACK
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_EMPTYSTRING3
 	return
 
 BattleScript_GiveExp::
@@ -4106,6 +4114,20 @@ BattleScript_SpeedBoostActivates::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
+BattleScript_DownloadAttack::
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNABILITYRAISEDATTACK
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+BattleScript_DownloadSpAtk::
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNABILITYRAISEDSPATK
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_TraceActivates::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNTRACED
@@ -4312,6 +4334,16 @@ BattleScript_OwnTempoPrevents::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNPREVENTSCONFUSIONWITH
 	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_SapSipperActivates::
+	attackstring
+	ppreduce
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNABILITYRAISEDATTACK
+	waitmessage B_WAIT_TIME_LONG
+	orbyte gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE
 	goto BattleScript_MoveEnd
 
 BattleScript_SoundproofProtected::

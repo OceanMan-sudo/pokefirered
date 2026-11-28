@@ -106,6 +106,17 @@ Steel no longer resists Ghost or Dark.
 | Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
 | Snow Warning | Starts five turns of hail on entering | Jynx, Delibird |
 | Snow Cloak | Attacks against it are 20% less accurate in hail, and hail does not hurt it | Articuno, Sneasel, Swinub, Piloswine |
+| Adaptability | The same-type bonus is 2× instead of 1.5× | None yet |
+| Skill Link | Moves that hit 2 to 5 times always hit 5 times. Triple Kick and two-hit moves are unchanged | None yet |
+| Sniper | Critical hits do 3× damage instead of 2× | None yet |
+| Tinted Lens | "Not very effective" attacks do double their usual damage | None yet |
+| Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | None yet |
+| Download | On entering: +1 Attack if the opponent's Defense is lower than its Sp. Def, otherwise +1 Sp. Atk. In double battles the two opponents are added together | None yet |
+| Sap Sipper | Grass moves, including status moves, do nothing to it and raise its Attack. Solar Beam is stopped when it fires, not while charging | None yet |
+| Moxie | +1 Attack each time its move knocks out a Pokémon. Spikes, Future Sight and end-of-turn damage do not count | None yet |
+| Sheer Force | 1.3× power for moves with an extra effect (flinch, status, confusion or stat change, including Fake Out), and that effect never happens. Those moves also get no King's Rock flinch or Shell Bell healing. Drawback moves such as Overheat, trapping moves, Thrash-style moves, Thief, Knock Off and Pay Day are unchanged | None yet |
+| Multiscale | Halves attack damage while at full HP. Fixed-damage moves such as Seismic Toss ignore it | None yet |
+| Regenerator | Heals 1/3 of max HP when it switches out, including by Baton Pass, Roar or Whirlwind | None yet |
 
 Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). No team uses this yet.
 
@@ -400,6 +411,7 @@ Other Pokémon changes worth knowing: wild Horsea and Seadra can hold a Dragon S
 - No trainer uses Boomburst or Hyper Voice into Soundproof once your ability has shown itself; until then the AI guesses between the species' abilities, as it always has. Draco Meteor, Leaf Storm and Overheat are checked against immunities like other attacks.
 - Bosses are keener on Sunny Day with Solar Power (or Chlorophyll when slower), and on Hail with Ice Body, Snow Cloak or an Aurora Veil still to set up (the Chlorophyll and Aurora Veil cases are checked in a simulator only).
 - Bosses can use a weather move again once the weather wears off.
+- Opponents allow for the newer abilities: they avoid Grass moves against Sap Sipper (once it has shown itself, otherwise guessing as above) and may switch to a Sap Sipper Pokémon against them. Matchup and walled-switch estimates include Adaptability, Tinted Lens, Skill Link, Sheer Force, Multiscale and Sap Sipper (not yet tested).
 - The AI notices Snow Warning's hail (before, it only recognised hail from the move).
 - No trainer uses Aurora Veil without hail, or repeats Tailwind or Aurora Veil while it is up. Bosses favor Quiver Dance and Shell Smash while healthy (Shell Smash only once), Aurora Veil when it will work, and Tailwind in a single battle only when you are faster (not yet tested; checked in a simulator).
 - The Sp. Atk-lowering logic now checks Sp. Atk. No move currently in the game only lowers Sp. Atk, so this changes nothing yet.

@@ -91,6 +91,7 @@
 #define VARIOUS_WAIT_FANFARE                    12
 #define VARIOUS_SET_AURORA_VEIL                 13
 #define VARIOUS_SET_TAILWIND                    14
+#define VARIOUS_TRY_MOXIE                       15
 
 // Cmd_manipulatedmg
 #define DMG_CHANGE_SIGN            0

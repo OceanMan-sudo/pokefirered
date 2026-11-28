@@ -169,7 +169,7 @@ struct DisableStruct
     /*0x17*/ u8 unk17;
     /*0x18*/ u8 truantCounter : 1;
     /*0x18*/ u8 truantSwitchInHack : 1; // Unused here, but used in pokeemerald
-    /*0x18*/ u8 unk18_a_2 : 2;
+    /*0x18*/ u8 downloadState : 2;
     /*0x18*/ u8 mimickedMoves : 4;
     /*0x19*/ u8 rechargeTimer;
     /*0x1A*/ u8 unk1A[2];

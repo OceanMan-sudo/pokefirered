@@ -1145,6 +1145,9 @@ bool8 HandleWishPerishSongOnTurnEnd(void)
                 gBattlerTarget = gActiveBattler;
                 gBattlerAttacker = gWishFutureKnock.futureSightAttacker[gActiveBattler];
                 gBattleMoveDamage = gWishFutureKnock.futureSightDmg[gActiveBattler];
+                if (gBattleMons[gBattlerTarget].ability == ABILITY_MULTISCALE
+                 && gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
+                    gBattleMoveDamage /= 2;
                 gSpecialStatuses[gBattlerTarget].dmg = 0xFFFF;
                 BattleScriptExecute(BattleScript_MonTookFutureAttack);
                 return TRUE;
@@ -1696,6 +1699,81 @@ u8 CastformDataTypeChange(u8 battler)
     return formChange;
 }
 
+// Values of gDisableStructs[].downloadState, which starts again on each switch-in
+#define DOWNLOAD_NOT_TRIED 0
+#define DOWNLOAD_WAITING   1 // there was no opponent to scan yet
+#define DOWNLOAD_DONE      2
+
+// Download raises Attack if the opposing side's Defense is lower than its Sp. Def,
+// and Sp. Atk otherwise. Returns TRUE if there is a boost to show.
+static bool8 TryActivateDownload(u8 battler)
+{
+    u32 defense = 0;
+    u32 spDefense = 0;
+    bool8 foundOpponent = FALSE;
+    u8 stat;
+    u8 i;
+
+    for (i = 0; i < gBattlersCount; i++)
+    {
+        if (GetBattlerSide(i) != GetBattlerSide(battler)
+         && !(gAbsentBattlerFlags & gBitTable[i])
+         && gBattleMons[i].hp != 0)
+        {
+            defense += gBattleMons[i].defense
+                     * gStatStageRatios[gBattleMons[i].statStages[STAT_DEF]][0]
+                     / gStatStageRatios[gBattleMons[i].statStages[STAT_DEF]][1];
+            spDefense += gBattleMons[i].spDefense
+                       * gStatStageRatios[gBattleMons[i].statStages[STAT_SPDEF]][0]
+                       / gStatStageRatios[gBattleMons[i].statStages[STAT_SPDEF]][1];
+            foundOpponent = TRUE;
+        }
+    }
+    if (!foundOpponent)
+    {
+        gDisableStructs[battler].downloadState = DOWNLOAD_WAITING;
+        return FALSE;
+    }
+
+    gDisableStructs[battler].downloadState = DOWNLOAD_DONE;
+    stat = (defense < spDefense) ? STAT_ATK : STAT_SPATK;
+    if (gBattleMons[battler].statStages[stat] >= MAX_STAT_STAGE)
+        return FALSE;
+
+    gBattleMons[battler].statStages[stat]++;
+    gBattleScripting.animArg1 = 14 + stat;
+    gBattleScripting.animArg2 = 0;
+    gBattleScripting.battler = battler;
+    if (stat == STAT_ATK)
+        BattleScriptPushCursorAndCallback(BattleScript_DownloadAttack);
+    else
+        BattleScriptPushCursorAndCallback(BattleScript_DownloadSpAtk);
+    return TRUE;
+}
+
+// Whether the attacker's move is a Grass move that Sap Sipper takes in
+static bool8 IsBlockedBySapSipper(u8 battler, u16 move)
+{
+    u8 type = gBattleMoves[move].type;
+
+    if (gBattleMoves[move].effect == EFFECT_HIDDEN_POWER)
+        type = GetHiddenPowerType(gBattlerAttacker);
+    if (type != TYPE_GRASS
+     || gBattleMoves[move].target == MOVE_TARGET_USER
+     || battler == gBattlerAttacker
+     || gBattleMons[battler].hp == 0)
+        return FALSE;
+    // Protect and being out of reach come first
+    if (gProtectStructs[battler].protected && (gBattleMoves[move].flags & FLAG_PROTECT_AFFECTED))
+        return FALSE;
+    if (gStatuses3[battler] & STATUS3_SEMI_INVULNERABLE)
+        return FALSE;
+    // Solar Beam is free to charge
+    if (move == MOVE_SOLAR_BEAM && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS))
+        return FALSE;
+    return TRUE;
+}
+
 u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveArg)
 {
     u8 effect = 0;
@@ -1845,6 +1923,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     gSpecialStatuses[battler].intimidatedMon = 1;
                 }
                 break;
+            case ABILITY_DOWNLOAD:
+                if (gDisableStructs[battler].downloadState != DOWNLOAD_DONE && TryActivateDownload(battler))
+                    effect++;
+                break;
             case ABILITY_FORECAST:
                 effect = CastformDataTypeChange(battler);
                 if (effect != 0)
@@ -1877,6 +1959,25 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                 }
                 break;
+            }
+            // A Download that came in with no opponent activates once one arrives
+            if (effect == 0 && special == 0)
+            {
+                u8 i;
+
+                for (i = 0; i < gBattlersCount; i++)
+                {
+                    if (gBattleMons[i].ability == ABILITY_DOWNLOAD
+                     && gDisableStructs[i].downloadState == DOWNLOAD_WAITING
+                     && gBattleMons[i].hp != 0
+                     && TryActivateDownload(i))
+                    {
+                        battler = i;
+                        gLastUsedAbility = ABILITY_DOWNLOAD;
+                        effect++;
+                        break;
+                    }
+                }
             }
             break;
         case ABILITYEFFECT_ENDTURN: // 1
@@ -1975,6 +2076,28 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
                     effect = 1;
                 }
+            }
+            else if (gLastUsedAbility == ABILITY_SAP_SIPPER && IsBlockedBySapSipper(battler, move))
+            {
+                if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+                {
+                    // The PP was paid on the first turn
+                    gHitMarker |= HITMARKER_NO_PPDEDUCT;
+                    CancelMultiTurnMoves(gBattlerAttacker);
+                }
+                if (gBattleMons[battler].statStages[STAT_ATK] < MAX_STAT_STAGE)
+                {
+                    gBattleMons[battler].statStages[STAT_ATK]++;
+                    gBattleScripting.animArg1 = 14 + STAT_ATK;
+                    gBattleScripting.animArg2 = 0;
+                    gBattleScripting.battler = battler;
+                    gBattlescriptCurrInstr = BattleScript_SapSipperActivates;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_SoundproofProtected;
+                }
+                effect = 1;
             }
             break;
         case ABILITYEFFECT_ABSORBING: // 3
@@ -3091,6 +3214,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     && TARGET_TURN_DAMAGED
                     && (Random() % 100) < battlerHoldEffectParam
                     && gBattleMoves[gCurrentMove].flags & FLAG_KINGS_ROCK_AFFECTED
+                    && !IsBoostedBySheerForce(gBattleMons[gBattlerAttacker].ability, gCurrentMove)
                     && gBattleMons[gBattlerTarget].hp)
                 {
                     gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_FLINCH;
@@ -3105,7 +3229,8 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     && gSpecialStatuses[gBattlerTarget].dmg != 0xFFFF
                     && gBattlerAttacker != gBattlerTarget
                     && gBattleMons[gBattlerAttacker].hp != gBattleMons[gBattlerAttacker].maxHP
-                    && gBattleMons[gBattlerAttacker].hp != 0)
+                    && gBattleMons[gBattlerAttacker].hp != 0
+                    && !IsBoostedBySheerForce(gBattleMons[gBattlerAttacker].ability, gCurrentMove))
                 {
                     gLastUsedItem = atkItem;
                     gPotentialItemEffectBattler = gBattlerAttacker;

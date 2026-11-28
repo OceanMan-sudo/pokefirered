@@ -169,6 +169,6 @@ In the main games these abilities protect from hail damage on their own. Here on
 ## Things to keep an eye on (not bugs)
 
 - **Old save files:** A new flag (`FLAG_0x900`) made the saved flag list longer. Saves made before that change are probably not compatible (**Assumption**).
-- **Battle AI:** Opponents still do not make special decisions around the new abilities or moves.
+- **Battle AI:** Opponents allow for some of the new abilities, but make few special decisions around the new abilities or moves.
 - **Removed Emerald trainer pictures:** Several Hoenn leader and Elite Four graphics were commented out to make room. Nothing found that still uses them (**Assumption** that this is safe).
 - **Automatic checks on GitHub:** `.github/workflows` came from the original project and checks for an exact copy of the original ROM, so it is expected to fail on a ROM hack (**Assumption**; I did not look at the results).

@@ -1223,6 +1223,8 @@ static void Cmd_damagecalc(void)
                                             sideStatus, gDynamicBasePower,
                                             gBattleStruct->dynamicMoveType, gBattlerAttacker, gBattlerTarget);
     gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+    if (gCritMultiplier == 2 && gBattleMons[gBattlerAttacker].ability == ABILITY_SNIPER)
+        gBattleMoveDamage = gBattleMoveDamage * 15 / 10;
 
     if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
         gBattleMoveDamage *= 2;
@@ -1240,6 +1242,8 @@ void AI_CalcDmg(u8 attacker, u8 defender)
                                             gBattleStruct->dynamicMoveType, attacker, defender);
     gDynamicBasePower = 0;
     gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+    if (gCritMultiplier == 2 && gBattleMons[attacker].ability == ABILITY_SNIPER)
+        gBattleMoveDamage = gBattleMoveDamage * 15 / 10;
 
     if (gStatuses3[attacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
         gBattleMoveDamage *= 2;
@@ -1297,8 +1301,15 @@ static void Cmd_typecalc(void)
     // check stab
     if (IS_BATTLER_OF_TYPE(gBattlerAttacker, moveType))
     {
-        gBattleMoveDamage = gBattleMoveDamage * 15;
-        gBattleMoveDamage = gBattleMoveDamage / 10;
+        if (gBattleMons[gBattlerAttacker].ability == ABILITY_ADAPTABILITY)
+        {
+            gBattleMoveDamage = gBattleMoveDamage * 2;
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMoveDamage * 15;
+            gBattleMoveDamage = gBattleMoveDamage / 10;
+        }
     }
 
     if (gBattleMons[gBattlerTarget].ability == ABILITY_LEVITATE && moveType == TYPE_GROUND)
@@ -1346,6 +1357,10 @@ static void Cmd_typecalc(void)
         gBattleCommunication[MISS_TYPE] = B_MSG_AVOIDED_DMG;
         RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
     }
+    if (gBattleMons[gBattlerAttacker].ability == ABILITY_TINTED_LENS
+     && (gMoveResultFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+     && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+        gBattleMoveDamage *= 2;
     if (gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE)
         gProtectStructs[gBattlerAttacker].targetNotAffected = 1;
 
@@ -1476,8 +1491,15 @@ u8 TypeCalc(u16 move, u8 attacker, u8 defender)
     // check stab
     if (IS_BATTLER_OF_TYPE(attacker, moveType))
     {
-        gBattleMoveDamage = gBattleMoveDamage * 15;
-        gBattleMoveDamage = gBattleMoveDamage / 10;
+        if (gBattleMons[attacker].ability == ABILITY_ADAPTABILITY)
+        {
+            gBattleMoveDamage = gBattleMoveDamage * 2;
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMoveDamage * 15;
+            gBattleMoveDamage = gBattleMoveDamage / 10;
+        }
     }
 
     if (gBattleMons[defender].ability == ABILITY_LEVITATE && moveType == TYPE_GROUND)
@@ -1517,6 +1539,10 @@ u8 TypeCalc(u16 move, u8 attacker, u8 defender)
     {
         flags |= MOVE_RESULT_MISSED;
     }
+    if (gBattleMons[attacker].ability == ABILITY_TINTED_LENS
+     && (flags & MOVE_RESULT_NOT_VERY_EFFECTIVE)
+     && !(flags & MOVE_RESULT_NO_EFFECT))
+        gBattleMoveDamage *= 2;
     return flags;
 }
 
@@ -1532,7 +1558,11 @@ u8 AI_TypeCalc(u16 move, u16 targetSpecies, u8 targetAbility)
 
     moveType = gBattleMoves[move].type;
 
-    if (targetAbility == ABILITY_LEVITATE && moveType == TYPE_GROUND)
+    if (targetAbility == ABILITY_SAP_SIPPER && moveType == TYPE_GRASS && gBattleMoves[move].target != MOVE_TARGET_USER)
+    {
+        flags = MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE;
+    }
+    else if (targetAbility == ABILITY_LEVITATE && moveType == TYPE_GROUND)
     {
         flags = MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE;
     }
@@ -2793,6 +2823,14 @@ static void Cmd_seteffectwithchance(void)
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance * 2;
     else
         percentChance = gBattleMoves[gCurrentMove].secondaryEffectChance;
+
+    if (IsBoostedBySheerForce(gBattleMons[gBattlerAttacker].ability, gCurrentMove))
+    {
+        gBattleCommunication[MOVE_EFFECT_BYTE] = 0;
+        gBattleScripting.multihitMoveEffect = 0;
+        gBattlescriptCurrInstr++;
+        return;
+    }
 
     if (gBattleCommunication[MOVE_EFFECT_BYTE] & MOVE_EFFECT_CERTAIN
         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
@@ -6095,6 +6133,26 @@ static void Cmd_various(void)
 
     switch (gBattlescriptCurrInstr[2])
     {
+    case VARIOUS_TRY_MOXIE:
+        // Only for knockouts by a move, not Spikes, Future Sight or other end of turn damage
+        if (gBattleMons[gActiveBattler].ability == ABILITY_MOXIE
+         && gActiveBattler != gBattlerTarget
+         && gBattleMons[gActiveBattler].hp != 0
+         && gBattleMons[gActiveBattler].statStages[STAT_ATK] < MAX_STAT_STAGE
+         && !(gHitMarker & HITMARKER_GRUDGE)
+         && !(gSideStatuses[GET_BATTLER_SIDE(gBattlerTarget)] & SIDE_STATUS_SPIKES_DAMAGED))
+        {
+            gBattleMons[gActiveBattler].statStages[STAT_ATK]++;
+            gBattleScripting.animArg1 = 14 + STAT_ATK;
+            gBattleScripting.animArg2 = 0;
+            gBattleScripting.battler = gActiveBattler;
+            RecordAbilityBattle(gActiveBattler, ABILITY_MOXIE);
+            gBattlescriptCurrInstr += 3;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_MoxieActivates;
+            return;
+        }
+        break;
     case VARIOUS_CANCEL_MULTI_TURN_MOVES:
         CancelMultiTurnMoves(gActiveBattler);
         break;
@@ -6925,6 +6983,10 @@ static void Cmd_setmultihitcounter(void)
     {
         gMultiHitCounter = gBattlescriptCurrInstr[1];
     }
+    else if (gBattleMons[gBattlerAttacker].ability == ABILITY_SKILL_LINK)
+    {
+        gMultiHitCounter = 5;
+    }
     else
     {
         // Modern odds: 2 or 3 hits 35% each, 4 or 5 hits 15% each.
@@ -7303,6 +7365,7 @@ static void Cmd_weatherdamage(void)
                 && gBattleMons[gBattlerAttacker].type2 != TYPE_STEEL
                 && gBattleMons[gBattlerAttacker].type2 != TYPE_GROUND
                 && gBattleMons[gBattlerAttacker].ability != ABILITY_SAND_VEIL
+                && gBattleMons[gBattlerAttacker].ability != ABILITY_SAND_RUSH
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
             {
@@ -8572,9 +8635,30 @@ static void Cmd_recoverbasedonsunlight(void)
     }
 }
 
+u8 GetHiddenPowerType(u8 battler)
+{
+    s32 typeBits;
+    u8 type;
+
+    typeBits  = ((gBattleMons[battler].hpIV & 1) << 0)
+              | ((gBattleMons[battler].attackIV & 1) << 1)
+              | ((gBattleMons[battler].defenseIV & 1) << 2)
+              | ((gBattleMons[battler].speedIV & 1) << 3)
+              | ((gBattleMons[battler].spAttackIV & 1) << 4)
+              | ((gBattleMons[battler].spDefenseIV & 1) << 5);
+
+    // Subtract 4 instead of 1 below because 3 types are excluded (TYPE_NORMAL, TYPE_MYSTERY and TYPE_FAIRY)
+    // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
+    // TYPE_FAIRY is the last type, so the result never reaches it
+    type = ((NUMBER_OF_MON_TYPES - 4) * typeBits) / 63 + 1;
+    if (type >= TYPE_MYSTERY)
+        type++;
+    return type;
+}
+
 static void Cmd_hiddenpowercalc(void)
 {
-    s32 powerBits, typeBits;
+    s32 powerBits;
 
     powerBits = ((gBattleMons[gBattlerAttacker].hpIV & 2) >> 1)
               | ((gBattleMons[gBattlerAttacker].attackIV & 2) << 0)
@@ -8582,22 +8666,10 @@ static void Cmd_hiddenpowercalc(void)
               | ((gBattleMons[gBattlerAttacker].speedIV & 2) << 2)
               | ((gBattleMons[gBattlerAttacker].spAttackIV & 2) << 3)
               | ((gBattleMons[gBattlerAttacker].spDefenseIV & 2) << 4);
-    typeBits  = ((gBattleMons[gBattlerAttacker].hpIV & 1) << 0)
-              | ((gBattleMons[gBattlerAttacker].attackIV & 1) << 1)
-              | ((gBattleMons[gBattlerAttacker].defenseIV & 1) << 2)
-              | ((gBattleMons[gBattlerAttacker].speedIV & 1) << 3)
-              | ((gBattleMons[gBattlerAttacker].spAttackIV & 1) << 4)
-              | ((gBattleMons[gBattlerAttacker].spDefenseIV & 1) << 5);
 
     gDynamicBasePower = (40 * powerBits) / 63 + 30;
 
-    // Subtract 4 instead of 1 below because 3 types are excluded (TYPE_NORMAL, TYPE_MYSTERY and TYPE_FAIRY)
-    // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
-    // TYPE_FAIRY is the last type, so the result never reaches it
-    gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 4) * typeBits) / 63 + 1;
-    if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
-        gBattleStruct->dynamicMoveType++;
-    gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_1 | F_DYNAMIC_TYPE_2;
+    gBattleStruct->dynamicMoveType = GetHiddenPowerType(gBattlerAttacker) | F_DYNAMIC_TYPE_1 | F_DYNAMIC_TYPE_2;
 
     gBattlescriptCurrInstr++;
 }
@@ -8676,6 +8748,9 @@ static void Cmd_trydobeatup(void)
             gBattleMoveDamage *= (GetMonData(&party[gBattleCommunication[0]], MON_DATA_LEVEL) * 2 / 5 + 2);
             gBattleMoveDamage /= gSpeciesInfo[gBattleMons[gBattlerTarget].species].baseDefense;
             gBattleMoveDamage = (gBattleMoveDamage / 50) + 2;
+            if (gBattleMons[gBattlerTarget].ability == ABILITY_MULTISCALE
+             && gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
+                gBattleMoveDamage /= 2;
             if (gProtectStructs[gBattlerAttacker].helpingHand)
                 gBattleMoveDamage = gBattleMoveDamage * 15 / 10;
 
@@ -9280,6 +9355,19 @@ static void Cmd_switchoutabilities(void)
                                      sizeof(gBattleMons[gActiveBattler].status1),
                                      &gBattleMons[gActiveBattler].status1);
         MarkBattlerForControllerExec(gActiveBattler);
+        break;
+    case ABILITY_REGENERATOR:
+        if (gBattleMons[gActiveBattler].hp != 0)
+        {
+            gBattleMons[gActiveBattler].hp += gBattleMons[gActiveBattler].maxHP / 3;
+            if (gBattleMons[gActiveBattler].hp > gBattleMons[gActiveBattler].maxHP)
+                gBattleMons[gActiveBattler].hp = gBattleMons[gActiveBattler].maxHP;
+            BtlController_EmitSetMonData(BUFFER_A, REQUEST_HP_BATTLE,
+                                         gBitTable[*(gBattleStruct->battlerPartyIndexes + gActiveBattler)],
+                                         sizeof(gBattleMons[gActiveBattler].hp),
+                                         &gBattleMons[gActiveBattler].hp);
+            MarkBattlerForControllerExec(gActiveBattler);
+        }
         break;
     }
 
