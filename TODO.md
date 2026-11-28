@@ -121,7 +121,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Krabby, Voltorb and Exeggcute families
   - [x] Cubone, Tyrogue and Lickitung families
   - [x] Koffing, Rhyhorn and Chansey families
-  - [ ] Tangela, Kangaskhan and Horsea families (next)
+  - [x] Tangela, Kangaskhan and Horsea families
+  - [ ] Goldeen, Staryu and Mr. Mime families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -142,6 +143,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Krabby, Voltorb and Exeggcute families (no change)
   - [x] Cubone, Tyrogue and Lickitung families (no change)
   - [x] Koffing, Rhyhorn and Chansey families (no change)
+  - [x] Tangela and Kangaskhan (no change), Horsea family (second ability Sniper)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
