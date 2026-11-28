@@ -118,7 +118,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Magnemite, Farfetch'd and Doduo families
   - [x] Seel, Grimer and Shellder families
   - [x] Gastly, Onix and Drowzee families
-  - [ ] Krabby, Voltorb and Exeggcute families (next)
+  - [x] Krabby, Voltorb and Exeggcute families
+  - [ ] Cubone, Tyrogue and Lickitung families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -136,6 +137,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Magnemite, Farfetch'd and Doduo families (no change)
   - [x] Seel family (no change), Grimer family (Poison Point replaces Stench), Shellder family (Cloyster: second ability Skill Link)
   - [x] Gastly, Onix and Drowzee families (no change)
+  - [x] Krabby, Voltorb and Exeggcute families (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
