@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 64 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 65 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -154,6 +154,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Starter families (9 Pokémon) rebuilt from your old lists; Blastoise gains Aura Sphere at level 1 | Not yet tested |
 | Caterpie, Weedle and Pidgey families rebuilt from your old lists | Not yet tested |
 | Evolution moves added (Butterfree: Confusion, Beedrill: Leech Life) | Not yet tested |
+| Butterfree can have Tinted Lens and Beedrill Adaptability | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -238,7 +239,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
-95 Pokémon.
+97 Pokémon. Caterpie, Weedle, Metapod and Kakuna also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's or Beedrill's abilities.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -251,6 +252,8 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Squirtle | Torrent | Torrent/Rain Dish |
 | Wartortle | Torrent | Torrent/Rain Dish |
 | Blastoise | Torrent | Torrent/Rain Dish |
+| Butterfree | Compound Eyes | Compound Eyes/Tinted Lens |
+| Beedrill | Swarm | Swarm/Adaptability |
 | Spearow | Keen Eye | Keen Eye/Super Luck |
 | Fearow | Keen Eye | Keen Eye/Super Luck |
 | Nidoran♀ | Poison Point | Poison Point/Hustle |

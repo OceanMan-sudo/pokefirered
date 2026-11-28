@@ -111,6 +111,7 @@ Do these before changing teams area by area, so work is not redone.
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
 - [ ] Review abilities group by group alongside the learnsets
+  - [x] Starters (no change), Caterpie and Weedle families (Butterfree: Tinted Lens; Beedrill: Adaptability), Pidgey family (keeps Keen Eye only; Technician judged too strong)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
@@ -306,6 +307,7 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Level-up reset: Pokémon not yet rebuilt learn their original moves
 - [ ] Evolution moves: evolve a Metapod or Kakuna above level 10 (it should still learn Confusion or Leech Life)
 - [ ] Evolution moves: cancel an evolution with B (nothing new is learned)
+- [ ] New bug abilities: catch a few Caterpie and Weedle and evolve them; some should get Tinted Lens or Adaptability
 - [ ] Egg moves: breed a father that knows a new egg move and check the hatched Pokémon has it
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass

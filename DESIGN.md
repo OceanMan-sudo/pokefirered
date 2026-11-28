@@ -107,10 +107,10 @@ Steel no longer resists Ghost or Dark.
 | Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
 | Snow Warning | Starts five turns of hail on entering | Jynx, Delibird |
 | Snow Cloak | Attacks against it are 20% less accurate in hail, and hail does not hurt it | Articuno, Sneasel, Swinub, Piloswine |
-| Adaptability | The same-type bonus is 2× instead of 1.5× | None yet |
+| Adaptability | The same-type bonus is 2× instead of 1.5× | Beedrill |
 | Skill Link | Moves that hit 2 to 5 times always hit 5 times. Triple Kick and two-hit moves are unchanged | None yet |
 | Sniper | Critical hits do 3× damage instead of 2× | None yet |
-| Tinted Lens | "Not very effective" attacks do double their usual damage | None yet |
+| Tinted Lens | "Not very effective" attacks do double their usual damage | Butterfree |
 | Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | None yet |
 | Download | On entering: +1 Attack if the opponent's Defense is lower than its Sp. Def, otherwise +1 Sp. Atk. In double battles the two opponents are added together | None yet |
 | Sap Sipper | Grass moves, including status moves, do nothing to it and raise its Attack. Solar Beam is stopped when it fires, not while charging | None yet |
@@ -129,7 +129,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 
 Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
-95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+97 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
