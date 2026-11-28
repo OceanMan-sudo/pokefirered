@@ -105,7 +105,8 @@ Do these before changing teams area by area, so work is not redone.
 - [x] Level-up learnsets reset to the original FireRed lists
 - [ ] Rebuild level-up learnsets from your old lists, group by group (show each group before adding it). Teams without hand-picked moves use level-up moves
   - [x] Bulbasaur, Charmander and Squirtle families
-  - [ ] Caterpie, Weedle and Pidgey families (proposed)
+  - [ ] Caterpie, Weedle and Pidgey families (proposed; Butterfree gets Bug Buzz in place of Signal Beam; Pidgey line approved as is)
+  - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [ ] Decide whether to add true evolution moves (a delayed evolution currently misses the move)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)

@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 62 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 63 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -455,7 +455,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 
 | Group | State |
 |---|---|
-| Bulbasaur, Charmander and Squirtle families | Done. Charmeleon learns Dragon Rage before Dragon Breath, like the others; Blastoise also gets Aura Sphere |
+| Bulbasaur, Charmander and Squirtle families | Done. Charmeleon learns Dragon Rage before Dragon Breath, like the others; Blastoise also gets Aura Sphere; the Squirtle line learns Bubble at 6 instead of 7 |
 | All others | Still original |
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
