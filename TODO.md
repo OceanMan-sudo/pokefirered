@@ -15,7 +15,7 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 | Game version | FireRed first. A redone LeafGreen maybe later |
 | Pokémon | Focus on the original 386. Evolutionary relatives, and maybe more legends, later |
 | Fairy type | Follow Generation 6, including the type chart |
-| Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. **On hold until you start it** |
+| Learnsets | Modernize a bit without upsetting balance or making Pokémon feel alike. TM list and TM/HM compatibility started; level-up moves and tutors are **on hold until you start them** |
 | Trainers | Every trainer gets updated. AI stepped up by trainer type, not brutally hard: early trainers stay simple, stronger route trainers learn to go for knockouts, bosses keep their full logic with small tweaks |
 | Level cap | Hard cap: no EXP and no Rare Candies at the cap. Goes by badge count (numbers in the level curve), one cap for the whole League, lifts after the first Champion clear. Pokémon at the cap still earn EVs, and the Day Care stops at the cap. Must be easy to change later |
 | Default rules | No difficulty mode. Set battle style, no Bag items in trainer battles and level cap on by default, each switchable in the Options menu at any time |
@@ -35,6 +35,8 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 None blocking right now.
 
 ### To discuss later
+- **TM locations** for the seven swapped TMs, and Fae Voice's price (still 7500, Hyper Beam's old price).
+- **Move tutors:** replace the weak original tutors. The Thunder Wave tutor duplicates TM20.
 - **Who gets the newest abilities.** Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator work but no Pokémon has them (the debug menu can give them out for testing).
 - **Level caps and gym order (Erika, Koga, Sabrina).** The cap counts badges. Taking on Koga before Erika means a cap of 34 against a team of up to level 43 (until this is settled, the cap can be switched off in Options).
 - **Variable gym teams by the order played.** Possible: a gym can check your badges and start a different trainer entry. Each variant needs a trainer slot.
@@ -98,7 +100,8 @@ Checked items are in the code. Test them using the list under [Waiting to be tes
 ### Phase 5: groundwork for the Kanto pass
 Do these before changing teams area by area, so work is not redone.
 - [x] Agree the level caps (below); revisit when teams change
-- [ ] Learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
+- [x] TM list: seven moves swapped, TM/HM compatibility rebuilt from Generations 1–9
+- [ ] Level-up learnsets (**on hold until you say**). Teams without hand-picked moves use level-up moves
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
 - [ ] Plan where each missing Pokémon will come from (list at the end)
@@ -287,6 +290,8 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Repel prompt (yes, no, and with no Repels left) and shop prices
 - [x] Mom's gift in Pewter City, for each starter if possible
 - [x] Debug menu: every option (hold B, press SELECT)
+- [ ] New TMs: each of the seven shows the right name, color and move, and teaches it
+- [ ] TM and HM compatibility: spot-check a few Pokémon (Houndoom takes TM49 Dark Pulse and TM45 Will-O-Wisp; Charmander cannot take TM15)
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
 - [x] Level cap in battle: a Pokémon stops exactly at the cap, gains no EXP after that, and one below the cap still gains normally

@@ -4868,7 +4868,7 @@
       "price": 7500,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A harsh attack that inflicts severe\\ndamage on the foe. However, the\\nuser must rest the next turn.",
+      "description_english": "A charming cry that hurts both\\nfoes in a double battle.\\nIt never misses.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -4877,7 +4877,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "HyperBeam"
+      "moveId": "FaeVoice"
     },
     {
       "english": "TM16",
@@ -4953,7 +4953,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "Protects the party with a shield\\nagainst all status problems over\\nfive turns.",
+      "description_english": "A weak electric charge that is\\nsure to cause paralysis if it\\nhits the foe.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -4962,7 +4962,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "Safeguard"
+      "moveId": "ThunderWave"
     },
     {
       "english": "TM21",
@@ -5310,7 +5310,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "If enraged by this move, the target\\nbecomes incapable of using the same\\nmove twice in a row.",
+      "description_english": "A powerful flash of light that\\ndamages both foes in a double\\nbattle.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5319,7 +5319,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "Torment"
+      "moveId": "DazzleGleam"
     },
     {
       "english": "TM42",
@@ -5344,7 +5344,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "An attack move that may have an\\nadditional effect depending on the\\nbattle terrain.",
+      "description_english": "The user stomps on the ground.\\nThe target's SPEED is lowered.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5353,7 +5353,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "SecretPower"
+      "moveId": "Bulldoze"
     },
     {
       "english": "TM44",
@@ -5378,7 +5378,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "The foe, if it is the opposite\\ngender as the user, becomes\\ninfatuated and may not attack.",
+      "description_english": "A sinister, bluish white flame\\nis shot at the foe to inflict a\\nburn.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5387,7 +5387,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "Attract"
+      "moveId": "WillOWisp"
     },
     {
       "english": "TM46",
@@ -5429,7 +5429,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A special power is transmitted to\\nthe foe, causing it to switch\\nabilities with the user.",
+      "description_english": "The user slashes the foe by\\ncrossing its scythes or claws\\nlike a pair of scissors.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5438,7 +5438,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "SkillSwap"
+      "moveId": "XScissor"
     },
     {
       "english": "TM49",
@@ -5446,7 +5446,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A move that steals the effects of\\nany status-changing or healing move\\nthat the foe tries to use.",
+      "description_english": "A horrible aura of dark thoughts\\nis released. It may make the\\ntarget flinch.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",
@@ -5455,7 +5455,7 @@
       "battleUsage": 0,
       "battleUseFunc": "NULL",
       "secondaryId": 0,
-      "moveId": "Snatch"
+      "moveId": "DarkPulse"
     },
     {
       "english": "TM50",

@@ -28,9 +28,9 @@ CeladonCity_DepartmentStore_Roof_Text_YaySodaPopHaveThis::
     .string "You can have this from me!$"
 
 CeladonCity_DepartmentStore_Roof_Text_ExplainTM20::
-    .string "TM20 contains SAFEGUARD.\p"
-    .string "It's a move that prevents status\n"
-    .string "problems among your POKéMON.$"
+    .string "TM20 contains THUNDER WAVE.\p"
+    .string "It's a move that paralyzes the\n"
+    .string "foe with a weak electric charge.$"
 
 CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis::
     .string "Yay!\p"

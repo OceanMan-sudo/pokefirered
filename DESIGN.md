@@ -168,6 +168,20 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - TMs you own are not listed in marts or at the Game Corner.
 - The Pickup ability gives Leftovers where it used to give TM10.
 
+Seven TMs teach new moves:
+
+| TM | Move | Replaces | Where |
+|---|---|---|---|
+| 15 | Fae Voice | Hyper Beam | Celadon Dept. Store 2F (7500) |
+| 20 | Thunder Wave | Safeguard | Celadon Dept. Store roof, for a Soda Pop |
+| 41 | Dazzle Gleam | Torment | Silph Co. 4F |
+| 43 | Bulldoze | Secret Power | Route 25 and Celadon Dept. Store 2F |
+| 45 | Will-O-Wisp | Attract | Route 24 and Celadon Dept. Store 2F |
+| 48 | X-Scissor | Skill Swap | Route 12 |
+| 49 | Dark Pulse | Snatch | Rocket Hideout B4F |
+
+Which Pokémon can use each TM and HM follows what they can learn in Generations 1–9 by TM, tutor or level-up (details in [CHANGELOG.md](CHANGELOG.md#tmhm-compatibility)).
+
 ### HMs and field moves
 - An HM move works outside battle if you have its badge and either a Pokémon that **knows** it, or the **HM item** and a Pokémon that **can learn** it (**Tested**).
 - The party menu lists an HM move only when you can use it where you are (five field moves at most).
@@ -286,7 +300,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) No new TMs or egg moves use them.
+Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) Five of them (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse) are also TMs (see [TMs](#tms)); no egg moves use them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

@@ -3,13 +3,14 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 58 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 59 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
 ## Still to test
 Claude-assisted changes you have not yet reported as working.
 
+- **New TMs and TM compatibility:** the seven swapped TMs, their icons, and who can learn each TM and HM.
 - **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
 - **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
 - **Quick escape:** answering No, a much slower lead Pokémon, no box when it should not appear, the Smoke Ball and the Pokémon Tower ghost.
@@ -144,6 +145,8 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Rock Tunnel dark again | Tested |
 | Prompt to use another Repel; prices 350/500/700 → 10/20/30 | Tested |
 | Pewter City aide gives a starter type booster from Mom instead of the Running Shoes | Tested |
+| TM moves swapped: TM15 Fae Voice, TM20 Thunder Wave, TM41 Dazzle Gleam, TM43 Bulldoze, TM45 Will-O-Wisp, TM48 X-Scissor, TM49 Dark Pulse (new Bug and Fairy TM icon colors) | Not yet tested |
+| TM and HM compatibility rebuilt from Generation 1–9 data (see below) | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -179,7 +182,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 
-The Claude-assisted changes did not touch TM compatibility or trainer teams. The only species data edits are the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+Apart from the TM and HM compatibility rebuild, the Claude-assisted changes made few edits to Pokémon data and none to trainer teams (other than Brock's Geodude ability). Species data edits include the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 
@@ -388,7 +391,22 @@ The Claude-assisted changes did not touch TM compatibility or trainer teams. The
 | Sunflora | Growth rate | Medium Slow | Medium Fast |
 
 ### TM/HM compatibility
-23 Pokémon gained moves. None lost any.
+**Rebuild (`claude-edits`).** Each Pokémon can use a TM or HM if any main-series game from Generation 1 to 9 (including Let's Go, Brilliant Diamond/Shining Pearl and the Legends games) lets it learn that move by TM, HM, TR, move tutor or level-up. Egg moves, event-only moves and regional forms do not count. Source: [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) learnset data, commit `c4ada66`.
+
+- On the 51 unchanged slots, nothing was removed (your additions below are kept) and 250 Pokémon gained 461 entries. The biggest gains: Reflect 83, Thief 38, Light Screen 36, Rock Tomb 34.
+- The seven swapped TMs have new lists:
+
+| TM | Move | Pokémon that can learn it |
+|---|---|---|
+| 15 | Fae Voice | 38 |
+| 20 | Thunder Wave | 111 |
+| 41 | Dazzle Gleam | 69 |
+| 43 | Bulldoze | 150 |
+| 45 | Will-O-Wisp | 50 |
+| 48 | X-Scissor | 36 |
+| 49 | Dark Pulse | 51 |
+
+**Your earlier additions (`master`).** 23 Pokémon gained moves. None lost any.
 
 | Pokémon | Added TM/HM |
 |---|---|
