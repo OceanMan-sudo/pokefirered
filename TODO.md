@@ -108,7 +108,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Caterpie, Weedle and Pidgey families
   - [x] Rattata, Spearow and Ekans families
   - [x] Pikachu, Sandshrew and Nidoran♀ families
-  - [ ] Nidoran♂, Clefairy and Vulpix families (next)
+  - [x] Nidoran♂, Clefairy and Vulpix families
+  - [ ] Jigglypuff, Zubat and Oddish families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -116,6 +117,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Starters (no change), Caterpie and Weedle families (Butterfree: Tinted Lens; Beedrill: Adaptability), Pidgey family (keeps Keen Eye only; Technician judged too strong)
   - [x] Rattata and Ekans families (no change), Spearow family (Fearow: Sniper in place of Keen Eye)
   - [x] Pikachu family (no change), Sandshrew family (second ability Sand Rush), Nidoran♀ family (Nidoqueen: Sheer Force in place of Rough Skin)
+  - [x] Nidoran♂ family (Nidoking: Sheer Force in place of Rough Skin), Clefairy family (Serene Grace declined), Vulpix family (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change

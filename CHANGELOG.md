@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 67 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 68 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -157,6 +157,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Butterfree can have Tinted Lens and Beedrill Adaptability | Not yet tested |
 | Rattata, Spearow and Ekans families rebuilt; Fearow gets Brave Bird and Sniper | Not yet tested |
 | Pikachu, Sandshrew and Nidoran♀ families rebuilt; Sandshrew family can have Sand Rush; Nidoqueen has Sheer Force | Not yet tested |
+| Nidoran♂, Clefairy and Vulpix families rebuilt; Nidoking has Sheer Force | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -265,7 +266,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Nidoqueen | Poison Point | Poison Point/Sheer Force |
 | Nidoran♂ | Poison Point | Poison Point/Hustle |
 | Nidorino | Poison Point | Poison Point/Hustle |
-| Nidoking | Poison Point | Poison Point/Rough Skin |
+| Nidoking | Poison Point | Poison Point/Sheer Force |
 | Vulpix | Flash Fire | Flash Fire/Drought |
 | Ninetales | Flash Fire | Flash Fire/Drought |
 | Oddish | Chlorophyll | Chlorophyll/Run Away |
@@ -468,6 +469,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Caterpie, Weedle and Pidgey families | Done. Butterfree gets Bug Buzz in place of Signal Beam; Kakuna no longer lists Tackle; Butterfree's Confusion and Beedrill's Leech Life are now evolution moves |
 | Rattata, Spearow and Ekans families | Done. Raticate's Scary Face is an evolution move; Fearow learns Brave Bird instead of Sky Attack; Arbok's second Screech is removed |
 | Pikachu, Sandshrew and Nidoran♀ families | Done. Sandslash gains Sand Tomb, and Metal Claw is its evolution move; the Nidoran♀ family learns Poison Jab at 29 |
+| Nidoran♂, Clefairy and Vulpix families | Done. The Nidoran♂ family learns Poison Jab at 29, and Nidorino and Nidoking learn Crunch at 38; Clefairy and Clefable learn Drain Kiss at 15 and Moonblast at 43 |
 | All others | Still original |
 
 **Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
