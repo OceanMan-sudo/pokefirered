@@ -109,7 +109,7 @@ Steel no longer resists Ghost or Dark.
 | Snow Cloak | Attacks against it are 20% less accurate in hail, and hail does not hurt it | Articuno, Sneasel, Swinub, Piloswine |
 | Adaptability | The same-type bonus is 2× instead of 1.5× | Beedrill |
 | Skill Link | Moves that hit 2 to 5 times always hit 5 times. Triple Kick and two-hit moves are unchanged | None yet |
-| Sniper | Critical hits do 3× damage instead of 2× | None yet |
+| Sniper | Critical hits do 3× damage instead of 2× | Fearow |
 | Tinted Lens | "Not very effective" attacks do double their usual damage | Butterfree |
 | Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | None yet |
 | Download | On entering: +1 Attack if the opponent's Defense is lower than its Sp. Def, otherwise +1 Sp. Atk. In double battles the two opponents are added together | None yet |
@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle and Pidgey families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow and Ekans families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion and Beedrill learns Leech Life.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life and Raticate Scary Face.
 
 ### TMs
 - TMs are reusable.
@@ -307,7 +307,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: since the learnset reset, only 11 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Flash Cannon, Leaf Storm, Ominous Wind, Boomburst, Aura Sphere and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 11 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
+Who can learn them: since the learnset reset, only 13 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Night Slash, Flash Cannon, Leaf Storm, Ominous Wind, Boomburst, Aura Sphere, Brave Bird and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 13 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

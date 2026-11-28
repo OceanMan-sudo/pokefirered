@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 65 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 66 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -155,6 +155,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Caterpie, Weedle and Pidgey families rebuilt from your old lists | Not yet tested |
 | Evolution moves added (Butterfree: Confusion, Beedrill: Leech Life) | Not yet tested |
 | Butterfree can have Tinted Lens and Beedrill Adaptability | Not yet tested |
+| Rattata, Spearow and Ekans families rebuilt; Fearow gets Brave Bird and Sniper | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -255,7 +256,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Butterfree | Compound Eyes | Compound Eyes/Tinted Lens |
 | Beedrill | Swarm | Swarm/Adaptability |
 | Spearow | Keen Eye | Keen Eye/Super Luck |
-| Fearow | Keen Eye | Keen Eye/Super Luck |
+| Fearow | Keen Eye | Sniper/Super Luck |
 | Nidoran♀ | Poison Point | Poison Point/Hustle |
 | Nidorina | Poison Point | Poison Point/Hustle |
 | Nidoqueen | Poison Point | Poison Point/Rough Skin |
@@ -462,9 +463,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 |---|---|
 | Bulbasaur, Charmander and Squirtle families | Done. Charmeleon learns Dragon Rage before Dragon Breath, like the others; Blastoise also gets Aura Sphere; the Squirtle line learns Bubble at 6 instead of 7 |
 | Caterpie, Weedle and Pidgey families | Done. Butterfree gets Bug Buzz in place of Signal Beam; Kakuna no longer lists Tackle; Butterfree's Confusion and Beedrill's Leech Life are now evolution moves |
+| Rattata, Spearow and Ekans families | Done. Raticate's Scary Face is an evolution move; Fearow learns Brave Bird instead of Sky Attack; Arbok's second Screech is removed |
 | All others | Still original |
 
-**Evolution moves.** New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 

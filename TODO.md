@@ -106,12 +106,14 @@ Do these before changing teams area by area, so work is not redone.
 - [ ] Rebuild level-up learnsets from your old lists, group by group (show each group before adding it). Teams without hand-picked moves use level-up moves
   - [x] Bulbasaur, Charmander and Squirtle families
   - [x] Caterpie, Weedle and Pidgey families
-  - [ ] Rattata, Spearow and Ekans families (next)
+  - [x] Rattata, Spearow and Ekans families
+  - [ ] Pikachu, Sandshrew and Nidoran♀ families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
 - [ ] Review abilities group by group alongside the learnsets
   - [x] Starters (no change), Caterpie and Weedle families (Butterfree: Tinted Lens; Beedrill: Adaptability), Pidgey family (keeps Keen Eye only; Technician judged too strong)
+  - [x] Rattata and Ekans families (no change), Spearow family (Fearow: Sniper in place of Keen Eye)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
