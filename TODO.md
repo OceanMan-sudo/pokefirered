@@ -115,7 +115,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Growlithe, Poliwag and Abra families
   - [x] Machop, Bellsprout and Tentacool families
   - [x] Geodude, Ponyta and Slowpoke families
-  - [ ] Magnemite, Farfetch'd and Doduo families (next)
+  - [x] Magnemite, Farfetch'd and Doduo families
+  - [ ] Seel, Grimer and Shellder families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -130,6 +131,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Growlithe, Poliwag and Abra families (no change)
   - [x] Machop family (Machamp: second ability Iron Fist), Bellsprout and Tentacool families (no change)
   - [x] Geodude, Ponyta and Slowpoke families (no change)
+  - [x] Magnemite, Farfetch'd and Doduo families (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change

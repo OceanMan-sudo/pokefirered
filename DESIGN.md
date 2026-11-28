@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag, Abra, Machop, Bellsprout, Tentacool, Geodude, Ponyta and Slowpoke families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag, Abra, Machop, Bellsprout, Tentacool, Geodude, Ponyta, Slowpoke, Magnemite, Farfetch'd and Doduo families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind, Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb, Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory and Slowking Nasty Plot.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind, Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb, Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory, Slowking Nasty Plot and Dodrio Drill Peck.
 
 ### TMs
 - TMs are reusable.
@@ -183,7 +183,7 @@ Seven TMs teach new moves:
 | 48 | X-Scissor | Skill Swap | Route 12 |
 | 49 | Dark Pulse | Snatch | Rocket Hideout B4F |
 
-Which Pokémon can use each TM and HM follows what they can learn in Generations 1–9 by TM, tutor or level-up, not counting Let's Go or Legends: Z-A (details in [CHANGELOG.md](CHANGELOG.md#tmhm-compatibility)).
+Which Pokémon can use each TM and HM follows what they can learn in Generations 1–9 by TM, tutor or level-up, not counting Let's Go or Legends: Z-A (details in [CHANGELOG.md](CHANGELOG.md#tmhm-compatibility)). Hand-picked additions: Farfetch'd can also use Bulk Up and Brick Break, and Doduo and Dodrio can use Earthquake, Dig and Bulldoze.
 
 ### Egg moves
 - Egg move lists follow newer games, up to Generation 9 (details in [CHANGELOG.md](CHANGELOG.md#egg-moves)).
@@ -307,7 +307,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: since the learnset reset, only 28 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Drain Punch, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird, Bug Buzz, Dark Pulse, Psycho Power, Aqua Jet, Close Combat, Wild Charge, Flare Blitz, Snarl, Bullet Punch and Seed Bomb). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 28 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
+Who can learn them: since the learnset reset, only 29 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Drain Punch, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird, Bug Buzz, Dark Pulse, Psycho Power, Aqua Jet, Close Combat, Wild Charge, Flare Blitz, Snarl, Bullet Punch, Seed Bomb and Bulldoze). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 29 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 
