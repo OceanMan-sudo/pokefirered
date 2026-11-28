@@ -127,7 +127,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Magmar, Pinsir and Tauros families
   - [x] Magikarp, Lapras and Eevee families
   - [x] Porygon, Omanyte and Kabuto families
-  - [ ] Aerodactyl, Snorlax and the legendary birds (next)
+  - [x] Aerodactyl, Snorlax and the legendary birds
+  - [ ] Dratini family, Mewtwo and Mew (next, the last of Generation 1)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -153,6 +154,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Magmar family (no change), Pinsir (second ability Moxie), Tauros (second ability Sheer Force)
   - [x] Magikarp family and Lapras (no change), Eevee (second ability Adaptability; its evolutions keep theirs)
   - [x] Porygon line (second ability Download), Omanyte and Kabuto families (no change)
+  - [x] Aerodactyl, Snorlax and the legendary birds (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change

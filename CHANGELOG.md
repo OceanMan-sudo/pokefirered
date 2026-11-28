@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 86 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 87 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -176,6 +176,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Magmar, Pinsir and Tauros families rebuilt; Pinsir can have Moxie and Tauros Sheer Force | Not yet tested |
 | Magikarp, Lapras and Eevee families rebuilt; Eevee can have Adaptability | Not yet tested |
 | Porygon, Omanyte and Kabuto families rebuilt; the Porygon line can have Download | Not yet tested |
+| Aerodactyl, Snorlax and the legendary birds rebuilt | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -523,6 +524,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Magmar, Pinsir and Tauros families | Done. Pinsir learns Close Combat instead of Superpower. Magmar and Electabuzz gain Psycho Power at 36, with Sunny Day or Screech at 31 |
 | Magikarp, Lapras and Eevee families | Done. Evolution moves: Gyarados Bite, Vaporeon Water Gun, Jolteon Thunder Shock, Flareon Ember, Espeon Confusion, Umbreon Pursuit |
 | Porygon, Omanyte and Kabuto families | Done. Evolution move: Kabutops Slash. The Omanyte line gains Power Gem at 49 and learns Rock Blast at 1 |
+| Aerodactyl, Snorlax and the legendary birds | Done. Aerodactyl gains Rock Blast at 7 and the birds gain Roost at 43. Zapdos learns Thunderbolt at 55, Light Screen at 61 and Zap Cannon at 65, and has Charge at 1 in place of Heat Wave. Snorlax keeps your list |
 | All others | Still original |
 
 **Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp, Marowak: Shadow Punch, Hitmonlee: Brick Break, Hitmonchan: Mach Punch, Hitmontop: Triple Kick, Seadra: Twister, Starmie: Psybeam, Scizor: Bullet Punch, Gyarados: Bite, Vaporeon: Water Gun, Jolteon: Thunder Shock, Flareon: Ember, Espeon: Confusion, Umbreon: Pursuit, Kabutops: Slash). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
