@@ -159,7 +159,7 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-230 Pokémon have changed level-up lists (Generations 1 and 2). Learnset work is paused until you restart it.
+Level-up lists are currently the **original FireRed** ones (reset on 27 November 2026). They will be rebuilt.
 
 ### TMs
 - TMs are reusable.
@@ -304,7 +304,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: new moves mainly come from level-up lists. **Scorch Sand, Aura Sphere, the six Fairy moves and the 14 moves from Close Combat down are on no level-up list**, and Shadow Sneak is on one. (Moves 381 to 400 can be taught with the debug menu.) Five of them (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse) are also TMs (see [TMs](#tms)), and 29 are egg moves (see [Egg moves](#egg-moves)).
+Who can learn them: **no level-up list has any of the 46 new moves** since the learnset reset. Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but only the five TM moves can be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

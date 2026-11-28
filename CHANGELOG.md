@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 60 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 61 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -11,6 +11,7 @@ Tables were generated from the game files, so they show the **net difference** f
 Claude-assisted changes you have not yet reported as working.
 
 - **New TMs and TM compatibility:** the seven swapped TMs, their icons, and who can learn each TM and HM.
+- **Level-up learnset reset:** Pokémon learn the original FireRed moves as they level.
 - **New egg moves:** breeding passes them down, including from lists longer than 10.
 - **Pallet Town clean-up:** the two people and nine doors are gone, and the house and lab doors still work.
 - **New game:** only a Potion in the PC, and no wild battles in the Pallet Town grass.
@@ -66,7 +67,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 
 ### Content
 - 25 of the 46 new moves, and changes to 62 original moves.
-- All of the species, learnset and TM compatibility changes below.
+- All of the species, learnset and TM compatibility changes below (level-up lists were later reset on `claude-edits`).
 - 18 new maps, expanded towns, new characters, shops and gifts (see [DESIGN.md](DESIGN.md#world)).
 - Trainer changes and new trainers.
 - Wild encounters in 67 FireRed areas, plus tables for Pewter City, Pokémon Tower B1F and Seafoam Resort. LeafGreen tables unchanged.
@@ -149,6 +150,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | TM moves swapped: TM15 Fae Voice, TM20 Thunder Wave, TM41 Dazzle Gleam, TM43 Bulldoze, TM45 Will-O-Wisp, TM48 X-Scissor, TM49 Dark Pulse (new Bug and Fairy TM icon colors) | Not yet tested |
 | TM and HM compatibility rebuilt from Generation 1–9 data (see below) | Not yet tested |
 | Egg moves updated from the same games; up to 32 per Pokémon (was 10) | Not yet tested |
+| Level-up learnsets reset to the original FireRed lists, ahead of a rebuild | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -166,7 +168,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 ### Bug fixes
 | Change | In-game status |
 |---|---|
-| Magneton level-up list put in order (BUG-02) | Tested |
+| Magneton level-up list put in order (BUG-02; later replaced by the learnset reset) | Tested |
 | Route 15 punch tutor compatibility: 89 Fire, 104 Ice, 109 Thunder (BUG-04) | Tested |
 | Self-hit damage uses its own move; Technician no longer boosts it (BUG-05) | Tested |
 | Victory music plays after knocking out a wild Pokémon (BUG-06) | Tested |
@@ -184,7 +186,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 
-Apart from the TM/HM compatibility and egg move updates, the Claude-assisted changes made few edits to Pokémon data and none to trainer teams (other than Brock's Geodude ability). Species data edits include the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+Apart from the TM/HM compatibility and egg move updates, the Claude-assisted changes made few edits to Pokémon data and none to trainer teams (other than Brock's Geodude ability). Species data edits include the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. Level-up learnsets were reset to the original at your request, and the only tutor compatibility edit is the three punches, approved by you.
 
 ## Data changes in detail
 
@@ -443,10 +445,12 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 - Pokémon whose newer-game egg is a baby this game lacks get the baby's egg moves: Snorlax (Munchlax), Roselia (Budew), Mr. Mime (Mime Jr.), Sudowoodo (Bonsly), Chansey (Happiny), Mantine (Mantyke), Chimecho (Chingling). Marill and Azurill share both lists.
 - The longest list is Marill's (21). The game read only 10 per Pokémon, so the limit is now 32.
 - As before, only the **father** passes egg moves down.
-- 139 entries (135 of them new) have no parent able to learn the move in this game yet, not counting Smeargle's Sketch.
+- Since the level-up reset, 246 entries (241 of them new) have no parent able to learn the move, not counting Smeargle's Sketch.
 
 ### Level-up learnsets
-230 Pokémon have changed level-up lists. Not listed move by move; use `git diff 539ed3616 -- src/data/pokemon/level_up_learnsets.h`.
+**Reset (`claude-edits`), 27 November 2026.** All level-up lists now match the original FireRed ones, ahead of a rebuild.
+
+Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
 Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Metapod, Butterfree, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magneton, Farfetch'd, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo, Chikorita, Bayleef, Meganium, Cyndaquil, Quilava, Typhlosion, Totodile, Croconaw, Feraligatr, Sentret, Furret, Hoothoot, Noctowl, Ledyba, Ledian, Spinarak, Ariados, Crobat, Chinchou, Lanturn, Pichu, Togetic, Natu, Xatu, Mareep, Flaaffy, Ampharos, Bellossom, Marill, Azumarill, Sudowoodo, Politoed, Hoppip, Skiploom, Jumpluff, Aipom, Sunkern, Sunflora, Yanma, Wooper, Quagsire, Espeon, Umbreon, Murkrow, Slowking, Misdreavus, Girafarig, Pineco, Forretress, Dunsparce, Gligar, Steelix, Snubbull, Granbull, Qwilfish, Scizor, Shuckle, Heracross, Sneasel, Teddiursa, Ursaring, Slugma, Magcargo, Swinub, Piloswine, Corsola, Remoraid, Octillery, Mantine, Skarmory, Houndour, Houndoom, Kingdra, Phanpy, Donphan, Porygon2, Stantler, Tyrogue, Hitmontop, Smoochum, Elekid, Magby, Miltank, Blissey, Raikou, Entei, Suicune, Tyranitar
 

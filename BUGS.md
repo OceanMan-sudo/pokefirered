@@ -30,7 +30,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 | BUG-10 | Medium | Confirmed | Build fails on case-sensitive computers (Seafoam folder name) | Open |
 | BUG-11 | Low | Confirmed | `poryscript` is not marked as runnable | Open |
 | BUG-12 | Low | Confirmed | Using a TM can read past the end of the item effect table | Fixed, tested |
-| BUG-13 | Low | Confirmed | Ariados and Donphan have one more move than the relearner can hold | Open |
+| BUG-13 | Low | Confirmed | Ariados and Donphan have one more move than the relearner can hold | Fixed by learnset reset |
 | BUG-14 | Low | Confirmed | Mr. Nuzlocke rewards can be missed after beating the game | Open |
 | BUG-15 | Low | Confirmed | Early National Dex means two vanilla events behave differently | Open |
 | BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults | Open |
@@ -52,7 +52,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 - **Possible fix:** Decide whether the grass belongs there. If it does, block it until you have a starter and set the levels you want.
 
 ### BUG-02: Magneton's level-up list is out of order
-**Status (2026-11-27):** Fixed, and you reported it tested. The Flash Cannon line now sits next to the other level 57 move. No move or level changed.
+**Status (2026-11-27):** Fixed, and you reported it tested. The list has since been reset to the original, which is in order.
 
 - **Where:** `sMagnetonLevelUpLearnset` in `src/data/pokemon/level_up_learnsets.h`.
 - **Cause:** The list starts `1 Metal Sound`, `57 Flash Cannon`, then `1 Tackle`… The game stops reading at the first move above the Pokémon's level.
@@ -127,6 +127,8 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 `IS_POKEMON_ITEM` in `include/constants/items.h` lost its upper limit (so the new evolution items would work). TM item numbers are far beyond the end of `gItemEffectTable`, and `GetItemEffectType` does not check. It works in practice today, but what it reads is undefined and could change as the game changes. A fix is to restore a limit that includes the highest evolution item.
 
 ### BUG-13: Ariados and Donphan have 21 level-up moves
+**Status (2026-11-27):** Gone since the level-up lists were reset to the original; none now has more than 20 moves.
+
 The limit used by the move relearner is 20 (`MAX_LEVEL_UP_MOVES`). The 21st move (Ariados: Megahorn at 51; Donphan: Fissure at 68) can be learned by leveling but not relearned. Eevee also lists Tackle twice at level 1.
 
 ### BUG-14: Mr. Nuzlocke rewards can be missed
