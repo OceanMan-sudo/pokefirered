@@ -130,6 +130,7 @@ static const u8 sText_PkmnRaisedDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_M
 static const u8 sText_PkmnCoveredByVeil[] = _("{B_ATK_PREFIX2}'s party is covered\nby a veil!");
 static const u8 sText_PkmnVeilRaisedDefenses[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised its defenses!");
 static const u8 sText_PkmnTailwindRaisedSpeed[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised SPEED!");
+static const u8 sText_PkmnHurtByItsAbility[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt\nby its {B_ATK_ABILITY}!");
 static const u8 sText_PkmnUsedSafeguard[] = _("{B_DEF_NAME_WITH_PREFIX}'s party is protected\nby SAFEGUARD!");
 static const u8 sText_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}'s party is no longer\nprotected by SAFEGUARD!");
 static const u8 sText_PkmnWentToSleep[] = _("{B_ATK_NAME_WITH_PREFIX} went\nto sleep!");
@@ -894,7 +895,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
     [STRINGID_TRAINER1MON1AND2COMEBACK - BATTLESTRINGS_TABLE_START]      = sText_Trainer1RecallBoth,
     [STRINGID_PKMNSXWHIPPEDUPHAILSTORM - BATTLESTRINGS_TABLE_START]      = sText_PkmnsXWhippedUpHailstorm,
     [STRINGID_PKMNVEILRAISEDDEFENSES - BATTLESTRINGS_TABLE_START]        = sText_PkmnVeilRaisedDefenses,
-    [STRINGID_PKMNTAILWINDRAISEDSPEED - BATTLESTRINGS_TABLE_START]       = sText_PkmnTailwindRaisedSpeed
+    [STRINGID_PKMNTAILWINDRAISEDSPEED - BATTLESTRINGS_TABLE_START]       = sText_PkmnTailwindRaisedSpeed,
+    [STRINGID_PKMNHURTBYITSABILITY - BATTLESTRINGS_TABLE_START]          = sText_PkmnHurtByItsAbility
 };
 
 const u16 gMissStringIds[] =

@@ -70,6 +70,7 @@ static void CB2_InitBattleInternal(void);
 static void CB2_PreInitMultiBattle(void);
 static void CB2_HandleStartMultiBattle(void);
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum);
+static void SetTrainerMonAbility(struct Pokemon *mon, bool8 secondAbility);
 static void CB2_HandleStartBattle(void);
 static void TryCorrectShedinjaLanguage(struct Pokemon *mon);
 static void BattleMainCB1(void);
@@ -1550,6 +1551,16 @@ static void SpriteCB_UnusedDebugSprite_Step(struct Sprite *sprite)
     }
 }
 
+// Trainer Pokemon have their species' first ability unless the party asks for the second.
+static void SetTrainerMonAbility(struct Pokemon *mon, bool8 secondAbility)
+{
+    u8 abilityNum = 1;
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+
+    if (secondAbility && gSpeciesInfo[species].abilities[1] != ABILITY_NONE)
+        SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
+}
+
 static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
 {
     u32 nameHash = 0;
@@ -1589,6 +1600,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetTrainerMonAbility(&party[i], partyData[i].secondAbility);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET:
@@ -1601,6 +1613,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetTrainerMonAbility(&party[i], partyData[i].secondAbility);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
@@ -1619,6 +1632,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetTrainerMonAbility(&party[i], partyData[i].secondAbility);
 
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 break;
@@ -1633,6 +1647,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum)
                 personalityValue += nameHash << 8;
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                SetTrainerMonAbility(&party[i], partyData[i].secondAbility);
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)

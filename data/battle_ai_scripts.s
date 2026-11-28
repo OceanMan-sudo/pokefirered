@@ -2301,6 +2301,9 @@ AI_CV_SemiInvulnerable_CheckSandstormTypes::
 	goto AI_CV_SemiInvulnerable5
 
 AI_CV_SemiInvulnerable_CheckIceType::
+	get_ability AI_USER
+	if_equal ABILITY_ICE_BODY, AI_CV_SemiInvulnerable_TryEncourage
+	if_equal ABILITY_SNOW_CLOAK, AI_CV_SemiInvulnerable_TryEncourage
 	get_user_type1
 	if_equal TYPE_ICE, AI_CV_SemiInvulnerable_TryEncourage
 	get_user_type2

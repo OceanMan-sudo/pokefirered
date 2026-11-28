@@ -72,6 +72,7 @@ struct TrainerMonNoItemDefaultMoves
 {
     u16 iv;
     u8 lvl;
+    bool8 secondAbility; // TRUE uses the species' second ability, if it has one
     u16 species;
 };
 
@@ -79,6 +80,7 @@ struct TrainerMonItemDefaultMoves
 {
     u16 iv;
     u8 lvl;
+    bool8 secondAbility; // TRUE uses the species' second ability, if it has one
     u16 species;
     u16 heldItem;
 };
@@ -87,6 +89,7 @@ struct TrainerMonNoItemCustomMoves
 {
     u16 iv;
     u8 lvl;
+    bool8 secondAbility; // TRUE uses the species' second ability, if it has one
     u16 species;
     u16 moves[MAX_MON_MOVES];
 };
@@ -95,6 +98,7 @@ struct TrainerMonItemCustomMoves
 {
     u16 iv;
     u8 lvl;
+    bool8 secondAbility; // TRUE uses the species' second ability, if it has one
     u16 species;
     u16 heldItem;
     u16 moves[MAX_MON_MOVES];

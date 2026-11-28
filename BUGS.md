@@ -34,7 +34,7 @@ I could not run the game or build the full ROM here, so there may be bugs that o
 | BUG-14 | Low | Confirmed | Mr. Nuzlocke rewards can be missed after beating the game | Open |
 | BUG-15 | Low | Confirmed | Early National Dex means two vanilla events behave differently | Open |
 | BUG-16 | Low | Confirmed | Rare Candy man and elemental tutors have small script faults | Open |
-| BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself | Open |
+| BUG-17 | Low | Confirmed | Ice Body and Snow Cloak holders are not protected from hail by the ability itself | Fixed, awaiting test |
 | BUG-18 | Low | Confirmed | Typos and small code tidiness issues | Open |
 | BUG-19 | Low | Confirmed | In double battles the enemy can try to switch in a Pokémon already out (from the original game) | Fixed, awaiting test |
 
@@ -147,6 +147,8 @@ I found no progression blocker: the Celio quest and the roaming legendary Pokém
 - Fossil scientist: if there is no room for the revived Pokémon, he says so and can then continue into his "no fossil" line.
 
 ### BUG-17: Hail protection for Ice Body and Snow Cloak
+**Status (2026-11-27):** Fixed. Both abilities now block hail damage.
+
 In the main games these abilities protect from hail damage on their own. Here only Ice types are protected. Every current holder is an Ice type, so you will only notice if the ability is copied or swapped.
 
 ### BUG-18: Typos and tidiness

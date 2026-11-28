@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 53 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 54 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -20,6 +20,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Reworked animations:** Bulldoze, Wild Charge and the Shell Smash shell break.
 - **Four support moves:** Quiver Dance, Shell Smash, Aurora Veil and Tailwind.
 - **Five-turn weather abilities:** Drizzle, Drought, Sand Stream and Snow Warning.
+- **Ability fixes:** Solar Power's HP cost, hail immunity for Ice Body and Snow Cloak, the second-ability setting for trainers, and Seel's type.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -99,6 +100,10 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Evolution after catching | Tested |
 | Sandstorm and hail defence boosts; Solar Power respects Cloud Nine and Air Lock; only Blizzard never misses in hail | Tested |
 | Drizzle, Drought, Sand Stream and Snow Warning set five turns of weather instead of lasting the whole battle | Not yet tested |
+| Solar Power costs 1/8 of max HP at the end of each turn in sun | Not yet tested |
+| Ice Body and Snow Cloak holders take no hail damage (BUG-17) | Not yet tested |
+| Trainer Pokémon can be given their second ability (no team uses it yet) | Not yet tested |
+| Seel is a pure Water type again | Not yet tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
 ### Fairy type
@@ -168,12 +173,12 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
 
-The Claude-assisted changes did not touch TM compatibility or trainer teams. The only species data edits are the 18 Fairy retypes and Clefable's two stats. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
+The Claude-assisted changes did not touch TM compatibility or trainer teams. The only species data edits are the 18 Fairy retypes, Clefable's two stats and Seel's type. The only wild encounter edit is the Pallet Town grass. The only level-up learnset edit is the Magneton reorder, and the only tutor compatibility edit is the three punches, both approved by you.
 
 ## Data changes in detail
 
 ### Pokémon types
-39 Pokémon.
+38 Pokémon.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -191,7 +196,6 @@ The Claude-assisted changes did not touch TM compatibility or trainer teams. The
 | Farfetch'd | Normal/Flying | Fighting/Flying |
 | Doduo | Normal/Flying | Ground/Flying |
 | Dodrio | Normal/Flying | Ground/Flying |
-| Seel | Water | Water/Ice |
 | Drowzee | Psychic | Psychic/Dark |
 | Hypno | Psychic | Psychic/Dark |
 | Kingler | Water | Water/Steel |

@@ -80,7 +80,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Move animations | `data/battle_anim_scripts.s`, `src/battle_anim_*.c` |
 | Ability numbers / names / descriptions | `include/constants/abilities.h`, `src/data/text/abilities.h` |
 | Ability and damage rules | `src/pokemon.c` (`CalculateBaseDamage`), `src/battle_util.c`, `src/battle_script_commands.c` |
-| Trainers | `src/data/trainers.h`, `src/data/trainer_parties.h`, `include/constants/opponents.h` |
+| Trainers | `src/data/trainers.h`, `src/data/trainer_parties.h`, `include/constants/opponents.h`. Add `.secondAbility = TRUE` to a party entry to use that species' second ability |
 | Wild encounters | `src/data/wild_encounters.json` |
 | Items | `src/data/items.json`, `src/data/pokemon/item_effects.h` |
 | Maps (people, doors, signs) | `data/maps/<MapName>/map.json` (Porymap edits this) |

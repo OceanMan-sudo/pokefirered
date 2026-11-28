@@ -358,6 +358,10 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Snow Warning, Drought, Drizzle or Sand Stream: the weather wears off at the end of the fifth turn, with its message
 - [ ] Switching that Pokémon out and back in after the weather is gone starts it again
 - [ ] Switching it back in while its weather is still up shows no message and does not add turns
+- [ ] Solar Power in sun: the user takes damage with a message at the end of each turn, and none once the sun fades
+- [ ] Solar Power fainting from that damage: the battle carries on correctly, including when it is the last Pokémon
+- [ ] Snow Cloak or Ice Body copied by Trace: no hail damage on a Pokémon that is not Ice type
+- [ ] Seel shows only the Water type
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.

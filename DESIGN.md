@@ -98,14 +98,16 @@ Steel no longer resists Ghost or Dark.
 ### New abilities
 | Ability | What it does here | Pokémon with it |
 |---|---|---|
-| Solar Power | 1.5× special damage in sun, no HP loss | Charmander, Charmeleon, Charizard, Sunkern, Sunflora, Houndoom |
+| Solar Power | 1.5× special damage in sun, but loses 1/8 of max HP at the end of each turn in sun | Charmander, Charmeleon, Charizard, Sunkern, Sunflora, Houndoom |
 | Super Luck | Higher critical-hit chance (+1 stage) | Spearow, Fearow, Farfetch'd, Spinarak, Ariados, Murkrow, Remoraid, Octillery |
 | Technician | 1.5× for moves with 60 power or less | Meowth, Persian, Mr. Mime, Scyther, Furret, Aipom, Scizor, Smeargle, Hitmontop |
-| Ice Body | Heals 1/16 HP each turn in hail | Seel, Dewgong |
+| Ice Body | Heals 1/16 HP each turn in hail, and hail does not hurt it | Seel, Dewgong |
 | Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Hitmonchan, Kangaskhan, Ledian |
 | Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
 | Snow Warning | Starts five turns of hail on entering | Jynx, Delibird |
-| Snow Cloak | Attacks against it are 20% less accurate in hail | Articuno, Sneasel, Swinub, Piloswine |
+| Snow Cloak | Attacks against it are 20% less accurate in hail, and hail does not hurt it | Articuno, Sneasel, Swinub, Piloswine |
+
+Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). No team uses this yet.
 
 95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 

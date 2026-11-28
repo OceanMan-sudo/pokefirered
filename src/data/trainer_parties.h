@@ -1,6 +1,10 @@
 // Trainer party data exists for all of the RS trainer classes, but
 // are only filled with one of the following placeholder pokemon.
 // The actual FRLG trainer party data starts after these.
+// A trainer's Pokemon has its species' first ability. To use the second one, add
+//     .secondAbility = TRUE,
+// to that Pokemon's entry. It does nothing for a species with only one ability.
+
 #define DUMMY_TRAINER_MON           \
     {                               \
         .lvl = 5,                   \
