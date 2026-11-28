@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 83 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 84 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -173,6 +173,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Tangela, Kangaskhan and Horsea families rebuilt; the Horsea line can have Sniper | Not yet tested |
 | Goldeen, Staryu and Mr. Mime families rebuilt | Not yet tested |
 | Scyther, Jynx and Electabuzz families rebuilt | Not yet tested |
+| Magmar, Pinsir and Tauros families rebuilt; Pinsir can have Moxie and Tauros Sheer Force | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -257,7 +258,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
-109 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop, Machoke and Shellder also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's, Machamp's or Cloyster's abilities.
+111 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop, Machoke and Shellder also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's, Machamp's or Cloyster's abilities.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -319,6 +320,8 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Jynx | Oblivious | Oblivious/Snow Warning |
 | Electabuzz | Static | Static/Vital Spirit |
 | Magmar | Flame Body | Flame Body/Vital Spirit |
+| Pinsir | Hyper Cutter | Hyper Cutter/Moxie |
+| Tauros | Intimidate | Intimidate/Sheer Force |
 | Aerodactyl | Rock Head/Pressure | Rock Head/Levitate |
 | Articuno | Pressure | Snow Cloak |
 | Zapdos | Pressure | Static |
@@ -512,6 +515,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tangela, Kangaskhan and Horsea families | Done. Evolution move: Seadra Twister. Tangela and Kangaskhan keep your list |
 | Goldeen, Staryu and Mr. Mime families | Done. Evolution move: Starmie Psybeam. Starmie's later levels now match Staryu's |
 | Scyther, Jynx and Electabuzz families | Done. Evolution move: Scizor Bullet Punch. Scizor also gains Iron Head at 44 |
+| Magmar, Pinsir and Tauros families | Done. Pinsir learns Close Combat instead of Superpower. The Magby and Elekid lines gain Psycho Power at 36, with Sunny Day or Screech at 31 |
 | All others | Still original |
 
 **Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp, Marowak: Shadow Punch, Hitmonlee: Brick Break, Hitmonchan: Mach Punch, Hitmontop: Triple Kick, Seadra: Twister, Starmie: Psybeam, Scizor: Bullet Punch). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
