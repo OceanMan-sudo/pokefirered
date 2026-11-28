@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 57 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 58 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -21,9 +21,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Four support moves:** Quiver Dance, Shell Smash, Aurora Veil and Tailwind.
 - **Five-turn weather abilities:** Drizzle, Drought, Sand Stream and Snow Warning.
 - **Ability fixes:** Solar Power's HP cost, hail immunity for Ice Body and Snow Cloak, the second-ability setting for trainers, and Seel's type.
-- **Eleven more abilities:** these can be tried once Pokémon have been given them.
-- **Sturdy and Magma Armor:** the new full-HP survival and the Water immunity.
-- **Brock's Geodude** having Sturdy, caught Slugma showing Magma Armor, and the debug menu's Ability option.
+- **Brock's Geodude** having Sturdy, and caught Slugma showing Magma Armor.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -107,9 +105,9 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Ice Body and Snow Cloak holders take no hail damage (BUG-17) | Not yet tested |
 | Trainer Pokémon can be given their second ability. Brock's Geodude uses it for Sturdy | Not yet tested |
 | Seel is a pure Water type again | Not yet tested |
-| Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon has them yet. Trainer AI updated to allow for them | Not yet tested |
-| Sturdy also leaves its Pokémon with 1 HP after a hit that would knock it out from full HP. Trainer AI updated to match | Not yet tested |
-| Magma Armor also takes in Water moves and heals from them, like Water Absorb. Trainer AI updated to match, and now allows for Water Absorb when choosing its next Pokémon | Not yet tested |
+| Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon has them yet. Trainer AI updated to allow for them | Tested; trainer AI decisions not checked one by one |
+| Sturdy also leaves its Pokémon with 1 HP after a hit that would knock it out from full HP. Trainer AI updated to match | Tested; trainer AI decisions not checked one by one |
+| Magma Armor also takes in Water moves and heals from them, like Water Absorb. Trainer AI updated to match, and now allows for Water Absorb when choosing its next Pokémon | Tested; trainer AI decisions not checked one by one |
 | Slugma and Magcargo no longer have Water Absorb; Magma Armor is their only ability. A species with one ability now always shows it, including Pokémon caught when it had two | Not yet tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
@@ -176,7 +174,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
 | Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
 | Debug menu: Teach Move option | Tested |
-| Debug menu: Ability option, to give a party Pokémon any ability | Not yet tested |
+| Debug menu: Ability option, to give a party Pokémon any ability | Tested |
 | Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |

@@ -364,16 +364,16 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Snow Cloak or Ice Body copied by Trace: no hail damage on a Pokémon that is not Ice type
 - [ ] Seel shows only the Water type
 - [ ] After the new abilities update, ordinary battles still behave: knocking out a Pokémon, switching, Hidden Power and Solar Beam
-- [ ] The eleven newest abilities (give them out with the debug menu's Ability option)
-- [ ] Debug menu, Ability: the new ability shows on the summary screen and works in battle; **Usual ability** undoes it; it stays after saving and reloading
+- [x] The eleven newest abilities (give them out with the debug menu's Ability option)
+- [x] Debug menu, Ability: the new ability shows on the summary screen and works in battle; **Usual ability** undoes it; it stays after saving and reloading
 - [ ] Brock's Geodude survives a knockout hit from full HP
 - [ ] A Slugma or Magcargo caught earlier shows MAGMA ARMOR
-- [ ] Sturdy at full HP: a knockout hit leaves 1 HP and shows "endured the hit using STURDY!" (try Sudowoodo or Pineco)
-- [ ] Sturdy below full HP: the Pokémon faints as normal
-- [ ] Sturdy against a multi-hit move: the first hit leaves 1 HP and the next one knocks it out
-- [ ] One-hit KO moves still fail against Sturdy
-- [ ] Magma Armor hit by a Water move: heals 1/4 HP, or "made ... useless" at full HP
-- [ ] Magma Armor still prevents freezing
+- [x] Sturdy at full HP: a knockout hit leaves 1 HP and shows "endured the hit using STURDY!" (try Sudowoodo or Pineco)
+- [x] Sturdy below full HP: the Pokémon faints as normal
+- [x] Sturdy against a multi-hit move: the first hit leaves 1 HP and the next one knocks it out
+- [x] One-hit KO moves still fail against Sturdy
+- [x] Magma Armor hit by a Water move: heals 1/4 HP, or "made ... useless" at full HP
+- [x] Magma Armor still prevents freezing
 
 ## Test content to remove
 Removed on 27 November 2026: the Pallet Town Giovanni and chef, the nine warp doors, the added starting PC items, the Pallet Town grass battles and the unused Route 2 `Tester` script. The items below are still in the game. "Likely" ones need your confirmation. Keep any you still use for testing until Phase 7.
