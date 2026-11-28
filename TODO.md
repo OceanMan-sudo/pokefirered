@@ -37,7 +37,7 @@ None blocking right now.
 ### To discuss later
 - **TM locations** for the seven swapped TMs, and Fae Voice's price (still 7500, Hyper Beam's old price).
 - **Move tutors:** replace the weak original tutors. The Thunder Wave tutor duplicates TM20.
-- **Who gets the newest abilities.** Download, Sap Sipper, Multiscale and Regenerator work but no Pokémon has them (the debug menu can give them out for testing).
+- **Who gets the newest abilities.** Sap Sipper, Multiscale and Regenerator work but no Pokémon has them (the debug menu can give them out for testing).
 - **Level caps and gym order (Erika, Koga, Sabrina).** The cap counts badges. Taking on Koga before Erika means a cap of 34 against a team of up to level 43 (until this is settled, the cap can be switched off in Options).
 - **Variable gym teams by the order played.** Possible: a gym can check your badges and start a different trainer entry. Each variant needs a trainer slot.
 - **Trainer slots.** 25 numbers are unused (743–767), and about 130 existing entries (mostly Ruby/Sapphire leftovers) are not referred to by name anywhere, so could be reused after checking each. Going past 768 is possible but needs new space in the save file for the extra "defeated" flags; simply raising `MAX_TRAINERS_COUNT` would shift the badge and other system flags and break saves.
@@ -126,7 +126,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Scyther, Jynx and Electabuzz families
   - [x] Magmar, Pinsir and Tauros families
   - [x] Magikarp, Lapras and Eevee families
-  - [ ] Porygon, Omanyte and Kabuto families (next)
+  - [x] Porygon, Omanyte and Kabuto families
+  - [ ] Aerodactyl, Snorlax and the legendary birds (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -151,6 +152,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Goldeen, Staryu, Mr. Mime, Scyther, Jynx and Electabuzz families (no change)
   - [x] Magmar family (no change), Pinsir (second ability Moxie), Tauros (second ability Sheer Force)
   - [x] Magikarp family and Lapras (no change), Eevee (second ability Adaptability; its evolutions keep theirs)
+  - [x] Porygon line (second ability Download), Omanyte and Kabuto families (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change

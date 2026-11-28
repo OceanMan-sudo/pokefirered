@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 85 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 86 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -108,7 +108,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Ice Body and Snow Cloak holders take no hail damage (BUG-17) | Not yet tested |
 | Trainer Pokémon can be given their second ability. Brock's Geodude uses it for Sturdy | Not yet tested |
 | Seel is a pure Water type again | Not yet tested |
-| Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon has them yet. Trainer AI updated to allow for them | Tested; trainer AI decisions not checked one by one |
+| Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon had them when they were added. Trainer AI updated to allow for them | Tested; trainer AI decisions not checked one by one |
 | Sturdy also leaves its Pokémon with 1 HP after a hit that would knock it out from full HP. Trainer AI updated to match | Tested; trainer AI decisions not checked one by one |
 | Magma Armor also takes in Water moves and heals from them, like Water Absorb. Trainer AI updated to match, and now allows for Water Absorb when choosing its next Pokémon | Tested; trainer AI decisions not checked one by one |
 | Slugma and Magcargo no longer have Water Absorb; Magma Armor is their only ability. A species with one ability now always shows it, including Pokémon caught when it had two | Not yet tested |
@@ -175,6 +175,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Scyther, Jynx and Electabuzz families rebuilt | Not yet tested |
 | Magmar, Pinsir and Tauros families rebuilt; Pinsir can have Moxie and Tauros Sheer Force | Not yet tested |
 | Magikarp, Lapras and Eevee families rebuilt; Eevee can have Adaptability | Not yet tested |
+| Porygon, Omanyte and Kabuto families rebuilt; the Porygon line can have Download | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -259,7 +260,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
-112 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop, Machoke and Shellder also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's, Machamp's or Cloyster's abilities.
+114 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop, Machoke and Shellder also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's, Machamp's or Cloyster's abilities.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -324,6 +325,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Pinsir | Hyper Cutter | Hyper Cutter/Moxie |
 | Tauros | Intimidate | Intimidate/Sheer Force |
 | Eevee | Run Away | Run Away/Adaptability |
+| Porygon | Trace | Trace/Download |
 | Aerodactyl | Rock Head/Pressure | Rock Head/Levitate |
 | Articuno | Pressure | Snow Cloak |
 | Zapdos | Pressure | Static |
@@ -366,6 +368,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Delibird | Vital Spirit/Hustle | Vital Spirit/Snow Warning |
 | Houndoom | Early Bird/Flash Fire | Solar Power/Flash Fire |
 | Kingdra | Swift Swim | Swift Swim/Sniper |
+| Porygon2 | Trace | Trace/Download |
 | Smeargle | Own Tempo | Own Tempo/Technician |
 | Tyrogue | Guts | Guts/Vital Spirit |
 | Hitmontop | Intimidate | Intimidate/Technician |
@@ -519,9 +522,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Scyther, Jynx and Electabuzz families | Done. Evolution move: Scizor Bullet Punch. Scizor also gains Iron Head at 44 |
 | Magmar, Pinsir and Tauros families | Done. Pinsir learns Close Combat instead of Superpower. Magmar and Electabuzz gain Psycho Power at 36, with Sunny Day or Screech at 31 |
 | Magikarp, Lapras and Eevee families | Done. Evolution moves: Gyarados Bite, Vaporeon Water Gun, Jolteon Thunder Shock, Flareon Ember, Espeon Confusion, Umbreon Pursuit |
+| Porygon, Omanyte and Kabuto families | Done. Evolution move: Kabutops Slash. The Omanyte line gains Power Gem at 49 and learns Rock Blast at 1 |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp, Marowak: Shadow Punch, Hitmonlee: Brick Break, Hitmonchan: Mach Punch, Hitmontop: Triple Kick, Seadra: Twister, Starmie: Psybeam, Scizor: Bullet Punch, Gyarados: Bite, Vaporeon: Water Gun, Jolteon: Thunder Shock, Flareon: Ember, Espeon: Confusion, Umbreon: Pursuit). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp, Marowak: Shadow Punch, Hitmonlee: Brick Break, Hitmonchan: Mach Punch, Hitmontop: Triple Kick, Seadra: Twister, Starmie: Psybeam, Scizor: Bullet Punch, Gyarados: Bite, Vaporeon: Water Gun, Jolteon: Thunder Shock, Flareon: Ember, Espeon: Confusion, Umbreon: Pursuit, Kabutops: Slash). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
