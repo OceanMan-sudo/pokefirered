@@ -122,7 +122,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Cubone, Tyrogue and Lickitung families
   - [x] Koffing, Rhyhorn and Chansey families
   - [x] Tangela, Kangaskhan and Horsea families
-  - [ ] Goldeen, Staryu and Mr. Mime families (next)
+  - [x] Goldeen, Staryu and Mr. Mime families
+  - [ ] Scyther, Jynx and Electabuzz families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
