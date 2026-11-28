@@ -116,7 +116,7 @@ Steel no longer resists Ghost or Dark.
 | Sap Sipper | Grass moves, including status moves, do nothing to it and raise its Attack. Solar Beam is stopped when it fires, not while charging | None yet |
 | Moxie | +1 Attack each time its move knocks out a Pokémon. Spikes, Future Sight and end-of-turn damage do not count | Primeape, Pinsir |
 | Sheer Force | 1.3× power for moves with an extra effect (flinch, status, confusion or stat change, including Fake Out), and that effect never happens. Those moves also get no King's Rock flinch or Shell Bell healing. Drawback moves such as Overheat, trapping moves, Thrash-style moves, Thief, Knock Off and Pay Day are unchanged | Nidoqueen, Nidoking, Tauros |
-| Multiscale | Halves attack damage while at full HP. Fixed-damage moves such as Seismic Toss ignore it | None yet |
+| Multiscale | Halves attack damage while at full HP. Fixed-damage moves such as Seismic Toss ignore it | Dragonite |
 | Regenerator | Heals 1/3 of max HP when it switches out, including by Baton Pass, Roar or Whirlwind | None yet |
 
 Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). Only Brock's Geodude does, which gives it Sturdy.
@@ -129,7 +129,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 
 Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
-114 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+115 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag, Abra, Machop, Bellsprout, Tentacool, Geodude, Ponyta, Slowpoke, Magnemite, Farfetch'd, Doduo, Seel, Grimer, Shellder, Gastly, Onix, Drowzee, Krabby, Voltorb, Exeggcute, Cubone, Tyrogue, Lickitung, Koffing, Rhyhorn, Chansey, Tangela, Kangaskhan, Horsea, Goldeen, Staryu, Mr. Mime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Lapras, Eevee, Porygon, Omanyte, Kabuto, Aerodactyl, Snorlax and legendary bird families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag, Abra, Machop, Bellsprout, Tentacool, Geodude, Ponyta, Slowpoke, Magnemite, Farfetch'd, Doduo, Seel, Grimer, Shellder, Gastly, Onix, Drowzee, Krabby, Voltorb, Exeggcute, Cubone, Tyrogue, Lickitung, Koffing, Rhyhorn, Chansey, Tangela, Kangaskhan, Horsea, Goldeen, Staryu, Mr. Mime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Lapras, Eevee, Porygon, Omanyte, Kabuto, Aerodactyl, Snorlax, legendary bird and Dratini families, Mewtwo and Mew. That completes the first generation. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind, Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb, Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory, Slowking Nasty Plot, Dodrio Drill Peck, Cloyster Rock Blast, Haunter Shadow Punch, Steelix Iron Head, Exeggutor Stomp, Marowak Shadow Punch, Hitmonlee Brick Break, Hitmonchan Mach Punch, Hitmontop Triple Kick, Seadra Twister, Starmie Psybeam, Scizor Bullet Punch, Gyarados Bite, Vaporeon Water Gun, Jolteon Thunder Shock, Flareon Ember, Espeon Confusion, Umbreon Pursuit and Kabutops Slash.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind, Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb, Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory, Slowking Nasty Plot, Dodrio Drill Peck, Cloyster Rock Blast, Haunter Shadow Punch, Steelix Iron Head, Exeggutor Stomp, Marowak Shadow Punch, Hitmonlee Brick Break, Hitmonchan Mach Punch, Hitmontop Triple Kick, Seadra Twister, Starmie Psybeam, Scizor Bullet Punch, Gyarados Bite, Vaporeon Water Gun, Jolteon Thunder Shock, Flareon Ember, Espeon Confusion, Umbreon Pursuit, Kabutops Slash and Dragonite Wing Attack.
 
 ### TMs
 - TMs are reusable.
