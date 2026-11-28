@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 73 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 74 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -163,6 +163,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Meowth, Psyduck and Mankey families rebuilt; Primeape can have Moxie | Not yet tested |
 | Growlithe, Poliwag and Abra families rebuilt | Not yet tested |
 | Machop, Bellsprout and Tentacool families rebuilt; Machamp can have Iron Fist | Not yet tested |
+| Geodude, Ponyta and Slowpoke families rebuilt | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -484,9 +485,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Meowth, Psyduck and Mankey families | Done. Evolution moves: Persian Night Slash (Dark Pulse moves to 50), Golduck Aqua Jet. Golduck learns Psych Up at 31 |
 | Growlithe, Poliwag and Abra families | Done. Evolution moves: Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind. Arcanine has Close Combat and Wild Charge at level 1 and no longer learns Superpower; neither learns Heat Wave; Growlithe learns Flamethrower at 37; both learn Snarl (Growlithe 21, Arcanine 23); the Poliwag family learns Mud Shot instead of Mud Slap; Kadabra and Alakazam learn Focus Blast instead of Psycho Power |
 | Machop, Bellsprout and Tentacool families | Done. Evolution moves: Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb. Machoke and Machamp learn Close Combat at 61 instead of Superpower; their other moves from before each evolution now match the earlier stage |
+| Geodude, Ponyta and Slowpoke families | Done. Evolution moves: Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory (added), Slowking Nasty Plot. Ponyta and Rapidash learn Flare Blitz at 46 and Fire Blast at 52; Graveler's and Golem's moves from before level 18 now match Geodude's |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
