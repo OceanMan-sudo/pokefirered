@@ -103,7 +103,7 @@ Steel no longer resists Ghost or Dark.
 | Super Luck | Higher critical-hit chance (+1 stage) | Spearow, Fearow, Farfetch'd, Spinarak, Ariados, Murkrow, Remoraid, Octillery |
 | Technician | 1.5× for moves with 60 power or less | Meowth, Persian, Mr. Mime, Scyther, Furret, Aipom, Scizor, Smeargle, Hitmontop |
 | Ice Body | Heals 1/16 HP each turn in hail, and hail does not hurt it | Seel, Dewgong |
-| Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Hitmonchan, Kangaskhan, Ledian |
+| Iron Fist | 1.2× for punching moves (the list also includes Poison Jab) | Machamp, Hitmonchan, Kangaskhan, Ledian |
 | Reckless | 1.2× for recoil and jump-kick moves | Hitmonlee, Rhyhorn, Rhydon |
 | Snow Warning | Starts five turns of hail on entering | Jynx, Delibird |
 | Snow Cloak | Attacks against it are 20% less accurate in hail, and hail does not hurt it | Articuno, Sneasel, Swinub, Piloswine |
@@ -129,7 +129,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 
 Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
-102 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+103 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag and Abra families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat, Diglett, Meowth, Psyduck, Mankey, Growlithe, Poliwag, Abra, Machop, Bellsprout and Tentacool families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion and Alakazam Calm Mind.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust, Dugtrio Sand Tomb, Persian Night Slash, Golduck Aqua Jet, Arcanine Crunch, Poliwhirl Bubble Beam, Poliwrath Drain Punch, Politoed Hyper Voice, Kadabra Confusion, Alakazam Calm Mind, Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb and Tentacruel Sludge Bomb.
 
 ### TMs
 - TMs are reusable.
@@ -307,7 +307,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: since the learnset reset, only 25 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Drain Punch, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird, Bug Buzz, Dark Pulse, Psycho Power, Aqua Jet, Close Combat, Wild Charge and Flare Blitz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 25 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
+Who can learn them: since the learnset reset, only 28 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Drain Punch, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird, Bug Buzz, Dark Pulse, Psycho Power, Aqua Jet, Close Combat, Wild Charge, Flare Blitz, Snarl, Bullet Punch and Seed Bomb). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 28 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

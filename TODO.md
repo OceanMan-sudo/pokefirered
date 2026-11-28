@@ -113,7 +113,8 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Paras, Venonat and Diglett families
   - [x] Meowth, Psyduck and Mankey families
   - [x] Growlithe, Poliwag and Abra families
-  - [ ] Machop, Bellsprout and Tentacool families (next)
+  - [x] Machop, Bellsprout and Tentacool families
+  - [ ] Geodude, Ponyta and Slowpoke families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
 - [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
@@ -126,6 +127,7 @@ Do these before changing teams area by area, so work is not redone.
   - [x] Paras family (Regenerator declined), Venonat family (second ability Tinted Lens), Diglett family (no change)
   - [x] Meowth and Psyduck families (no change), Mankey family (Primeape: second ability Moxie)
   - [x] Growlithe, Poliwag and Abra families (no change)
+  - [x] Machop family (Machamp: second ability Iron Fist), Bellsprout and Tentacool families (no change)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
