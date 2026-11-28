@@ -133,6 +133,7 @@ static const u8 sText_PkmnTailwindRaisedSpeed[] = _("{B_ATK_PREFIX2}'s {B_CURREN
 static const u8 sText_PkmnHurtByItsAbility[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt\nby its {B_ATK_ABILITY}!");
 static const u8 sText_PkmnAbilityRaisedAttack[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its ATTACK!");
 static const u8 sText_PkmnAbilityRaisedSpAtk[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its SP. ATK!");
+static const u8 sText_PkmnEnduredHitUsing[] = _("{B_DEF_NAME_WITH_PREFIX} endured\nthe hit using {B_DEF_ABILITY}!");
 static const u8 sText_PkmnUsedSafeguard[] = _("{B_DEF_NAME_WITH_PREFIX}'s party is protected\nby SAFEGUARD!");
 static const u8 sText_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}'s party is no longer\nprotected by SAFEGUARD!");
 static const u8 sText_PkmnWentToSleep[] = _("{B_ATK_NAME_WITH_PREFIX} went\nto sleep!");
@@ -900,7 +901,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT - BATTLESTRINGS_TABLE_ST
     [STRINGID_PKMNTAILWINDRAISEDSPEED - BATTLESTRINGS_TABLE_START]       = sText_PkmnTailwindRaisedSpeed,
     [STRINGID_PKMNHURTBYITSABILITY - BATTLESTRINGS_TABLE_START]          = sText_PkmnHurtByItsAbility,
     [STRINGID_PKMNABILITYRAISEDATTACK - BATTLESTRINGS_TABLE_START]       = sText_PkmnAbilityRaisedAttack,
-    [STRINGID_PKMNABILITYRAISEDSPATK - BATTLESTRINGS_TABLE_START]        = sText_PkmnAbilityRaisedSpAtk
+    [STRINGID_PKMNABILITYRAISEDSPATK - BATTLESTRINGS_TABLE_START]        = sText_PkmnAbilityRaisedSpAtk,
+    [STRINGID_PKMNENDUREDHITUSING - BATTLESTRINGS_TABLE_START]           = sText_PkmnEnduredHitUsing
 };
 
 const u16 gMissStringIds[] =

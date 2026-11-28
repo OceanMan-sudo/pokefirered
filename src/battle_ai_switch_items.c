@@ -110,6 +110,12 @@ static bool8 ShouldSwitchIfWonderGuard(void)
     return FALSE; // There is not a single Pokemon in the party that has a super effective move against a mon with Wonder Guard.
 }
 
+// Water Absorb and Magma Armor both take in Water moves.
+static bool8 SoaksUpWater(u8 ability)
+{
+    return ability == ABILITY_WATER_ABSORB || ability == ABILITY_MAGMA_ARMOR;
+}
+
 static bool8 FindMonThatAbsorbsOpponentsMove(void)
 {
     u8 battlerIn1, battlerIn2;
@@ -146,7 +152,8 @@ static bool8 FindMonThatAbsorbsOpponentsMove(void)
         absorbingTypeAbility = ABILITY_SAP_SIPPER;
     else
         return FALSE;
-    if (gBattleMons[gActiveBattler].ability == absorbingTypeAbility)
+    if (gBattleMons[gActiveBattler].ability == absorbingTypeAbility
+     || (absorbingTypeAbility == ABILITY_WATER_ABSORB && SoaksUpWater(gBattleMons[gActiveBattler].ability)))
         return FALSE;
     for (i = 0; i < PARTY_SIZE; ++i)
     {
@@ -167,7 +174,9 @@ static bool8 FindMonThatAbsorbsOpponentsMove(void)
             monAbility = gSpeciesInfo[species].abilities[1];
         else
             monAbility = gSpeciesInfo[species].abilities[0];
-        if (absorbingTypeAbility == monAbility && Random() & 1)
+        if ((absorbingTypeAbility == monAbility
+          || (absorbingTypeAbility == ABILITY_WATER_ABSORB && SoaksUpWater(monAbility)))
+         && Random() & 1)
         {
             // we found a mon
             *(gBattleStruct->AI_monToSwitchIntoId + (GetBattlerPosition(gActiveBattler) >> 1)) = i;
@@ -557,6 +566,8 @@ static u32 GetBestMoveDamage(struct BattlePokemon *attacker, u8 defender)
             effectiveness = 0;
         if (gBattleMons[defender].ability == ABILITY_SAP_SIPPER && moveType == TYPE_GRASS)
             effectiveness = 0;
+        if (SoaksUpWater(gBattleMons[defender].ability) && moveType == TYPE_WATER)
+            effectiveness = 0;
         if (gBattleMons[defender].ability == ABILITY_WONDER_GUARD && effectiveness <= 10)
             effectiveness = 0;
         if (effectiveness == 0)
@@ -588,6 +599,8 @@ static u8 GetTypeThreat(struct BattlePokemon *mon, u8 opposingBattler)
         if (mon->ability == ABILITY_LEVITATE && atkType == TYPE_GROUND)
             effectiveness = 0;
         if (mon->ability == ABILITY_SAP_SIPPER && atkType == TYPE_GRASS)
+            effectiveness = 0;
+        if (SoaksUpWater(mon->ability) && atkType == TYPE_WATER)
             effectiveness = 0;
         if (threat < effectiveness)
             threat = effectiveness;
@@ -671,7 +684,7 @@ static u32 EstimateMoveDamage(struct BattlePokemon *attacker, u16 move, u8 defen
         if (effectiveness == 0
          || (target->ability == ABILITY_WONDER_GUARD && effectiveness <= EFFECTIVENESS_NORMAL)
          || (target->ability == ABILITY_VOLT_ABSORB && moveType == TYPE_ELECTRIC)
-         || (target->ability == ABILITY_WATER_ABSORB && moveType == TYPE_WATER)
+         || (SoaksUpWater(target->ability) && moveType == TYPE_WATER)
          || (target->ability == ABILITY_FLASH_FIRE && moveType == TYPE_FIRE && !(target->status1 & STATUS1_FREEZE))
          || (target->ability == ABILITY_SAP_SIPPER && moveType == TYPE_GRASS))
             return 0;

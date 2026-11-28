@@ -120,6 +120,14 @@ Steel no longer resists Ghost or Dark.
 
 Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). No team uses this yet.
 
+### Changed abilities
+| Ability | In the original | Now |
+|---|---|---|
+| Sturdy | Only blocked one-hit KO moves | Still blocks them. Also, a hit that would knock the Pokémon out from full HP leaves it with 1 HP, including a confusion self-hit and Future Sight. Only the first hit of a multi-hit move is survived. Weather, poison, Spikes and recoil are not hits, and a hit on a Substitute does not count |
+| Magma Armor | Only prevented freezing | Still prevents freezing. Also works like Water Absorb: Water moves with a power rating do no damage and restore 1/4 of max HP |
+
+Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. Slugma's and Magcargo's second ability, Water Absorb, now adds nothing over their first.
+
 95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences

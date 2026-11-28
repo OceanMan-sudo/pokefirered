@@ -1614,6 +1614,33 @@ static void Unused_ApplyRandomDmgMultiplier(void)
     ApplyRandomDmgMultiplier();
 }
 
+// A Pokemon with Sturdy that is at full HP survives a hit that would knock it
+// out, with 1 HP left. This is checked for each hit of a multi-hit move.
+static bool8 TryActivateSturdy(void)
+{
+    struct BattlePokemon *target = &gBattleMons[gBattlerTarget];
+
+    if (target->ability != ABILITY_STURDY
+     || target->hp != target->maxHP
+     || target->hp > gBattleMoveDamage
+     || (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+     || gProtectStructs[gBattlerTarget].endured)
+        return FALSE;
+    // Damage from hurting itself in confusion goes past its Substitute.
+    if (gBattlerTarget != gBattlerAttacker)
+    {
+        if (target->status2 & STATUS2_SUBSTITUTE)
+            return FALSE;
+        // False Swipe leaves 1 HP on its own.
+        if (gBattleMoves[gCurrentMove].effect == EFFECT_FALSE_SWIPE)
+            return FALSE;
+    }
+    gBattleMoveDamage = target->hp - 1;
+    gSpecialStatuses[gBattlerTarget].sturdied = 1;
+    RecordAbilityBattle(gBattlerTarget, ABILITY_STURDY);
+    return TRUE;
+}
+
 static void Cmd_adjustnormaldamage(void)
 {
     u8 holdEffect, param;
@@ -1633,7 +1660,7 @@ static void Cmd_adjustnormaldamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
+    if (!TryActivateSturdy() && holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -1676,7 +1703,7 @@ static void Cmd_adjustnormaldamage2(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
+    if (!TryActivateSturdy() && holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;
@@ -1905,6 +1932,12 @@ static void Cmd_datahpupdate(void)
             gSpecialStatuses[gActiveBattler].dmg = 0xFFFF;
     }
     gBattlescriptCurrInstr += 2;
+    if (gSpecialStatuses[gActiveBattler].sturdied)
+    {
+        gSpecialStatuses[gActiveBattler].sturdied = 0;
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_SturdyActivates;
+    }
 }
 
 static void Cmd_critmessage(void)
@@ -5682,7 +5715,7 @@ static void Cmd_adjustsetdamage(void)
 
     gPotentialItemEffectBattler = gBattlerTarget;
 
-    if (holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
+    if (!TryActivateSturdy() && holdEffect == HOLD_EFFECT_FOCUS_BAND && (Random() % 100) < param)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = 1;

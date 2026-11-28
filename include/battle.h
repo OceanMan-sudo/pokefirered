@@ -226,7 +226,8 @@ struct SpecialStatus
     u8 ppNotAffectedByPressure:1;
     u8 faintedHasReplacement:1;
     u8 focusBanded:1;
-    u8 field1[3];
+    u8 sturdied:1; // survived the current hit with Sturdy
+    u8 field1[2];
     s32 dmg;
     s32 physicalDmg;
     s32 specialDmg;

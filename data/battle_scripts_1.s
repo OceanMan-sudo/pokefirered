@@ -4565,6 +4565,11 @@ BattleScript_SelectingNotAllowedMoveChoiceItem::
 	printselectionstring STRINGID_ITEMALLOWSONLYYMOVE
 	endselectionscript
 
+BattleScript_SturdyActivates::
+	printstring STRINGID_PKMNENDUREDHITUSING
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_FocusBandActivates::
 	playanimation BS_TARGET, B_ANIM_FOCUS_BAND
 	printstring STRINGID_PKMNHUNGONWITHX

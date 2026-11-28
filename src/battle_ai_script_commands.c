@@ -1514,6 +1514,21 @@ static void Cmd_if_stat_level_not_equal(void)
         sAIScriptPtr += 8;
 }
 
+// Sturdy stops one hit from knocking out a Pokemon at full HP. A move that
+// hits more than once gets past it.
+static void LimitDamageForSturdy(void)
+{
+    u8 effect = gBattleMoves[gCurrentMove].effect;
+
+    if (gBattleMons[gBattlerTarget].ability == ABILITY_STURDY
+     && gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP
+     && !(gBattleMons[gBattlerTarget].status2 & STATUS2_SUBSTITUTE)
+     && effect != EFFECT_MULTI_HIT && effect != EFFECT_DOUBLE_HIT
+     && effect != EFFECT_TRIPLE_KICK && effect != EFFECT_TWINEEDLE
+     && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp)
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp - 1;
+}
+
 static void Cmd_if_can_faint(void)
 {
     if (gBattleMoves[AI_THINKING_STRUCT->moveConsidered].power < 2)
@@ -1536,6 +1551,7 @@ static void Cmd_if_can_faint(void)
     // Moves always do at least 1 damage.
     if (gBattleMoveDamage == 0)
         gBattleMoveDamage = 1;
+    LimitDamageForSturdy();
 
     if (gBattleMons[gBattlerTarget].hp <= gBattleMoveDamage)
         sAIScriptPtr = T1_READ_PTR(sAIScriptPtr + 1);
@@ -1563,6 +1579,7 @@ static void Cmd_if_cant_faint(void)
     gBattleMoveDamage = gBattleMoveDamage * AI_THINKING_STRUCT->simulatedRNG[AI_THINKING_STRUCT->movesetIndex] / 100;
 
     // This macro is missing the damage 0 = 1 assumption.
+    LimitDamageForSturdy();
 
     if (gBattleMons[gBattlerTarget].hp > gBattleMoveDamage)
         sAIScriptPtr = T1_READ_PTR(sAIScriptPtr + 1);

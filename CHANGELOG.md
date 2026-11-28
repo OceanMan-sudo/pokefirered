@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 55 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 56 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -22,6 +22,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Five-turn weather abilities:** Drizzle, Drought, Sand Stream and Snow Warning.
 - **Ability fixes:** Solar Power's HP cost, hail immunity for Ice Body and Snow Cloak, the second-ability setting for trainers, and Seel's type.
 - **Eleven more abilities:** these can be tried once Pokémon have been given them.
+- **Sturdy and Magma Armor:** the new full-HP survival and the Water immunity.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -106,6 +107,8 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Trainer Pokémon can be given their second ability (no team uses it yet) | Not yet tested |
 | Seel is a pure Water type again | Not yet tested |
 | Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon has them yet. Trainer AI updated to allow for them | Not yet tested |
+| Sturdy also leaves its Pokémon with 1 HP after a hit that would knock it out from full HP. Trainer AI updated to match | Not yet tested |
+| Magma Armor also takes in Water moves and heals from them, like Water Absorb. Trainer AI updated to match, and now allows for Water Absorb when choosing its next Pokémon | Not yet tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
 ### Fairy type
