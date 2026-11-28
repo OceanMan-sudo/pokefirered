@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 61 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 62 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -151,6 +151,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | TM and HM compatibility rebuilt from Generation 1–9 data (see below) | Not yet tested |
 | Egg moves updated from the same games; up to 32 per Pokémon (was 10) | Not yet tested |
 | Level-up learnsets reset to the original FireRed lists, ahead of a rebuild | Not yet tested |
+| Starter families (9 Pokémon) rebuilt from your old lists; Blastoise gains Aura Sphere at level 1 | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -445,10 +446,17 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 - Pokémon whose newer-game egg is a baby this game lacks get the baby's egg moves: Snorlax (Munchlax), Roselia (Budew), Mr. Mime (Mime Jr.), Sudowoodo (Bonsly), Chansey (Happiny), Mantine (Mantyke), Chimecho (Chingling). Marill and Azurill share both lists.
 - The longest list is Marill's (21). The game read only 10 per Pokémon, so the limit is now 32.
 - As before, only the **father** passes egg moves down.
-- Since the level-up reset, 246 entries (241 of them new) have no parent able to learn the move, not counting Smeargle's Sketch.
+- Since the level-up reset and the starter rebuild, 228 entries (223 of them new) have no parent able to learn the move, not counting Smeargle's Sketch.
 
 ### Level-up learnsets
-**Reset (`claude-edits`), 27 November 2026.** All level-up lists now match the original FireRed ones, ahead of a rebuild.
+**Reset (`claude-edits`), 27 November 2026.** All level-up lists were returned to the original FireRed ones, ahead of a rebuild.
+
+**Rebuild, in groups.** Each group starts from your old lists and fixes only inconsistencies: moves learned before an evolution share a level across the family, later moves keep your levels, duplicates are removed and no family loses a move.
+
+| Group | State |
+|---|---|
+| Bulbasaur, Charmander and Squirtle families | Done. Charmeleon learns Dragon Rage before Dragon Breath, like the others; Blastoise also gets Aura Sphere |
+| All others | Still original |
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 

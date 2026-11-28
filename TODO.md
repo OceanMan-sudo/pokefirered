@@ -103,7 +103,11 @@ Do these before changing teams area by area, so work is not redone.
 - [x] TM list: seven moves swapped, TM/HM compatibility rebuilt from Generations 1–9
 - [x] Egg moves updated from the same games (some have no parent until level-up lists change)
 - [x] Level-up learnsets reset to the original FireRed lists
-- [ ] Rebuild level-up learnsets (agree the approach first). Teams without hand-picked moves use level-up moves
+- [ ] Rebuild level-up learnsets from your old lists, group by group (show each group before adding it). Teams without hand-picked moves use level-up moves
+  - [x] Bulbasaur, Charmander and Squirtle families
+  - [ ] Caterpie, Weedle and Pidgey families (proposed)
+- [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
+- [ ] Decide whether to add true evolution moves (a delayed evolution currently misses the move)
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
@@ -295,7 +299,8 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [x] Debug menu: every option (hold B, press SELECT)
 - [ ] New TMs: each of the seven shows the right name, color and move, and teaches it
 - [ ] TM and HM compatibility: spot-check a few Pokémon (Houndoom takes TM49 Dark Pulse and TM45 Will-O-Wisp; Charmander cannot take TM15)
-- [ ] Level-up reset: a few Pokémon learn their original moves (Bulbasaur learns Growl at level 4)
+- [ ] Starter moves: Charmander learns Smokescreen at level 3; Blastoise can relearn Aura Sphere
+- [ ] Level-up reset: other Pokémon learn their original moves (Caterpie knows only Tackle and String Shot)
 - [ ] Egg moves: breed a father that knows a new egg move and check the hatched Pokémon has it
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass
