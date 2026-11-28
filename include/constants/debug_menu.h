@@ -9,6 +9,7 @@
 #define DEBUG_PICK_ITEM     2
 #define DEBUG_PICK_QUANTITY 3
 #define DEBUG_PICK_MOVE     4 // Move number
+#define DEBUG_PICK_ABILITY  5 // Ability number, or ABILITIES_COUNT for the usual one
 
 // Results of DebugMenu_TeachMove
 #define DEBUG_TEACH_DONE    0 // Learned into an empty slot

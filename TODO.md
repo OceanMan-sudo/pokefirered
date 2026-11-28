@@ -35,7 +35,7 @@ A quality-of-life upgrade and a new difficulty curve with fresh teams, across a 
 None blocking right now.
 
 ### To discuss later
-- **Who gets the newest abilities.** Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator work but no Pokémon has them.
+- **Who gets the newest abilities.** Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator work but no Pokémon has them (the debug menu can give them out for testing).
 - **Level caps and gym order (Erika, Koga, Sabrina).** The cap counts badges. Taking on Koga before Erika means a cap of 34 against a team of up to level 43 (until this is settled, the cap can be switched off in Options).
 - **Variable gym teams by the order played.** Possible: a gym can check your badges and start a different trainer entry. Each variant needs a trainer slot.
 - **Trainer slots.** 25 numbers are unused (743–767), and about 130 existing entries (mostly Ruby/Sapphire leftovers) are not referred to by name anywhere, so could be reused after checking each. Going past 768 is possible but needs new space in the save file for the extra "defeated" flags; simply raising `MAX_TRAINERS_COUNT` would shift the badge and other system flags and break saves.
@@ -364,7 +364,10 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] Snow Cloak or Ice Body copied by Trace: no hail damage on a Pokémon that is not Ice type
 - [ ] Seel shows only the Water type
 - [ ] After the new abilities update, ordinary battles still behave: knocking out a Pokémon, switching, Hidden Power and Solar Beam
-- [ ] The eleven newest abilities, once Pokémon have them
+- [ ] The eleven newest abilities (give them out with the debug menu's Ability option)
+- [ ] Debug menu, Ability: the new ability shows on the summary screen and works in battle; **Usual ability** undoes it; it stays after saving and reloading
+- [ ] Brock's Geodude survives a knockout hit from full HP
+- [ ] A Slugma or Magcargo caught earlier shows MAGMA ARMOR
 - [ ] Sturdy at full HP: a knockout hit leaves 1 HP and shows "endured the hit using STURDY!" (try Sudowoodo or Pineco)
 - [ ] Sturdy below full HP: the Pokémon faints as normal
 - [ ] Sturdy against a multi-hit move: the first hit leaves 1 HP and the next one knocks it out
@@ -388,9 +391,10 @@ Before version 1 is finished. To only switch it off, set `DEBUG_MENU` to `FALSE`
 1. Delete `src/debug_menu.c`, `data/scripts/debug_menu.inc` and `include/constants/debug_menu.h`.
 2. Remove the `#if DEBUG_MENU` block in `src/field_control_avatar.c` and the `DEBUG_MENU` lines in `include/config.h`.
 3. Remove the two `.include` / `#include` lines in `data/event_scripts.s`.
-4. Remove the eight `DebugMenu_` lines in `data/specials.inc`.
+4. Remove the nine `DebugMenu_` lines in `data/specials.inc`.
 5. Remove `EventScript_DebugMenu` from `include/event_scripts.h`.
 6. Remove the two `debug_menu.o` lines in `ld_script.ld`.
+7. Remove the `#if DEBUG_MENU` blocks in `GetMonAbility` (`src/pokemon.c`) and `Cmd_get_ability` (`src/battle_ai_script_commands.c`), the `MON_DATA_DEBUG_ABILITY` cases and constant, and rename `debugAbility` in `include/pokemon.h` back to `filler`. Pokémon given an ability in the debug menu go back to their usual one.
 
 ## Pokémon without a source
 

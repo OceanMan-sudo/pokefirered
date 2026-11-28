@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 56 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 57 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -23,6 +23,7 @@ Claude-assisted changes you have not yet reported as working.
 - **Ability fixes:** Solar Power's HP cost, hail immunity for Ice Body and Snow Cloak, the second-ability setting for trainers, and Seel's type.
 - **Eleven more abilities:** these can be tried once Pokémon have been given them.
 - **Sturdy and Magma Armor:** the new full-HP survival and the Water immunity.
+- **Brock's Geodude** having Sturdy, caught Slugma showing Magma Armor, and the debug menu's Ability option.
 - **Other AI fixes:** healing when hurt, Soundproof, immunities and the new weather abilities. The Physical/Special and Facade decisions were not checked one by one.
 - **Double battle switching fix (BUG-19):** too rare to check reliably in game.
 
@@ -104,11 +105,12 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Drizzle, Drought, Sand Stream and Snow Warning set five turns of weather instead of lasting the whole battle | Not yet tested |
 | Solar Power costs 1/8 of max HP at the end of each turn in sun | Not yet tested |
 | Ice Body and Snow Cloak holders take no hail damage (BUG-17) | Not yet tested |
-| Trainer Pokémon can be given their second ability (no team uses it yet) | Not yet tested |
+| Trainer Pokémon can be given their second ability. Brock's Geodude uses it for Sturdy | Not yet tested |
 | Seel is a pure Water type again | Not yet tested |
 | Eleven abilities added: Adaptability, Skill Link, Sniper, Tinted Lens, Sand Rush, Download, Sap Sipper, Moxie, Sheer Force, Multiscale and Regenerator. No Pokémon has them yet. Trainer AI updated to allow for them | Not yet tested |
 | Sturdy also leaves its Pokémon with 1 HP after a hit that would knock it out from full HP. Trainer AI updated to match | Not yet tested |
 | Magma Armor also takes in Water moves and heals from them, like Water Absorb. Trainer AI updated to match, and now allows for Water Absorb when choosing its next Pokémon | Not yet tested |
+| Slugma and Magcargo no longer have Water Absorb; Magma Armor is their only ability. A species with one ability now always shows it, including Pokémon caught when it had two | Not yet tested |
 | Quick escape: hold B as a wild Pokémon slides in to be asked about escaping | Partly tested (escaping, Run Away, Arena Trap) |
 
 ### Fairy type
@@ -174,6 +176,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Temporary Pallet Town test characters (Aura Sphere giver, two move tutors) | Removed 27 November 2026 |
 | Temporary debug menu for testing (warp, Pokémon, items, progress, heal) | Tested |
 | Debug menu: Teach Move option | Tested |
+| Debug menu: Ability option, to give a party Pokémon any ability | Not yet tested |
 | Pallet Town clean-up: removed the Giovanni and chef who set story flags, and the nine warp doors | Not yet tested |
 | New game PC back to the original single Potion | Not yet tested |
 | Removed the unused `Tester` script from Route 2 | Not needed (nothing used it) |
@@ -309,8 +312,8 @@ The Claude-assisted changes did not touch TM compatibility or trainer teams. The
 | Gligar | Hyper Cutter/Sand Veil | Sand Stream/Sand Veil |
 | Scizor | Swarm | Swarm/Technician |
 | Sneasel | Inner Focus/Keen Eye | Inner Focus/Snow Cloak |
-| Slugma | Magma Armor/Flame Body | Magma Armor/Water Absorb |
-| Magcargo | Magma Armor/Flame Body | Magma Armor/Water Absorb |
+| Slugma | Magma Armor/Flame Body | Magma Armor |
+| Magcargo | Magma Armor/Flame Body | Magma Armor |
 | Swinub | Oblivious | Thick Fat/Snow Cloak |
 | Piloswine | Oblivious | Thick Fat/Snow Cloak |
 | Remoraid | Hustle | Hustle/Super Luck |
@@ -511,7 +514,7 @@ See [DESIGN.md](DESIGN.md#46-new-moves).
 | BOSS_GIOVANNI | team changed | Onix 25<br>Rhyhorn 24<br>Kangaskhan 29 | Persian 30<br>Rhyhorn 28<br>Kangaskhan 30 |
 | TEAM_ROCKET_GRUNT_6 | team changed, renamed | Ekans 15<br>Zubat 15 | Gligar 16<br>Delibird 16 |
 | COOLTRAINER_DUKE | new trainer | — | Camerupt 34 [Amnesia, Magnitude, Rest, Ember]<br>Sableye 34 [Fake Out, Aerial Ace, Torment, Faint Attack]<br>Zangoose 34 [Crush Claw, Pursuit, Mud-Slap, Swift] |
-| LEADER_BROCK | team changed | Geodude 12 [Tackle, Defense Curl]<br>Onix 14 [Tackle, Bind, Rock Tomb] | Geodude 13 [Tackle, Defense Curl, Rock Tomb]<br>Zubat 12 [Supersonic, Astonish, Leech Life]<br>Onix 14 [Dragon Breath, Bind, Rock Tomb, Torment] |
+| LEADER_BROCK | team changed | Geodude 12 [Tackle, Defense Curl]<br>Onix 14 [Tackle, Bind, Rock Tomb] | Geodude 13 (Sturdy) [Tackle, Defense Curl, Rock Tomb]<br>Zubat 12 [Supersonic, Astonish, Leech Life]<br>Onix 14 [Dragon Breath, Bind, Rock Tomb, Torment] |
 | LEADER_MISTY | team changed | Staryu 18 [Tackle, Harden, Recover, Water Pulse]<br>Starmie 21 [Swift, Recover, Rapid Spin, Water Pulse] | Psyduck 20 [Screech, Fury Swipes, Hypnosis, Water Pulse]<br>Corsola 21 [Tackle, Harden, Recover, Water Pulse]<br>Starmie 23 [Swift, Recover, Rapid Spin, Water Pulse] |
 | LEADER_LT_SURGE | team changed | Voltorb 21 [Sonic Boom, Tackle, Screech, Shock Wave]<br>Pikachu 18 [Quick Attack, Thunder Wave, Double Team, Shock Wave]<br>Raichu 24 [Quick Attack, Thunder Wave, Double Team, Shock Wave] | Lanturn 23 [Bubble Beam, Charge, Confuse Ray, Shock Wave]<br>Voltorb 21 [Sonic Boom, Tackle, Screech, Shock Wave]<br>Elekid 22 [Low Kick, Light Screen, Thunder Wave, Shock Wave]<br>Raichu 26 [Quick Attack, Thunder Wave, Double Team, Shock Wave] |
 | LEADER_ERIKA | team changed | Victreebel 29 [Stun Spore, Acid, Poison Powder, Giga Drain]<br>Tangela 24 [Poison Powder, Constrict, Ingrain, Giga Drain]<br>Vileplume 29 [Sleep Powder, Acid, Stun Spore, Giga Drain] | Victreebel 33 [Stun Spore, Acid, Knock Off, Giga Drain]<br>Sunflora 32 [Synthesis, Earth Power, Sunny Day, Giga Drain]<br>Tangela 32 [Sleep Powder, Growth, Confusion, Giga Drain]<br>Vileplume 34 [Sleep Powder, Drain Punch, Solar Beam, Giga Drain] |

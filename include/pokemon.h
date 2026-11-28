@@ -12,7 +12,7 @@ struct PokemonSubstruct0
     u32 experience;
     u8 ppBonuses;
     u8 friendship;
-    u16 filler;
+    u16 debugAbility; // TEMPORARY: ability set in the debug menu, 0 for none. Unused in the original game
 };
 
 struct PokemonSubstruct1
@@ -359,6 +359,7 @@ u8 CalculateEnemyPartyCount(void);
 u8 GetMonsStateToDoubles(void);
 u8 GetAbilityBySpecies(u16 species, bool8 abilityNum);
 u8 GetMonAbility(struct Pokemon *mon);
+u8 GetBattlerPartyAbility(u8 battlerId);
 u8 GetSecretBaseTrainerPicIndex(void);
 u8 GetSecretBaseTrainerNameIndex(void);
 bool8 IsPlayerPartyAndPokemonStorageFull(void);

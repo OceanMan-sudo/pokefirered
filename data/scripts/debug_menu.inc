@@ -5,13 +5,14 @@ EventScript_DebugMenu::
 	lockall
 EventScript_DebugMain::
 	closemessage
-	dynmultichoice 0, 0, FALSE, 7, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Warp, DebugMenu_Text_Pokemon, DebugMenu_Text_TeachMove, DebugMenu_Text_Items, DebugMenu_Text_Progress, DebugMenu_Text_Heal, DebugMenu_Text_Exit
+	dynmultichoice 0, 0, FALSE, 8, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Warp, DebugMenu_Text_Pokemon, DebugMenu_Text_TeachMove, DebugMenu_Text_Ability, DebugMenu_Text_Items, DebugMenu_Text_Progress, DebugMenu_Text_Heal, DebugMenu_Text_Exit
 	goto_if_eq VAR_RESULT, 0, EventScript_DebugWarp
 	goto_if_eq VAR_RESULT, 1, EventScript_DebugMon
 	goto_if_eq VAR_RESULT, 2, EventScript_DebugTeach
-	goto_if_eq VAR_RESULT, 3, EventScript_DebugItems
-	goto_if_eq VAR_RESULT, 4, EventScript_DebugProgress
-	goto_if_eq VAR_RESULT, 5, EventScript_DebugHeal
+	goto_if_eq VAR_RESULT, 3, EventScript_DebugAbility
+	goto_if_eq VAR_RESULT, 4, EventScript_DebugItems
+	goto_if_eq VAR_RESULT, 5, EventScript_DebugProgress
+	goto_if_eq VAR_RESULT, 6, EventScript_DebugHeal
 	goto EventScript_DebugExit
 
 EventScript_DebugExit::
@@ -345,6 +346,29 @@ EventScript_DebugTeachNoParty::
 	msgbox DebugMenu_Text_NoWarpParty
 	goto EventScript_DebugMain
 
+EventScript_DebugAbility::
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, EventScript_DebugTeachNoParty
+	closemessage
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, EventScript_DebugMain
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, EventScript_DebugAbilityEgg
+	copyvar VAR_0x8007, VAR_0x8004
+	setvar VAR_0x8004, DEBUG_PICK_ABILITY
+	special DebugMenu_PickNumber
+	waitstate
+	goto_if_eq VAR_RESULT, 0, EventScript_DebugAbility
+	copyvar VAR_0x8006, VAR_RESULT
+	special DebugMenu_SetAbility
+	msgbox DebugMenu_Text_AbilityDone
+	goto EventScript_DebugMain
+
+EventScript_DebugAbilityEgg::
+	msgbox DebugMenu_Text_AbilityEgg
+	goto EventScript_DebugMain
+
 EventScript_DebugItems::
 	closemessage
 	dynmultichoice 0, 0, FALSE, 8, 0, DYN_MULTICHOICE_CB_NONE, DebugMenu_Text_Repels, DebugMenu_Text_PokeBalls, DebugMenu_Text_EvolutionItems, DebugMenu_Text_AllTmsAndHms, DebugMenu_Text_Bicycle, DebugMenu_Text_Money, DebugMenu_Text_ChooseAnyItem, DebugMenu_Text_Back
@@ -518,6 +542,15 @@ DebugMenu_Text_TeachKnown::
 
 DebugMenu_Text_TeachEgg::
     .string "An EGG can't learn moves.$"
+
+DebugMenu_Text_Ability::
+    .string "ABILITY$"
+
+DebugMenu_Text_AbilityDone::
+    .string "{STR_VAR_1}'s ability is now\n{STR_VAR_2}.$"
+
+DebugMenu_Text_AbilityEgg::
+    .string "An EGG's ability can't be set.$"
 
 DebugMenu_Text_Items::
     .string "ITEMS$"

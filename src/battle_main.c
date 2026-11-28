@@ -2608,7 +2608,7 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
 
             gBattleMons[gActiveBattler].type1 = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[0];
             gBattleMons[gActiveBattler].type2 = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[1];
-            gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+            gBattleMons[gActiveBattler].ability = GetBattlerPartyAbility(gActiveBattler);
             hpOnSwitchout = &gBattleStruct->hpOnSwitchout[GetBattlerSide(gActiveBattler)];
             *hpOnSwitchout = gBattleMons[gActiveBattler].hp;
             for (i = 0; i < NUM_BATTLE_STATS; i++)

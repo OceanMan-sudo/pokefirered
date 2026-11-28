@@ -5717,6 +5717,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderBrock[] = {
         .iv = 0,
         .lvl = 13,
         .species = SPECIES_GEODUDE,
+        .secondAbility = TRUE, // Sturdy
         .moves = {MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_TOMB, MOVE_NONE},
     },
     {

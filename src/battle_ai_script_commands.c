@@ -1189,6 +1189,18 @@ static void Cmd_get_ability(void)
     {
         u16 side = GET_BATTLER_SIDE(battlerId);
 
+#if DEBUG_MENU
+        // TEMPORARY: an ability set in the debug menu can't be guessed from the
+        // species, so the AI is told about it.
+        if (side == B_SIDE_PLAYER
+         && GetMonData(&gPlayerParty[gBattlerPartyIndexes[battlerId]], MON_DATA_DEBUG_ABILITY, NULL) != ABILITY_NONE)
+        {
+            AI_THINKING_STRUCT->funcResult = gBattleMons[battlerId].ability;
+            sAIScriptPtr += 2;
+            return;
+        }
+
+#endif
         if (BATTLE_HISTORY->abilities[side] != 0)
         {
             AI_THINKING_STRUCT->funcResult = BATTLE_HISTORY->abilities[side];

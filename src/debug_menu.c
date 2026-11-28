@@ -2,6 +2,7 @@
 // The menu itself is in data/scripts/debug_menu.inc. Open it by holding B and pressing SELECT.
 #include "global.h"
 #include "gflib.h"
+#include "battle_main.h"
 #include "data.h"
 #include "event_data.h"
 #include "field_fadetransition.h"
@@ -14,6 +15,7 @@
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "task.h"
+#include "constants/abilities.h"
 #include "constants/debug_menu.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -28,6 +30,8 @@ static const u8 sText_Level[] = _("LEVEL");
 static const u8 sText_Item[] = _("ITEM No.");
 static const u8 sText_Quantity[] = _("HOW MANY?");
 static const u8 sText_Move[] = _("MOVE No.");
+static const u8 sText_Ability[] = _("ABILITY No.");
+static const u8 sText_UsualAbility[] = _("USUAL ABILITY");
 static const u8 sText_Help[] = _("UP/DOWN 1  LEFT/RIGHT 10");
 
 static const struct WindowTemplate sPickerWindowTemplate =
@@ -55,6 +59,8 @@ static s32 GetPickerMax(u8 mode)
         return ITEMS_COUNT - 1;
     case DEBUG_PICK_MOVE:
         return MOVES_COUNT - 1;
+    case DEBUG_PICK_ABILITY:
+        return ABILITIES_COUNT;
     default:
         return 99;
     }
@@ -109,6 +115,9 @@ static void PrintPicker(u8 taskId)
     case DEBUG_PICK_MOVE:
         title = sText_Move;
         break;
+    case DEBUG_PICK_ABILITY:
+        title = sText_Ability;
+        break;
     default:
         title = sText_Quantity;
         break;
@@ -123,6 +132,8 @@ static void PrintPicker(u8 taskId)
         CopyItemName(value, end);
     else if (mode == DEBUG_PICK_MOVE)
         StringCopy(end, gMoveNames[value]);
+    else if (mode == DEBUG_PICK_ABILITY)
+        StringCopy(end, (value < ABILITIES_COUNT) ? gAbilityNames[value] : sText_UsualAbility);
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     AddTextPrinterParameterized(windowId, FONT_NORMAL, title, 2, 1, TEXT_SKIP_DRAW, NULL);
@@ -132,6 +143,7 @@ static void PrintPicker(u8 taskId)
 }
 
 // Special: VAR_0x8004 says what to pick. VAR_RESULT gets the number, or 0 if cancelled.
+// For an ability, VAR_0x8007 is the party slot, and the picker starts on its current one.
 // Use "waitstate" after it.
 void DebugMenu_PickNumber(void)
 {
@@ -142,6 +154,8 @@ void DebugMenu_PickNumber(void)
     gTasks[taskId].tWindowId = windowId;
     if (gSpecialVar_0x8004 == DEBUG_PICK_LEVEL)
         gTasks[taskId].tValue = 5;
+    else if (gSpecialVar_0x8004 == DEBUG_PICK_ABILITY)
+        gTasks[taskId].tValue = GetMonAbility(&gPlayerParty[gSpecialVar_0x8007]);
     else
         gTasks[taskId].tValue = 1;
 
@@ -279,4 +293,18 @@ void DebugMenu_ReplaceMove(void)
     // The summary screen reuses the text buffers, so fill them again for the message
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[gSpecialVar_0x8006]);
+}
+
+// VAR_0x8007: party slot, VAR_0x8006: ability number, or ABILITIES_COUNT to go
+// back to the usual ability.
+void DebugMenu_SetAbility(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8007];
+    u16 ability = ABILITY_NONE;
+
+    if (gSpecialVar_0x8006 < ABILITIES_COUNT)
+        ability = gSpecialVar_0x8006;
+    SetMonData(mon, MON_DATA_DEBUG_ABILITY, &ability);
+    GetMonNickname(mon, gStringVar1);
+    StringCopy(gStringVar2, gAbilityNames[GetMonAbility(mon)]);
 }

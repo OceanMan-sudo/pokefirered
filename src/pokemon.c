@@ -3414,6 +3414,9 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 | (substruct3->worldRibbon << 26);
         }
         break;
+    case MON_DATA_DEBUG_ABILITY:
+        retVal = substruct0->debugAbility;
+        break;
     default:
         break;
     }
@@ -3760,6 +3763,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct3->spDefenseIV = (ivs >> 25) & MAX_IV_MASK;
         break;
     }
+    case MON_DATA_DEBUG_ABILITY:
+        SET16(substruct0->debugAbility);
+        break;
     default:
         break;
     }
@@ -3883,7 +3889,9 @@ u8 GetMonsStateToDoubles(void)
 
 u8 GetAbilityBySpecies(u16 species, bool8 abilityNum)
 {
-    if (abilityNum)
+    // A species with one ability always has it, even if a Pokemon was caught
+    // while the species had two.
+    if (abilityNum && gSpeciesInfo[species].abilities[1] != ABILITY_NONE)
         gLastUsedAbility = gSpeciesInfo[species].abilities[1];
     else
         gLastUsedAbility = gSpeciesInfo[species].abilities[0];
@@ -3895,7 +3903,25 @@ u8 GetMonAbility(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 abilityNum = GetMonData(mon, MON_DATA_ABILITY_NUM, NULL);
+#if DEBUG_MENU
+    // TEMPORARY: an ability chosen in the debug menu replaces the usual one.
+    u16 chosen = GetMonData(mon, MON_DATA_DEBUG_ABILITY, NULL);
+
+    if (chosen != ABILITY_NONE && chosen < ABILITIES_COUNT)
+    {
+        gLastUsedAbility = chosen;
+        return chosen;
+    }
+#endif
     return GetAbilityBySpecies(species, abilityNum);
+}
+
+// The ability of the party Pokemon that is in this battler's place.
+u8 GetBattlerPartyAbility(u8 battlerId)
+{
+    struct Pokemon *party = (GetBattlerSide(battlerId) == B_SIDE_PLAYER) ? gPlayerParty : gEnemyParty;
+
+    return GetMonAbility(&party[gBattlerPartyIndexes[battlerId]]);
 }
 
 static void CreateSecretBaseEnemyParty(struct SecretBaseRecord *secretBaseRecord)
@@ -4045,7 +4071,7 @@ static void CopyPlayerPartyMonToBattleData(u8 battlerId, u8 partyIndex)
     gBattleMons[battlerId].otId = GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_ID, NULL);
     gBattleMons[battlerId].type1 = gSpeciesInfo[gBattleMons[battlerId].species].types[0];
     gBattleMons[battlerId].type2 = gSpeciesInfo[gBattleMons[battlerId].species].types[1];
-    gBattleMons[battlerId].ability = GetAbilityBySpecies(gBattleMons[battlerId].species, gBattleMons[battlerId].abilityNum);
+    gBattleMons[battlerId].ability = GetMonAbility(&gPlayerParty[partyIndex]);
     GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, nickname);
     StringCopy_Nickname(gBattleMons[battlerId].nickname, nickname);
     GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_NAME, gBattleMons[battlerId].otName);

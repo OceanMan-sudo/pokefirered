@@ -116,7 +116,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 | Quick escape (hold B in a wild battle intro) | `BattleIntro...QuickEscape...` functions in `src/battle_main.c`; `quickEscapeFailed` in `include/battle.h`; text in `src/battle_message.c`; `BattleScript_QuickEscapeUsingItem` in `data/battle_scripts_1.s` |
 | Rule switches | `optionsLevelCapOff`, `optionsTrainerItemsOn`, `optionsAutoRun` in `SaveBlock2` (0 is the default for each); defaults in `SetDefaultRules` (`src/new_game.c`); second page in `src/option_menu.c` |
 | Dynamic multichoice menus | `src/script_menu.c`, `src/scrcmd.c` (script commands `0xd5`, `0xd6`) |
-| Debug menu (temporary) | `data/scripts/debug_menu.inc`, `src/debug_menu.c`, `include/constants/debug_menu.h`; opened from `src/field_control_avatar.c`; switch `DEBUG_MENU` in `include/config.h` |
+| Debug menu (temporary) | `data/scripts/debug_menu.inc`, `src/debug_menu.c`, `include/constants/debug_menu.h`; opened from `src/field_control_avatar.c`; switch `DEBUG_MENU` in `include/config.h`. The Ability option stores its choice in `PokemonSubstruct0.debugAbility`, read by `GetMonAbility` (`src/pokemon.c`) and `Cmd_get_ability` (`src/battle_ai_script_commands.c`) |
 
 ## Rules that prevent common breakage
 
@@ -130,6 +130,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 - **Flags and variables** are part of the save file. Adding flags beyond the current end changes the save layout.
 - **Windows and WSL line endings:** many files can show as "modified" without real changes. Check with `git diff --ignore-cr-at-eol --stat` before committing.
 - **Battle animations** must never move the player's Pokémon upward: its sprite is cut off at the bottom and the edge shows. Also finish any shake on a Pokémon before another task moves it, or the two fight over its position.
+- **Reading a Pokémon's ability:** use `GetMonAbility` for a party Pokémon (or `GetBattlerPartyAbility` in battle), not `GetAbilityBySpecies`, so the debug menu's choice applies.
 - **Debug content** is still in the game. See the cleanup list in [TODO.md](TODO.md).
 
 ## Other documentation in the repository

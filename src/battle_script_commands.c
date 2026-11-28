@@ -4588,7 +4588,7 @@ static void Cmd_switchindataupdate(void)
 
     gBattleMons[gActiveBattler].type1 = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[0];
     gBattleMons[gActiveBattler].type2 = gSpeciesInfo[gBattleMons[gActiveBattler].species].types[1];
-    gBattleMons[gActiveBattler].ability = GetAbilityBySpecies(gBattleMons[gActiveBattler].species, gBattleMons[gActiveBattler].abilityNum);
+    gBattleMons[gActiveBattler].ability = GetBattlerPartyAbility(gActiveBattler);
 
     // check knocked off item
     i = GetBattlerSide(gActiveBattler);
@@ -6160,7 +6160,6 @@ static void Cmd_various(void)
     s32 i;
     u32 monToCheck, status;
     u16 species;
-    u8 abilityNum;
 
     gActiveBattler = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
 
@@ -6288,12 +6287,11 @@ static void Cmd_various(void)
         for (i = 0; i < PARTY_SIZE; i++)
         {
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
-            abilityNum = GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM);
             status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
             if (species != SPECIES_NONE
              && species != SPECIES_EGG
              && status & AILMENT_FNT
-             && GetAbilityBySpecies(species, abilityNum) != ABILITY_SOUNDPROOF)
+             && GetMonAbility(&gPlayerParty[i]) != ABILITY_SOUNDPROOF)
                 monToCheck |= (1 << i);
         }
         if (monToCheck)
@@ -6308,13 +6306,12 @@ static void Cmd_various(void)
         for (i = 0; i < PARTY_SIZE; i++)
         {
             species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES_OR_EGG);
-            abilityNum = GetMonData(&gEnemyParty[i], MON_DATA_ABILITY_NUM);
             status = GetMonData(&gEnemyParty[i], MON_DATA_STATUS);
 
             if (species != SPECIES_NONE
              && species != SPECIES_EGG
              && status & AILMENT_FNT
-             && GetAbilityBySpecies(species, abilityNum) != ABILITY_SOUNDPROOF)
+             && GetMonAbility(&gEnemyParty[i]) != ABILITY_SOUNDPROOF)
                 monToCheck |= (1 << i);
         }
         if (monToCheck)
@@ -8210,7 +8207,6 @@ static void Cmd_healpartystatus(void)
         for (i = 0; i < PARTY_SIZE; i++)
         {
             u16 species = GetMonData(&party[i], MON_DATA_SPECIES_OR_EGG);
-            u8 abilityNum = GetMonData(&party[i], MON_DATA_ABILITY_NUM);
 
             if (species != SPECIES_NONE && species != SPECIES_EGG)
             {
@@ -8223,7 +8219,7 @@ static void Cmd_healpartystatus(void)
                          && !(gAbsentBattlerFlags & gBitTable[gActiveBattler]))
                     ability = gBattleMons[gActiveBattler].ability;
                 else
-                    ability = GetAbilityBySpecies(species, abilityNum);
+                    ability = GetMonAbility(&party[i]);
 
                 if (ability != ABILITY_SOUNDPROOF)
                     toHeal |= (1 << i);
@@ -9463,10 +9459,7 @@ static void Cmd_pickup(void)
     {
         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
         heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
-        if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM) != ABILITY_NONE)
-            ability = gSpeciesInfo[species].abilities[1];
-        else
-            ability = gSpeciesInfo[species].abilities[0];
+        ability = GetMonAbility(&gPlayerParty[i]);
         if (ability == ABILITY_PICKUP && species != SPECIES_NONE && species != SPECIES_EGG && heldItem == ITEM_NONE && !(Random() % 10))
         {
             s32 random = Random() % 100;

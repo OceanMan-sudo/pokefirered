@@ -462,4 +462,5 @@ gSpecials::
 	def_special DebugMenu_TeachMove
 	def_special DebugMenu_SelectMoveToReplace
 	def_special DebugMenu_ReplaceMove
+	def_special DebugMenu_SetAbility
 gSpecialsEnd::

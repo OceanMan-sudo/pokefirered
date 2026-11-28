@@ -13,6 +13,7 @@ A **debug menu** is in the normal game for testing and will be removed before ve
 | Warp | Towns, gym entrances, the Pokémon League and a few test spots. Needs a Pokémon in the party; not available in the Safari Zone |
 | Pokémon | Pick any of the 386 by National Dex number and a level from 1 to 100 |
 | Teach Move | Pick a party Pokémon and any move by number. If it already knows four moves, you choose which to replace. Learnsets are not changed |
+| Ability | Pick a party Pokémon and any ability by number, or **Usual ability** (the last number) to undo it. The choice stays with that Pokémon, in battle and on its summary screen, until changed. Opposing trainers' Pokémon can't be changed |
 | Items | Repels, Poké Balls, evolution items, all TMs and HMs, Bicycle, money, or any item by number |
 | Progress | All badges; badges plus HM01–HM07; Fly map; Pokédex with National Dex; mark the Champion as beaten |
 | Heal | Heals the party |
@@ -118,7 +119,7 @@ Steel no longer resists Ghost or Dark.
 | Multiscale | Halves attack damage while at full HP. Fixed-damage moves such as Seismic Toss ignore it | None yet |
 | Regenerator | Heals 1/3 of max HP when it switches out, including by Baton Pass, Roar or Whirlwind | None yet |
 
-Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). No team uses this yet.
+Trainer Pokémon use their first ability unless their team entry asks for the second (`.secondAbility = TRUE` in `src/data/trainer_parties.h`). Only Brock's Geodude does, which gives it Sturdy.
 
 ### Changed abilities
 | Ability | In the original | Now |
@@ -126,7 +127,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 | Sturdy | Only blocked one-hit KO moves | Still blocks them. Also, a hit that would knock the Pokémon out from full HP leaves it with 1 HP, including a confusion self-hit and Future Sight. Only the first hit of a multi-hit move is survived. Weather, poison, Spikes and recoil are not hits, and a hit on a Substitute does not count |
 | Magma Armor | Only prevented freezing | Still prevents freezing. Also works like Water Absorb: Water moves with a power rating do no damage and restore 1/4 of max HP |
 
-Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. Slugma's and Magcargo's second ability, Water Absorb, now adds nothing over their first.
+Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
 95 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
@@ -446,7 +447,7 @@ It then sends out the best of those teammates, every time. Boosting, healing, sc
 ### Gym leaders and Elite Four
 | Boss | Team (species, level) | Status |
 |---|---|---|
-| Brock | Geodude 13, Zubat 12, Onix 14 | Changed |
+| Brock | Geodude 13 (Sturdy), Zubat 12, Onix 14 | Changed |
 | Misty | Psyduck 20, Corsola 21, Starmie 23 | Changed |
 | Lt. Surge | Lanturn 23, Voltorb 21, Elekid 22, Raichu 26 | Changed |
 | Erika | Victreebel 33, Sunflora 32, Tangela 32, Vileplume 34 | Changed |
