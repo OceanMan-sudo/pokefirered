@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 70 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 71 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -160,6 +160,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Nidoran♂, Clefairy and Vulpix families rebuilt; Nidoking has Sheer Force | Not yet tested |
 | Jigglypuff, Zubat and Oddish families rebuilt | Not yet tested |
 | Paras, Venonat and Diglett families rebuilt; Venonat family can have Tinted Lens | Not yet tested |
+| Meowth, Psyduck and Mankey families rebuilt; Primeape can have Moxie | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -244,7 +245,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
-101 Pokémon. Caterpie, Weedle, Metapod and Kakuna also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's or Beedrill's abilities.
+102 Pokémon. Caterpie, Weedle, Metapod, Kakuna and Mankey also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's or Primeape's abilities.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -278,6 +279,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Venomoth | Shield Dust | Shield Dust/Tinted Lens |
 | Meowth | Pickup | Pickup/Technician |
 | Persian | Limber | Limber/Technician |
+| Primeape | Vital Spirit | Vital Spirit/Moxie |
 | Poliwrath | Water Absorb/Damp | Water Absorb/Swift Swim |
 | Rapidash | Run Away/Flash Fire | Speed Boost/Flash Fire |
 | Farfetch'd | Keen Eye/Inner Focus | Guts/Super Luck |
@@ -476,9 +478,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Nidoran♂, Clefairy and Vulpix families | Done. The Nidoran♂ family learns Poison Jab at 29, and Nidorino and Nidoking learn Crunch at 38; Clefairy and Clefable learn Drain Kiss at 15 and Moonblast at 43 |
 | Jigglypuff, Zubat and Oddish families | Done. Jigglypuff and Wigglytuff learn Drain Kiss at 15 and Moonblast at 43; the Zubat family learns Poison Fang at 19, Zubat learns Confuse Ray at 20, and Screech is Golbat's evolution move |
 | Paras, Venonat and Diglett families | Done. Evolution moves: Parasect Shadow Claw (Nightmare moves to 42), Venomoth Gust, Dugtrio Sand Tomb. Venomoth learns Psychic at 41 and Signal Beam at 33; Dugtrio gains Astonish |
+| Meowth, Psyduck and Mankey families | Done. Evolution moves: Persian Night Slash (Dark Pulse moves to 50), Golduck Aqua Jet. Golduck learns Psych Up at 31 |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
