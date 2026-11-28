@@ -110,7 +110,7 @@ Steel no longer resists Ghost or Dark.
 | Adaptability | The same-type bonus is 2× instead of 1.5× | Beedrill |
 | Skill Link | Moves that hit 2 to 5 times always hit 5 times. Triple Kick and two-hit moves are unchanged | None yet |
 | Sniper | Critical hits do 3× damage instead of 2× | Fearow |
-| Tinted Lens | "Not very effective" attacks do double their usual damage | Butterfree |
+| Tinted Lens | "Not very effective" attacks do double their usual damage | Butterfree, Venonat, Venomoth |
 | Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | Sandshrew, Sandslash |
 | Download | On entering: +1 Attack if the opponent's Defense is lower than its Sp. Def, otherwise +1 Sp. Atk. In double battles the two opponents are added together | None yet |
 | Sap Sipper | Grass moves, including status moves, do nothing to it and raise its Attack. Solar Beam is stopped when it fires, not while charging | None yet |
@@ -129,7 +129,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 
 Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
-99 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+101 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat and Oddish families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat, Oddish, Paras, Venonat and Diglett families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw and Golbat Screech.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw, Golbat Screech, Parasect Shadow Claw, Venomoth Gust and Dugtrio Sand Tomb.
 
 ### TMs
 - TMs are reusable.
