@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy and Vulpix families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew, Nidoran♀, Nidoran♂, Clefairy, Vulpix, Jigglypuff, Zubat and Oddish families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face and Sandslash Metal Claw.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face, Sandslash Metal Claw and Golbat Screech.
 
 ### TMs
 - TMs are reusable.
@@ -307,7 +307,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: since the learnset reset, only 18 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 18 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
+Who can learn them: since the learnset reset, only 19 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Drain Punch, Boomburst, Night Slash, Aura Sphere, Moonblast, Drain Kiss, Brave Bird and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 19 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 

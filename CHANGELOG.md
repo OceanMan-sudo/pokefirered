@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 68 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 69 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -158,6 +158,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Rattata, Spearow and Ekans families rebuilt; Fearow gets Brave Bird and Sniper | Not yet tested |
 | Pikachu, Sandshrew and Nidoran♀ families rebuilt; Sandshrew family can have Sand Rush; Nidoqueen has Sheer Force | Not yet tested |
 | Nidoran♂, Clefairy and Vulpix families rebuilt; Nidoking has Sheer Force | Not yet tested |
+| Jigglypuff, Zubat and Oddish families rebuilt | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -470,9 +471,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Rattata, Spearow and Ekans families | Done. Raticate's Scary Face is an evolution move; Fearow learns Brave Bird instead of Sky Attack; Arbok's second Screech is removed |
 | Pikachu, Sandshrew and Nidoran♀ families | Done. Sandslash gains Sand Tomb, and Metal Claw is its evolution move; the Nidoran♀ family learns Poison Jab at 29 |
 | Nidoran♂, Clefairy and Vulpix families | Done. The Nidoran♂ family learns Poison Jab at 29, and Nidorino and Nidoking learn Crunch at 38; Clefairy and Clefable learn Drain Kiss at 15 and Moonblast at 43 |
+| Jigglypuff, Zubat and Oddish families | Done. Jigglypuff and Wigglytuff learn Drain Kiss at 15 and Moonblast at 43; the Zubat family learns Poison Fang at 19, Zubat learns Confuse Ray at 20, and Screech is Golbat's evolution move |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
