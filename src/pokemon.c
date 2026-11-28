@@ -2318,6 +2318,33 @@ u16 MonTryLearningNewMove(struct Pokemon *mon, bool8 firstMove)
     return retVal;
 }
 
+// Used after evolving: teaches the new species' evolution moves (level 0 in
+// the list) as well as any moves for the current level, in list order.
+u16 MonTryLearningEvolutionMove(struct Pokemon *mon, bool8 firstMove)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+
+    if (firstMove)
+        sLearningMoveTableID = 0;
+
+    while (gLevelUpLearnsets[species][sLearningMoveTableID] != LEVEL_UP_END)
+    {
+        u16 entry = gLevelUpLearnsets[species][sLearningMoveTableID];
+        u16 moveLevel = (entry & LEVEL_UP_MOVE_LV);
+
+        sLearningMoveTableID++;
+
+        if (moveLevel == 0 || moveLevel == (level << 9))
+        {
+            gMoveToLearn = (entry & LEVEL_UP_MOVE_ID);
+            return GiveMoveToMon(mon, gMoveToLearn);
+        }
+    }
+
+    return MOVE_NONE;
+}
+
 void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, u16 move)
 {
     s32 i;

@@ -105,10 +105,12 @@ Do these before changing teams area by area, so work is not redone.
 - [x] Level-up learnsets reset to the original FireRed lists
 - [ ] Rebuild level-up learnsets from your old lists, group by group (show each group before adding it). Teams without hand-picked moves use level-up moves
   - [x] Bulbasaur, Charmander and Squirtle families
-  - [ ] Caterpie, Weedle and Pidgey families (proposed; Butterfree gets Bug Buzz in place of Signal Beam; Pidgey line approved as is)
+  - [x] Caterpie, Weedle and Pidgey families
+  - [ ] Rattata, Spearow and Ekans families (next)
   - Philosophy: weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use
 - [ ] Move relearner: make it available later or harder to use, so strong level 1 moves are not free right after evolving (details to agree)
-- [ ] Decide whether to add true evolution moves (a delayed evolution currently misses the move)
+- [x] Evolution moves (learned on evolving at any level); first used by Butterfree and Beedrill
+- [ ] Review abilities group by group alongside the learnsets
 - [ ] Afterwards: recheck egg moves that have no parent, and decide whether to keep Generation 1–2-only TM entries (mostly Reflect)
 - [ ] Add Scorch Sand, Aura Sphere, the Fairy moves and moves 387 to 400 to learnsets as part of that work
 - [ ] Decide whether the 7 remaining friendship evolutions should change
@@ -301,7 +303,9 @@ Ticked items: you reported on 27 November 2026 that they work.
 - [ ] New TMs: each of the seven shows the right name, color and move, and teaches it
 - [ ] TM and HM compatibility: spot-check a few Pokémon (Houndoom takes TM49 Dark Pulse and TM45 Will-O-Wisp; Charmander cannot take TM15)
 - [ ] Starter moves: Charmander learns Smokescreen at level 3; Blastoise can relearn Aura Sphere
-- [ ] Level-up reset: other Pokémon learn their original moves (Caterpie knows only Tackle and String Shot)
+- [ ] Level-up reset: Pokémon not yet rebuilt learn their original moves
+- [ ] Evolution moves: evolve a Metapod or Kakuna above level 10 (it should still learn Confusion or Leech Life)
+- [ ] Evolution moves: cancel an evolution with B (nothing new is learned)
 - [ ] Egg moves: breed a father that knows a new egg move and check the hatched Pokémon has it
 - [ ] Pallet Town after the clean-up: the two people and nine doors are gone, and the house and lab doors still work
 - [ ] A new game: only a Potion in the PC, and no wild battles in the Pallet Town grass

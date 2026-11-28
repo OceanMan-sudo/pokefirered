@@ -124,6 +124,7 @@ Build, open `pokefirered.gba` in an emulator, and check the feature. If you save
 - **Poryscript:** if a map has `scripts.pory`, edit only that. Its `scripts.inc` is generated and will be overwritten. All 32 pairs matched at the time of the audit.
 - **Porymap:** after saving, check `git diff` for unexpected changes to maps you did not open.
 - **Level-up lists must be in level order.** The game stops at the first move above the Pokémon's level (see BUG-02).
+- **Evolution moves** use `EVOLUTION_MOVE(move)` (stored as level 0) and are the one exception: place each where the species' usual evolution level falls, because wild and trainer Pokémon get moves in list order. They are taught by `MonTryLearningEvolutionMove` (`src/pokemon.c`), called from `src/evolution_scene.c`.
 - **At most 20 level-up moves** per Pokémon for the relearner (`MAX_LEVEL_UP_MOVES`).
 - **At most 32 egg moves** per Pokémon (`EGG_MOVES_ARRAY_COUNT` in `include/constants/daycare.h`); the game ignores any beyond that.
 - **Wild encounters:** tables ending in `_FireRed` or `_LeafGreen` apply to that version only. Tables with other names (the three new ones) apply to both. Slot counts are fixed: 12 land, 5 surf, 5 Rock Smash, 10 fishing.

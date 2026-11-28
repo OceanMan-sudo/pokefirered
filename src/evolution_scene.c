@@ -778,8 +778,13 @@ static void Task_EvolutionScene(u8 taskId)
         if (!IsTextPrinterActive(0))
         {
             HelpSystem_Enable();
-            var = MonTryLearningNewMove(mon, gTasks[taskId].tLearnsFirstMove);
-            if (var != MOVE_NONE && !gTasks[taskId].tEvoWasStopped)
+            // A cancelled evolution teaches nothing.
+            if (gTasks[taskId].tEvoWasStopped)
+                var = MOVE_NONE;
+            else
+                var = MonTryLearningEvolutionMove(mon, gTasks[taskId].tLearnsFirstMove);
+
+            if (var != MOVE_NONE)
             {
                 u8 text[20];
 
@@ -1202,8 +1207,13 @@ static void Task_TradeEvolutionScene(u8 taskId)
     case T_EVOSTATE_TRY_LEARN_MOVE:
         if (!IsTextPrinterActive(0) && IsFanfareTaskInactive() == TRUE)
         {
-            var = MonTryLearningNewMove(mon, gTasks[taskId].tLearnsFirstMove);
-            if (var != MOVE_NONE && !gTasks[taskId].tEvoWasStopped)
+            // A cancelled evolution teaches nothing.
+            if (gTasks[taskId].tEvoWasStopped)
+                var = MOVE_NONE;
+            else
+                var = MonTryLearningEvolutionMove(mon, gTasks[taskId].tLearnsFirstMove);
+
+            if (var != MOVE_NONE)
             {
                 u8 text[20];
 

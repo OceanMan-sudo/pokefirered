@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 63 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 64 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -152,6 +152,8 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Egg moves updated from the same games; up to 32 per Pokémon (was 10) | Not yet tested |
 | Level-up learnsets reset to the original FireRed lists, ahead of a rebuild | Not yet tested |
 | Starter families (9 Pokémon) rebuilt from your old lists; Blastoise gains Aura Sphere at level 1 | Not yet tested |
+| Caterpie, Weedle and Pidgey families rebuilt from your old lists | Not yet tested |
+| Evolution moves added (Butterfree: Confusion, Beedrill: Leech Life) | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -456,7 +458,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Group | State |
 |---|---|
 | Bulbasaur, Charmander and Squirtle families | Done. Charmeleon learns Dragon Rage before Dragon Breath, like the others; Blastoise also gets Aura Sphere; the Squirtle line learns Bubble at 6 instead of 7 |
+| Caterpie, Weedle and Pidgey families | Done. Butterfree gets Bug Buzz in place of Signal Beam; Kakuna no longer lists Tackle; Butterfree's Confusion and Beedrill's Leech Life are now evolution moves |
 | All others | Still original |
+
+**Evolution moves.** New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
