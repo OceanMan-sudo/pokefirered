@@ -111,11 +111,11 @@ Steel no longer resists Ghost or Dark.
 | Skill Link | Moves that hit 2 to 5 times always hit 5 times. Triple Kick and two-hit moves are unchanged | None yet |
 | Sniper | Critical hits do 3× damage instead of 2× | Fearow |
 | Tinted Lens | "Not very effective" attacks do double their usual damage | Butterfree |
-| Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | None yet |
+| Sand Rush | Double Speed in a sandstorm, and the sandstorm does not hurt it | Sandshrew, Sandslash |
 | Download | On entering: +1 Attack if the opponent's Defense is lower than its Sp. Def, otherwise +1 Sp. Atk. In double battles the two opponents are added together | None yet |
 | Sap Sipper | Grass moves, including status moves, do nothing to it and raise its Attack. Solar Beam is stopped when it fires, not while charging | None yet |
 | Moxie | +1 Attack each time its move knocks out a Pokémon. Spikes, Future Sight and end-of-turn damage do not count | None yet |
-| Sheer Force | 1.3× power for moves with an extra effect (flinch, status, confusion or stat change, including Fake Out), and that effect never happens. Those moves also get no King's Rock flinch or Shell Bell healing. Drawback moves such as Overheat, trapping moves, Thrash-style moves, Thief, Knock Off and Pay Day are unchanged | None yet |
+| Sheer Force | 1.3× power for moves with an extra effect (flinch, status, confusion or stat change, including Fake Out), and that effect never happens. Those moves also get no King's Rock flinch or Shell Bell healing. Drawback moves such as Overheat, trapping moves, Thrash-style moves, Thief, Knock Off and Pay Day are unchanged | Nidoqueen |
 | Multiscale | Halves attack damage while at full HP. Fixed-damage moves such as Seismic Toss ignore it | None yet |
 | Regenerator | Heals 1/3 of max HP when it switches out, including by Baton Pass, Roar or Whirlwind | None yet |
 
@@ -129,7 +129,7 @@ Trainer Pokémon use their first ability unless their team entry asks for the se
 
 Pokémon with Sturdy as their first ability: Sudowoodo, Pineco, Forretress, Shuckle, Donphan, Nosepass and the Aron line; as their second: the Geodude line, Onix, Steelix, Magnemite, Magneton and Skarmory. Pokémon with Magma Armor: Slugma, Magcargo and Camerupt. It is the only ability of all three.
 
-97 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
+99 Pokémon have had their abilities changed. See the table in [CHANGELOG.md](CHANGELOG.md#pokémon-abilities).
 
 ### Battle conveniences
 - You gain EXP when you catch a Pokémon, and level-up evolutions happen after a catch (**Tested**).
@@ -159,10 +159,10 @@ It works in wild battles, including legendary and ghost battles. It does not app
 - On the summary screen's skills page, **SELECT** cycles between stats, IVs and EVs (**Tested**).
 
 ### Level-up moves
-Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow and Ekans families. **All others are still original.**
+Level-up lists were reset to the original FireRed ones on 27 November 2026 and are being rebuilt from your old lists, in groups. **Done:** the starter, Caterpie, Weedle, Pidgey, Rattata, Spearow, Ekans, Pikachu, Sandshrew and Nidoran♀ families. **All others are still original.**
 
 - Weak Pokémon such as Butterfree and Beedrill get stronger moves earlier, to make up for low stats and stay fun to use.
-- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life and Raticate Scary Face.
+- **Evolution moves** are learned on evolving at any level, and can be relearned at any level: Butterfree learns Confusion, Beedrill Leech Life, Raticate Scary Face and Sandslash Metal Claw.
 
 ### TMs
 - TMs are reusable.
@@ -307,7 +307,7 @@ Friendship evolution still applies to Golbat, Chansey, Pichu, Cleffa, Igglybuff,
 
 "Effect code" is the name of the battle effect the move uses.
 
-Who can learn them: since the learnset reset, only 13 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Night Slash, Flash Cannon, Leaf Storm, Ominous Wind, Boomburst, Aura Sphere, Brave Bird and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 13 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
+Who can learn them: since the learnset reset, only 16 of the 46 new moves are on a level-up list, all in the rebuilt families (Dragon Pulse, Focus Blast, Shadow Claw, Roost, Poison Jab, Earth Power, Flash Cannon, Leaf Storm, Ominous Wind, Nasty Plot, X-Scissor, Boomburst, Night Slash, Aura Sphere, Brave Bird and Bug Buzz). Five are TMs (Fae Voice, Dazzle Gleam, Bulldoze, X-Scissor and Dark Pulse; see [TMs](#tms)), and 29 are on egg move lists (see [Egg moves](#egg-moves)), but apart from those 16 and the TM moves, they cannot be learned in normal play for now. Moves 381 to 400 can also be taught with the debug menu. Trainers with hand-picked moves can still use any of them.
 
 Names in other games: Drain Kiss is Draining Kiss, Dazzle Gleam is Dazzling Gleam, and Fae Voice is Disarming Voice.
 
