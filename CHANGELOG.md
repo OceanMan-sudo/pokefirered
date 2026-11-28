@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 75 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 76 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -165,6 +165,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Machop, Bellsprout and Tentacool families rebuilt; Machamp can have Iron Fist | Not yet tested |
 | Geodude, Ponyta and Slowpoke families rebuilt | Not yet tested |
 | Magnemite, Farfetch'd and Doduo families rebuilt, with five new TM users | Not yet tested |
+| Seel, Grimer and Shellder families rebuilt; Grimer and Muk can have Poison Point, Cloyster Skill Link | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -249,7 +250,7 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Tropius | Grass/Flying | Grass/Dragon |
 
 ### Pokémon abilities
-103 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop and Machoke also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's or Machamp's abilities.
+106 Pokémon. Caterpie, Weedle, Metapod, Kakuna, Mankey, Machop, Machoke and Shellder also have their one ability entered in both slots (nothing changes for them), so that a wild one can evolve into either of Butterfree's, Beedrill's, Primeape's, Machamp's or Cloyster's abilities.
 
 | Pokémon | Original | Now |
 |---|---|---|
@@ -291,6 +292,9 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Dodrio | Run Away/Early Bird | Guts/Early Bird |
 | Seel | Thick Fat | Thick Fat/Ice Body |
 | Dewgong | Thick Fat | Thick Fat/Ice Body |
+| Grimer | Stench/Sticky Hold | Poison Point/Sticky Hold |
+| Muk | Stench/Sticky Hold | Poison Point/Sticky Hold |
+| Cloyster | Shell Armor | Shell Armor/Skill Link |
 | Drowzee | Insomnia | Insomnia/Inner Focus |
 | Hypno | Insomnia | Insomnia/Inner Focus |
 | Hitmonlee | Limber | Limber/Reckless |
@@ -490,9 +494,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Machop, Bellsprout and Tentacool families | Done. Evolution moves: Machoke Vital Throw, Weepinbell Razor Leaf, Victreebel Seed Bomb, Tentacruel Sludge Bomb. Machoke and Machamp learn Close Combat at 61 instead of Superpower; their other moves from before each evolution now match the earlier stage |
 | Geodude, Ponyta and Slowpoke families | Done. Evolution moves: Graveler Rock Blast, Rapidash Horn Attack, Slowbro Extrasensory (added), Slowking Nasty Plot. Ponyta and Rapidash learn Flare Blitz at 46 and Fire Blast at 52; Graveler's and Golem's moves from before level 18 now match Geodude's |
 | Magnemite, Farfetch'd and Doduo families | Done. Evolution move: Dodrio Drill Peck. Magnemite and Magneton learn Swift at 30; Magneton learns Tri Attack at 38 and Flash Cannon at 44. Farfetch'd gains Leaf Blade and learns Brave Bird instead of Sky Attack. Doduo and Dodrio gain Bulldoze; Dodrio gains Earthquake |
+| Seel, Grimer and Shellder families | Done. Evolution move: Cloyster Rock Blast. Seel and Dewgong gain Bubble Beam at 18 and learn Encore at 13, Ice Shard at 16 and Aurora Beam at 22 |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
