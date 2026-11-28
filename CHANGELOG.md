@@ -3,7 +3,7 @@
 Compared with the original decompilation at commit `539ed3616` (29 August 2024). Changes made by the original project after that date are not counted.
 
 - **Your work** is on `master`: 163 commits, including 2 from RavePossum.
-- **Claude-assisted work** is on `claude-edits`: 78 commits (some are temporary test setups and their removal).
+- **Claude-assisted work** is on `claude-edits`: 79 commits (some are temporary test setups and their removal).
 
 Tables were generated from the game files, so they show the **net difference** from the original. **Confirmed** means present in the code. **Tested** is used only where you reported that something worked in game.
 
@@ -168,6 +168,7 @@ Step-by-step checks are in [TODO.md](TODO.md#waiting-to-be-tested).
 | Seel, Grimer and Shellder families rebuilt; Grimer and Muk can have Poison Point, Cloyster Skill Link | Not yet tested |
 | Gastly, Onix and Drowzee families rebuilt | Not yet tested |
 | Krabby, Voltorb and Exeggcute families rebuilt | Not yet tested |
+| Cubone, Tyrogue and Lickitung families rebuilt | Not yet tested |
 
 ### Rules, options and screens
 | Change | In-game status |
@@ -499,9 +500,10 @@ Apart from the TM/HM compatibility and egg move updates, the Claude-assisted cha
 | Seel, Grimer and Shellder families | Done. Evolution move: Cloyster Rock Blast. Seel and Dewgong gain Bubble Beam at 18 and learn Encore at 13, Ice Shard at 16 and Aurora Beam at 22 |
 | Gastly, Onix and Drowzee families | Done. Evolution moves: Haunter Shadow Punch, Steelix Iron Head (added). Steelix's early moves now match Onix's. Drowzee and Hypno learn Knock Off at 20 and Meditate at 22; Hypno's moves from before level 26 now match Drowzee's and it learns Swagger at 46 |
 | Krabby, Voltorb and Exeggcute families | Done. Evolution move: Exeggutor Stomp. Kingler gains Iron Head at 32. Voltorb and Electrode gain Shock Wave at 24; Electrode's second Rollout and Swift are removed |
+| Cubone, Tyrogue and Lickitung families | Done. Evolution moves: Marowak Shadow Punch, Hitmonlee Brick Break, Hitmonchan Mach Punch, Hitmontop Triple Kick. Tyrogue gains Double Kick at 7 and Karate Chop at 13. Hitmontop learns Revenge again at 51 instead of 35, and Close Combat at 56 instead of Superpower at 51 |
 | All others | Still original |
 
-**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
+**Evolution moves** (Butterfree: Confusion, Beedrill: Leech Life, Raticate: Scary Face, Sandslash: Metal Claw, Golbat: Screech, Parasect: Shadow Claw, Venomoth: Gust, Dugtrio: Sand Tomb, Persian: Night Slash, Golduck: Aqua Jet, Arcanine: Crunch, Poliwhirl: Bubble Beam, Poliwrath: Drain Punch, Politoed: Hyper Voice, Kadabra: Confusion, Alakazam: Calm Mind, Machoke: Vital Throw, Weepinbell: Razor Leaf, Victreebel: Seed Bomb, Tentacruel: Sludge Bomb, Graveler: Rock Blast, Rapidash: Horn Attack, Slowbro: Extrasensory, Slowking: Nasty Plot, Dodrio: Drill Peck, Cloyster: Rock Blast, Haunter: Shadow Punch, Steelix: Iron Head, Exeggutor: Stomp, Marowak: Shadow Punch, Hitmonlee: Brick Break, Hitmonchan: Mach Punch, Hitmontop: Triple Kick). New: a Pokémon learns them on evolving, at whatever level that happens, and the move relearner offers them at any level. Before, a Metapod or Kakuna that evolved later than level 10 missed the move.
 
 Your earlier lists (230 Pokémon changed) are still in the history. To read them: `git diff 539ed3616 master -- src/data/pokemon/level_up_learnsets.h`.
 
